@@ -20,3 +20,10 @@ D:\installs\Tencent\files\2495892411\FileRecv\HeadacheCDSSWeb(3)\HeadacheCDSSWeb
 D:\installs\Tencent\files\2495892411\FileRecv\HeadacheCDSSWeb(3)\HeadacheCDSSWeb\bin\EntityFramework.xml
 D:\installs\Tencent\files\2495892411\FileRecv\HeadacheCDSSWeb(3)\HeadacheCDSSWeb\obj\Debug\HeadacheCDSSWeb.dll
 D:\installs\Tencent\files\2495892411\FileRecv\HeadacheCDSSWeb(3)\HeadacheCDSSWeb\obj\Debug\HeadacheCDSSWeb.pdb
+D:\FGj\projectcode\NewheadacheWeb\HeadacheCDSSWeb\bin\HeadacheCDSSWeb.dll
+D:\FGj\projectcode\NewheadacheWeb\HeadacheCDSSWeb\bin\HeadacheCDSSWeb.pdb
+D:\FGj\projectcode\NewheadacheWeb\HeadacheCDSSWeb\bin\EntityFramework.dll
+D:\FGj\projectcode\NewheadacheWeb\HeadacheCDSSWeb\bin\EntityFramework.xml
+D:\FGj\projectcode\NewheadacheWeb\HeadacheCDSSWeb\obj\Debug\ResolveAssemblyReference.cache
+D:\FGj\projectcode\NewheadacheWeb\HeadacheCDSSWeb\obj\Debug\HeadacheCDSSWeb.dll
+D:\FGj\projectcode\NewheadacheWeb\HeadacheCDSSWeb\obj\Debug\HeadacheCDSSWeb.pdb

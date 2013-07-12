@@ -87,15 +87,15 @@
                 $("#DiaryView").hide();
                 //赋值
                 SetReportData(data);
-                
+
             },
             error: function (jqXhr, textStatus, errorThrown) {
                 alert("Error '" + jqXhr.status + "' (textStatus: '" + textStatus + "', errorThrown: '" + errorThrown + "')");
                 alert("处理失败!");
             }
-           
+
         });
-     
+
         //打开第一个问诊记录
         $("#accordion").accordion(
         { collapsible: true });
@@ -104,6 +104,7 @@
         if ($(".paging li").length == 0) {
             $("#continue").hide();
             $("#delete").hide();
+            $(".paging").append("<li><a>基本信息</a></li>");
         }
     });
     $(document).ready(function () {
@@ -133,33 +134,37 @@
             var stringArray = new Array();
             stringArray[0] = $(".PID").attr("id");
             stringArray[1] = recordToView;
+            if ($(this).text() == "基本信息") {
+                $("#ViewContent").show();
+                $("#DiaryView").hide();
+            }
+            else {
+                $.ajax({
 
-            $.ajax({
+                    type: "POST",
 
-                type: "POST",
+                    url: '@Url.Action("ViewVisitRecordDetail", "ViewPatRecord")',
 
-                url: '@Url.Action("ViewVisitRecordDetail", "ViewPatRecord")',
+                    data: { PostID: stringArray },
+                    dataType: "json", type: "POST", traditional: true,
+                    success: function (data) {
+                        $("#ViewContent").show();
+                        $("#DiaryView").hide();
+                        //$('#ViewContent').html(data);
+                        SetReportData(data);
+                        $(".CurrentView").parent().css("background-color", "#B9DCF2");
+                        $(".CurrentView").removeClass("CurrentView");
+                        $('#' + recordToView).addClass("CurrentView");
+                        $(".CurrentView").parent().css("background-color", "#D3E7F2");
+                    },
 
-                data: { PostID: stringArray },
-                dataType: "json", type: "POST", traditional: true,
-                success: function (data) {
-                    $("#ViewContent").show();
-                    $("#DiaryView").hide();
-                    //$('#ViewContent').html(data);
-                    SetReportData(data);
-                    $(".CurrentView").parent().css("background-color", "#B9DCF2");
-                    $(".CurrentView").removeClass("CurrentView");
-                    $('#' + recordToView).addClass("CurrentView");
-                    $(".CurrentView").parent().css("background-color", "#D3E7F2");
-                },
+                    error: function (jqXhr, textStatus, errorThrown) {
+                        alert("Error '" + jqXhr.status + "' (textStatus: '" + textStatus + "', errorThrown: '" + errorThrown + "')");
+                        alert("处理失败!");
+                    }
 
-                error: function (jqXhr, textStatus, errorThrown) {
-                    alert("Error '" + jqXhr.status + "' (textStatus: '" + textStatus + "', errorThrown: '" + errorThrown + "')");
-                    alert("处理失败!");
-                }
-
-            });
-
+                });
+            }
         });
         $(".diary li a").click(function () {
             if ($(this).attr("id") == "statics") {
@@ -177,7 +182,7 @@
                                                     ['恶心', 12], ['呕吐', 18], ['畏光', 14],
                                                     ['怕吵', 16], ['感觉不安或躁动', 7]
                                                   ];
-                                                                        var plot2 = jQuery.jqplot('piegraph', [data],
+                        var plot2 = jQuery.jqplot('piegraph', [data],
                                                     {
                                                         seriesDefaults: {
                                                             renderer: jQuery.jqplot.PieRenderer,
