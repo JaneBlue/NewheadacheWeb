@@ -169,11 +169,13 @@ height:670px;
 padding:0px 0 0 0;
 background:url(images/main_bg.png) repeat-x center;
 font-size:0px;
+display:block;
 }
 .ocx{
 	width:915px;
     height:540px;
 	margin-left: 25px;
+	display:block;
 }
 /*---------------footer------------------------*/
 .footer{
@@ -260,16 +262,23 @@ cursor: pointer;
 background-color: #9ECCE9;
  background: url(images/tab-selected.png) repeat ;
 }
+#Hplace
+{
+    display:block;
+    height:500px;
+    float:left;
+}
 #hplace
 {  
     display:block;
-    width:800px;
-    height:440px;
-	float: right;
+    width:825px;
+    height:475px;
+	padding-left:90px;
+	background-color:#c6e2ee;
 	font-size:18px;
-	margin-top:25px;
-	
-	padding-right:20px;
+	padding-top:25px;
+	border-style:groove;
+	border-color:#c0c0c0;
 }
 #picture
 {
