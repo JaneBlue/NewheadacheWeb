@@ -189,6 +189,9 @@
     <Content Include="Content\images\normal-button.png" />
     <Content Include="Content\images\ocx_bg.png" />
     <Content Include="Content\images\peoplehead.jpg" />
+    <Content Include="Content\images\phead.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\images\sidebar.png" />
     <Content Include="Content\images\split.png" />
     <Content Include="Content\images\tab-selected.png" />

@@ -27,3 +27,4 @@ D:\FGj\projectcode\NewheadacheWeb\HeadacheCDSSWeb\bin\EntityFramework.xml
 D:\FGj\projectcode\NewheadacheWeb\HeadacheCDSSWeb\obj\Debug\ResolveAssemblyReference.cache
 D:\FGj\projectcode\NewheadacheWeb\HeadacheCDSSWeb\obj\Debug\HeadacheCDSSWeb.dll
 D:\FGj\projectcode\NewheadacheWeb\HeadacheCDSSWeb\obj\Debug\HeadacheCDSSWeb.pdb
+D:\FGj\projectcode\NewheadacheWeb\HeadacheCDSSWeb\bin\Content\images\phead.jpg
