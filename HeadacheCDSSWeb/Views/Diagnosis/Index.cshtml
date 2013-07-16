@@ -607,21 +607,6 @@ $("#submenu").hide();
                 strChiefComplaint += "曾服用" + strDrugCategory3 + "类药物，药名" + strDrugName3 + "，每月服药" + strDayAmoutnPerM3 + "天，连续服药" + strMonthTotalAmount3 + "个月；";
             }
                     
-            var strDrugCategory4 = OCX.GetObjectInfo("ComboBox_43", "text");
-            var strDrugName4 = OCX.GetObjectInfo("TextBox_43", "text");
-            if("" == strDrugName4)
-                strDrugName4 = " ";
-            var strDayAmoutnPerM4 = OCX.GetObjectInfo("TextBox_46", "text");
-            if("" == strDayAmoutnPerM4)
-                strDayAmoutnPerM4 = " ";
-            var strMonthTotalAmount4 = OCX.GetObjectInfo("TextBox_47", "text");
-            if("" == strMonthTotalAmount4)
-                strMonthTotalAmount4 = " ";
-            if("" != strDrugCategory4)
-            {
-                strChiefComplaint += "曾服用" + strDrugCategory4 + "类药物，药名" + strDrugName4 + "，每月服药" + strDayAmoutnPerM4 + "天，连续服药" + strMonthTotalAmount4 + "个月";
-            }
-                    
             //Get HeadacheFamilyMember
             var strFuQin = "";
             var strMuQin = "";
@@ -955,47 +940,8 @@ $("#submenu").hide();
                     strOFamilyDiseaseQiTa = "其他";
 
                 //get lifestyle
-                var strSmokeState = OCX.GetObjectInfo("ComboBox_55", "text");
-                var strSmokeStartAge = OCX.GetObjectInfo("TextBox_63", "text");
-                var strSmokeQuitYear = OCX.GetObjectInfo("TextBox_62", "text");
-                var strCigarettesPerDay = OCX.GetObjectInfo("TextBox_61", "text");
-                var strSmokeYear = OCX.GetObjectInfo("TextBox_60", "text");
-                var strDrinkState = OCX.GetObjectInfo("ComboBox_53", "text");
-                var strDrinkStartAge = OCX.GetObjectInfo("TextBox_56", "text");
-                var strDrinkYear = OCX.GetObjectInfo("TextBox_58", "text");
-                var strDrinkQuitYear = OCX.GetObjectInfo("TextBox_57", "text");
-                var strDrinkPerDay = OCX.GetObjectInfo("TextBox_59", "text");
-                var strDrinkCategory = OCX.GetObjectInfo("ComboBox_54", "text");
                 var strTeaPerDay = OCX.GetObjectInfo("TextBox_55", "text");
                 var strCoffePerDay = OCX.GetObjectInfo("TextBox_54", "text");
-                var strExercisePerWeek = OCX.GetObjectInfo("ComboBox_52", "text");
-                var strExerciseTime = OCX.GetObjectInfo("ComboBox_51", "text");
-                var strExerciseDescription = OCX.GetObjectInfo("TextBox_53", "text");
-
-                var strDiReLiang = "";
-                var strDiYan = "";
-                var strDiZhi = "";
-                var strDiXianWei = "";
-                var strDiTanShuiHuaHeWu = "";
-                var strGaoReLiang = "";
-                var strGaoXianWei = "";
-                var strSpecialDietQiTa = "";
-                if("true" == OCX.GetObjectInfo("CheckBox_60", "checked"))
-                    strDiReLiang = "低热量";
-                if("true" == OCX.GetObjectInfo("CheckBox_57", "checked"))
-                    strDiYan = "低盐";
-                if("true" == OCX.GetObjectInfo("CheckBox_56", "checked"))
-                    strDiZhi = "低脂";
-                if("true" == OCX.GetObjectInfo("CheckBox_54", "checked"))
-                    strDiXianWei = "低纤维";
-                if("true" == OCX.GetObjectInfo("CheckBox_59", "checked"))
-                    strDiTanShuiHuaHeWu = "低碳水化合物";
-                if("true" == OCX.GetObjectInfo("CheckBox_58", "checked"))
-                    strGaoReLiang = "高热量";
-                if("true" == OCX.GetObjectInfo("CheckBox_55", "checked"))
-                    strGaoXianWei = "高纤维";
-                if("true" == OCX.GetObjectInfo("CheckBox_53", "checked"))
-                    strSpecialDietQiTa = "其他";
 
                 //get PreviousDrug
                 var strDrugCategory1 = OCX.GetObjectInfo("ComboBox_46", "text");
@@ -1012,11 +958,6 @@ $("#submenu").hide();
                 var strDrugName3 = OCX.GetObjectInfo("TextBox_42", "text");
                 var strDayAmoutnPerM3 = OCX.GetObjectInfo("TextBox_45", "text");
                 var strMonthTotalAmount3 = OCX.GetObjectInfo("TextBox_48", "text");
-
-                var strDrugCategory4 = OCX.GetObjectInfo("ComboBox_43", "text");
-                var strDrugName4 = OCX.GetObjectInfo("TextBox_43", "text");
-                var strDayAmoutnPerM4 = OCX.GetObjectInfo("TextBox_46", "text");
-                var strMonthTotalAmount4 = OCX.GetObjectInfo("TextBox_47", "text");
 
                 //get PreviousExam
                 var strExamName1 = OCX.GetObjectInfo("ComboBox_47", "text");
@@ -1248,18 +1189,11 @@ $("#submenu").hide();
                               OFamilyDisease: [ {DiseaseName: strXinZangJiBin}, {DiseaseName: strDianXian}, {DiseaseName: strGaoXueYa}
                                             , {DiseaseName: strZuZhong}, {DiseaseName: strGuanJieYan}, {DiseaseName: strZhongLiu}
                                             , {DiseaseName: strJiaoLv}, {DiseaseName: strOFamilyDiseaseQiTa} ],
-                              lifestyle: {SmokeState: strSmokeState, SmokeStartAge: strSmokeStartAge, SmokeQuitYear:strSmokeQuitYear
-                                            , SmokeYear: strSmokeYear, CigarettesPerDay: strCigarettesPerDay, DrinkState:strDrinkState
-                                            , DrinkStartAge: strDrinkStartAge, DrinkYear: strDrinkYear, DrinkQuitYear:strDrinkQuitYear
-                                            , DrinkPerDay: strDrinkPerDay, DrinkCategory: strDrinkCategory, TeaPerDay:strTeaPerDay
-                                            , CoffePerDay: strCoffePerDay, ExercisePerWeek: strExercisePerWeek, ExerciseTime:strExerciseTime
-                                            , ExerciseDescription: strExerciseDescription
-                                            , SpecialDiet:[{Kind:strDiReLiang}, {Kind:strDiYan}, {Kind:strDiZhi}, {Kind:strDiXianWei}
-                                                            , {Kind:strDiTanShuiHuaHeWu}, {Kind:strGaoReLiang}, {Kind:strGaoXianWei}, {Kind:strSpecialDietQiTa}]},
+                              lifestyle: {TeaPerDay:strTeaPerDay
+                                            , CoffePerDay: strCoffePerDay},
                               PDrug: [{DrugCategory: strDrugCategory1, DrugName: strDrugName1, DayAmoutnPerM: strDayAmoutnPerM1, MonthTotalAmount: strMonthTotalAmount1}
                                         ,{DrugCategory: strDrugCategory2, DrugName: strDrugName2, DayAmoutnPerM: strDayAmoutnPerM2, MonthTotalAmount: strMonthTotalAmount2}
-                                        ,{DrugCategory: strDrugCategory3, DrugName: strDrugName3, DayAmoutnPerM: strDayAmoutnPerM3, MonthTotalAmount: strMonthTotalAmount3}
-                                        ,{DrugCategory: strDrugCategory4, DrugName: strDrugName4, DayAmoutnPerM: strDayAmoutnPerM4, MonthTotalAmount: strMonthTotalAmount4} ],
+                                        ,{DrugCategory: strDrugCategory3, DrugName: strDrugName3, DayAmoutnPerM: strDayAmoutnPerM3, MonthTotalAmount: strMonthTotalAmount3}],
                               PExam: [{ExamName: strExamName1, Result:strExamResult1, Date:strExamDate1}
                                         ,{ExamName: strExamName2, Result:strExamResult2, Date:strExamDate2}
                                         ,{ExamName: strExamName3, Result:strExamResult3, Date:strExamDate3}
