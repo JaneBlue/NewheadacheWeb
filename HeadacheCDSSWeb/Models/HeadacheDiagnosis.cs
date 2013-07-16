@@ -159,11 +159,11 @@ namespace HeadacheCDSSWeb.Models
                     {
                         InputDataValue.m_nHeadahceProperty = localhost.HeadacheProperty.Pressure_Pain;
                     }
-                    if (vd.PHeadacheOverview.HeadacheType == "过电样痛")
+                    if (vd.PHeadacheOverview.HeadacheType.Contains("过电样"))
                     {
                         InputDataValue.m_nHeadahceProperty = localhost.HeadacheProperty.Electric_Shock_Like_Pain;
                     }
-                    if (vd.PHeadacheOverview.HeadacheType == "其它")
+                    if (vd.PHeadacheOverview.HeadacheType == "其它" || vd.PHeadacheOverview.HeadacheType.Contains("炸裂样"))
                     {
                         InputDataValue.m_nHeadahceProperty = localhost.HeadacheProperty.Other;
                     }

@@ -37,7 +37,6 @@ namespace HeadacheCDSSWeb.Models
         public DbSet<PreviousExam> PreviousExamSet { get; set; }
         public DbSet<HeadacheFamilyMember> HeadacheFamilyMemberSet { get; set; }
         public DbSet<OtherFamilyDisease> OtherFamilyDiseaseSet { get; set; }
-        public DbSet<SpecialDiet> SpecialDietSet { get; set; }
         public DbSet<MedicationAdvice> MedicationAdviceSet { get; set; }
         public DbSet<PrecipitatingFactor> PrecipitatingFactorSet { get; set; }
         public DbSet<MitigatingFactors> MitigatingFactorsSet { get; set; }

@@ -14,11 +14,6 @@ namespace HeadacheCDSSWeb.Models
 {
     public partial class Lifestyle
     {
-        public Lifestyle()
-        {
-            this.SpecialDiet = new HashSet<SpecialDiet>();
-        }
-    
         public int Id { get; set; }
         public string SmokeState { get; set; }
         public string SmokeStartAge { get; set; }
@@ -39,7 +34,6 @@ namespace HeadacheCDSSWeb.Models
         public string WeightChange { get; set; }
         public string WeightChangeNote { get; set; }
     
-        public virtual ICollection<SpecialDiet> SpecialDiet { get; set; }
         public virtual PatBasicInfor PatBasicInfor { get; set; }
     }
     

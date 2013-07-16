@@ -18,7 +18,6 @@
     <EntitySet Name="PreviousExamSet" EntityType="HeadacheModel.Store.PreviousExamSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="HeadacheFamilyMemberSet" EntityType="HeadacheModel.Store.HeadacheFamilyMemberSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="OtherFamilyDiseaseSet" EntityType="HeadacheModel.Store.OtherFamilyDiseaseSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="SpecialDietSet" EntityType="HeadacheModel.Store.SpecialDietSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="MedicationAdviceSet" EntityType="HeadacheModel.Store.MedicationAdviceSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="PrecipitatingFactorSet" EntityType="HeadacheModel.Store.PrecipitatingFactorSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="MitigatingFactorsSet" EntityType="HeadacheModel.Store.MitigatingFactorsSet" store:Type="Tables" Schema="dbo" />
@@ -38,10 +37,6 @@
     <AssociationSet Name="HeadachaOverViewHeadacheProdrome" Association="HeadacheModel.Store.HeadachaOverViewHeadacheProdrome">
       <End Role="HeadachaOverView" EntitySet="PrimaryHeadacheOverViewSet" />
       <End Role="HeadacheProdrome" EntitySet="HeadacheProdromeSet" />
-    </AssociationSet>
-    <AssociationSet Name="LifestyleSpecialDiet" Association="HeadacheModel.Store.LifestyleSpecialDiet">
-      <End Role="Lifestyle" EntitySet="LifestyleSet" />
-      <End Role="SpecialDiet" EntitySet="SpecialDietSet" />
     </AssociationSet>
     <AssociationSet Name="PatBasicInforVisitRecord" Association="HeadacheModel.Store.PatBasicInforVisitRecord">
       <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
@@ -236,14 +231,6 @@
     <Property Name="DiseaseName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="PatBasicInforId" Type="nvarchar" Nullable="false" MaxLength="255" />
   </EntityType>
-  <EntityType Name="SpecialDietSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Kind" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="LifestyleId" Type="int" Nullable="false" />
-  </EntityType>
   <EntityType Name="MedicationAdviceSet">
     <Key>
       <PropertyRef Name="Id" />
@@ -326,18 +313,6 @@
       </Principal>
       <Dependent Role="HeadacheProdrome">
         <PropertyRef Name="HeadachaOverViewId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="LifestyleSpecialDiet">
-    <End Role="Lifestyle" Type="HeadacheModel.Store.LifestyleSet" Multiplicity="1" />
-    <End Role="SpecialDiet" Type="HeadacheModel.Store.SpecialDietSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Lifestyle">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="SpecialDiet">
-        <PropertyRef Name="LifestyleId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -506,11 +481,6 @@
           <EntitySet Name="PreviousExamSet" EntityType="HeadacheModel.PreviousExam" />
           <EntitySet Name="HeadacheFamilyMemberSet" EntityType="HeadacheModel.HeadacheFamilyMember" />
           <EntitySet Name="OtherFamilyDiseaseSet" EntityType="HeadacheModel.OtherFamilyDisease" />
-          <EntitySet Name="SpecialDietSet" EntityType="HeadacheModel.SpecialDiet" />
-          <AssociationSet Name="LifestyleSpecialDiet" Association="HeadacheModel.LifestyleSpecialDiet">
-            <End Role="Lifestyle" EntitySet="LifestyleSet" />
-            <End Role="SpecialDiet" EntitySet="SpecialDietSet" />
-          </AssociationSet>
           <EntitySet Name="MedicationAdviceSet" EntityType="HeadacheModel.MedicationAdvice" />
           <AssociationSet Name="PatBasicInforVisitRecord" Association="HeadacheModel.PatBasicInforVisitRecord">
             <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
@@ -677,7 +647,6 @@
           <Property Type="String" Name="ExerciseDescription" Nullable="true" />
           <Property Type="String" Name="WeightChange" Nullable="true" />
           <Property Type="String" Name="WeightChangeNote" Nullable="true" />
-          <NavigationProperty Name="SpecialDiet" Relationship="HeadacheModel.LifestyleSpecialDiet" FromRole="Lifestyle" ToRole="SpecialDiet" />
           <NavigationProperty Name="PatBasicInfor" Relationship="HeadacheModel.PatBasicInforLifestyle" FromRole="Lifestyle" ToRole="PatBasicInfor" />
         </EntityType>
         <EntityType Name="HeadachePlace">
@@ -785,27 +754,6 @@
           <NavigationProperty Name="PatBasicInfor" Relationship="HeadacheModel.PatBasicInforOtherFamilyDisease" FromRole="OtherFamilyDisease" ToRole="PatBasicInfor" />
           <Property Type="String" Name="PatBasicInforId" Nullable="false" MaxLength="255" />
         </EntityType>
-        <EntityType Name="SpecialDiet">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Kind" Nullable="false" />
-          <NavigationProperty Name="Lifestyle" Relationship="HeadacheModel.LifestyleSpecialDiet" FromRole="SpecialDiet" ToRole="Lifestyle" />
-          <Property Type="Int32" Name="LifestyleId" Nullable="false" />
-        </EntityType>
-        <Association Name="LifestyleSpecialDiet">
-          <End Type="HeadacheModel.Lifestyle" Role="Lifestyle" Multiplicity="1" />
-          <End Type="HeadacheModel.SpecialDiet" Role="SpecialDiet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Lifestyle">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="SpecialDiet">
-              <PropertyRef Name="LifestyleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="MedicationAdvice">
           <Key>
             <PropertyRef Name="Id" />
@@ -1127,15 +1075,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SpecialDietSet">
-      <EntityTypeMapping TypeName="IsTypeOf(HeadacheModel.SpecialDiet)">
-        <MappingFragment StoreEntitySet="SpecialDietSet">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Kind" ColumnName="Kind" />
-          <ScalarProperty Name="LifestyleId" ColumnName="LifestyleId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="MedicationAdviceSet">
       <EntityTypeMapping TypeName="IsTypeOf(HeadacheModel.MedicationAdvice)">
         <MappingFragment StoreEntitySet="MedicationAdviceSet">
@@ -1242,11 +1181,6 @@
         <EntityTypeShape EntityType="HeadacheModel.PreviousExam" Width="1.5" PointX="3.25" PointY="8.375" Height="2.1610522460937496" />
         <EntityTypeShape EntityType="HeadacheModel.HeadacheFamilyMember" Width="2" PointX="0.5" PointY="2.875" Height="1.7790128580729165" />
         <EntityTypeShape EntityType="HeadacheModel.OtherFamilyDisease" Width="1.5" PointX="0.5" PointY="5.25" Height="1.7790128580729165" />
-        <EntityTypeShape EntityType="HeadacheModel.SpecialDiet" Width="1.5" PointX="3.625" PointY="10.875" Height="1.7790128580729157" />
-        <AssociationConnector Association="HeadacheModel.LifestyleSpecialDiet">
-          <ConnectorPoint PointX="2.375" PointY="11.638173828124998" />
-          <ConnectorPoint PointX="3.625" PointY="11.638173828124998" />
-        </AssociationConnector>
         <EntityTypeShape EntityType="HeadacheModel.MedicationAdvice" Width="2" PointX="5.625" PointY="5.25" Height="2.5430916341145817" />
         <AssociationConnector Association="HeadacheModel.PatBasicInforVisitRecord">
           <ConnectorPoint PointX="4.375" PointY="2.69011474609375" />

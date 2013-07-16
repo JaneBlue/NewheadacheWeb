@@ -21,7 +21,7 @@ namespace HeadacheCDSSWeb.Models
             this.medicationadvice = new List<HMedicine>();
             this.headacheoverview = new HeadacheOverview();
             this.patlifestyle = new lifestyle();
-            this.patlifestyle.specialDiet = new List<string>();
+            
             this.secondaryheadachesymptom = new List<string>();
         }
         public string Id { get; set; }
@@ -120,6 +120,6 @@ namespace HeadacheCDSSWeb.Models
         public string ExerciseDescription { get; set; }
         public string WeightChange { get; set; }
         public string WeightChangeNote { get; set; }
-        public List<string> specialDiet{get;set;}
+        
     }
 }

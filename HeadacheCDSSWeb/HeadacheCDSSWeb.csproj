@@ -144,9 +144,6 @@
     <Compile Include="Models\PreviousExam.cs">
       <DependentUpon>HeadacheDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SpecialDiet.cs">
-      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\VisitData.cs" />
     <Compile Include="Models\VisitDataOperation.cs" />
     <Compile Include="Models\VisitRecord.cs">

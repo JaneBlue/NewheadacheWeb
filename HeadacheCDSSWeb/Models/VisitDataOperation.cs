@@ -307,10 +307,7 @@ namespace HeadacheCDSSWeb.Models
                 rdata.patlifestyle.ExerciseDescription = pt.Lifestyle.ExerciseDescription;
                 rdata.patlifestyle.WeightChange = pt.Lifestyle.WeightChange;
                 rdata.patlifestyle.WeightChangeNote = pt.Lifestyle.WeightChangeNote;
-                foreach (SpecialDiet d in pt.Lifestyle.SpecialDiet)
-                {
-                    rdata.patlifestyle.specialDiet.Add(d.Kind);
-                }
+               
             }
 
             //if (pt.SimilarFamily!=null)
@@ -457,15 +454,7 @@ namespace HeadacheCDSSWeb.Models
                         VData.PExam.RemoveAt(n);
                     }
                 }
-                int num5 = VData.lifestyle.SpecialDiet.Count - 1;
-                for (int n = num5; n >= 0; n--)
-                {
-                    SpecialDiet dt = VData.lifestyle.SpecialDiet.ElementAt(n);
-                    if (dt.Kind == "")
-                    {
-                        VData.lifestyle.SpecialDiet.Remove(dt);
-                    }
-                }
+                
 
                 int count1 = VData.PHeadacheOverview.HeadacheAccompany.Count - 1;
                 for (int n = count1; n >= 0; n--)

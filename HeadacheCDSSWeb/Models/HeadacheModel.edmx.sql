@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 07/03/2013 10:02:55
--- Generated from EDMX file: D:\2013HeadacheCDSS\Code\HeadacheCDSS\HeadacheCDSSWeb\HeadacheCDSSWeb\Models\HeadacheModel.edmx
+-- Date Created: 07/16/2013 15:55:46
+-- Generated from EDMX file: D:\FGj\projectcode\NewheadacheWeb\HeadacheCDSSWeb\Models\HeadacheModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -28,9 +28,6 @@ IF OBJECT_ID(N'[dbo].[FK_HeadachaOverViewHeadacheAccompany]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_HeadachaOverViewHeadacheProdrome]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[HeadacheProdromeSet] DROP CONSTRAINT [FK_HeadachaOverViewHeadacheProdrome];
-GO
-IF OBJECT_ID(N'[dbo].[FK_LifestyleSpecialDiet]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SpecialDietSet] DROP CONSTRAINT [FK_LifestyleSpecialDiet];
 GO
 IF OBJECT_ID(N'[dbo].[FK_PatBasicInforVisitRecord]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[VisitRecordSet] DROP CONSTRAINT [FK_PatBasicInforVisitRecord];
@@ -105,9 +102,6 @@ IF OBJECT_ID(N'[dbo].[HeadacheFamilyMemberSet]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[OtherFamilyDiseaseSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[OtherFamilyDiseaseSet];
-GO
-IF OBJECT_ID(N'[dbo].[SpecialDietSet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[SpecialDietSet];
 GO
 IF OBJECT_ID(N'[dbo].[MedicationAdviceSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[MedicationAdviceSet];
@@ -274,14 +268,6 @@ CREATE TABLE [dbo].[OtherFamilyDiseaseSet] (
 );
 GO
 
--- Creating table 'SpecialDietSet'
-CREATE TABLE [dbo].[SpecialDietSet] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Kind] nvarchar(max)  NOT NULL,
-    [LifestyleId] int  NOT NULL
-);
-GO
-
 -- Creating table 'MedicationAdviceSet'
 CREATE TABLE [dbo].[MedicationAdviceSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
@@ -395,12 +381,6 @@ ADD CONSTRAINT [PK_OtherFamilyDiseaseSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'SpecialDietSet'
-ALTER TABLE [dbo].[SpecialDietSet]
-ADD CONSTRAINT [PK_SpecialDietSet]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
 -- Creating primary key on [Id] in table 'MedicationAdviceSet'
 ALTER TABLE [dbo].[MedicationAdviceSet]
 ADD CONSTRAINT [PK_MedicationAdviceSet]
@@ -483,20 +463,6 @@ ADD CONSTRAINT [FK_HeadachaOverViewHeadacheProdrome]
 CREATE INDEX [IX_FK_HeadachaOverViewHeadacheProdrome]
 ON [dbo].[HeadacheProdromeSet]
     ([HeadachaOverViewId]);
-GO
-
--- Creating foreign key on [LifestyleId] in table 'SpecialDietSet'
-ALTER TABLE [dbo].[SpecialDietSet]
-ADD CONSTRAINT [FK_LifestyleSpecialDiet]
-    FOREIGN KEY ([LifestyleId])
-    REFERENCES [dbo].[LifestyleSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_LifestyleSpecialDiet'
-CREATE INDEX [IX_FK_LifestyleSpecialDiet]
-ON [dbo].[SpecialDietSet]
-    ([LifestyleId]);
 GO
 
 -- Creating foreign key on [PatBasicInforId] in table 'VisitRecordSet'
