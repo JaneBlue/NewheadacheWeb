@@ -227,10 +227,10 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="DrugApplication" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="DrugCategory" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="DrugName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="DrugDose" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DrugApplication" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DrugCategory" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DrugName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DrugDose" Type="nvarchar(max)" Nullable="true" />
     <Property Name="VisitRecordId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="PrecipitatingFactorSet">
@@ -740,10 +740,10 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="DrugApplication" Nullable="false" />
-          <Property Type="String" Name="DrugCategory" Nullable="false" />
-          <Property Type="String" Name="DrugName" Nullable="false" />
-          <Property Type="String" Name="DrugDose" Nullable="false" />
+          <Property Type="String" Name="DrugApplication" Nullable="true" />
+          <Property Type="String" Name="DrugCategory" Nullable="true" />
+          <Property Type="String" Name="DrugName" Nullable="true" />
+          <Property Type="String" Name="DrugDose" Nullable="true" />
           <NavigationProperty Name="VisitRecord" Relationship="HeadacheModel.VisitRecordMecicationAdvice" FromRole="MecicationAdvice" ToRole="VisitRecord" />
           <Property Type="Int32" Name="VisitRecordId" Nullable="false" />
         </EntityType>
@@ -1151,7 +1151,7 @@
         <EntityTypeShape EntityType="HeadacheModel.PreviousExam" Width="1.5" PointX="3.25" PointY="8.375" Height="2.1610522460937496" />
         <EntityTypeShape EntityType="HeadacheModel.HeadacheFamilyMember" Width="2" PointX="0.5" PointY="2.875" Height="1.7790128580729165" />
         <EntityTypeShape EntityType="HeadacheModel.OtherFamilyDisease" Width="1.5" PointX="0.5" PointY="5.25" Height="1.7790128580729165" />
-        <EntityTypeShape EntityType="HeadacheModel.MedicationAdvice" Width="2" PointX="5.625" PointY="5.25" Height="2.3520719401041665" />
+        <EntityTypeShape EntityType="HeadacheModel.MedicationAdvice" Width="2" PointX="5.625" PointY="5.75" Height="2.3520719401041665" />
         <AssociationConnector Association="HeadacheModel.PatBasicInforVisitRecord">
           <ConnectorPoint PointX="4.375" PointY="2.9766442871093748" />
           <ConnectorPoint PointX="5" PointY="2.9766442871093748" />
@@ -1168,7 +1168,7 @@
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.VisitRecordMecicationAdvice">
           <ConnectorPoint PointX="6.25" PointY="5.20328857421875" />
-          <ConnectorPoint PointX="6.25" PointY="5.25" />
+          <ConnectorPoint PointX="6.25" PointY="5.75" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.PatBasicInforPreviousDrug">
           <ConnectorPoint PointX="4.125" PointY="5.2693082682291656" />

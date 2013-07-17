@@ -15,5 +15,6 @@ namespace HeadacheCDSSWeb.Models
         public string Similarfamily{get;set;}
         public VisitRecord visitrecord { get; set; }
         public PrimaryHeadacheOverView PHeadacheOverview { get; set; }
+        public List<MedicationAdvice> MAdvice{get;set;}
     }
 }

@@ -447,7 +447,14 @@ namespace HeadacheCDSSWeb.Models
                         VData.PExam.RemoveAt(n);
                     }
                 }
-                
+                int num5 = VData.MAdvice.Count - 1;
+                for (int n = num5; n >= 0; n--)
+                {
+                    if (VData.MAdvice[n].DrugCategory == "")
+                    {
+                        VData.MAdvice.RemoveAt(n);
+                    }
+                }
 
                 int count1 = VData.PHeadacheOverview.HeadacheAccompany.Count - 1;
                 for (int n = count1; n >= 0; n--)
@@ -505,6 +512,8 @@ namespace HeadacheCDSSWeb.Models
                         VData.visitrecord.SecondaryHeadacheSymptom.Remove(ha);
                     }
                 }
+
+
 
                 return VData;
             }
