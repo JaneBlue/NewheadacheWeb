@@ -291,22 +291,13 @@ namespace HeadacheCDSSWeb.Models
             {
                 rdata.patlifestyle.SmokeState = pt.Lifestyle.SmokeState;
                 rdata.patlifestyle.SmokeYear = pt.Lifestyle.SmokeYear;
-                rdata.patlifestyle.SmokeStartAge = pt.Lifestyle.SmokeStartAge;
-                rdata.patlifestyle.SmokeQuitYear = pt.Lifestyle.SmokeQuitYear;
-                rdata.patlifestyle.CigarettesPerDay = pt.Lifestyle.CigarettesPerDay;
+                
                 rdata.patlifestyle.DrinkState = pt.Lifestyle.DrinkState;
-                rdata.patlifestyle.DrinkStartAge = pt.Lifestyle.DrinkStartAge;
+               
                 rdata.patlifestyle.DrinkYear = pt.Lifestyle.DrinkYear;
-                rdata.patlifestyle.DrinkQuitYear = pt.Lifestyle.DrinkQuitYear;
-                rdata.patlifestyle.DrinkPerDay = pt.Lifestyle.DrinkPerDay;
-                rdata.patlifestyle.DrinkCategory = pt.Lifestyle.DrinkCategory;
                 rdata.patlifestyle.TeaPerDay = pt.Lifestyle.TeaPerDay;
                 rdata.patlifestyle.CoffePerDay = pt.Lifestyle.CoffePerDay;
-                rdata.patlifestyle.ExercisePerWeek = pt.Lifestyle.ExercisePerWeek;
-                rdata.patlifestyle.ExerciseTime = pt.Lifestyle.ExerciseTime;
-                rdata.patlifestyle.ExerciseDescription = pt.Lifestyle.ExerciseDescription;
-                rdata.patlifestyle.WeightChange = pt.Lifestyle.WeightChange;
-                rdata.patlifestyle.WeightChangeNote = pt.Lifestyle.WeightChangeNote;
+                rdata.patlifestyle.ExerciseOften = pt.Lifestyle.ExerciseOften;
                
             }
 
@@ -353,6 +344,8 @@ namespace HeadacheCDSSWeb.Models
                     rdata.DiagnosisResult3 = vr.DiagnosisResult3;
                     rdata.Prescription = vr.Prescription;
                     rdata.ChiefComplaint = vr.ChiefComplaint;
+                    rdata.PreviousDiagnosis = vr.PreviousDiagnosis;
+                    rdata.PrescriptionNote = vr.PrescriptionNote;
                     foreach (SecondaryHeadacheSymptom ss in vr.SecondaryHeadacheSymptom)
                     {
                         rdata.secondaryheadachesymptom.Add(ss.Symptom);

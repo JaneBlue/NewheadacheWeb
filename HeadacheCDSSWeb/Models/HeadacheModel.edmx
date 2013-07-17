@@ -126,6 +126,8 @@
     <Property Name="DiagnosisResult2" Type="nvarchar(max)" Nullable="true" />
     <Property Name="DiagnosisResult3" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Prescription" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PreviousDiagnosis" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PrescriptionNote" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="PrimaryHeadacheOverViewSet">
     <Key>
@@ -150,24 +152,13 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="SmokeState" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="SmokeStartAge" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="SmokeQuitYear" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="SmokeState" Type="bit" Nullable="true" />
     <Property Name="SmokeYear" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="CigarettesPerDay" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="DrinkState" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="DrinkStartAge" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DrinkState" Type="bit" Nullable="true" />
     <Property Name="DrinkYear" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="DrinkQuitYear" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="DrinkPerDay" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="DrinkCategory" Type="nvarchar(max)" Nullable="true" />
     <Property Name="TeaPerDay" Type="nvarchar(max)" Nullable="true" />
     <Property Name="CoffePerDay" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="ExercisePerWeek" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="ExerciseTime" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="ExerciseDescription" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="WeightChange" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="WeightChangeNote" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExerciseOften" Type="bit" Nullable="true" />
   </EntityType>
   <EntityType Name="HeadachePlaceSet">
     <Key>
@@ -584,6 +575,8 @@
           <NavigationProperty Name="MecicationAdvice" Relationship="HeadacheModel.VisitRecordMecicationAdvice" FromRole="VisitRecord" ToRole="MecicationAdvice" />
           <NavigationProperty Name="SecondaryHeadacheSymptom" Relationship="HeadacheModel.VisitRecordSecondaryHeadacheSymptom" FromRole="VisitRecord" ToRole="SecondaryHeadacheSymptom" />
           <NavigationProperty Name="PrimaryHeadachaOverView" Relationship="HeadacheModel.VisitRecordPrimaryHeadachaOverView" FromRole="VisitRecord" ToRole="PrimaryHeadachaOverView" />
+          <Property Type="String" Name="PreviousDiagnosis" Nullable="false" />
+          <Property Type="String" Name="PrescriptionNote" Nullable="false" />
         </EntityType>
         <Association Name="DoctorAccountPatBasicInfor">
           <End Type="HeadacheModel.DoctorAccount" Role="DoctorAccount" Multiplicity="1" />
@@ -629,24 +622,13 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="SmokeState" Nullable="true" />
-          <Property Type="String" Name="SmokeStartAge" Nullable="true" />
-          <Property Type="String" Name="SmokeQuitYear" Nullable="true" />
+          <Property Type="Boolean" Name="SmokeState" Nullable="true" />
           <Property Type="String" Name="SmokeYear" Nullable="true" />
-          <Property Type="String" Name="CigarettesPerDay" Nullable="true" />
-          <Property Type="String" Name="DrinkState" Nullable="true" />
-          <Property Type="String" Name="DrinkStartAge" Nullable="true" />
+          <Property Type="Boolean" Name="DrinkState" Nullable="true" />
           <Property Type="String" Name="DrinkYear" Nullable="true" />
-          <Property Type="String" Name="DrinkQuitYear" Nullable="true" />
-          <Property Type="String" Name="DrinkPerDay" Nullable="true" />
-          <Property Type="String" Name="DrinkCategory" Nullable="true" />
           <Property Type="String" Name="TeaPerDay" Nullable="true" />
           <Property Type="String" Name="CoffePerDay" Nullable="true" />
-          <Property Type="String" Name="ExercisePerWeek" Nullable="true" />
-          <Property Type="String" Name="ExerciseTime" Nullable="true" />
-          <Property Type="String" Name="ExerciseDescription" Nullable="true" />
-          <Property Type="String" Name="WeightChange" Nullable="true" />
-          <Property Type="String" Name="WeightChangeNote" Nullable="true" />
+          <Property Type="Boolean" Name="ExerciseOften" Nullable="true" />
           <NavigationProperty Name="PatBasicInfor" Relationship="HeadacheModel.PatBasicInforLifestyle" FromRole="Lifestyle" ToRole="PatBasicInfor" />
         </EntityType>
         <EntityType Name="HeadachePlace">
@@ -960,6 +942,8 @@
           <ScalarProperty Name="DiagnosisResult2" ColumnName="DiagnosisResult2" />
           <ScalarProperty Name="DiagnosisResult3" ColumnName="DiagnosisResult3" />
           <ScalarProperty Name="Prescription" ColumnName="Prescription" />
+          <ScalarProperty Name="PreviousDiagnosis" ColumnName="PreviousDiagnosis" />
+          <ScalarProperty Name="PrescriptionNote" ColumnName="PrescriptionNote" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -986,23 +970,12 @@
         <MappingFragment StoreEntitySet="LifestyleSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="SmokeState" ColumnName="SmokeState" />
-          <ScalarProperty Name="SmokeStartAge" ColumnName="SmokeStartAge" />
-          <ScalarProperty Name="SmokeQuitYear" ColumnName="SmokeQuitYear" />
           <ScalarProperty Name="SmokeYear" ColumnName="SmokeYear" />
-          <ScalarProperty Name="CigarettesPerDay" ColumnName="CigarettesPerDay" />
           <ScalarProperty Name="DrinkState" ColumnName="DrinkState" />
-          <ScalarProperty Name="DrinkStartAge" ColumnName="DrinkStartAge" />
           <ScalarProperty Name="DrinkYear" ColumnName="DrinkYear" />
-          <ScalarProperty Name="DrinkQuitYear" ColumnName="DrinkQuitYear" />
-          <ScalarProperty Name="DrinkPerDay" ColumnName="DrinkPerDay" />
-          <ScalarProperty Name="DrinkCategory" ColumnName="DrinkCategory" />
           <ScalarProperty Name="TeaPerDay" ColumnName="TeaPerDay" />
           <ScalarProperty Name="CoffePerDay" ColumnName="CoffePerDay" />
-          <ScalarProperty Name="ExercisePerWeek" ColumnName="ExercisePerWeek" />
-          <ScalarProperty Name="ExerciseTime" ColumnName="ExerciseTime" />
-          <ScalarProperty Name="ExerciseDescription" ColumnName="ExerciseDescription" />
-          <ScalarProperty Name="WeightChange" ColumnName="WeightChange" />
-          <ScalarProperty Name="WeightChangeNote" ColumnName="WeightChangeNote" />
+          <ScalarProperty Name="ExerciseOften" ColumnName="ExerciseOften" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1154,13 +1127,13 @@
       <Diagram Name="HeadacheModel" ZoomLevel="94" >
         <EntityTypeShape EntityType="HeadacheModel.DoctorAccount" Width="1.5" PointX="0.625" PointY="0.625" Height="1.9700325520833339" />
         <EntityTypeShape EntityType="HeadacheModel.PatBasicInfor" Width="1.5" PointX="2.875" PointY="0.625" Height="4.6443082682291656" />
-        <EntityTypeShape EntityType="HeadacheModel.VisitRecord" Width="1.875" PointX="5" PointY="0.75" Height="3.8802294921874996" />
+        <EntityTypeShape EntityType="HeadacheModel.VisitRecord" Width="1.875" PointX="5" PointY="0.75" Height="4.45328857421875" />
         <AssociationConnector Association="HeadacheModel.DoctorAccountPatBasicInfor">
           <ConnectorPoint PointX="2.125" PointY="1.6100162760416672" />
           <ConnectorPoint PointX="2.875" PointY="1.6100162760416672" />
         </AssociationConnector>
         <EntityTypeShape EntityType="HeadacheModel.PrimaryHeadacheOverView" Width="1.75" PointX="7.875" PointY="1.25" Height="4.45328857421875" />
-        <EntityTypeShape EntityType="HeadacheModel.Lifestyle" Width="1.875" PointX="0.5" PointY="7.375" Height="5.0263476562499978" />
+        <EntityTypeShape EntityType="HeadacheModel.Lifestyle" Width="1.875" PointX="0.5" PointY="7.375" Height="2.7341113281250014" />
         <EntityTypeShape EntityType="HeadacheModel.HeadachePlace" Width="1.5" PointX="10.25" PointY="1.125" Height="1.9700325520833339" />
         <EntityTypeShape EntityType="HeadacheModel.HeadacheAccompany" Width="1.5" PointX="10.25" PointY="3.375" Height="1.7790128580729165" />
         <EntityTypeShape EntityType="HeadacheModel.HeadacheProdrome" Width="1.5" PointX="10.5" PointY="7" Height="1.7790128580729165" />
@@ -1183,8 +1156,8 @@
         <EntityTypeShape EntityType="HeadacheModel.OtherFamilyDisease" Width="1.5" PointX="0.5" PointY="5.25" Height="1.7790128580729165" />
         <EntityTypeShape EntityType="HeadacheModel.MedicationAdvice" Width="2" PointX="5.625" PointY="5.25" Height="2.5430916341145817" />
         <AssociationConnector Association="HeadacheModel.PatBasicInforVisitRecord">
-          <ConnectorPoint PointX="4.375" PointY="2.69011474609375" />
-          <ConnectorPoint PointX="5" PointY="2.69011474609375" />
+          <ConnectorPoint PointX="4.375" PointY="2.9766442871093748" />
+          <ConnectorPoint PointX="5" PointY="2.9766442871093748" />
         </AssociationConnector>
         <EntityTypeShape EntityType="HeadacheModel.PrecipitatingFactor" Width="1.5" PointX="8.125" PointY="6.625" Height="1.9700325520833317" />
         <EntityTypeShape EntityType="HeadacheModel.MitigatingFactors" Width="1.5" PointX="10.375" PointY="5.25" Height="1.7790128580729157" />
@@ -1197,7 +1170,7 @@
           <ConnectorPoint PointX="8.875" PointY="6.625" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.VisitRecordMecicationAdvice">
-          <ConnectorPoint PointX="6.25" PointY="4.6302294921875" />
+          <ConnectorPoint PointX="6.25" PointY="5.20328857421875" />
           <ConnectorPoint PointX="6.25" PointY="5.25" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.PatBasicInforPreviousDrug">
@@ -1221,8 +1194,8 @@
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.PatBasicInforLifestyle" ManuallyRouted="false">
           <ConnectorPoint PointX="3.03125" PointY="5.2693082682291656" />
-          <ConnectorPoint PointX="3.03125" PointY="10.705526123046875" />
-          <ConnectorPoint PointX="2.375" PointY="10.705526123046875" />
+          <ConnectorPoint PointX="3.03125" PointY="8.2385359700520837" />
+          <ConnectorPoint PointX="2.375" PointY="8.2385359700520837" />
         </AssociationConnector>
         <EntityTypeShape EntityType="HeadacheModel.SecondaryHeadacheSymptom" Width="1.5" PointX="12.125" PointY="0.625" Height="1.3969734700520831" />
         <AssociationConnector Association="HeadacheModel.VisitRecordSecondaryHeadacheSymptom">
@@ -1230,8 +1203,8 @@
           <ConnectorPoint PointX="12.125" PointY="0.90624999999999978" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.VisitRecordPrimaryHeadachaOverView">
-          <ConnectorPoint PointX="6.875" PointY="3.0356245930989578" />
-          <ConnectorPoint PointX="7.875" PointY="3.0356245930989578" />
+          <ConnectorPoint PointX="6.875" PointY="3.2266442871093748" />
+          <ConnectorPoint PointX="7.875" PointY="3.2266442871093748" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

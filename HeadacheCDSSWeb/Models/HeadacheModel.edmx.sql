@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 07/16/2013 15:55:46
+-- Date Created: 07/17/2013 09:41:44
 -- Generated from EDMX file: D:\FGj\projectcode\NewheadacheWeb\HeadacheCDSSWeb\Models\HeadacheModel.edmx
 -- --------------------------------------------------
 
@@ -160,7 +160,9 @@ CREATE TABLE [dbo].[VisitRecordSet] (
     [DiagnosisResult1] nvarchar(max)  NOT NULL,
     [DiagnosisResult2] nvarchar(max)  NULL,
     [DiagnosisResult3] nvarchar(max)  NULL,
-    [Prescription] nvarchar(max)  NULL
+    [Prescription] nvarchar(max)  NULL,
+    [PreviousDiagnosis] nvarchar(max)  NOT NULL,
+    [PrescriptionNote] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -185,24 +187,13 @@ GO
 -- Creating table 'LifestyleSet'
 CREATE TABLE [dbo].[LifestyleSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [SmokeState] nvarchar(max)  NULL,
-    [SmokeStartAge] nvarchar(max)  NULL,
-    [SmokeQuitYear] nvarchar(max)  NULL,
+    [SmokeState] bit  NULL,
     [SmokeYear] nvarchar(max)  NULL,
-    [CigarettesPerDay] nvarchar(max)  NULL,
-    [DrinkState] nvarchar(max)  NULL,
-    [DrinkStartAge] nvarchar(max)  NULL,
+    [DrinkState] bit  NULL,
     [DrinkYear] nvarchar(max)  NULL,
-    [DrinkQuitYear] nvarchar(max)  NULL,
-    [DrinkPerDay] nvarchar(max)  NULL,
-    [DrinkCategory] nvarchar(max)  NULL,
     [TeaPerDay] nvarchar(max)  NULL,
     [CoffePerDay] nvarchar(max)  NULL,
-    [ExercisePerWeek] nvarchar(max)  NULL,
-    [ExerciseTime] nvarchar(max)  NULL,
-    [ExerciseDescription] nvarchar(max)  NULL,
-    [WeightChange] nvarchar(max)  NULL,
-    [WeightChangeNote] nvarchar(max)  NULL
+    [ExerciseOften] bit  NULL
 );
 GO
 

@@ -52,6 +52,8 @@ namespace HeadacheCDSSWeb.Models
         public string DiagnosisResult2 { get; set; }
         public string DiagnosisResult3 { get; set; }
         public string Prescription { get; set; }
+        public string PreviousDiagnosis { get; set; }
+        public string PrescriptionNote { get; set; }
         public List<string> headacheplace{get;set;}
         public List<Factor> precipitatingfactor{get;set;}
         public List<string> mitigatingfactors{get;set;}
@@ -102,24 +104,13 @@ namespace HeadacheCDSSWeb.Models
     }
     public class lifestyle
     {
-        public string SmokeState { get; set; }
-        public string SmokeStartAge { get; set; }
-        public string SmokeQuitYear { get; set; }
+        public Nullable<bool> SmokeState { get; set; }
         public string SmokeYear { get; set; }
-        public string CigarettesPerDay { get; set; }
-        public string DrinkState { get; set; }
-        public string DrinkStartAge { get; set; }
+        public Nullable<bool> DrinkState { get; set; }
         public string DrinkYear { get; set; }
-        public string DrinkQuitYear { get; set; }
-        public string DrinkPerDay { get; set; }
-        public string DrinkCategory { get; set; }
         public string TeaPerDay { get; set; }
         public string CoffePerDay { get; set; }
-        public string ExercisePerWeek { get; set; }
-        public string ExerciseTime { get; set; }
-        public string ExerciseDescription { get; set; }
-        public string WeightChange { get; set; }
-        public string WeightChangeNote { get; set; }
+        public Nullable<bool> ExerciseOften { get; set; }
         
     }
 }
