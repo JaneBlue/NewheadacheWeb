@@ -1345,7 +1345,7 @@ $(function () {
 
         if("" == strChiefComplaint)
         {
-            var strChiefComplaint = "概述：患者头痛";
+            var strChiefComplaint = "概述：头痛";
             //get the PrimaryHeadacheOverView information
             var strOnsetDate = OCX.GetObjectInfo("DateTime_2", "text");
             if ("/////" != strOnsetDate) 
@@ -1369,8 +1369,10 @@ $(function () {
                     nTodayYear -= 1;
                 }
                 nYear = nTodayYear - nOnsetYear;
-
-                strChiefComplaint += nYear.toString() + "年" + nMonth.toString() + "月，共发作";
+                if(0 < nYear)
+                    strChiefComplaint += nYear.toString() + "年" + nMonth.toString() + "月，共发作";
+                else
+                    strChiefComplaint += nMonth.toString() + "月，共发作";
             }
                     
             var strOnsetAmount = "";
@@ -1400,7 +1402,7 @@ $(function () {
             strChiefComplaint += "头痛程度评分" + strHeadacheDegree + "分，";
                     
             var strHeadacheType = OCX.GetObjectInfo("ComboBox_40", "text");
-            strChiefComplaint += "头痛性质" + strHeadacheType + "，";
+            strChiefComplaint += strHeadacheType + "，";
                     
             var strDailylifeSharpening = OCX.GetObjectInfo("ComboBox_38", "text");
             strChiefComplaint += "日常生活" + strDailylifeSharpening + "加重头痛，";
@@ -1461,9 +1463,9 @@ $(function () {
                      if(document.getElementById("bi").checked)
                      strHeadachePlace = "双侧 : ";
                     if(document.getElementById("unileft").checked)
-                    strHeadachePlace ="左侧为主 : ";
+                    strHeadachePlace ="左侧 : ";
                     if(document.getElementById("uniright").checked)
-                     strHeadachePlace = "右侧为主 : ";
+                     strHeadachePlace = "右侧 : ";
                  var value=GetHeadachePlace();   
             if(value[7])
                 strSpecificPlace1 = "颞部、";
