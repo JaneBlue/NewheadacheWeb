@@ -583,14 +583,24 @@ $(function () {
 
             if("单侧视觉（点状/色斑/线型闪光幻觉/视野缺损）" == strHeadacheProdrome)
                 OCX.SetObjectInfo("RadioBox_16", "checked", "true");
-            else if("双侧视觉（点状/色斑/线型闪光幻觉/视野缺损）" == strHeadacheProdrome)
+            else
+                OCX.SetObjectInfo("RadioBox_17", "checked", "true");
+            if("双侧视觉（点状/色斑/线型闪光幻觉/视野缺损）" == strHeadacheProdrome)
                 OCX.SetObjectInfo("RadioBox_19", "checked", "true");
-            else if("感觉（针刺感/麻木）" == strHeadacheProdrome)
+            else
+                OCX.SetObjectInfo("RadioBox_18", "checked", "true");
+            if("感觉（针刺感/麻木）" == strHeadacheProdrome)
                 OCX.SetObjectInfo("RadioBox_20", "checked", "true");
-            else if("语言障碍" == strHeadacheProdrome)
+            else
+                OCX.SetObjectInfo("RadioBox_21", "checked", "true");
+            if("语言障碍" == strHeadacheProdrome)
                 OCX.SetObjectInfo("RadioBox_23", "checked", "true");
-            else if("运动障碍" == strHeadacheProdrome)
-                OCX.SetObjectInfo("RadioBox_25", "checked", "true");         
+            else
+                OCX.SetObjectInfo("RadioBox_22", "checked", "true");
+            if("运动障碍" == strHeadacheProdrome)
+                OCX.SetObjectInfo("RadioBox_25", "checked", "true");
+            else
+                OCX.SetObjectInfo("RadioBox_24", "checked", "true");         
         }
 
         //set PreviousExam
@@ -681,7 +691,7 @@ $(function () {
         if(bIfAlwaysSmoke)
             OCX.SetObjectInfo("RadioBox_3", "checked", "true");
         else
-            OCX.SetObjectInfo("RadioBox_3", "checked", "false");
+            OCX.SetObjectInfo("RadioBox_4", "checked", "true");
 
         var strSmokeYears = obj.patlifestyle.SmokeYear;
         OCX.SetObjectInfo("TextBox_62", "text", strSmokeYears);
@@ -690,7 +700,7 @@ $(function () {
         if(bIfAlwaysDrink)
             OCX.SetObjectInfo("RadioBox_5", "checked", "true");
         else
-            OCX.SetObjectInfo("RadioBox_5", "checked", "false");
+            OCX.SetObjectInfo("RadioBox_6", "checked", "true");
 
         var strDrinkYears = obj.patlifestyle.DrinkYear;
         OCX.SetObjectInfo("TextBox_58", "text", strDrinkYears);
@@ -699,7 +709,7 @@ $(function () {
         if(bIfAlwaysExercise)
             OCX.SetObjectInfo("RadioBox_1", "checked", "true");
         else
-            OCX.SetObjectInfo("RadioBox_1", "checked", "false");
+            OCX.SetObjectInfo("RadioBox_2", "checked", "true");
 
         //set Headache FamilyMember
         var strHeadacheFamilyMember = "";
