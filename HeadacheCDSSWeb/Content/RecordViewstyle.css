@@ -20,8 +20,13 @@ h3
 {
     font-size: 24px;
     display :block;
-    margin:10px 57px 0 55px;
+    
+    padding:5px 57px 5px 55px;
    cursor:pointer;
+   border:1px solid #d3d3d3;
+   margin:0;
+   background-color:#eeeeee;
+   
 }
 p
 {
@@ -84,8 +89,8 @@ input
 }
 #content li
 {
-    height: 32px;
-    display:block;
+    height: 6px;
+    display:inline;
     text-decoration:none;
     padding-bottom:5px;
 }
@@ -169,6 +174,15 @@ input[type="submit"]:active
 {
      padding: 0 18px 0 18px ;
 }
+#ui-accordion-accordion-panel-0
+{
+    height:595px;
+   
+}
+.ui-accordion-content
+{
+   border:2px solid #d3d3d3;
+}
 #List
 {
     height:555px;
@@ -210,6 +224,7 @@ input[type="submit"]:active
     padding:10px 0 10px 0;
      text-align: center;
     list-style: none;
+
 }
 .diary li
 {
@@ -250,7 +265,7 @@ input[type="submit"]:active
   float:right;
   margin:10px;
  
-  height:80px;
+  height:60px;
   width:620px;
 }
 #time input
@@ -260,48 +275,55 @@ input[type="submit"]:active
 #line
 {
   float:left;
-  margin :15px 0  10px 10px;
+  margin :15px 0  5px 10px;
  border-style:groove;
   border-width:2px;
   border-color: #D3E7F2;
-  height:240px;
+  height:280px;
   width:620px;
+ 
 }
 #pie
 {
   float:left;
-  margin :15px 0  10px 10px;
+  margin :5px 0  10px 10px;
  border-style:groove;
   border-width:2px;
   border-color: #D3E7F2;
-  height:240px;
+  height:280px;
   width:620px;
 }
 #variable1
 {
     float:left;
-    width: 120px;
-    height: 190px;
-    margin:50px 20px 0 40px;
+    width: 620px;
+    height: 35px;
+    margin:0px 20px 0 40px;
+     display:block;
 }
 #variable2
 {
     float:left;
-    width: 140px;
-    height: 240px;
-    margin: 0 10px 0 40px;
-  
+    width: 620px;
+    height: 40px;
+    margin: 0;
+   background: url(images/title.png) repeat-x ;
+}
+#variable2 li span
+{
+  width:70px;
 }
 #linegraph
 {
      float:left;
-    width: 420px;
+    width: 620px;
     height: 190px;
+     display:block;
 }
 #piegraph
 {
      float:left;
-    width: 420px;
+    width: 620px;
     height: 240px;
 }
 #diaryreport
@@ -315,3 +337,4 @@ input[type="submit"]:active
     width :282px;
     padding:6px;
 }
+

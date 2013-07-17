@@ -192,6 +192,7 @@
     <Content Include="Content\images\sidebar.png" />
     <Content Include="Content\images\split.png" />
     <Content Include="Content\images\tab-selected.png" />
+    <Content Include="Content\images\title.png" />
     <Content Include="Content\images\triangle.png" />
     <Content Include="Content\images\wait.gif" />
     <Content Include="Content\images\wbox\close.png" />
