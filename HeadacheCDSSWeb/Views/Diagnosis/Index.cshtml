@@ -964,6 +964,8 @@ $("#submenu").hide();
                 var strDayAmoutnPerM3 = OCX.GetObjectInfo("TextBox_45", "text");
                 var strMonthTotalAmount3 = OCX.GetObjectInfo("TextBox_48", "text");
 
+                var strPreviousDiagnosis = OCX.GetObjectInfo("ComboBox_2", "text");
+
                 //get PreviousExam
                 var strExamName1 = OCX.GetObjectInfo("ComboBox_47", "text");
                 var strExamResult1 = "异常";
@@ -1187,6 +1189,23 @@ $("#submenu").hide();
                 //prescription
                 var strPrescription = "";
 
+                var strDrug1Category = OCX.GetObjectInfo("TextBox_27", "text");
+                var strDrug1Name = OCX.GetObjectInfo("TextBox_28", "text");
+                var strDrug1Dose = OCX.GetObjectInfo("TextBox_29", "text");
+                var strDrug1Application = OCX.GetObjectInfo("TextBox_30", "text");
+
+                var strDrug2Category = OCX.GetObjectInfo("TextBox_31", "text");
+                var strDrug2Name = OCX.GetObjectInfo("TextBox_32", "text");
+                var strDrug2Dose = OCX.GetObjectInfo("TextBox_33", "text");
+                var strDrug2Application = OCX.GetObjectInfo("TextBox_34", "text");
+
+                var strDrug3Category = OCX.GetObjectInfo("TextBox_25", "text");
+                var strDrug3Name = OCX.GetObjectInfo("TextBox_26", "text");
+                var strDrug3Dose = OCX.GetObjectInfo("TextBox_43", "text");
+                var strDrug3Application = OCX.GetObjectInfo("TextBox_46", "text");
+
+                var strPrescriptionNote = OCX.GetObjectInfo("TextBox_47", "text");
+
                 var thing = { HFamilyMember: [ { Person: strFuQin}, { Person: strMuQin}, { Person: strXiongDi}
                                             , { Person: strJieMei}, { Person: strErZi}, { Person: strNvEr}
                                             , { Person: strZuFu}, { Person: strZiMu}, { Person: strWaiZuFu}
@@ -1229,14 +1248,17 @@ $("#submenu").hide();
                                                                             , {FactorName: strPrecipitatingFactor7, FactorDetail: strPrecipitatingFactorDetail7}, {FactorName: strPrecipitatingFactor8, FactorDetail: strPrecipitatingFactorDetail8}, {FactorName: strPrecipitatingFactor9, FactorDetail: strPrecipitatingFactorDetail9}
                                                                             , {FactorName: strPrecipitatingFactor10, FactorDetail: strPrecipitatingFactorDetail10} ]
                                                     , HeadacheProdrome: [ {Prodrome: strHeadacheProdrome1}, {Prodrome: strHeadacheProdrome2}, {Prodrome: strHeadacheProdrome3}, {Prodrome: strHeadacheProdrome4}, {Prodrome: strHeadacheProdrome5} ]},
-                              visitrecord: {ChiefComplaint: strChiefComplaint
-                                                    ,CDSSDiagnosis1: strCDSSDiagnosis1
+                              visitrecord: {ChiefComplaint: strChiefComplaint, CDSSDiagnosis1: strCDSSDiagnosis1
                                                     ,DiagnosisResult1: strDiagnosisResult1, DiagnosisResult2: strDiagnosisResult2, DiagnosisResult3: strDiagnosisResult3
-                                                    ,Prescription: strPrescription
+                                                    ,Prescription: strPrescription, PreviousDiagnosis: strPreviousDiagnosis
                                                     ,SecondaryHeadacheSymptom:[{Symptom: strSecondaryHeadacheSymptom1}, {Symptom: strSecondaryHeadacheSymptom2}, {Symptom: strSecondaryHeadacheSymptom3}
                                                                                 , {Symptom: strSecondaryHeadacheSymptom4}, {Symptom: strSecondaryHeadacheSymptom5}, {Symptom: strSecondaryHeadacheSymptom6}
                                                                                 , {Symptom: strSecondaryHeadacheSymptom7}, {Symptom: strSecondaryHeadacheSymptom8}, {Symptom: strSecondaryHeadacheSymptom9}
-                                                                                , {Symptom: strSecondaryHeadacheSymptom10}]}
+                                                                                , {Symptom: strSecondaryHeadacheSymptom10}]
+                                                    ,MedicationAdvice:[{DrugApplication: strDrug1Application, DrugCategory: strDrug1Category, DrugName: strDrug1Name, DrugDose: strDrug1Dose}
+                                                    ,{DrugApplication: strDrug2Application, DrugCategory: strDrug2Category, DrugName: strDrug2Name, DrugDose: strDrug2Dose}
+                                                    ,{DrugApplication: strDrug3Application, DrugCategory: strDrug3Category, DrugName: strDrug3Name, DrugDose: strDrug3Dose}]
+                                                    ,PrescriptionNote: strPrescriptionNote}
 
                                              };
             return thing;
