@@ -940,6 +940,11 @@ $("#submenu").hide();
                     strOFamilyDiseaseQiTa = "其他";
 
                 //get lifestyle
+                var bIfAlwaysSmoke = OCX.GetObjectInfo("RadioBox_3", "checked");
+                var strSmokeYears = OCX.GetObjectInfo("TextBox_62", "text");
+                var bIfAlwaysDrink = OCX.GetObjectInfo("RadioBox_5", "checked");
+                var strDrinkYears = OCX.GetObjectInfo("TextBox_58", "text");
+                var bIfAlwaysExercise = OCX.GetObjectInfo("RadioBox_1", "checked");
                 var strTeaPerDay = OCX.GetObjectInfo("TextBox_55", "text");
                 var strCoffePerDay = OCX.GetObjectInfo("TextBox_54", "text");
 
@@ -1189,8 +1194,7 @@ $("#submenu").hide();
                               OFamilyDisease: [ {DiseaseName: strXinZangJiBin}, {DiseaseName: strDianXian}, {DiseaseName: strGaoXueYa}
                                             , {DiseaseName: strZuZhong}, {DiseaseName: strGuanJieYan}, {DiseaseName: strZhongLiu}
                                             , {DiseaseName: strJiaoLv}, {DiseaseName: strOFamilyDiseaseQiTa} ],
-                              lifestyle: {TeaPerDay:strTeaPerDay
-                                            , CoffePerDay: strCoffePerDay},
+                              lifestyle: {TeaPerDay:strTeaPerDay, CoffePerDay: strCoffePerDay, SmokeState: bIfAlwaysSmoke, SmokeYear: strSmokeYears, DrinkState: bIfAlwaysDrink, DrinkYear: strDrinkYears, ExerciseOften: bIfAlwaysExercise},
                               PDrug: [{DrugCategory: strDrugCategory1, DrugName: strDrugName1, DayAmoutnPerM: strDayAmoutnPerM1, MonthTotalAmount: strMonthTotalAmount1}
                                         ,{DrugCategory: strDrugCategory2, DrugName: strDrugName2, DayAmoutnPerM: strDayAmoutnPerM2, MonthTotalAmount: strMonthTotalAmount2}
                                         ,{DrugCategory: strDrugCategory3, DrugName: strDrugName3, DayAmoutnPerM: strDayAmoutnPerM3, MonthTotalAmount: strMonthTotalAmount3}],

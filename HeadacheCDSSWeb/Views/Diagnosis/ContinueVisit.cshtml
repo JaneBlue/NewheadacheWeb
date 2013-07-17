@@ -608,6 +608,30 @@ $(function () {
         var strCoffePerDay = obj.patlifestyle.CoffePerDay;
         OCX.SetObjectInfo("TextBox_54", "text", strCoffePerDay);
 
+        var bIfAlwaysSmoke = obj.patlifestyle.SmokeState;
+        if(bIfAlwaysSmoke)
+            OCX.SetObjectInfo("RadioBox_3", "checked", "true");
+        else
+            OCX.SetObjectInfo("RadioBox_3", "checked", "false");
+
+        var strSmokeYears = obj.patlifestyle.SmokeYear;
+        OCX.SetObjectInfo("TextBox_62", "text", strSmokeYears);
+
+        var bIfAlwaysDrink = obj.patlifestyle.DrinkState;
+        if(bIfAlwaysDrink)
+            OCX.SetObjectInfo("RadioBox_5", "checked", "true");
+        else
+            OCX.SetObjectInfo("RadioBox_5", "checked", "false");
+
+        var strDrinkYears = obj.patlifestyle.DrinkYear;
+        OCX.SetObjectInfo("TextBox_58", "text", strDrinkYears);
+
+        var bIfAlwaysExercise = obj.patlifestyle.ExerciseOften;
+        if(bIfAlwaysExercise)
+            OCX.SetObjectInfo("RadioBox_1", "checked", "true");
+        else
+            OCX.SetObjectInfo("RadioBox_1", "checked", "false");
+
         //set Headache FamilyMember
         var strHeadacheFamilyMember = "";
         var lHeadacheFamilyMemberCount = obj.Hfamilymember.length;
@@ -962,10 +986,6 @@ $(function () {
         if("true" == OCX.GetObjectInfo("CheckBox_62", "checked"))
             strOFamilyDiseaseQiTa = "其他";
 
-        //get lifestyle
-        var strTeaPerDay = OCX.GetObjectInfo("TextBox_55", "text");
-        var strCoffePerDay = OCX.GetObjectInfo("TextBox_54", "text");
-
         //get PreviousDrug
         var strDrugCategory1 = OCX.GetObjectInfo("ComboBox_46", "text");
         var strDrugName1 = OCX.GetObjectInfo("TextBox_52", "text");
@@ -1202,6 +1222,15 @@ $(function () {
         if("" == OCX.GetObjectInfo("ComboBox_35", "text"))
             strDiagnosisResult3 = OCX.GetObjectInfo("ComboBox_36", "text");
 
+        //get lifestyle
+        var bIfAlwaysSmoke = OCX.GetObjectInfo("RadioBox_3", "checked");
+        var strSmokeYears = OCX.GetObjectInfo("TextBox_62", "text");
+        var bIfAlwaysDrink = OCX.GetObjectInfo("RadioBox_5", "checked");
+        var strDrinkYears = OCX.GetObjectInfo("TextBox_58", "text");
+        var bIfAlwaysExercise = OCX.GetObjectInfo("RadioBox_1", "checked");
+        var strTeaPerDay = OCX.GetObjectInfo("TextBox_55", "text");
+        var strCoffePerDay = OCX.GetObjectInfo("TextBox_54", "text");
+
         //prescription
         var strPrescription = "";
 
@@ -1212,8 +1241,7 @@ $(function () {
                         OFamilyDisease: [ {DiseaseName: strXinZangJiBin}, {DiseaseName: strDianXian}, {DiseaseName: strGaoXueYa}
                                     , {DiseaseName: strZuZhong}, {DiseaseName: strGuanJieYan}, {DiseaseName: strZhongLiu}
                                     , {DiseaseName: strJiaoLv}, {DiseaseName: strOFamilyDiseaseQiTa} ],
-                        lifestyle: {TeaPerDay:strTeaPerDay
-                                    , CoffePerDay: strCoffePerDay},
+                        lifestyle: {TeaPerDay:strTeaPerDay, CoffePerDay: strCoffePerDay, SmokeState: bIfAlwaysSmoke, SmokeYear: strSmokeYears, DrinkState: bIfAlwaysDrink, DrinkYear: strDrinkYears, ExerciseOften: bIfAlwaysExercise},
                         PDrug: [{DrugCategory: strDrugCategory1, DrugName: strDrugName1, DayAmoutnPerM: strDayAmoutnPerM1, MonthTotalAmount: strMonthTotalAmount1}
                                 ,{DrugCategory: strDrugCategory2, DrugName: strDrugName2, DayAmoutnPerM: strDayAmoutnPerM2, MonthTotalAmount: strMonthTotalAmount2}
                                 ,{DrugCategory: strDrugCategory3, DrugName: strDrugName3, DayAmoutnPerM: strDayAmoutnPerM3, MonthTotalAmount: strMonthTotalAmount3}],
