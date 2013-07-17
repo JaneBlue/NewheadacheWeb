@@ -18,7 +18,6 @@ namespace HeadacheCDSSWeb.Models
         public string DrugApplication { get; set; }
         public string DrugCategory { get; set; }
         public string DrugName { get; set; }
-        public string Therapy { get; set; }
         public string DrugDose { get; set; }
         public int VisitRecordId { get; set; }
     

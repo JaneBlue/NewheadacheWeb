@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 07/17/2013 12:17:31
+-- Date Created: 07/17/2013 14:26:19
 -- Generated from EDMX file: D:\FGj\projectcode\NewheadacheWeb\HeadacheCDSSWeb\Models\HeadacheModel.edmx
 -- --------------------------------------------------
 
@@ -265,7 +265,6 @@ CREATE TABLE [dbo].[MedicationAdviceSet] (
     [DrugApplication] nvarchar(max)  NOT NULL,
     [DrugCategory] nvarchar(max)  NOT NULL,
     [DrugName] nvarchar(max)  NOT NULL,
-    [Therapy] nvarchar(max)  NOT NULL,
     [DrugDose] nvarchar(max)  NOT NULL,
     [VisitRecordId] int  NOT NULL
 );

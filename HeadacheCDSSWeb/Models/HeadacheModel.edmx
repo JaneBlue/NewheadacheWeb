@@ -230,7 +230,6 @@
     <Property Name="DrugApplication" Type="nvarchar(max)" Nullable="false" />
     <Property Name="DrugCategory" Type="nvarchar(max)" Nullable="false" />
     <Property Name="DrugName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Therapy" Type="nvarchar(max)" Nullable="false" />
     <Property Name="DrugDose" Type="nvarchar(max)" Nullable="false" />
     <Property Name="VisitRecordId" Type="int" Nullable="false" />
   </EntityType>
@@ -744,7 +743,6 @@
           <Property Type="String" Name="DrugApplication" Nullable="false" />
           <Property Type="String" Name="DrugCategory" Nullable="false" />
           <Property Type="String" Name="DrugName" Nullable="false" />
-          <Property Type="String" Name="Therapy" Nullable="false" />
           <Property Type="String" Name="DrugDose" Nullable="false" />
           <NavigationProperty Name="VisitRecord" Relationship="HeadacheModel.VisitRecordMecicationAdvice" FromRole="MecicationAdvice" ToRole="VisitRecord" />
           <Property Type="Int32" Name="VisitRecordId" Nullable="false" />
@@ -1055,7 +1053,6 @@
           <ScalarProperty Name="DrugApplication" ColumnName="DrugApplication" />
           <ScalarProperty Name="DrugCategory" ColumnName="DrugCategory" />
           <ScalarProperty Name="DrugName" ColumnName="DrugName" />
-          <ScalarProperty Name="Therapy" ColumnName="Therapy" />
           <ScalarProperty Name="DrugDose" ColumnName="DrugDose" />
           <ScalarProperty Name="VisitRecordId" ColumnName="VisitRecordId" />
         </MappingFragment>
@@ -1154,7 +1151,7 @@
         <EntityTypeShape EntityType="HeadacheModel.PreviousExam" Width="1.5" PointX="3.25" PointY="8.375" Height="2.1610522460937496" />
         <EntityTypeShape EntityType="HeadacheModel.HeadacheFamilyMember" Width="2" PointX="0.5" PointY="2.875" Height="1.7790128580729165" />
         <EntityTypeShape EntityType="HeadacheModel.OtherFamilyDisease" Width="1.5" PointX="0.5" PointY="5.25" Height="1.7790128580729165" />
-        <EntityTypeShape EntityType="HeadacheModel.MedicationAdvice" Width="2" PointX="5.625" PointY="5.25" Height="2.5430916341145817" />
+        <EntityTypeShape EntityType="HeadacheModel.MedicationAdvice" Width="2" PointX="5.625" PointY="5.25" Height="2.3520719401041665" />
         <AssociationConnector Association="HeadacheModel.PatBasicInforVisitRecord">
           <ConnectorPoint PointX="4.375" PointY="2.9766442871093748" />
           <ConnectorPoint PointX="5" PointY="2.9766442871093748" />
