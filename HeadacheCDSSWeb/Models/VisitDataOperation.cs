@@ -131,6 +131,7 @@ namespace HeadacheCDSSWeb.Models
 
                     VisitRecord vr = new VisitRecord();//问诊记录信息保存
                     vr = vdata.visitrecord;
+                    vr.MecicationAdvice = vdata.MAdvice;
                     vr.VisitDate = DateTime.Now.Date;
                     vr.PrimaryHeadachaOverView = vdata.PHeadacheOverview;
                     vr.PatBasicInforId = PatID;
