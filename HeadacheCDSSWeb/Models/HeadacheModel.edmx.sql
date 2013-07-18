@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 07/18/2013 09:38:52
+-- Date Created: 07/18/2013 12:13:52
 -- Generated from EDMX file: D:\FGj\projectcode\NewheadacheWeb\HeadacheCDSSWeb\Models\HeadacheModel.edmx
 -- --------------------------------------------------
 
@@ -29,17 +29,11 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_HeadachaOverViewHeadacheProdrome]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[HeadacheProdromeSet] DROP CONSTRAINT [FK_HeadachaOverViewHeadacheProdrome];
 GO
-IF OBJECT_ID(N'[dbo].[FK_PatBasicInforVisitRecord]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[VisitRecordSet] DROP CONSTRAINT [FK_PatBasicInforVisitRecord];
-GO
 IF OBJECT_ID(N'[dbo].[FK_HeadachaOverViewMitigatingFactors]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[MitigatingFactorsSet] DROP CONSTRAINT [FK_HeadachaOverViewMitigatingFactors];
 GO
 IF OBJECT_ID(N'[dbo].[FK_HeadachaOverViewPrecipitatingFactor]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[PrecipitatingFactorSet] DROP CONSTRAINT [FK_HeadachaOverViewPrecipitatingFactor];
-GO
-IF OBJECT_ID(N'[dbo].[FK_VisitRecordMecicationAdvice]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[MedicationAdviceSet] DROP CONSTRAINT [FK_VisitRecordMecicationAdvice];
 GO
 IF OBJECT_ID(N'[dbo].[FK_PatBasicInforPreviousDrug]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[PreviousDrugSet] DROP CONSTRAINT [FK_PatBasicInforPreviousDrug];
@@ -53,14 +47,20 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_PatBasicInforOtherFamilyDisease]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[OtherFamilyDiseaseSet] DROP CONSTRAINT [FK_PatBasicInforOtherFamilyDisease];
 GO
-IF OBJECT_ID(N'[dbo].[FK_PatBasicInforLifestyle]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[PatBasicInforSet] DROP CONSTRAINT [FK_PatBasicInforLifestyle];
-GO
 IF OBJECT_ID(N'[dbo].[FK_VisitRecordSecondaryHeadacheSymptom]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SecondaryHeadacheSymptomSet] DROP CONSTRAINT [FK_VisitRecordSecondaryHeadacheSymptom];
 GO
 IF OBJECT_ID(N'[dbo].[FK_VisitRecordPrimaryHeadachaOverView]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[PrimaryHeadacheOverViewSet] DROP CONSTRAINT [FK_VisitRecordPrimaryHeadachaOverView];
+GO
+IF OBJECT_ID(N'[dbo].[FK_VisitRecordMedicationAdvice]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MedicationAdviceSet] DROP CONSTRAINT [FK_VisitRecordMedicationAdvice];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PatBasicInforLifestyle]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PatBasicInforSet] DROP CONSTRAINT [FK_PatBasicInforLifestyle];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PatBasicInforVisitRecord]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[VisitRecordSet] DROP CONSTRAINT [FK_PatBasicInforVisitRecord];
 GO
 
 -- --------------------------------------------------

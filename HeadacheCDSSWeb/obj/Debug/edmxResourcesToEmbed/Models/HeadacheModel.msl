@@ -44,6 +44,9 @@
           <ScalarProperty Name="DiagnosisResult2" ColumnName="DiagnosisResult2" />
           <ScalarProperty Name="DiagnosisResult3" ColumnName="DiagnosisResult3" />
           <ScalarProperty Name="Prescription" ColumnName="Prescription" />
+          <ScalarProperty Name="PreviousDiagnosis" ColumnName="PreviousDiagnosis" />
+          <ScalarProperty Name="PrescriptionNote" ColumnName="PrescriptionNote" />
+          <ScalarProperty Name="PatBasicInforId1" ColumnName="PatBasicInforId1" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -70,23 +73,12 @@
         <MappingFragment StoreEntitySet="LifestyleSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="SmokeState" ColumnName="SmokeState" />
-          <ScalarProperty Name="SmokeStartAge" ColumnName="SmokeStartAge" />
-          <ScalarProperty Name="SmokeQuitYear" ColumnName="SmokeQuitYear" />
           <ScalarProperty Name="SmokeYear" ColumnName="SmokeYear" />
-          <ScalarProperty Name="CigarettesPerDay" ColumnName="CigarettesPerDay" />
           <ScalarProperty Name="DrinkState" ColumnName="DrinkState" />
-          <ScalarProperty Name="DrinkStartAge" ColumnName="DrinkStartAge" />
           <ScalarProperty Name="DrinkYear" ColumnName="DrinkYear" />
-          <ScalarProperty Name="DrinkQuitYear" ColumnName="DrinkQuitYear" />
-          <ScalarProperty Name="DrinkPerDay" ColumnName="DrinkPerDay" />
-          <ScalarProperty Name="DrinkCategory" ColumnName="DrinkCategory" />
           <ScalarProperty Name="TeaPerDay" ColumnName="TeaPerDay" />
           <ScalarProperty Name="CoffePerDay" ColumnName="CoffePerDay" />
-          <ScalarProperty Name="ExercisePerWeek" ColumnName="ExercisePerWeek" />
-          <ScalarProperty Name="ExerciseTime" ColumnName="ExerciseTime" />
-          <ScalarProperty Name="ExerciseDescription" ColumnName="ExerciseDescription" />
-          <ScalarProperty Name="WeightChange" ColumnName="WeightChange" />
-          <ScalarProperty Name="WeightChangeNote" ColumnName="WeightChangeNote" />
+          <ScalarProperty Name="ExerciseOften" ColumnName="ExerciseOften" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -159,15 +151,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SpecialDietSet">
-      <EntityTypeMapping TypeName="IsTypeOf(HeadacheModel.SpecialDiet)">
-        <MappingFragment StoreEntitySet="SpecialDietSet">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Kind" ColumnName="Kind" />
-          <ScalarProperty Name="LifestyleId" ColumnName="LifestyleId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="MedicationAdviceSet">
       <EntityTypeMapping TypeName="IsTypeOf(HeadacheModel.MedicationAdvice)">
         <MappingFragment StoreEntitySet="MedicationAdviceSet">
@@ -175,9 +158,9 @@
           <ScalarProperty Name="DrugApplication" ColumnName="DrugApplication" />
           <ScalarProperty Name="DrugCategory" ColumnName="DrugCategory" />
           <ScalarProperty Name="DrugName" ColumnName="DrugName" />
-          <ScalarProperty Name="Therapy" ColumnName="Therapy" />
           <ScalarProperty Name="DrugDose" ColumnName="DrugDose" />
           <ScalarProperty Name="VisitRecordId" ColumnName="VisitRecordId" />
+          <ScalarProperty Name="VisitRecordId1" ColumnName="VisitRecordId1" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -209,19 +192,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="PatBasicInforLifestyle" TypeName="HeadacheModel.PatBasicInforLifestyle" StoreEntitySet="PatBasicInforSet">
-      <EndProperty Name="Lifestyle">
-        <ScalarProperty Name="Id" ColumnName="Lifestyle_Id" />
-      </EndProperty>
-      <EndProperty Name="PatBasicInfor">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="VisitRecordPrimaryHeadachaOverView" TypeName="HeadacheModel.VisitRecordPrimaryHeadachaOverView" StoreEntitySet="PrimaryHeadacheOverViewSet">
       <EndProperty Name="VisitRecord">
         <ScalarProperty Name="Id" ColumnName="VisitRecord_Id" />
       </EndProperty>
       <EndProperty Name="PrimaryHeadachaOverView">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PatBasicInforLifestyle" TypeName="HeadacheModel.PatBasicInforLifestyle" StoreEntitySet="PatBasicInforSet">
+      <EndProperty Name="Lifestyle">
+        <ScalarProperty Name="Id" ColumnName="Lifestyle_Id" />
+      </EndProperty>
+      <EndProperty Name="PatBasicInfor">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
