@@ -110,14 +110,14 @@
     $(document).ready(function () {
         
         $(".paging").find("li").hide();
-        $(".paging li:lt(10)").addClass("current").show();
-        var num = Math.ceil($(".paging li").length / 10);
+        $(".paging li:lt(9)").addClass("current").show();
+        var num = Math.ceil($(".paging li").length / 9);
         $('.pagination').jqPagination({
             max_page: num,
             paged: function (page) {
                 $(".current").hide();
-                var start = (page - 1) * 10;
-                for (var i = 0; i < 10; i++) {
+                var start = (page - 1) * 9;
+                for (var i = 0; i < 9; i++) {
 
                     $(".paging li:eq(" + start + ")").addClass("current").show();
                     start = start + 1;
@@ -191,9 +191,9 @@
                                                                 fill: false,
                                                                 showDataLabels: true,
                                                                 // Add a margin to seperate the slices.
-                                                                sliceMargin: 4,
+                                                                sliceMargin: 2,
                                                                 // stroke the slices with a little thicker line.
-                                                                lineWidth: 5
+                                                                lineWidth: 3
                                                             }
                                                         },
                                                         legend: { show: true, location: 'e' }

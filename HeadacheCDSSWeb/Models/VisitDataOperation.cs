@@ -131,7 +131,7 @@ namespace HeadacheCDSSWeb.Models
 
                     VisitRecord vr = new VisitRecord();//问诊记录信息保存
                     vr = vdata.visitrecord;
-                    vr.MecicationAdvice = vdata.MAdvice;
+                    vr.MedicationAdvice = vdata.MAdvice;
                     vr.VisitDate = DateTime.Now.Date;
                     vr.PrimaryHeadachaOverView = vdata.PHeadacheOverview;
                     vr.PatBasicInforId = PatID;
@@ -243,9 +243,9 @@ namespace HeadacheCDSSWeb.Models
                 }
 
 
-                while (r.MecicationAdvice.Count != 0)
+                while (r.MedicationAdvice.Count != 0)
                 {
-                    context.MedicationAdviceSet.Remove(r.MecicationAdvice.FirstOrDefault());
+                    context.MedicationAdviceSet.Remove(r.MedicationAdvice.FirstOrDefault());
                 }
 
                 while (r.SecondaryHeadacheSymptom.Count != 0)
@@ -351,7 +351,7 @@ namespace HeadacheCDSSWeb.Models
                     {
                         rdata.secondaryheadachesymptom.Add(ss.Symptom);
                     }
-                    foreach (MedicationAdvice madvice in vr.MecicationAdvice)
+                    foreach (MedicationAdvice madvice in vr.MedicationAdvice)
                     {
                         HMedicine hmedicine = new HMedicine();
                         hmedicine.DrugApplication = madvice.DrugApplication;

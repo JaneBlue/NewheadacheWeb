@@ -162,6 +162,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\accodion_bg.png" />
     <Content Include="Content\images\arrow.png" />
     <Content Include="Content\images\box1.png" />
     <Content Include="Content\images\box2.png" />

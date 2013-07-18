@@ -20,13 +20,16 @@ h3
 {
     font-size: 24px;
     display :block;
-    
-    padding:5px 57px 5px 55px;
-   cursor:pointer;
-   border:1px solid #d3d3d3;
+    padding:2px 57px 5px 55px;
+   cursor:pointer;   
    margin:0;
-   background-color:#eeeeee;
+   background: url(images/accodion_bg.png) repeat-x ;
+   border:2px solid #b7d9ef;
    
+}
+h3:hover
+{
+   color: #E6B715;
 }
 p
 {
@@ -73,7 +76,7 @@ input
     font-size: 16px;
     margin: 5px 0 0 2px;
     float : left;
-    padding: 3px  0 0 3px;
+    padding: 3px  12px 0 3px;
     width:15px;
    height:28px;
   
@@ -84,7 +87,7 @@ input
 	
 	display:block;
 	padding:0;
-	margin:5px 0 0 0;
+	margin: 0;
     -webkit-padding-start: 0px;
 }
 #content li
@@ -93,15 +96,16 @@ input
     display:inline;
     text-decoration:none;
     padding-bottom:5px;
+    
 }
 #content li span
 {
    width: 100px;
 float: left;
 text-align: right;
-padding-top: 7px;
+padding-top: 9px;
 font-size: 16px;
-
+color:#002b73;
 }
 .error
 {
@@ -173,19 +177,20 @@ input[type="submit"]:active
 #navigate
 {
      padding: 0 18px 0 18px ;
+     height:650px;
 }
 #ui-accordion-accordion-panel-0
 {
-    height:595px;
+    height:555px;
    
 }
 .ui-accordion-content
 {
-   border:2px solid #d3d3d3;
+   border:2px solid #b7d9ef;
 }
 #List
 {
-    height:555px;
+    height:505px;
 }
 #List ul {
 	margin: 0;
@@ -265,7 +270,7 @@ input[type="submit"]:active
   float:right;
   margin:10px;
  
-  height:60px;
+  height:55px;
   width:620px;
 }
 #time input
@@ -276,10 +281,10 @@ input[type="submit"]:active
 {
   float:left;
   margin :15px 0  5px 10px;
- border-style:groove;
+ border-style:solid;
   border-width:2px;
-  border-color: #D3E7F2;
-  height:280px;
+  border-color: #66b1cb;
+  height:295px;
   width:620px;
  
 }
@@ -287,19 +292,20 @@ input[type="submit"]:active
 {
   float:left;
   margin :5px 0  10px 10px;
- border-style:groove;
+  border-style:solid;
   border-width:2px;
-  border-color: #D3E7F2;
-  height:280px;
+  border-color: #66b1cb;
+  height:295px;
   width:620px;
 }
 #variable1
 {
     float:left;
     width: 620px;
-    height: 35px;
-    margin:0px 20px 0 40px;
-     display:block;
+    height: 40px;
+    margin:0px;
+    display:block;
+    background: url(images/title.png) repeat-x ;
 }
 #variable2
 {
@@ -316,15 +322,19 @@ input[type="submit"]:active
 #linegraph
 {
      float:left;
-    width: 620px;
+     margin-left:15px;
+    width: 580px;
     height: 190px;
      display:block;
+    margin-top:20px;
 }
 #piegraph
 {
      float:left;
-    width: 620px;
+     margin-left:20px;
+    width: 580px;
     height: 240px;
+    margin-top:20px;
 }
 #diaryreport
 {

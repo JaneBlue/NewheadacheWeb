@@ -16,11 +16,11 @@ namespace HeadacheCDSSWeb.Models
     {
         public PatBasicInfor()
         {
-            this.VisitRecord = new HashSet<VisitRecord>();
             this.PreviousDrug = new HashSet<PreviousDrug>();
             this.PreviousExam = new HashSet<PreviousExam>();
             this.HeadacheFamilyMember = new HashSet<HeadacheFamilyMember>();
             this.OtherFamilyDisease = new HashSet<OtherFamilyDisease>();
+            this.VisitRecord = new HashSet<VisitRecord>();
         }
     
         public string Id { get; set; }
@@ -37,12 +37,12 @@ namespace HeadacheCDSSWeb.Models
         public Nullable<bool> SimilarFamily { get; set; }
     
         public virtual DoctorAccount DoctorAccount { get; set; }
-        public virtual ICollection<VisitRecord> VisitRecord { get; set; }
         public virtual ICollection<PreviousDrug> PreviousDrug { get; set; }
         public virtual ICollection<PreviousExam> PreviousExam { get; set; }
         public virtual ICollection<HeadacheFamilyMember> HeadacheFamilyMember { get; set; }
         public virtual ICollection<OtherFamilyDisease> OtherFamilyDisease { get; set; }
         public virtual Lifestyle Lifestyle { get; set; }
+        public virtual ICollection<VisitRecord> VisitRecord { get; set; }
     }
     
 }

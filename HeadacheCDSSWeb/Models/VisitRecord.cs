@@ -16,8 +16,8 @@ namespace HeadacheCDSSWeb.Models
     {
         public VisitRecord()
         {
-            this.MecicationAdvice = new HashSet<MedicationAdvice>();
             this.SecondaryHeadacheSymptom = new HashSet<SecondaryHeadacheSymptom>();
+            this.MedicationAdvice = new HashSet<MedicationAdvice>();
         }
     
         public int Id { get; set; }
@@ -34,11 +34,12 @@ namespace HeadacheCDSSWeb.Models
         public string Prescription { get; set; }
         public string PreviousDiagnosis { get; set; }
         public string PrescriptionNote { get; set; }
+        public string PatBasicInforId1 { get; set; }
     
-        public virtual PatBasicInfor PatBasicInfor { get; set; }
-        public virtual ICollection<MedicationAdvice> MecicationAdvice { get; set; }
         public virtual ICollection<SecondaryHeadacheSymptom> SecondaryHeadacheSymptom { get; set; }
         public virtual PrimaryHeadacheOverView PrimaryHeadachaOverView { get; set; }
+        public virtual ICollection<MedicationAdvice> MedicationAdvice { get; set; }
+        public virtual PatBasicInfor PatBasicInfor { get; set; }
     }
     
 }

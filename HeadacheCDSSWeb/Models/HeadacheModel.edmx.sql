@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 07/17/2013 18:31:19
+-- Date Created: 07/18/2013 09:38:52
 -- Generated from EDMX file: D:\FGj\projectcode\NewheadacheWeb\HeadacheCDSSWeb\Models\HeadacheModel.edmx
 -- --------------------------------------------------
 
@@ -162,7 +162,8 @@ CREATE TABLE [dbo].[VisitRecordSet] (
     [DiagnosisResult3] nvarchar(max)  NULL,
     [Prescription] nvarchar(max)  NULL,
     [PreviousDiagnosis] nvarchar(max)  NULL,
-    [PrescriptionNote] nvarchar(max)  NULL
+    [PrescriptionNote] nvarchar(max)  NULL,
+    [PatBasicInforId1] nvarchar(255)  NOT NULL
 );
 GO
 
@@ -266,7 +267,8 @@ CREATE TABLE [dbo].[MedicationAdviceSet] (
     [DrugCategory] nvarchar(max)  NULL,
     [DrugName] nvarchar(max)  NULL,
     [DrugDose] nvarchar(max)  NULL,
-    [VisitRecordId] int  NOT NULL
+    [VisitRecordId] int  NOT NULL,
+    [VisitRecordId1] int  NOT NULL
 );
 GO
 
@@ -455,20 +457,6 @@ ON [dbo].[HeadacheProdromeSet]
     ([HeadachaOverViewId]);
 GO
 
--- Creating foreign key on [PatBasicInforId] in table 'VisitRecordSet'
-ALTER TABLE [dbo].[VisitRecordSet]
-ADD CONSTRAINT [FK_PatBasicInforVisitRecord]
-    FOREIGN KEY ([PatBasicInforId])
-    REFERENCES [dbo].[PatBasicInforSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_PatBasicInforVisitRecord'
-CREATE INDEX [IX_FK_PatBasicInforVisitRecord]
-ON [dbo].[VisitRecordSet]
-    ([PatBasicInforId]);
-GO
-
 -- Creating foreign key on [HeadachaOverViewId] in table 'MitigatingFactorsSet'
 ALTER TABLE [dbo].[MitigatingFactorsSet]
 ADD CONSTRAINT [FK_HeadachaOverViewMitigatingFactors]
@@ -495,20 +483,6 @@ ADD CONSTRAINT [FK_HeadachaOverViewPrecipitatingFactor]
 CREATE INDEX [IX_FK_HeadachaOverViewPrecipitatingFactor]
 ON [dbo].[PrecipitatingFactorSet]
     ([HeadachaOverViewId]);
-GO
-
--- Creating foreign key on [VisitRecordId] in table 'MedicationAdviceSet'
-ALTER TABLE [dbo].[MedicationAdviceSet]
-ADD CONSTRAINT [FK_VisitRecordMecicationAdvice]
-    FOREIGN KEY ([VisitRecordId])
-    REFERENCES [dbo].[VisitRecordSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_VisitRecordMecicationAdvice'
-CREATE INDEX [IX_FK_VisitRecordMecicationAdvice]
-ON [dbo].[MedicationAdviceSet]
-    ([VisitRecordId]);
 GO
 
 -- Creating foreign key on [PatBasicInforId] in table 'PreviousDrugSet'
@@ -567,20 +541,6 @@ ON [dbo].[OtherFamilyDiseaseSet]
     ([PatBasicInforId]);
 GO
 
--- Creating foreign key on [Lifestyle_Id] in table 'PatBasicInforSet'
-ALTER TABLE [dbo].[PatBasicInforSet]
-ADD CONSTRAINT [FK_PatBasicInforLifestyle]
-    FOREIGN KEY ([Lifestyle_Id])
-    REFERENCES [dbo].[LifestyleSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_PatBasicInforLifestyle'
-CREATE INDEX [IX_FK_PatBasicInforLifestyle]
-ON [dbo].[PatBasicInforSet]
-    ([Lifestyle_Id]);
-GO
-
 -- Creating foreign key on [VisitRecordId] in table 'SecondaryHeadacheSymptomSet'
 ALTER TABLE [dbo].[SecondaryHeadacheSymptomSet]
 ADD CONSTRAINT [FK_VisitRecordSecondaryHeadacheSymptom]
@@ -607,6 +567,48 @@ ADD CONSTRAINT [FK_VisitRecordPrimaryHeadachaOverView]
 CREATE INDEX [IX_FK_VisitRecordPrimaryHeadachaOverView]
 ON [dbo].[PrimaryHeadacheOverViewSet]
     ([VisitRecord_Id]);
+GO
+
+-- Creating foreign key on [VisitRecordId1] in table 'MedicationAdviceSet'
+ALTER TABLE [dbo].[MedicationAdviceSet]
+ADD CONSTRAINT [FK_VisitRecordMedicationAdvice]
+    FOREIGN KEY ([VisitRecordId1])
+    REFERENCES [dbo].[VisitRecordSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_VisitRecordMedicationAdvice'
+CREATE INDEX [IX_FK_VisitRecordMedicationAdvice]
+ON [dbo].[MedicationAdviceSet]
+    ([VisitRecordId1]);
+GO
+
+-- Creating foreign key on [Lifestyle_Id] in table 'PatBasicInforSet'
+ALTER TABLE [dbo].[PatBasicInforSet]
+ADD CONSTRAINT [FK_PatBasicInforLifestyle]
+    FOREIGN KEY ([Lifestyle_Id])
+    REFERENCES [dbo].[LifestyleSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_PatBasicInforLifestyle'
+CREATE INDEX [IX_FK_PatBasicInforLifestyle]
+ON [dbo].[PatBasicInforSet]
+    ([Lifestyle_Id]);
+GO
+
+-- Creating foreign key on [PatBasicInforId1] in table 'VisitRecordSet'
+ALTER TABLE [dbo].[VisitRecordSet]
+ADD CONSTRAINT [FK_PatBasicInforVisitRecord]
+    FOREIGN KEY ([PatBasicInforId1])
+    REFERENCES [dbo].[PatBasicInforSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_PatBasicInforVisitRecord'
+CREATE INDEX [IX_FK_PatBasicInforVisitRecord]
+ON [dbo].[VisitRecordSet]
+    ([PatBasicInforId1]);
 GO
 
 -- --------------------------------------------------
