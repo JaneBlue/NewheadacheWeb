@@ -200,10 +200,11 @@ input[type="submit"]:active
 #List li
 { 
 	background-color:#B9DCF2;
-   padding-top:10px;
+   padding-top:5px;
    margin-bottom:10px;
-	width: 195px;
-	height:35px;
+	width: 175px;
+	height:40px;
+	padding-right:20px;
 	text-align: center;	
 }
 #List h2 {
@@ -212,11 +213,17 @@ input[type="submit"]:active
 	margin:0;
 	text-align:center;
 }
+.notepad
+{
+   float:left; 
+   margin-left:15px;
+}
 
 #List a {
 	color: #076FA2;
-	font-size:18px;
-	text-decoration: none;   
+	font-size:20px;
+	text-decoration: none; 
+	height:50%;  
 }
 
 #List a:hover {
@@ -268,10 +275,10 @@ input[type="submit"]:active
 #time
 {
   float:right;
-  margin:10px;
+  margin:10px 25px 10px 0;
  
   height:55px;
-  width:620px;
+  width:610px;
 }
 #time input
 {
