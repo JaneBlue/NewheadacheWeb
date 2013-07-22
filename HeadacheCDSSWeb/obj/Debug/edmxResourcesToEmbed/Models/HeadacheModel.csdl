@@ -77,6 +77,16 @@
       <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
       <End Role="VisitRecord" EntitySet="VisitRecordSet" />
     </AssociationSet>
+    <EntitySet Name="PremonitorySymptom集" EntityType="HeadacheModel.PremonitorySymptom" />
+    <AssociationSet Name="PrimaryHeadacheOverViewPremonitorySymptom" Association="HeadacheModel.PrimaryHeadacheOverViewPremonitorySymptom">
+      <End Role="PrimaryHeadacheOverView" EntitySet="PrimaryHeadacheOverViewSet" />
+      <End Role="PremonitorySymptom" EntitySet="PremonitorySymptom集" />
+    </AssociationSet>
+    <EntitySet Name="ProphylaxisDrug集" EntityType="HeadacheModel.ProphylaxisDrug" />
+    <AssociationSet Name="PatBasicInforProphylaxisDrug" Association="HeadacheModel.PatBasicInforProphylaxisDrug">
+      <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
+      <End Role="ProphylaxisDrug" EntitySet="ProphylaxisDrug集" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="DoctorAccount">
     <Key>
@@ -87,6 +97,7 @@
     <Property Type="String" Name="PassWord" Nullable="false" />
     <Property Type="String" Name="Hospital" Nullable="false" />
     <NavigationProperty Name="PatBasicInfor" Relationship="HeadacheModel.DoctorAccountPatBasicInfor" FromRole="DoctorAccount" ToRole="PatBasicInfor" />
+    <Property Type="String" Name="ChiefDoctor" Nullable="false" />
   </EntityType>
   <EntityType Name="PatBasicInfor">
     <Key>
@@ -101,7 +112,6 @@
     <Property Type="String" Name="Phone" Nullable="false" />
     <Property Type="String" Name="Address" Nullable="true" />
     <Property Type="String" Name="Identity" Nullable="true" />
-    <Property Type="String" Name="ChiefDoctor" Nullable="true" />
     <NavigationProperty Name="DoctorAccount" Relationship="HeadacheModel.DoctorAccountPatBasicInfor" FromRole="PatBasicInfor" ToRole="DoctorAccount" />
     <Property Type="Int32" Name="DoctorAccountId" Nullable="false" />
     <NavigationProperty Name="PreviousDrug" Relationship="HeadacheModel.PatBasicInforPreviousDrug" FromRole="PatBasicInfor" ToRole="PreviousDrug" />
@@ -111,6 +121,9 @@
     <NavigationProperty Name="OtherFamilyDisease" Relationship="HeadacheModel.PatBasicInforOtherFamilyDisease" FromRole="PatBasicInfor" ToRole="OtherFamilyDisease" />
     <NavigationProperty Name="Lifestyle" Relationship="HeadacheModel.PatBasicInforLifestyle" FromRole="PatBasicInfor" ToRole="Lifestyle" />
     <NavigationProperty Name="VisitRecord" Relationship="HeadacheModel.PatBasicInforVisitRecord" FromRole="PatBasicInfor" ToRole="VisitRecord" />
+    <Property Type="String" Name="Weight" Nullable="false" />
+    <Property Type="String" Name="Height" Nullable="false" />
+    <NavigationProperty Name="ProphylaxisDrug" Relationship="HeadacheModel.PatBasicInforProphylaxisDrug" FromRole="PatBasicInfor" ToRole="ProphylaxisDrug" />
   </EntityType>
   <EntityType Name="VisitRecord">
     <Key>
@@ -174,6 +187,7 @@
     <NavigationProperty Name="PrecipitatingFactor" Relationship="HeadacheModel.HeadachaOverViewPrecipitatingFactor" FromRole="HeadachaOverView" ToRole="PrecipitatingFactor" />
     <Property Type="String" Name="FirstOnsetContinue" Nullable="false" />
     <NavigationProperty Name="VisitRecord" Relationship="HeadacheModel.VisitRecordPrimaryHeadachaOverView" FromRole="PrimaryHeadachaOverView" ToRole="VisitRecord" />
+    <NavigationProperty Name="PremonitorySymptom" Relationship="HeadacheModel.PrimaryHeadacheOverViewPremonitorySymptom" FromRole="PrimaryHeadacheOverView" ToRole="PremonitorySymptom" />
   </EntityType>
   <EntityType Name="Lifestyle">
     <Key>
@@ -448,6 +462,49 @@
       </Principal>
       <Dependent Role="VisitRecord">
         <PropertyRef Name="PatBasicInforId1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PremonitorySymptom">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Symptom" Nullable="true" />
+    <NavigationProperty Name="PrimaryHeadacheOverView" Relationship="HeadacheModel.PrimaryHeadacheOverViewPremonitorySymptom" FromRole="PremonitorySymptom" ToRole="PrimaryHeadacheOverView" />
+    <Property Type="Int32" Name="PrimaryHeadacheOverViewId" Nullable="false" />
+  </EntityType>
+  <Association Name="PrimaryHeadacheOverViewPremonitorySymptom">
+    <End Type="HeadacheModel.PrimaryHeadacheOverView" Role="PrimaryHeadacheOverView" Multiplicity="1" />
+    <End Type="HeadacheModel.PremonitorySymptom" Role="PremonitorySymptom" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrimaryHeadacheOverView">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PremonitorySymptom">
+        <PropertyRef Name="PrimaryHeadacheOverViewId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ProphylaxisDrug">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="DrugName" Nullable="false" />
+    <Property Type="Int32" Name="VisitRecordId" Nullable="false" />
+    <NavigationProperty Name="PatBasicInfor" Relationship="HeadacheModel.PatBasicInforProphylaxisDrug" FromRole="ProphylaxisDrug" ToRole="PatBasicInfor" />
+    <Property Type="String" Name="PatBasicInforId" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <Association Name="PatBasicInforProphylaxisDrug">
+    <End Type="HeadacheModel.PatBasicInfor" Role="PatBasicInfor" Multiplicity="1" />
+    <End Type="HeadacheModel.ProphylaxisDrug" Role="ProphylaxisDrug" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PatBasicInfor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProphylaxisDrug">
+        <PropertyRef Name="PatBasicInforId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -94,7 +94,13 @@
     <Compile Include="Models\PrecipitatingFactor.cs">
       <DependentUpon>HeadacheDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PremonitorySymptom.cs">
+      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PrimaryHeadacheOverView.cs">
+      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProphylaxisDrug.cs">
       <DependentUpon>HeadacheDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ReportData.cs" />

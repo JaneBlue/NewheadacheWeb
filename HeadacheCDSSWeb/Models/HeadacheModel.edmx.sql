@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 07/18/2013 12:13:52
+-- Date Created: 07/22/2013 21:06:54
 -- Generated from EDMX file: D:\FGj\projectcode\NewheadacheWeb\HeadacheCDSSWeb\Models\HeadacheModel.edmx
 -- --------------------------------------------------
 
@@ -62,6 +62,12 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_PatBasicInforVisitRecord]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[VisitRecordSet] DROP CONSTRAINT [FK_PatBasicInforVisitRecord];
 GO
+IF OBJECT_ID(N'[dbo].[FK_PrimaryHeadacheOverViewPremonitorySymptom]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PremonitorySymptom集] DROP CONSTRAINT [FK_PrimaryHeadacheOverViewPremonitorySymptom];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PatBasicInforProphylaxisDrug]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ProphylaxisDrug集] DROP CONSTRAINT [FK_PatBasicInforProphylaxisDrug];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -115,6 +121,12 @@ GO
 IF OBJECT_ID(N'[dbo].[SecondaryHeadacheSymptomSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SecondaryHeadacheSymptomSet];
 GO
+IF OBJECT_ID(N'[dbo].[PremonitorySymptom集]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PremonitorySymptom集];
+GO
+IF OBJECT_ID(N'[dbo].[ProphylaxisDrug集]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ProphylaxisDrug集];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -125,7 +137,8 @@ CREATE TABLE [dbo].[DoctorAccountSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [UserName] nvarchar(max)  NOT NULL,
     [PassWord] nvarchar(max)  NOT NULL,
-    [Hospital] nvarchar(max)  NOT NULL
+    [Hospital] nvarchar(max)  NOT NULL,
+    [ChiefDoctor] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -140,9 +153,10 @@ CREATE TABLE [dbo].[PatBasicInforSet] (
     [Phone] nvarchar(max)  NOT NULL,
     [Address] nvarchar(max)  NULL,
     [Identity] nvarchar(max)  NULL,
-    [ChiefDoctor] nvarchar(max)  NULL,
     [DoctorAccountId] int  NOT NULL,
     [SimilarFamily] bit  NULL,
+    [Weight] nvarchar(max)  NOT NULL,
+    [Height] nvarchar(max)  NOT NULL,
     [Lifestyle_Id] int  NOT NULL
 );
 GO
@@ -297,6 +311,23 @@ CREATE TABLE [dbo].[SecondaryHeadacheSymptomSet] (
 );
 GO
 
+-- Creating table 'PremonitorySymptom集'
+CREATE TABLE [dbo].[PremonitorySymptom集] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [Symptom] nvarchar(max)  NULL,
+    [PrimaryHeadacheOverViewId] int  NOT NULL
+);
+GO
+
+-- Creating table 'ProphylaxisDrug集'
+CREATE TABLE [dbo].[ProphylaxisDrug集] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [DrugName] nvarchar(max)  NOT NULL,
+    [VisitRecordId] int  NOT NULL,
+    [PatBasicInforId] nvarchar(255)  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -395,6 +426,18 @@ GO
 ALTER TABLE [dbo].[SecondaryHeadacheSymptomSet]
 ADD CONSTRAINT [PK_SecondaryHeadacheSymptomSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'PremonitorySymptom集'
+ALTER TABLE [dbo].[PremonitorySymptom集]
+ADD CONSTRAINT [PK_PremonitorySymptom集]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'ProphylaxisDrug集'
+ALTER TABLE [dbo].[ProphylaxisDrug集]
+ADD CONSTRAINT [PK_ProphylaxisDrug集]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
 GO
 
 -- --------------------------------------------------
@@ -609,6 +652,34 @@ ADD CONSTRAINT [FK_PatBasicInforVisitRecord]
 CREATE INDEX [IX_FK_PatBasicInforVisitRecord]
 ON [dbo].[VisitRecordSet]
     ([PatBasicInforId1]);
+GO
+
+-- Creating foreign key on [PrimaryHeadacheOverViewId] in table 'PremonitorySymptom集'
+ALTER TABLE [dbo].[PremonitorySymptom集]
+ADD CONSTRAINT [FK_PrimaryHeadacheOverViewPremonitorySymptom]
+    FOREIGN KEY ([PrimaryHeadacheOverViewId])
+    REFERENCES [dbo].[PrimaryHeadacheOverViewSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_PrimaryHeadacheOverViewPremonitorySymptom'
+CREATE INDEX [IX_FK_PrimaryHeadacheOverViewPremonitorySymptom]
+ON [dbo].[PremonitorySymptom集]
+    ([PrimaryHeadacheOverViewId]);
+GO
+
+-- Creating foreign key on [PatBasicInforId] in table 'ProphylaxisDrug集'
+ALTER TABLE [dbo].[ProphylaxisDrug集]
+ADD CONSTRAINT [FK_PatBasicInforProphylaxisDrug]
+    FOREIGN KEY ([PatBasicInforId])
+    REFERENCES [dbo].[PatBasicInforSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_PatBasicInforProphylaxisDrug'
+CREATE INDEX [IX_FK_PatBasicInforProphylaxisDrug]
+ON [dbo].[ProphylaxisDrug集]
+    ([PatBasicInforId]);
 GO
 
 -- --------------------------------------------------

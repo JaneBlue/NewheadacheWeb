@@ -86,6 +86,7 @@
     <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="PassWord" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Hospital" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ChiefDoctor" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="PatBasicInforSet">
     <Key>
@@ -100,9 +101,10 @@
     <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Address" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Identity" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="ChiefDoctor" Type="nvarchar(max)" Nullable="true" />
     <Property Name="DoctorAccountId" Type="int" Nullable="false" />
     <Property Name="SimilarFamily" Type="bit" Nullable="true" />
+    <Property Name="Weight" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Height" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Lifestyle_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="VisitRecordSet">

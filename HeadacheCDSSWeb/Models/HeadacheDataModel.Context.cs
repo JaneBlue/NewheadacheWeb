@@ -41,5 +41,7 @@ namespace HeadacheCDSSWeb.Models
         public DbSet<PrecipitatingFactor> PrecipitatingFactorSet { get; set; }
         public DbSet<MitigatingFactors> MitigatingFactorsSet { get; set; }
         public DbSet<SecondaryHeadacheSymptom> SecondaryHeadacheSymptomSet { get; set; }
+        public DbSet<PremonitorySymptom> PremonitorySymptom集 { get; set; }
+        public DbSet<ProphylaxisDrug> ProphylaxisDrug集 { get; set; }
     }
 }

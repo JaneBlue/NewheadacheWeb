@@ -21,6 +21,7 @@ namespace HeadacheCDSSWeb.Models
             this.HeadacheProdrome = new HashSet<HeadacheProdrome>();
             this.MitigatingFactors = new HashSet<MitigatingFactors>();
             this.PrecipitatingFactor = new HashSet<PrecipitatingFactor>();
+            this.PremonitorySymptom = new HashSet<PremonitorySymptom>();
         }
     
         public int Id { get; set; }
@@ -42,6 +43,7 @@ namespace HeadacheCDSSWeb.Models
         public virtual ICollection<MitigatingFactors> MitigatingFactors { get; set; }
         public virtual ICollection<PrecipitatingFactor> PrecipitatingFactor { get; set; }
         public virtual VisitRecord VisitRecord { get; set; }
+        public virtual ICollection<PremonitorySymptom> PremonitorySymptom { get; set; }
     }
     
 }

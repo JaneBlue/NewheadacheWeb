@@ -12,20 +12,13 @@ using System.Collections.Generic;
 
 namespace HeadacheCDSSWeb.Models
 {
-    public partial class DoctorAccount
+    public partial class PremonitorySymptom
     {
-        public DoctorAccount()
-        {
-            this.PatBasicInfor = new HashSet<PatBasicInfor>();
-        }
+        public int ID { get; set; }
+        public string Symptom { get; set; }
+        public int PrimaryHeadacheOverViewId { get; set; }
     
-        public int Id { get; set; }
-        public string UserName { get; set; }
-        public string PassWord { get; set; }
-        public string Hospital { get; set; }
-        public string ChiefDoctor { get; set; }
-    
-        public virtual ICollection<PatBasicInfor> PatBasicInfor { get; set; }
+        public virtual PrimaryHeadacheOverView PrimaryHeadacheOverView { get; set; }
     }
     
 }

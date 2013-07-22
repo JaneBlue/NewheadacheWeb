@@ -21,6 +21,7 @@ namespace HeadacheCDSSWeb.Models
             this.HeadacheFamilyMember = new HashSet<HeadacheFamilyMember>();
             this.OtherFamilyDisease = new HashSet<OtherFamilyDisease>();
             this.VisitRecord = new HashSet<VisitRecord>();
+            this.ProphylaxisDrug = new HashSet<ProphylaxisDrug>();
         }
     
         public string Id { get; set; }
@@ -32,9 +33,10 @@ namespace HeadacheCDSSWeb.Models
         public string Phone { get; set; }
         public string Address { get; set; }
         public string Identity { get; set; }
-        public string ChiefDoctor { get; set; }
         public int DoctorAccountId { get; set; }
         public Nullable<bool> SimilarFamily { get; set; }
+        public string Weight { get; set; }
+        public string Height { get; set; }
     
         public virtual DoctorAccount DoctorAccount { get; set; }
         public virtual ICollection<PreviousDrug> PreviousDrug { get; set; }
@@ -43,6 +45,7 @@ namespace HeadacheCDSSWeb.Models
         public virtual ICollection<OtherFamilyDisease> OtherFamilyDisease { get; set; }
         public virtual Lifestyle Lifestyle { get; set; }
         public virtual ICollection<VisitRecord> VisitRecord { get; set; }
+        public virtual ICollection<ProphylaxisDrug> ProphylaxisDrug { get; set; }
     }
     
 }

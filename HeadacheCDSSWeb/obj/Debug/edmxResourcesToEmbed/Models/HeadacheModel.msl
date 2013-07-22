@@ -8,6 +8,7 @@
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="PassWord" ColumnName="PassWord" />
           <ScalarProperty Name="Hospital" ColumnName="Hospital" />
+          <ScalarProperty Name="ChiefDoctor" ColumnName="ChiefDoctor" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -23,9 +24,10 @@
           <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="Identity" ColumnName="Identity" />
-          <ScalarProperty Name="ChiefDoctor" ColumnName="ChiefDoctor" />
           <ScalarProperty Name="DoctorAccountId" ColumnName="DoctorAccountId" />
           <ScalarProperty Name="SimilarFamily" ColumnName="SimilarFamily" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
