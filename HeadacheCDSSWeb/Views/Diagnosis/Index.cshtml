@@ -289,7 +289,8 @@ $("#submenu").hide();
                                         data: { postjson: encoded },
                                         success: function (data) {
                                             if (data.OK) {
-                                                  OCX.SetObjectInfo("TextBox_14", "text",data.Message);
+                                                  //OCX.SetObjectInfo("TextBox_14", "text",data.Message);
+                                                  SetDiagnoses(OCX, data.Message); 
                                                    $(".selected").next().addClass("selected");
                                                    var name = $(".selected").last().attr("id");
                                                    $(".active").next().addClass("active");
@@ -319,6 +320,94 @@ $("#submenu").hide();
         
      });
     });
+    function SetDiagnoses(OCX, strDiagnose)
+    {
+        OCX.SetObjectInfo("TextBox_14", "text", strDiagnose);
+        if(strDiagnose.indexOf("偏头痛") >= 0)
+        {
+            OCX.SetObjectInfo("ComboBox_31", "text", "偏头痛");
+            if(strDiagnose.indexOf("很可能的偏头痛") >= 0)
+            {
+                OCX.SetObjectInfo("ComboBox_32", "text", "很可能的偏头痛");
+            }
+            else if(strDiagnose.indexOf("无先兆性偏头痛") >= 0)
+            {
+                OCX.SetObjectInfo("ComboBox_32", "text", "无先兆性偏头痛");
+            }
+            else if(strDiagnose.indexOf("先兆性偏头痛") >= 0)
+            {
+                OCX.SetObjectInfo("ComboBox_32", "text", "先兆性偏头痛");
+            }
+            else if(strDiagnose.indexOf("视网膜性偏头痛") >= 0)
+            {
+                OCX.SetObjectInfo("ComboBox_32", "text", "视网膜性偏头痛");
+            }
+            else if(strDiagnose.indexOf("偏头痛的合并症") >= 0)
+            {
+                OCX.SetObjectInfo("ComboBox_32", "text", "偏头痛的合并症");
+            }
+        }
+        else if(strDiagnose.indexOf("紧张型头痛") >= 0)
+        {
+            OCX.SetObjectInfo("ComboBox_31", "text", "紧张型头痛");
+            if(strDiagnose.indexOf("偶尔发作性紧张型头痛") >= 0)
+            {
+                OCX.SetObjectInfo("ComboBox_32", "text", "偶尔发作性紧张型头痛");
+            }
+            else if(strDiagnose.indexOf("频繁发作性紧张型头痛") >= 0)
+            {
+                OCX.SetObjectInfo("ComboBox_32", "text", "频繁发作性紧张型头痛");
+            }
+            else if(strDiagnose.indexOf("很可能的紧张型头痛") >= 0)
+            {
+                OCX.SetObjectInfo("ComboBox_32", "text", "很可能的紧张型头痛");
+            }
+        }
+        else if(strDiagnose.indexOf("丛集性头痛") >= 0)
+        {
+            OCX.SetObjectInfo("ComboBox_31", "text", "丛集性头痛和其他原发性三叉神经痛");
+            OCX.SetObjectInfo("ComboBox_32", "text", "丛集性头痛");
+        }
+        else if(strDiagnose.indexOf("阵发性偏侧头痛") >= 0)
+        {
+            OCX.SetObjectInfo("ComboBox_31", "text", "丛集性头痛和其他原发性三叉神经痛");
+            OCX.SetObjectInfo("ComboBox_32", "text", "阵发性偏侧头痛");
+        }
+        else if(strDiagnose.indexOf("SUNCT") >= 0)
+        {
+            OCX.SetObjectInfo("ComboBox_31", "text", "丛集性头痛和其他原发性三叉神经痛");
+            OCX.SetObjectInfo("ComboBox_32", "text", "SUNCT");
+        }
+        else if(strDiagnose.indexOf("很可能的三叉自主神经性头痛") >= 0)
+        {
+            OCX.SetObjectInfo("ComboBox_31", "text", "丛集性头痛和其他原发性三叉神经痛");
+            OCX.SetObjectInfo("ComboBox_32", "text", "很可能的三叉自主神经性头痛");
+        }
+        else if(strDiagnose.indexOf("慢性偏头痛") >= 0)
+        {
+            OCX.SetObjectInfo("ComboBox_31", "text", "慢性每日头痛");
+            OCX.SetObjectInfo("ComboBox_32", "text", "慢性偏头痛");
+        }
+        else if(strDiagnose.indexOf("慢性紧张型头痛") >= 0)
+        {
+            OCX.SetObjectInfo("ComboBox_31", "text", "慢性每日头痛");
+            OCX.SetObjectInfo("ComboBox_32", "text", "慢性紧张型头痛");
+        }
+        else if(strDiagnose.indexOf("新发每日持续性头痛") >= 0)
+        {
+            OCX.SetObjectInfo("ComboBox_31", "text", "慢性每日头痛");
+            OCX.SetObjectInfo("ComboBox_32", "text", "新发每日持续性头痛");
+        }
+        else if(strDiagnose.indexOf("药物滥用引起的头痛") >= 0)
+        {
+            OCX.SetObjectInfo("ComboBox_31", "text", "慢性每日头痛");
+            OCX.SetObjectInfo("ComboBox_32", "text", "药物滥用引起的头痛");
+        }
+        else if(strDiagnose.indexOf("颅神经痛和中枢源性面痛") >= 0)
+        {
+            OCX.SetObjectInfo("ComboBox_31", "text", "颅神经痛和中枢源性面痛");
+        }
+    }
     function addprint(){ 
    $("#btn1").after('<div id="btn3" class="btn"><a id="b1">打印报告</a></div>'); 
    document.getElementById("btn3").onclick=function(){ PrintReport()};   
