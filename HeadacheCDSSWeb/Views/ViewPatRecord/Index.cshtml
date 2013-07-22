@@ -17,7 +17,7 @@
                 <div id="diagnosis" class="button">
                     @Html.ActionLink("开始新问诊", "GoToDiagnosis", new { id = ViewBag.patId })
                 </div>
-                <div id="delete" class="button">
+                <div id="delete" class="button" data-toggle="modal" data-target="#myModal">
                     <a>删除记录</a>
                 </div>
 
@@ -60,8 +60,23 @@
             @Html.ActionLink("返回查询", "index","EnterpatInfor")
         </div>
   </div>
+  <!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h2 id="myModalLabel">删除记录提示</h2>
+  </div>
+  <div class="modal-body">
+    <p>确定删除本条记录？</p>
+  </div>
+  <div class="modal-footer">
+    <button id="DeleteYes"class="btn">确定</button>
+    <button id="DeleteNo"class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+  </div>
+</div>
 <script type="text/javascript">
     $(function () {
+       
         var OCX = document.getElementById('Reporter2');
         try {
             OCX.OpenReport("D:\\CDSSOCX");
@@ -223,6 +238,12 @@
 
         });
         $("#delete").click(function () {
+
+            $("#ViewContent").hide();
+
+        })
+
+        $("#DeleteYes").click(function () {
             var pid = '@ViewBag.patId';
             $.ajax({
                 url: '@Url.Action("DeleteRecord", "ViewPatRecord")',
@@ -231,7 +252,7 @@
                 success: function (data) {
                     if (data.OK) {
                         $('#' + data.Message).parent().remove();
-                        $("#ViewContent").hide();
+                        $('#myModal').modal('hide');
                     }
                     else {
                         alert("删除失败");
@@ -241,8 +262,11 @@
                     alert("Error '" + jqXhr.status + "' (textStatus: '" + textStatus + "', errorThrown: '" + errorThrown + "')");
                 }
             });
-
         })
+        $("#DeleteNo").click(function () {
+            $("#ViewContent").show();
+        })
+
 
     });
     function SetReportData(jsonData) 
@@ -322,13 +346,12 @@
         OCX.ShowReport();
         OCX.ShowThisPage("就诊记录");
     }
-     $(function(){
-         var canvas = document.createElement("canvas");
-document.body.appendChild(canvas);
-//if($.browser.msie){
-//canvas=window.G_vmlCanvasManager.initElement(canvas);
-//}
-//if(canvas.getContext){alert("support");}
-});   
-     
+//     $(function(){
+//         var canvas = document.createElement("canvas");
+//document.body.appendChild(canvas);
+////if($.browser.msie){
+////canvas=window.G_vmlCanvasManager.initElement(canvas);
+////}
+////if(canvas.getContext){alert("support");}});   
+//  })   
   </script>

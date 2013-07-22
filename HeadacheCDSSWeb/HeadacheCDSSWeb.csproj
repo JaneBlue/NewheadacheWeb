@@ -264,6 +264,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
+    <Content Include="Scripts\plugins\bootstrap.js" />
+    <Content Include="Scripts\plugins\bootstrap.min.js" />
     <Content Include="Scripts\plugins\excanvas.js" />
     <Content Include="Scripts\plugins\jqplot.canvasAxisLabelRenderer.min.js" />
     <Content Include="Scripts\plugins\jqplot.canvasTextRenderer.min.js" />
@@ -277,6 +279,9 @@
     <Content Include="Scripts\wbox.js" />
     <Content Include="Scripts\zebra_datepicker.js" />
     <Content Include="Views\Shared\PatHeadachePlace.cshtml" />
+    <Content Include="Views\Shared\RecordViewLayout.cshtml" />
+    <Content Include="Views\ViewPatRecord\Index.cshtml" />
+    <Content Include="Views\Shared\Diagnosis_Layout.cshtml" />
     <None Include="Web References\localhost\InferenceService.wsdl" />
     <None Include="Web References\localhost\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -346,7 +351,6 @@
     <Content Include="Views\DAccount\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\Diagnosis_Layout.cshtml" />
     <Content Include="Views\Shared\PatLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -360,9 +364,7 @@
     </None>
     <Content Include="Views\EnterPatInfor\Index.cshtml" />
     <Content Include="Views\Diagnosis\Index.cshtml" />
-    <Content Include="Views\ViewPatRecord\Index.cshtml" />
     <Content Include="Views\Shared\PatList.cshtml" />
-    <Content Include="Views\Shared\RecordViewLayout.cshtml" />
     <Content Include="Views\Shared\HeadacheDiaryView.cshtml" />
     <Content Include="Views\Shared\VisitContentView.cshtml" />
     <Content Include="Views\Diagnosis\ContinueVisit.cshtml" />
@@ -389,6 +391,9 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>HeadacheCDSSWeb_localhost_InferenceService</CachedSettingsPropName>
     </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\bootsrap\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
