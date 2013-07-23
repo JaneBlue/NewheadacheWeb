@@ -43,5 +43,9 @@ namespace HeadacheCDSSWeb.Models
         public DbSet<SecondaryHeadacheSymptom> SecondaryHeadacheSymptomSet { get; set; }
         public DbSet<PremonitorySymptom> PremonitorySymptom集 { get; set; }
         public DbSet<ProphylaxisDrug> ProphylaxisDrug集 { get; set; }
+        public DbSet<PHQuestionaire> PHQuestionaire集 { get; set; }
+        public DbSet<GADQuestionaire> GADQuestionaire集 { get; set; }
+        public DbSet<DisabilityEvaluation> DisabilityEvaluation集 { get; set; }
+        public DbSet<SleepStatus> SleepStatus集 { get; set; }
     }
 }

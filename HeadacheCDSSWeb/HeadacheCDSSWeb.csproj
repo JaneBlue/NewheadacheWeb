@@ -78,11 +78,32 @@
     <Compile Include="Models\Diagnosis.cs">
       <DependentUpon>HeadacheDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DisabilityEvaluation.cs">
+      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DoctorAccount.cs">
       <DependentUpon>HeadacheDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GADQuestionaire.cs">
+      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HeadacheAccompany.cs">
+      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\HeadacheDiagnosis.cs" />
+    <Compile Include="Models\HeadacheFamilyMember.cs">
+      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HeadachePlace.cs">
+      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HeadacheProdrome.cs">
+      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\JsonHelper.cs" />
+    <Compile Include="Models\Lifestyle.cs">
+      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\MedicationAdvice.cs">
       <DependentUpon>HeadacheDataModel.tt</DependentUpon>
     </Compile>
@@ -90,11 +111,26 @@
       <DependentUpon>HeadacheDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ObjectMapper.cs" />
+    <Compile Include="Models\OtherFamilyDisease.cs">
+      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PatBasicInfor.cs">
+      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PatOperation.cs" />
+    <Compile Include="Models\PHQuestionaire.cs">
+      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PrecipitatingFactor.cs">
       <DependentUpon>HeadacheDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PremonitorySymptom.cs">
+      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PreviousDrug.cs">
+      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PreviousExam.cs">
       <DependentUpon>HeadacheDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PrimaryHeadacheOverView.cs">
@@ -107,10 +143,10 @@
     <Compile Include="Models\SecondaryHeadacheSymptom.cs">
       <DependentUpon>HeadacheDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\UserOperation.cs" />
-    <Compile Include="Models\HeadacheAccompany.cs">
+    <Compile Include="Models\SleepStatus.cs">
       <DependentUpon>HeadacheDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserOperation.cs" />
     <Compile Include="Models\HeadacheDataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -121,34 +157,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HeadacheDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\HeadacheFamilyMember.cs">
-      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\HeadacheModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HeadacheModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\HeadachePlace.cs">
-      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\HeadacheProdrome.cs">
-      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Lifestyle.cs">
-      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\OtherFamilyDisease.cs">
-      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PatBasicInfor.cs">
-      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PreviousDrug.cs">
-      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PreviousExam.cs">
-      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\VisitData.cs" />
     <Compile Include="Models\VisitDataOperation.cs" />

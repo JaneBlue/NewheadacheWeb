@@ -87,6 +87,26 @@
       <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
       <End Role="ProphylaxisDrug" EntitySet="ProphylaxisDrug集" />
     </AssociationSet>
+    <EntitySet Name="PHQuestionaire集" EntityType="HeadacheModel.PHQuestionaire" />
+    <EntitySet Name="GADQuestionaire集" EntityType="HeadacheModel.GADQuestionaire" />
+    <EntitySet Name="DisabilityEvaluation集" EntityType="HeadacheModel.DisabilityEvaluation" />
+    <AssociationSet Name="VisitRecordDisabilityEvaluation" Association="HeadacheModel.VisitRecordDisabilityEvaluation">
+      <End Role="VisitRecord" EntitySet="VisitRecordSet" />
+      <End Role="DisabilityEvaluation" EntitySet="DisabilityEvaluation集" />
+    </AssociationSet>
+    <AssociationSet Name="VisitRecordGADQuestionaire" Association="HeadacheModel.VisitRecordGADQuestionaire">
+      <End Role="VisitRecord" EntitySet="VisitRecordSet" />
+      <End Role="GADQuestionaire" EntitySet="GADQuestionaire集" />
+    </AssociationSet>
+    <AssociationSet Name="VisitRecordPHQuestionaire" Association="HeadacheModel.VisitRecordPHQuestionaire">
+      <End Role="VisitRecord" EntitySet="VisitRecordSet" />
+      <End Role="PHQuestionaire" EntitySet="PHQuestionaire集" />
+    </AssociationSet>
+    <EntitySet Name="SleepStatus集" EntityType="HeadacheModel.SleepStatus" />
+    <AssociationSet Name="VisitRecordSleepStatus" Association="HeadacheModel.VisitRecordSleepStatus">
+      <End Role="VisitRecord" EntitySet="VisitRecordSet" />
+      <End Role="SleepStatus" EntitySet="SleepStatus集" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="DoctorAccount">
     <Key>
@@ -148,6 +168,10 @@
     <NavigationProperty Name="MedicationAdvice" Relationship="HeadacheModel.VisitRecordMedicationAdvice" FromRole="VisitRecord" ToRole="MedicationAdvice" />
     <NavigationProperty Name="PatBasicInfor" Relationship="HeadacheModel.PatBasicInforVisitRecord" FromRole="VisitRecord" ToRole="PatBasicInfor" />
     <Property Type="String" Name="PatBasicInforId1" Nullable="false" MaxLength="255" />
+    <NavigationProperty Name="DisabilityEvaluation" Relationship="HeadacheModel.VisitRecordDisabilityEvaluation" FromRole="VisitRecord" ToRole="DisabilityEvaluation" />
+    <NavigationProperty Name="GADQuestionaire" Relationship="HeadacheModel.VisitRecordGADQuestionaire" FromRole="VisitRecord" ToRole="GADQuestionaire" />
+    <NavigationProperty Name="PHQuestionaire" Relationship="HeadacheModel.VisitRecordPHQuestionaire" FromRole="VisitRecord" ToRole="PHQuestionaire" />
+    <NavigationProperty Name="SleepStatus" Relationship="HeadacheModel.VisitRecordSleepStatus" FromRole="VisitRecord" ToRole="SleepStatus" />
   </EntityType>
   <Association Name="DoctorAccountPatBasicInfor">
     <End Type="HeadacheModel.DoctorAccount" Role="DoctorAccount" Multiplicity="1" />
@@ -507,5 +531,78 @@
         <PropertyRef Name="PatBasicInforId" />
       </Dependent>
     </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PHQuestionaire">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Q1" Nullable="true" />
+    <Property Type="String" Name="Q2" Nullable="true" />
+    <Property Type="String" Name="Q3" Nullable="true" />
+    <Property Type="String" Name="Q4" Nullable="true" />
+    <Property Type="String" Name="Q5" Nullable="true" />
+    <Property Type="String" Name="Q6" Nullable="true" />
+    <Property Type="String" Name="Q7" Nullable="true" />
+    <Property Type="String" Name="Q8" Nullable="true" />
+    <Property Type="String" Name="Q9" Nullable="true" />
+    <Property Type="String" Name="TotalScore" Nullable="true" />
+    <NavigationProperty Name="VisitRecord" Relationship="HeadacheModel.VisitRecordPHQuestionaire" FromRole="PHQuestionaire" ToRole="VisitRecord" />
+  </EntityType>
+  <EntityType Name="GADQuestionaire">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="String" Name="Q1" Nullable="true" />
+    <Property Type="String" Name="Q2" Nullable="true" />
+    <Property Type="String" Name="Q3" Nullable="true" />
+    <Property Type="String" Name="Q4" Nullable="true" />
+    <Property Type="String" Name="Q5" Nullable="true" />
+    <Property Type="String" Name="Q6" Nullable="true" />
+    <Property Type="String" Name="Q7" Nullable="true" />
+    <Property Type="String" Name="TotalScore" Nullable="true" />
+    <NavigationProperty Name="VisitRecord" Relationship="HeadacheModel.VisitRecordGADQuestionaire" FromRole="GADQuestionaire" ToRole="VisitRecord" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="DisabilityEvaluation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="HeadacheDays" Nullable="true" />
+    <Property Type="String" Name="OutOfWorkDays" Nullable="true" />
+    <Property Type="String" Name="AffectWorkDays" Nullable="true" />
+    <Property Type="String" Name="OutOfHouseWorkDays" Nullable="true" />
+    <Property Type="String" Name="AffectHouseWorkDays" Nullable="true" />
+    <Property Type="String" Name="MissActivityDays" Nullable="true" />
+    <NavigationProperty Name="VisitRecord" Relationship="HeadacheModel.VisitRecordDisabilityEvaluation" FromRole="DisabilityEvaluation" ToRole="VisitRecord" />
+  </EntityType>
+  <Association Name="VisitRecordDisabilityEvaluation">
+    <End Type="HeadacheModel.VisitRecord" Role="VisitRecord" Multiplicity="1" />
+    <End Type="HeadacheModel.DisabilityEvaluation" Role="DisabilityEvaluation" Multiplicity="1" />
+  </Association>
+  <Association Name="VisitRecordGADQuestionaire">
+    <End Type="HeadacheModel.VisitRecord" Role="VisitRecord" Multiplicity="1" />
+    <End Type="HeadacheModel.GADQuestionaire" Role="GADQuestionaire" Multiplicity="1" />
+  </Association>
+  <Association Name="VisitRecordPHQuestionaire">
+    <End Type="HeadacheModel.VisitRecord" Role="VisitRecord" Multiplicity="1" />
+    <End Type="HeadacheModel.PHQuestionaire" Role="PHQuestionaire" Multiplicity="1" />
+  </Association>
+  <EntityType Name="SleepStatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="TimePerDay" Nullable="true" />
+    <Property Type="String" Name="DifficultFallingAsleep" Nullable="true" />
+    <Property Type="String" Name="Dreaminess" Nullable="true" />
+    <Property Type="String" Name="FestlessSleep" Nullable="true" />
+    <Property Type="String" Name="SleepyDayTime" Nullable="true" />
+    <NavigationProperty Name="VisitRecord" Relationship="HeadacheModel.VisitRecordSleepStatus" FromRole="SleepStatus" ToRole="VisitRecord" />
+  </EntityType>
+  <Association Name="VisitRecordSleepStatus">
+    <End Type="HeadacheModel.VisitRecord" Role="VisitRecord" Multiplicity="1" />
+    <End Type="HeadacheModel.SleepStatus" Role="SleepStatus" Multiplicity="1" />
   </Association>
 </Schema>

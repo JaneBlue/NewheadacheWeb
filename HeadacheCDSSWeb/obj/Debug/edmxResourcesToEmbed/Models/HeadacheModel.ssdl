@@ -17,6 +17,12 @@
     <EntitySet Name="PrecipitatingFactorSet" EntityType="HeadacheModel.Store.PrecipitatingFactorSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="MitigatingFactorsSet" EntityType="HeadacheModel.Store.MitigatingFactorsSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SecondaryHeadacheSymptomSet" EntityType="HeadacheModel.Store.SecondaryHeadacheSymptomSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PremonitorySymptom集" EntityType="HeadacheModel.Store.PremonitorySymptom集" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProphylaxisDrug集" EntityType="HeadacheModel.Store.ProphylaxisDrug集" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PHQuestionaire集" EntityType="HeadacheModel.Store.PHQuestionaire集" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GADQuestionaire集" EntityType="HeadacheModel.Store.GADQuestionaire集" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DisabilityEvaluation集" EntityType="HeadacheModel.Store.DisabilityEvaluation集" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SleepStatus集" EntityType="HeadacheModel.Store.SleepStatus集" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="DoctorAccountPatBasicInfor" Association="HeadacheModel.Store.DoctorAccountPatBasicInfor">
       <End Role="DoctorAccount" EntitySet="DoctorAccountSet" />
       <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
@@ -77,6 +83,30 @@
       <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
       <End Role="VisitRecord" EntitySet="VisitRecordSet" />
     </AssociationSet>
+    <AssociationSet Name="PrimaryHeadacheOverViewPremonitorySymptom" Association="HeadacheModel.Store.PrimaryHeadacheOverViewPremonitorySymptom">
+      <End Role="PrimaryHeadacheOverView" EntitySet="PrimaryHeadacheOverViewSet" />
+      <End Role="PremonitorySymptom" EntitySet="PremonitorySymptom集" />
+    </AssociationSet>
+    <AssociationSet Name="PatBasicInforProphylaxisDrug" Association="HeadacheModel.Store.PatBasicInforProphylaxisDrug">
+      <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
+      <End Role="ProphylaxisDrug" EntitySet="ProphylaxisDrug集" />
+    </AssociationSet>
+    <AssociationSet Name="VisitRecordDisabilityEvaluation" Association="HeadacheModel.Store.VisitRecordDisabilityEvaluation">
+      <End Role="VisitRecord" EntitySet="VisitRecordSet" />
+      <End Role="DisabilityEvaluation" EntitySet="DisabilityEvaluation集" />
+    </AssociationSet>
+    <AssociationSet Name="VisitRecordGADQuestionaire" Association="HeadacheModel.Store.VisitRecordGADQuestionaire">
+      <End Role="VisitRecord" EntitySet="VisitRecordSet" />
+      <End Role="GADQuestionaire" EntitySet="GADQuestionaire集" />
+    </AssociationSet>
+    <AssociationSet Name="VisitRecordPHQuestionaire" Association="HeadacheModel.Store.VisitRecordPHQuestionaire">
+      <End Role="VisitRecord" EntitySet="VisitRecordSet" />
+      <End Role="PHQuestionaire" EntitySet="PHQuestionaire集" />
+    </AssociationSet>
+    <AssociationSet Name="VisitRecordSleepStatus" Association="HeadacheModel.Store.VisitRecordSleepStatus">
+      <End Role="VisitRecord" EntitySet="VisitRecordSet" />
+      <End Role="SleepStatus" EntitySet="SleepStatus集" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="DoctorAccountSet">
     <Key>
@@ -126,6 +156,10 @@
     <Property Name="PreviousDiagnosis" Type="nvarchar(max)" Nullable="true" />
     <Property Name="PrescriptionNote" Type="nvarchar(max)" Nullable="true" />
     <Property Name="PatBasicInforId1" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="DisabilityEvaluation_ID" Type="int" Nullable="false" />
+    <Property Name="GADQuestionaire_ID" Type="int" Nullable="false" />
+    <Property Name="PHQuestionaire_ID" Type="int" Nullable="false" />
+    <Property Name="SleepStatus_ID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="PrimaryHeadacheOverViewSet">
     <Key>
@@ -256,6 +290,76 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Symptom" Type="nvarchar(max)" Nullable="false" />
     <Property Name="VisitRecordId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PremonitorySymptom集">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Symptom" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PrimaryHeadacheOverViewId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProphylaxisDrug集">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DrugName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="VisitRecordId" Type="int" Nullable="false" />
+    <Property Name="PatBasicInforId" Type="nvarchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="PHQuestionaire集">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Q1" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Q2" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Q3" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Q4" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Q5" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Q6" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Q7" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Q8" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Q9" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="TotalScore" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="GADQuestionaire集">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Q1" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Q2" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Q3" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Q4" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Q5" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Q6" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Q7" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="TotalScore" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DisabilityEvaluation集">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HeadacheDays" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="OutOfWorkDays" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="AffectWorkDays" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="OutOfHouseWorkDays" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="AffectHouseWorkDays" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="MissActivityDays" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="SleepStatus集">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TimePerDay" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DifficultFallingAsleep" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Dreaminess" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="FestlessSleep" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="SleepyDayTime" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <Association Name="DoctorAccountPatBasicInfor">
     <End Role="DoctorAccount" Type="HeadacheModel.Store.DoctorAccountSet" Multiplicity="1" />
@@ -434,6 +538,78 @@
       </Principal>
       <Dependent Role="VisitRecord">
         <PropertyRef Name="PatBasicInforId1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PrimaryHeadacheOverViewPremonitorySymptom">
+    <End Role="PrimaryHeadacheOverView" Type="HeadacheModel.Store.PrimaryHeadacheOverViewSet" Multiplicity="1" />
+    <End Role="PremonitorySymptom" Type="HeadacheModel.Store.PremonitorySymptom集" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrimaryHeadacheOverView">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PremonitorySymptom">
+        <PropertyRef Name="PrimaryHeadacheOverViewId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PatBasicInforProphylaxisDrug">
+    <End Role="PatBasicInfor" Type="HeadacheModel.Store.PatBasicInforSet" Multiplicity="1" />
+    <End Role="ProphylaxisDrug" Type="HeadacheModel.Store.ProphylaxisDrug集" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PatBasicInfor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProphylaxisDrug">
+        <PropertyRef Name="PatBasicInforId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VisitRecordDisabilityEvaluation">
+    <End Role="VisitRecord" Type="HeadacheModel.Store.VisitRecordSet" Multiplicity="*" />
+    <End Role="DisabilityEvaluation" Type="HeadacheModel.Store.DisabilityEvaluation集" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="DisabilityEvaluation">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="VisitRecord">
+        <PropertyRef Name="DisabilityEvaluation_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VisitRecordGADQuestionaire">
+    <End Role="VisitRecord" Type="HeadacheModel.Store.VisitRecordSet" Multiplicity="*" />
+    <End Role="GADQuestionaire" Type="HeadacheModel.Store.GADQuestionaire集" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="GADQuestionaire">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="VisitRecord">
+        <PropertyRef Name="GADQuestionaire_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VisitRecordPHQuestionaire">
+    <End Role="VisitRecord" Type="HeadacheModel.Store.VisitRecordSet" Multiplicity="*" />
+    <End Role="PHQuestionaire" Type="HeadacheModel.Store.PHQuestionaire集" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="PHQuestionaire">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="VisitRecord">
+        <PropertyRef Name="PHQuestionaire_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VisitRecordSleepStatus">
+    <End Role="VisitRecord" Type="HeadacheModel.Store.VisitRecordSet" Multiplicity="*" />
+    <End Role="SleepStatus" Type="HeadacheModel.Store.SleepStatus集" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="SleepStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="VisitRecord">
+        <PropertyRef Name="SleepStatus_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 07/22/2013 21:06:54
+-- Date Created: 07/23/2013 14:14:51
 -- Generated from EDMX file: D:\FGj\projectcode\NewheadacheWeb\HeadacheCDSSWeb\Models\HeadacheModel.edmx
 -- --------------------------------------------------
 
@@ -177,7 +177,11 @@ CREATE TABLE [dbo].[VisitRecordSet] (
     [Prescription] nvarchar(max)  NULL,
     [PreviousDiagnosis] nvarchar(max)  NULL,
     [PrescriptionNote] nvarchar(max)  NULL,
-    [PatBasicInforId1] nvarchar(255)  NOT NULL
+    [PatBasicInforId1] nvarchar(255)  NOT NULL,
+    [DisabilityEvaluation_ID] int  NOT NULL,
+    [GADQuestionaire_ID] int  NOT NULL,
+    [PHQuestionaire_ID] int  NOT NULL,
+    [SleepStatus_ID] int  NOT NULL
 );
 GO
 
@@ -328,6 +332,59 @@ CREATE TABLE [dbo].[ProphylaxisDrug集] (
 );
 GO
 
+-- Creating table 'PHQuestionaire集'
+CREATE TABLE [dbo].[PHQuestionaire集] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [Q1] nvarchar(max)  NULL,
+    [Q2] nvarchar(max)  NULL,
+    [Q3] nvarchar(max)  NULL,
+    [Q4] nvarchar(max)  NULL,
+    [Q5] nvarchar(max)  NULL,
+    [Q6] nvarchar(max)  NULL,
+    [Q7] nvarchar(max)  NULL,
+    [Q8] nvarchar(max)  NULL,
+    [Q9] nvarchar(max)  NULL,
+    [TotalScore] nvarchar(max)  NULL
+);
+GO
+
+-- Creating table 'GADQuestionaire集'
+CREATE TABLE [dbo].[GADQuestionaire集] (
+    [Q1] nvarchar(max)  NULL,
+    [Q2] nvarchar(max)  NULL,
+    [Q3] nvarchar(max)  NULL,
+    [Q4] nvarchar(max)  NULL,
+    [Q5] nvarchar(max)  NULL,
+    [Q6] nvarchar(max)  NULL,
+    [Q7] nvarchar(max)  NULL,
+    [TotalScore] nvarchar(max)  NULL,
+    [ID] int IDENTITY(1,1) NOT NULL
+);
+GO
+
+-- Creating table 'DisabilityEvaluation集'
+CREATE TABLE [dbo].[DisabilityEvaluation集] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [HeadacheDays] nvarchar(max)  NULL,
+    [OutOfWorkDays] nvarchar(max)  NULL,
+    [AffectWorkDays] nvarchar(max)  NULL,
+    [OutOfHouseWorkDays] nvarchar(max)  NULL,
+    [AffectHouseWorkDays] nvarchar(max)  NULL,
+    [MissActivityDays] nvarchar(max)  NULL
+);
+GO
+
+-- Creating table 'SleepStatus集'
+CREATE TABLE [dbo].[SleepStatus集] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [TimePerDay] nvarchar(max)  NULL,
+    [DifficultFallingAsleep] nvarchar(max)  NULL,
+    [Dreaminess] nvarchar(max)  NULL,
+    [FestlessSleep] nvarchar(max)  NULL,
+    [SleepyDayTime] nvarchar(max)  NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -437,6 +494,30 @@ GO
 -- Creating primary key on [ID] in table 'ProphylaxisDrug集'
 ALTER TABLE [dbo].[ProphylaxisDrug集]
 ADD CONSTRAINT [PK_ProphylaxisDrug集]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'PHQuestionaire集'
+ALTER TABLE [dbo].[PHQuestionaire集]
+ADD CONSTRAINT [PK_PHQuestionaire集]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'GADQuestionaire集'
+ALTER TABLE [dbo].[GADQuestionaire集]
+ADD CONSTRAINT [PK_GADQuestionaire集]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'DisabilityEvaluation集'
+ALTER TABLE [dbo].[DisabilityEvaluation集]
+ADD CONSTRAINT [PK_DisabilityEvaluation集]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'SleepStatus集'
+ALTER TABLE [dbo].[SleepStatus集]
+ADD CONSTRAINT [PK_SleepStatus集]
     PRIMARY KEY CLUSTERED ([ID] ASC);
 GO
 
@@ -680,6 +761,62 @@ ADD CONSTRAINT [FK_PatBasicInforProphylaxisDrug]
 CREATE INDEX [IX_FK_PatBasicInforProphylaxisDrug]
 ON [dbo].[ProphylaxisDrug集]
     ([PatBasicInforId]);
+GO
+
+-- Creating foreign key on [DisabilityEvaluation_ID] in table 'VisitRecordSet'
+ALTER TABLE [dbo].[VisitRecordSet]
+ADD CONSTRAINT [FK_VisitRecordDisabilityEvaluation]
+    FOREIGN KEY ([DisabilityEvaluation_ID])
+    REFERENCES [dbo].[DisabilityEvaluation集]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_VisitRecordDisabilityEvaluation'
+CREATE INDEX [IX_FK_VisitRecordDisabilityEvaluation]
+ON [dbo].[VisitRecordSet]
+    ([DisabilityEvaluation_ID]);
+GO
+
+-- Creating foreign key on [GADQuestionaire_ID] in table 'VisitRecordSet'
+ALTER TABLE [dbo].[VisitRecordSet]
+ADD CONSTRAINT [FK_VisitRecordGADQuestionaire]
+    FOREIGN KEY ([GADQuestionaire_ID])
+    REFERENCES [dbo].[GADQuestionaire集]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_VisitRecordGADQuestionaire'
+CREATE INDEX [IX_FK_VisitRecordGADQuestionaire]
+ON [dbo].[VisitRecordSet]
+    ([GADQuestionaire_ID]);
+GO
+
+-- Creating foreign key on [PHQuestionaire_ID] in table 'VisitRecordSet'
+ALTER TABLE [dbo].[VisitRecordSet]
+ADD CONSTRAINT [FK_VisitRecordPHQuestionaire]
+    FOREIGN KEY ([PHQuestionaire_ID])
+    REFERENCES [dbo].[PHQuestionaire集]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_VisitRecordPHQuestionaire'
+CREATE INDEX [IX_FK_VisitRecordPHQuestionaire]
+ON [dbo].[VisitRecordSet]
+    ([PHQuestionaire_ID]);
+GO
+
+-- Creating foreign key on [SleepStatus_ID] in table 'VisitRecordSet'
+ALTER TABLE [dbo].[VisitRecordSet]
+ADD CONSTRAINT [FK_VisitRecordSleepStatus]
+    FOREIGN KEY ([SleepStatus_ID])
+    REFERENCES [dbo].[SleepStatus集]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_VisitRecordSleepStatus'
+CREATE INDEX [IX_FK_VisitRecordSleepStatus]
+ON [dbo].[VisitRecordSet]
+    ([SleepStatus_ID]);
 GO
 
 -- --------------------------------------------------

@@ -274,7 +274,7 @@ namespace HeadacheCDSSWeb.Models
             rdata.Education = pt.Education;
             rdata.Job = pt.Job;
             rdata.Phone = pt.Phone;
-            rdata.ChiefDoctor = pt.ChiefDoctor;
+           
             if (pt.SimilarFamily != null)
             {
                 if (pt.SimilarFamily == true)
