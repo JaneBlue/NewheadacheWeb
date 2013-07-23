@@ -102,6 +102,36 @@
       <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
       <End Role="PreviousDrug" EntitySet="PreviousDrugSet" />
     </AssociationSet>
+    <EntitySet Name="HeadacheDiarySet" EntityType="HeadacheModel.HeadacheDiary" />
+    <EntitySet Name="HDheadacheplaceSet" EntityType="HeadacheModel.HDheadacheplace" />
+    <EntitySet Name="HDAcompanionSet" EntityType="HeadacheModel.HDAcompanion" />
+    <EntitySet Name="HDPrecipitatingFactorSet" EntityType="HeadacheModel.HDPrecipitatingFactor" />
+    <EntitySet Name="HDMitigatingFactorsSet" EntityType="HeadacheModel.HDMitigatingFactors" />
+    <EntitySet Name="HDHeadacheProdromeSet" EntityType="HeadacheModel.HDHeadacheProdrome" />
+    <AssociationSet Name="HeadacheDiaryHDAcompanion" Association="HeadacheModel.HeadacheDiaryHDAcompanion">
+      <End Role="HeadacheDiary" EntitySet="HeadacheDiarySet" />
+      <End Role="HDAcompanion" EntitySet="HDAcompanionSet" />
+    </AssociationSet>
+    <AssociationSet Name="HeadacheDiaryHDheadacheplace" Association="HeadacheModel.HeadacheDiaryHDheadacheplace">
+      <End Role="HeadacheDiary" EntitySet="HeadacheDiarySet" />
+      <End Role="HDheadacheplace" EntitySet="HDheadacheplaceSet" />
+    </AssociationSet>
+    <AssociationSet Name="HeadacheDiaryHDHeadacheProdrome" Association="HeadacheModel.HeadacheDiaryHDHeadacheProdrome">
+      <End Role="HeadacheDiary" EntitySet="HeadacheDiarySet" />
+      <End Role="HDHeadacheProdrome" EntitySet="HDHeadacheProdromeSet" />
+    </AssociationSet>
+    <AssociationSet Name="HeadacheDiaryHDMitigatingFactors" Association="HeadacheModel.HeadacheDiaryHDMitigatingFactors">
+      <End Role="HeadacheDiary" EntitySet="HeadacheDiarySet" />
+      <End Role="HDMitigatingFactors" EntitySet="HDMitigatingFactorsSet" />
+    </AssociationSet>
+    <AssociationSet Name="HeadacheDiaryHDPrecipitatingFactor" Association="HeadacheModel.HeadacheDiaryHDPrecipitatingFactor">
+      <End Role="HeadacheDiary" EntitySet="HeadacheDiarySet" />
+      <End Role="HDPrecipitatingFactor" EntitySet="HDPrecipitatingFactorSet" />
+    </AssociationSet>
+    <AssociationSet Name="PatBasicInforHeadacheDiary" Association="HeadacheModel.PatBasicInforHeadacheDiary">
+      <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
+      <End Role="HeadacheDiary" EntitySet="HeadacheDiarySet" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="DoctorAccount">
     <Key>
@@ -138,6 +168,7 @@
     <Property Type="String" Name="Weight" Nullable="false" />
     <Property Type="String" Name="Height" Nullable="false" />
     <NavigationProperty Name="PreviousDrug" Relationship="HeadacheModel.PatBasicInforPreviousDrug" FromRole="PatBasicInfor" ToRole="PreviousDrug" />
+    <NavigationProperty Name="HeadacheDiary" Relationship="HeadacheModel.PatBasicInforHeadacheDiary" FromRole="PatBasicInfor" ToRole="HeadacheDiary" />
   </EntityType>
   <EntityType Name="VisitRecord">
     <Key>
@@ -576,6 +607,140 @@
       </Principal>
       <Dependent Role="PreviousDrug">
         <PropertyRef Name="PatBasicInforId1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="HeadacheDiary">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="RecordDate" Nullable="false" />
+    <Property Type="String" Name="HeadacheTime" Nullable="false" />
+    <Property Type="String" Name="HeadacheType" Nullable="false" />
+    <NavigationProperty Name="HDAcompanion" Relationship="HeadacheModel.HeadacheDiaryHDAcompanion" FromRole="HeadacheDiary" ToRole="HDAcompanion" />
+    <NavigationProperty Name="HDheadacheplace" Relationship="HeadacheModel.HeadacheDiaryHDheadacheplace" FromRole="HeadacheDiary" ToRole="HDheadacheplace" />
+    <NavigationProperty Name="HDHeadacheProdrome" Relationship="HeadacheModel.HeadacheDiaryHDHeadacheProdrome" FromRole="HeadacheDiary" ToRole="HDHeadacheProdrome" />
+    <NavigationProperty Name="HDMitigatingFactors" Relationship="HeadacheModel.HeadacheDiaryHDMitigatingFactors" FromRole="HeadacheDiary" ToRole="HDMitigatingFactors" />
+    <NavigationProperty Name="HDPrecipitatingFactor" Relationship="HeadacheModel.HeadacheDiaryHDPrecipitatingFactor" FromRole="HeadacheDiary" ToRole="HDPrecipitatingFactor" />
+    <NavigationProperty Name="PatBasicInfor" Relationship="HeadacheModel.PatBasicInforHeadacheDiary" FromRole="HeadacheDiary" ToRole="PatBasicInfor" />
+    <Property Type="String" Name="PatBasicInforId" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="HeadacheDegree" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HDheadacheplace">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="postion" Nullable="false" />
+    <NavigationProperty Name="HeadacheDiary" Relationship="HeadacheModel.HeadacheDiaryHDheadacheplace" FromRole="HDheadacheplace" ToRole="HeadacheDiary" />
+    <Property Type="Int32" Name="HeadacheDiaryID" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HDAcompanion">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="symptom" Nullable="false" />
+    <NavigationProperty Name="HeadacheDiary" Relationship="HeadacheModel.HeadacheDiaryHDAcompanion" FromRole="HDAcompanion" ToRole="HeadacheDiary" />
+    <Property Type="Int32" Name="HeadacheDiaryID" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HDPrecipitatingFactor">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="factor" Nullable="false" />
+    <NavigationProperty Name="HeadacheDiary" Relationship="HeadacheModel.HeadacheDiaryHDPrecipitatingFactor" FromRole="HDPrecipitatingFactor" ToRole="HeadacheDiary" />
+    <Property Type="Int32" Name="HeadacheDiaryID" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HDMitigatingFactors">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="factor" Nullable="false" />
+    <NavigationProperty Name="HeadacheDiary" Relationship="HeadacheModel.HeadacheDiaryHDMitigatingFactors" FromRole="HDMitigatingFactors" ToRole="HeadacheDiary" />
+    <Property Type="Int32" Name="HeadacheDiaryID" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HDHeadacheProdrome">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="symptom" Nullable="false" />
+    <NavigationProperty Name="HeadacheDiary" Relationship="HeadacheModel.HeadacheDiaryHDHeadacheProdrome" FromRole="HDHeadacheProdrome" ToRole="HeadacheDiary" />
+    <Property Type="Int32" Name="HeadacheDiaryID" Nullable="false" />
+  </EntityType>
+  <Association Name="HeadacheDiaryHDAcompanion">
+    <End Type="HeadacheModel.HeadacheDiary" Role="HeadacheDiary" Multiplicity="1" />
+    <End Type="HeadacheModel.HDAcompanion" Role="HDAcompanion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HeadacheDiary">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HDAcompanion">
+        <PropertyRef Name="HeadacheDiaryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HeadacheDiaryHDheadacheplace">
+    <End Type="HeadacheModel.HeadacheDiary" Role="HeadacheDiary" Multiplicity="1" />
+    <End Type="HeadacheModel.HDheadacheplace" Role="HDheadacheplace" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HeadacheDiary">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HDheadacheplace">
+        <PropertyRef Name="HeadacheDiaryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HeadacheDiaryHDHeadacheProdrome">
+    <End Type="HeadacheModel.HeadacheDiary" Role="HeadacheDiary" Multiplicity="1" />
+    <End Type="HeadacheModel.HDHeadacheProdrome" Role="HDHeadacheProdrome" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HeadacheDiary">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HDHeadacheProdrome">
+        <PropertyRef Name="HeadacheDiaryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HeadacheDiaryHDMitigatingFactors">
+    <End Type="HeadacheModel.HeadacheDiary" Role="HeadacheDiary" Multiplicity="1" />
+    <End Type="HeadacheModel.HDMitigatingFactors" Role="HDMitigatingFactors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HeadacheDiary">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HDMitigatingFactors">
+        <PropertyRef Name="HeadacheDiaryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HeadacheDiaryHDPrecipitatingFactor">
+    <End Type="HeadacheModel.HeadacheDiary" Role="HeadacheDiary" Multiplicity="1" />
+    <End Type="HeadacheModel.HDPrecipitatingFactor" Role="HDPrecipitatingFactor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HeadacheDiary">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HDPrecipitatingFactor">
+        <PropertyRef Name="HeadacheDiaryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PatBasicInforHeadacheDiary">
+    <End Type="HeadacheModel.PatBasicInfor" Role="PatBasicInfor" Multiplicity="1" />
+    <End Type="HeadacheModel.HeadacheDiary" Role="HeadacheDiary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PatBasicInfor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="HeadacheDiary">
+        <PropertyRef Name="PatBasicInforId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

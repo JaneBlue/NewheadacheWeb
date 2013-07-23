@@ -134,6 +134,10 @@ namespace HeadacheCDSSWeb.Models
                     vr.MedicationAdvice = vdata.MAdvice;
                     vr.VisitDate = DateTime.Now.Date;
                     vr.PrimaryHeadachaOverView = vdata.PHeadacheOverview;
+                    vr.GADQuestionaire = vdata.GADquestionaire;
+                    vr.DisabilityEvaluation = vdata.Disabilityevaluation;
+                    vr.PHQuestionaire = vdata.PHquestionaire;
+                    vr.SleepStatus = vdata.Sleepstatus;
                     vr.PatBasicInforId = PatID;
                     pt.VisitRecord.Add(vr);
                 }
@@ -182,6 +186,10 @@ namespace HeadacheCDSSWeb.Models
                     ObjectMapper.CopyProperties(vdata.visitrecord, vr);
                     ObjectMapper.CopyProperties(vdata.PHeadacheOverview, vr.PrimaryHeadachaOverView);
                     vr.PrimaryHeadachaOverView.VisitRecord = vr;
+                    ObjectMapper.CopyProperties(vdata.GADquestionaire, vr.GADQuestionaire);
+                    ObjectMapper.CopyProperties(vdata.PHquestionaire, vr.PHQuestionaire);
+                    ObjectMapper.CopyProperties(vdata.Disabilityevaluation, vr.DisabilityEvaluation);
+                    ObjectMapper.CopyProperties(vdata.Sleepstatus, vr.SleepStatus);
                     //  vr = vdata.visitrecord;
                     //vr.PrimaryHeadachaOverView = vdata.PHeadacheOverview;
                     vr.PatBasicInforId = PatID;
@@ -252,6 +260,27 @@ namespace HeadacheCDSSWeb.Models
                 {
                     context.SecondaryHeadacheSymptomSet.Remove(r.SecondaryHeadacheSymptom.FirstOrDefault());
                 }
+                //add 2013/7/23
+                if (r.GADQuestionaire != null)
+                {
+                    context.GADQuestionaireSet.Remove(r.GADQuestionaire);
+                }
+                if (r.GADQuestionaire != null)
+                {
+                    context.GADQuestionaireSet.Remove(r.GADQuestionaire);
+                }
+                if (r.PHQuestionaire!= null)
+                {
+                    context.PHQuestionaireSet.Remove(r.PHQuestionaire);
+                }
+                if (r.SleepStatus != null)
+                {
+                    context.SleepStatusSet.Remove(r.SleepStatus);
+                }
+                if (r.DisabilityEvaluation != null)
+                {
+                    context.DisabilityEvaluationSet.Remove(r.DisabilityEvaluation);
+                }
                 // visitrecord 内容删除
                 context.VisitRecordSet.Remove(r);
                 context.SaveChanges();
@@ -274,7 +303,8 @@ namespace HeadacheCDSSWeb.Models
             rdata.Education = pt.Education;
             rdata.Job = pt.Job;
             rdata.Phone = pt.Phone;
-           
+            rdata.Weight = pt.Weight;
+            rdata.Height = pt.Height;
             if (pt.SimilarFamily != null)
             {
                 if (pt.SimilarFamily == true)
@@ -400,6 +430,24 @@ namespace HeadacheCDSSWeb.Models
                             f.FDetail = pfactor.FactorDetail;
                             rdata.precipitatingfactor.Add(f);
                         }
+                    }
+
+                    //add 2013/7/23
+                    if (vr.GADQuestionaire != null)
+                    {
+                        ObjectMapper.CopyProperties(vr.GADQuestionaire, rdata.gdaquestionaire);
+                    }
+                    if (vr.PHQuestionaire != null)
+                    {
+                        ObjectMapper.CopyProperties(vr.PHQuestionaire, rdata.phquestionaire);
+                    }
+                    if (vr.SleepStatus != null)
+                    {
+                        ObjectMapper.CopyProperties(vr.SleepStatus, rdata.sleepconditon);
+                    }
+                    if (vr.DisabilityEvaluation != null)
+                    {
+                        ObjectMapper.CopyProperties(vr.DisabilityEvaluation, rdata.disablityevaluation);
                     }
                 }
 

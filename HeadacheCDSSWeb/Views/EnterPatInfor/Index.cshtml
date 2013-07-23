@@ -77,8 +77,8 @@
                     <li><span>姓名</span>@Html.EditorFor(model => model.Name)<p>*</p></li>
                     <li><span>性别</span>@Html.DropDownListFor(model => model.Sex, @items) <p>*</p></li>
                     <li><span>年龄</span> @Html.EditorFor(model => model.Age)<p>*</p></li>
-                    <li><span>身高</span><input type="text" name="门诊号" /></li>
-                    <li><span>体重</span>@Html.EditorFor(model => model.ChiefDoctor) </li>
+                    <li><span>身高</span>@Html.EditorFor(model => model.Height)</li>
+                    <li><span>体重</span>@Html.EditorFor(model => model.Weight) </li>
                     <li><span>教育水平</span>@Html.DropDownListFor(model => model.Education, @education)</li>
                     <li><span>职业</span>@Html.EditorFor(model => model.Job) </li>
                     <li><span>手机</span>@Html.EditorFor(model => model.Phone)<p>*</p></li>
