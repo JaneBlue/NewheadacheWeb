@@ -87,10 +87,28 @@
     <Compile Include="Models\GADQuestionaire.cs">
       <DependentUpon>HeadacheDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\HDAcompanion.cs">
+      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HDheadacheplace.cs">
+      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HDHeadacheProdrome.cs">
+      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HDMitigatingFactors.cs">
+      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HDPrecipitatingFactor.cs">
+      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\HeadacheAccompany.cs">
       <DependentUpon>HeadacheDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HeadacheDiagnosis.cs" />
+    <Compile Include="Models\HeadacheDiary.cs">
+      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\HeadacheFamilyMember.cs">
       <DependentUpon>HeadacheDataModel.tt</DependentUpon>
     </Compile>
