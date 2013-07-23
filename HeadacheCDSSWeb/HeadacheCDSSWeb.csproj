@@ -136,9 +136,6 @@
     <Compile Include="Models\PrimaryHeadacheOverView.cs">
       <DependentUpon>HeadacheDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ProphylaxisDrug.cs">
-      <DependentUpon>HeadacheDataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\ReportData.cs" />
     <Compile Include="Models\SecondaryHeadacheSymptom.cs">
       <DependentUpon>HeadacheDataModel.tt</DependentUpon>

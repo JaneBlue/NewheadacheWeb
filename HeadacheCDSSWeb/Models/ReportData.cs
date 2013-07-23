@@ -33,7 +33,8 @@ namespace HeadacheCDSSWeb.Models
         public string Phone { get; set; }
         public string Address { get; set; }
         public string Identity { get; set; }
-        public string ChiefDoctor { get; set; }
+        public string Weight { get; set; }
+        public string Height { get; set; }
         public bool SimilarFamily { get; set; }
         public List<string> Hfamilymember;
         public List<string> Ofamilydisease;
@@ -62,6 +63,10 @@ namespace HeadacheCDSSWeb.Models
         public List<HMedicine> medicationadvice{get;set;}
         public HeadacheOverview headacheoverview{get;set;}
         public lifestyle  patlifestyle{get;set;}
+        public sleepstatus sleepconditon{get;set;}
+        public PHQ phquestionaire{get;set;}
+        public GADQ gdaquestionaire { get; set; }
+        public Disabilityevaluation disablityevaluation{get;set;}
     }
    public class HMedicine
     {
@@ -111,5 +116,44 @@ namespace HeadacheCDSSWeb.Models
         public string CoffePerDay { get; set; }
         public Nullable<bool> ExerciseOften { get; set; }
         
+    }
+    public class sleepstatus
+    {
+        public string TimePerDay { get; set; }
+        public string DifficultFallingAsleep { get; set; }
+        public string Dreaminess { get; set; }
+        public string FestlessSleep { get; set; }
+        public string SleepyDayTime { get; set; }
+    }
+    public class PHQ{
+        public string Q1 { get; set; }
+        public string Q2 { get; set; }
+        public string Q3 { get; set; }
+        public string Q4 { get; set; }
+        public string Q5 { get; set; }
+        public string Q6 { get; set; }
+        public string Q7 { get; set; }
+        public string Q8 { get; set; }
+        public string Q9 { get; set; }
+        public string TotalScore { get; set; }
+    }
+    public class GADQ{
+        public string Q1 { get; set; }
+        public string Q2 { get; set; }
+        public string Q3 { get; set; }
+        public string Q4 { get; set; }
+        public string Q5 { get; set; }
+        public string Q6 { get; set; }
+        public string Q7 { get; set; }
+        public string TotalScore { get; set; }
+    }
+    public class Disabilityevaluation{
+        public string HeadacheDays { get; set; }
+        public string OutOfWorkDays { get; set; }
+        public string AffectWorkDays { get; set; }
+        public string OutOfHouseWorkDays { get; set; }
+        public string AffectHouseWorkDays { get; set; }
+        public string MissActivityDays { get; set; }
+
     }
 }

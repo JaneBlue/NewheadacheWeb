@@ -121,6 +121,8 @@
           <ScalarProperty Name="DayAmoutnPerM" ColumnName="DayAmoutnPerM" />
           <ScalarProperty Name="MonthTotalAmount" ColumnName="MonthTotalAmount" />
           <ScalarProperty Name="PatBasicInforId" ColumnName="PatBasicInforId" />
+          <ScalarProperty Name="DrugApplication" ColumnName="DrugApplication" />
+          <ScalarProperty Name="PatBasicInforId1" ColumnName="PatBasicInforId1" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -203,19 +205,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ProphylaxisDrug集">
-      <EntityTypeMapping TypeName="IsTypeOf(HeadacheModel.ProphylaxisDrug)">
-        <MappingFragment StoreEntitySet="ProphylaxisDrug集">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="DrugName" ColumnName="DrugName" />
-          <ScalarProperty Name="VisitRecordId" ColumnName="VisitRecordId" />
-          <ScalarProperty Name="PatBasicInforId" ColumnName="PatBasicInforId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PHQuestionaire集">
+    <EntitySetMapping Name="PHQuestionaireSet">
       <EntityTypeMapping TypeName="IsTypeOf(HeadacheModel.PHQuestionaire)">
-        <MappingFragment StoreEntitySet="PHQuestionaire集">
+        <MappingFragment StoreEntitySet="PHQuestionaireSet">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Q1" ColumnName="Q1" />
           <ScalarProperty Name="Q2" ColumnName="Q2" />
@@ -230,9 +222,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="GADQuestionaire集">
+    <EntitySetMapping Name="GADQuestionaireSet">
       <EntityTypeMapping TypeName="IsTypeOf(HeadacheModel.GADQuestionaire)">
-        <MappingFragment StoreEntitySet="GADQuestionaire集">
+        <MappingFragment StoreEntitySet="GADQuestionaireSet">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Q1" ColumnName="Q1" />
           <ScalarProperty Name="Q2" ColumnName="Q2" />
@@ -245,9 +237,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DisabilityEvaluation集">
+    <EntitySetMapping Name="DisabilityEvaluationSet">
       <EntityTypeMapping TypeName="IsTypeOf(HeadacheModel.DisabilityEvaluation)">
-        <MappingFragment StoreEntitySet="DisabilityEvaluation集">
+        <MappingFragment StoreEntitySet="DisabilityEvaluationSet">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="HeadacheDays" ColumnName="HeadacheDays" />
           <ScalarProperty Name="OutOfWorkDays" ColumnName="OutOfWorkDays" />
@@ -258,9 +250,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SleepStatus集">
+    <EntitySetMapping Name="SleepStatusSet">
       <EntityTypeMapping TypeName="IsTypeOf(HeadacheModel.SleepStatus)">
-        <MappingFragment StoreEntitySet="SleepStatus集">
+        <MappingFragment StoreEntitySet="SleepStatusSet">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="TimePerDay" ColumnName="TimePerDay" />
           <ScalarProperty Name="DifficultFallingAsleep" ColumnName="DifficultFallingAsleep" />
@@ -286,36 +278,36 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="VisitRecordDisabilityEvaluation" TypeName="HeadacheModel.VisitRecordDisabilityEvaluation" StoreEntitySet="VisitRecordSet">
-      <EndProperty Name="DisabilityEvaluation">
-        <ScalarProperty Name="ID" ColumnName="DisabilityEvaluation_ID" />
-      </EndProperty>
+    <AssociationSetMapping Name="VisitRecordGADQuestionaire" TypeName="HeadacheModel.VisitRecordGADQuestionaire" StoreEntitySet="GADQuestionaireSet">
       <EndProperty Name="VisitRecord">
-        <ScalarProperty Name="Id" ColumnName="Id" />
+        <ScalarProperty Name="Id" ColumnName="VisitRecord_Id" />
       </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="VisitRecordGADQuestionaire" TypeName="HeadacheModel.VisitRecordGADQuestionaire" StoreEntitySet="VisitRecordSet">
       <EndProperty Name="GADQuestionaire">
-        <ScalarProperty Name="ID" ColumnName="GADQuestionaire_ID" />
-      </EndProperty>
-      <EndProperty Name="VisitRecord">
-        <ScalarProperty Name="Id" ColumnName="Id" />
+        <ScalarProperty Name="ID" ColumnName="ID" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="VisitRecordPHQuestionaire" TypeName="HeadacheModel.VisitRecordPHQuestionaire" StoreEntitySet="VisitRecordSet">
+    <AssociationSetMapping Name="VisitRecordPHQuestionaire" TypeName="HeadacheModel.VisitRecordPHQuestionaire" StoreEntitySet="PHQuestionaireSet">
+      <EndProperty Name="VisitRecord">
+        <ScalarProperty Name="Id" ColumnName="VisitRecord_Id" />
+      </EndProperty>
       <EndProperty Name="PHQuestionaire">
-        <ScalarProperty Name="ID" ColumnName="PHQuestionaire_ID" />
-      </EndProperty>
-      <EndProperty Name="VisitRecord">
-        <ScalarProperty Name="Id" ColumnName="Id" />
+        <ScalarProperty Name="ID" ColumnName="ID" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="VisitRecordSleepStatus" TypeName="HeadacheModel.VisitRecordSleepStatus" StoreEntitySet="VisitRecordSet">
-      <EndProperty Name="SleepStatus">
-        <ScalarProperty Name="ID" ColumnName="SleepStatus_ID" />
-      </EndProperty>
+    <AssociationSetMapping Name="VisitRecordSleepStatus" TypeName="HeadacheModel.VisitRecordSleepStatus" StoreEntitySet="SleepStatusSet">
       <EndProperty Name="VisitRecord">
-        <ScalarProperty Name="Id" ColumnName="Id" />
+        <ScalarProperty Name="Id" ColumnName="VisitRecord_Id" />
+      </EndProperty>
+      <EndProperty Name="SleepStatus">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="VisitRecordDisabilityEvaluation" TypeName="HeadacheModel.VisitRecordDisabilityEvaluation" StoreEntitySet="DisabilityEvaluationSet">
+      <EndProperty Name="VisitRecord">
+        <ScalarProperty Name="Id" ColumnName="VisitRecord_Id" />
+      </EndProperty>
+      <EndProperty Name="DisabilityEvaluation">
+        <ScalarProperty Name="ID" ColumnName="ID" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

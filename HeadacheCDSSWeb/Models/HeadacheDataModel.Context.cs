@@ -42,10 +42,9 @@ namespace HeadacheCDSSWeb.Models
         public DbSet<MitigatingFactors> MitigatingFactorsSet { get; set; }
         public DbSet<SecondaryHeadacheSymptom> SecondaryHeadacheSymptomSet { get; set; }
         public DbSet<PremonitorySymptom> PremonitorySymptom集 { get; set; }
-        public DbSet<ProphylaxisDrug> ProphylaxisDrug集 { get; set; }
-        public DbSet<PHQuestionaire> PHQuestionaire集 { get; set; }
-        public DbSet<GADQuestionaire> GADQuestionaire集 { get; set; }
-        public DbSet<DisabilityEvaluation> DisabilityEvaluation集 { get; set; }
-        public DbSet<SleepStatus> SleepStatus集 { get; set; }
+        public DbSet<PHQuestionaire> PHQuestionaireSet { get; set; }
+        public DbSet<GADQuestionaire> GADQuestionaireSet { get; set; }
+        public DbSet<DisabilityEvaluation> DisabilityEvaluationSet { get; set; }
+        public DbSet<SleepStatus> SleepStatusSet { get; set; }
     }
 }

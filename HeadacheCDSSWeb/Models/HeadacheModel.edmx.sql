@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 07/23/2013 14:14:51
+-- Date Created: 07/23/2013 14:54:13
 -- Generated from EDMX file: D:\FGj\projectcode\NewheadacheWeb\HeadacheCDSSWeb\Models\HeadacheModel.edmx
 -- --------------------------------------------------
 
@@ -35,9 +35,6 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_HeadachaOverViewPrecipitatingFactor]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[PrecipitatingFactorSet] DROP CONSTRAINT [FK_HeadachaOverViewPrecipitatingFactor];
 GO
-IF OBJECT_ID(N'[dbo].[FK_PatBasicInforPreviousDrug]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[PreviousDrugSet] DROP CONSTRAINT [FK_PatBasicInforPreviousDrug];
-GO
 IF OBJECT_ID(N'[dbo].[FK_PatBasicInforPreviousExam]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[PreviousExamSet] DROP CONSTRAINT [FK_PatBasicInforPreviousExam];
 GO
@@ -65,8 +62,20 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_PrimaryHeadacheOverViewPremonitorySymptom]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[PremonitorySymptom集] DROP CONSTRAINT [FK_PrimaryHeadacheOverViewPremonitorySymptom];
 GO
-IF OBJECT_ID(N'[dbo].[FK_PatBasicInforProphylaxisDrug]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ProphylaxisDrug集] DROP CONSTRAINT [FK_PatBasicInforProphylaxisDrug];
+IF OBJECT_ID(N'[dbo].[FK_VisitRecordGADQuestionaire]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[GADQuestionaireSet] DROP CONSTRAINT [FK_VisitRecordGADQuestionaire];
+GO
+IF OBJECT_ID(N'[dbo].[FK_VisitRecordPHQuestionaire]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PHQuestionaireSet] DROP CONSTRAINT [FK_VisitRecordPHQuestionaire];
+GO
+IF OBJECT_ID(N'[dbo].[FK_VisitRecordSleepStatus]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SleepStatusSet] DROP CONSTRAINT [FK_VisitRecordSleepStatus];
+GO
+IF OBJECT_ID(N'[dbo].[FK_VisitRecordDisabilityEvaluation]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DisabilityEvaluationSet] DROP CONSTRAINT [FK_VisitRecordDisabilityEvaluation];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PatBasicInforPreviousDrug]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PreviousDrugSet] DROP CONSTRAINT [FK_PatBasicInforPreviousDrug];
 GO
 
 -- --------------------------------------------------
@@ -124,8 +133,17 @@ GO
 IF OBJECT_ID(N'[dbo].[PremonitorySymptom集]', 'U') IS NOT NULL
     DROP TABLE [dbo].[PremonitorySymptom集];
 GO
-IF OBJECT_ID(N'[dbo].[ProphylaxisDrug集]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[ProphylaxisDrug集];
+IF OBJECT_ID(N'[dbo].[PHQuestionaireSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PHQuestionaireSet];
+GO
+IF OBJECT_ID(N'[dbo].[GADQuestionaireSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[GADQuestionaireSet];
+GO
+IF OBJECT_ID(N'[dbo].[DisabilityEvaluationSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[DisabilityEvaluationSet];
+GO
+IF OBJECT_ID(N'[dbo].[SleepStatusSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SleepStatusSet];
 GO
 
 -- --------------------------------------------------
@@ -177,11 +195,7 @@ CREATE TABLE [dbo].[VisitRecordSet] (
     [Prescription] nvarchar(max)  NULL,
     [PreviousDiagnosis] nvarchar(max)  NULL,
     [PrescriptionNote] nvarchar(max)  NULL,
-    [PatBasicInforId1] nvarchar(255)  NOT NULL,
-    [DisabilityEvaluation_ID] int  NOT NULL,
-    [GADQuestionaire_ID] int  NOT NULL,
-    [PHQuestionaire_ID] int  NOT NULL,
-    [SleepStatus_ID] int  NOT NULL
+    [PatBasicInforId1] nvarchar(255)  NOT NULL
 );
 GO
 
@@ -248,7 +262,9 @@ CREATE TABLE [dbo].[PreviousDrugSet] (
     [DrugName] nvarchar(max)  NOT NULL,
     [DayAmoutnPerM] nvarchar(max)  NOT NULL,
     [MonthTotalAmount] nvarchar(max)  NOT NULL,
-    [PatBasicInforId] nvarchar(255)  NOT NULL
+    [PatBasicInforId] nvarchar(255)  NOT NULL,
+    [DrugApplication] nvarchar(max)  NULL,
+    [PatBasicInforId1] nvarchar(255)  NOT NULL
 );
 GO
 
@@ -323,17 +339,8 @@ CREATE TABLE [dbo].[PremonitorySymptom集] (
 );
 GO
 
--- Creating table 'ProphylaxisDrug集'
-CREATE TABLE [dbo].[ProphylaxisDrug集] (
-    [ID] int IDENTITY(1,1) NOT NULL,
-    [DrugName] nvarchar(max)  NOT NULL,
-    [VisitRecordId] int  NOT NULL,
-    [PatBasicInforId] nvarchar(255)  NOT NULL
-);
-GO
-
--- Creating table 'PHQuestionaire集'
-CREATE TABLE [dbo].[PHQuestionaire集] (
+-- Creating table 'PHQuestionaireSet'
+CREATE TABLE [dbo].[PHQuestionaireSet] (
     [ID] int IDENTITY(1,1) NOT NULL,
     [Q1] nvarchar(max)  NULL,
     [Q2] nvarchar(max)  NULL,
@@ -344,12 +351,13 @@ CREATE TABLE [dbo].[PHQuestionaire集] (
     [Q7] nvarchar(max)  NULL,
     [Q8] nvarchar(max)  NULL,
     [Q9] nvarchar(max)  NULL,
-    [TotalScore] nvarchar(max)  NULL
+    [TotalScore] nvarchar(max)  NULL,
+    [VisitRecord_Id] int  NOT NULL
 );
 GO
 
--- Creating table 'GADQuestionaire集'
-CREATE TABLE [dbo].[GADQuestionaire集] (
+-- Creating table 'GADQuestionaireSet'
+CREATE TABLE [dbo].[GADQuestionaireSet] (
     [Q1] nvarchar(max)  NULL,
     [Q2] nvarchar(max)  NULL,
     [Q3] nvarchar(max)  NULL,
@@ -358,30 +366,33 @@ CREATE TABLE [dbo].[GADQuestionaire集] (
     [Q6] nvarchar(max)  NULL,
     [Q7] nvarchar(max)  NULL,
     [TotalScore] nvarchar(max)  NULL,
-    [ID] int IDENTITY(1,1) NOT NULL
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [VisitRecord_Id] int  NOT NULL
 );
 GO
 
--- Creating table 'DisabilityEvaluation集'
-CREATE TABLE [dbo].[DisabilityEvaluation集] (
+-- Creating table 'DisabilityEvaluationSet'
+CREATE TABLE [dbo].[DisabilityEvaluationSet] (
     [ID] int IDENTITY(1,1) NOT NULL,
     [HeadacheDays] nvarchar(max)  NULL,
     [OutOfWorkDays] nvarchar(max)  NULL,
     [AffectWorkDays] nvarchar(max)  NULL,
     [OutOfHouseWorkDays] nvarchar(max)  NULL,
     [AffectHouseWorkDays] nvarchar(max)  NULL,
-    [MissActivityDays] nvarchar(max)  NULL
+    [MissActivityDays] nvarchar(max)  NULL,
+    [VisitRecord_Id] int  NOT NULL
 );
 GO
 
--- Creating table 'SleepStatus集'
-CREATE TABLE [dbo].[SleepStatus集] (
+-- Creating table 'SleepStatusSet'
+CREATE TABLE [dbo].[SleepStatusSet] (
     [ID] int IDENTITY(1,1) NOT NULL,
     [TimePerDay] nvarchar(max)  NULL,
     [DifficultFallingAsleep] nvarchar(max)  NULL,
     [Dreaminess] nvarchar(max)  NULL,
     [FestlessSleep] nvarchar(max)  NULL,
-    [SleepyDayTime] nvarchar(max)  NULL
+    [SleepyDayTime] nvarchar(max)  NULL,
+    [VisitRecord_Id] int  NOT NULL
 );
 GO
 
@@ -491,33 +502,27 @@ ADD CONSTRAINT [PK_PremonitorySymptom集]
     PRIMARY KEY CLUSTERED ([ID] ASC);
 GO
 
--- Creating primary key on [ID] in table 'ProphylaxisDrug集'
-ALTER TABLE [dbo].[ProphylaxisDrug集]
-ADD CONSTRAINT [PK_ProphylaxisDrug集]
+-- Creating primary key on [ID] in table 'PHQuestionaireSet'
+ALTER TABLE [dbo].[PHQuestionaireSet]
+ADD CONSTRAINT [PK_PHQuestionaireSet]
     PRIMARY KEY CLUSTERED ([ID] ASC);
 GO
 
--- Creating primary key on [ID] in table 'PHQuestionaire集'
-ALTER TABLE [dbo].[PHQuestionaire集]
-ADD CONSTRAINT [PK_PHQuestionaire集]
+-- Creating primary key on [ID] in table 'GADQuestionaireSet'
+ALTER TABLE [dbo].[GADQuestionaireSet]
+ADD CONSTRAINT [PK_GADQuestionaireSet]
     PRIMARY KEY CLUSTERED ([ID] ASC);
 GO
 
--- Creating primary key on [ID] in table 'GADQuestionaire集'
-ALTER TABLE [dbo].[GADQuestionaire集]
-ADD CONSTRAINT [PK_GADQuestionaire集]
+-- Creating primary key on [ID] in table 'DisabilityEvaluationSet'
+ALTER TABLE [dbo].[DisabilityEvaluationSet]
+ADD CONSTRAINT [PK_DisabilityEvaluationSet]
     PRIMARY KEY CLUSTERED ([ID] ASC);
 GO
 
--- Creating primary key on [ID] in table 'DisabilityEvaluation集'
-ALTER TABLE [dbo].[DisabilityEvaluation集]
-ADD CONSTRAINT [PK_DisabilityEvaluation集]
-    PRIMARY KEY CLUSTERED ([ID] ASC);
-GO
-
--- Creating primary key on [ID] in table 'SleepStatus集'
-ALTER TABLE [dbo].[SleepStatus集]
-ADD CONSTRAINT [PK_SleepStatus集]
+-- Creating primary key on [ID] in table 'SleepStatusSet'
+ALTER TABLE [dbo].[SleepStatusSet]
+ADD CONSTRAINT [PK_SleepStatusSet]
     PRIMARY KEY CLUSTERED ([ID] ASC);
 GO
 
@@ -607,20 +612,6 @@ ADD CONSTRAINT [FK_HeadachaOverViewPrecipitatingFactor]
 CREATE INDEX [IX_FK_HeadachaOverViewPrecipitatingFactor]
 ON [dbo].[PrecipitatingFactorSet]
     ([HeadachaOverViewId]);
-GO
-
--- Creating foreign key on [PatBasicInforId] in table 'PreviousDrugSet'
-ALTER TABLE [dbo].[PreviousDrugSet]
-ADD CONSTRAINT [FK_PatBasicInforPreviousDrug]
-    FOREIGN KEY ([PatBasicInforId])
-    REFERENCES [dbo].[PatBasicInforSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_PatBasicInforPreviousDrug'
-CREATE INDEX [IX_FK_PatBasicInforPreviousDrug]
-ON [dbo].[PreviousDrugSet]
-    ([PatBasicInforId]);
 GO
 
 -- Creating foreign key on [PatBasicInforId] in table 'PreviousExamSet'
@@ -749,74 +740,74 @@ ON [dbo].[PremonitorySymptom集]
     ([PrimaryHeadacheOverViewId]);
 GO
 
--- Creating foreign key on [PatBasicInforId] in table 'ProphylaxisDrug集'
-ALTER TABLE [dbo].[ProphylaxisDrug集]
-ADD CONSTRAINT [FK_PatBasicInforProphylaxisDrug]
-    FOREIGN KEY ([PatBasicInforId])
-    REFERENCES [dbo].[PatBasicInforSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_PatBasicInforProphylaxisDrug'
-CREATE INDEX [IX_FK_PatBasicInforProphylaxisDrug]
-ON [dbo].[ProphylaxisDrug集]
-    ([PatBasicInforId]);
-GO
-
--- Creating foreign key on [DisabilityEvaluation_ID] in table 'VisitRecordSet'
-ALTER TABLE [dbo].[VisitRecordSet]
-ADD CONSTRAINT [FK_VisitRecordDisabilityEvaluation]
-    FOREIGN KEY ([DisabilityEvaluation_ID])
-    REFERENCES [dbo].[DisabilityEvaluation集]
-        ([ID])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_VisitRecordDisabilityEvaluation'
-CREATE INDEX [IX_FK_VisitRecordDisabilityEvaluation]
-ON [dbo].[VisitRecordSet]
-    ([DisabilityEvaluation_ID]);
-GO
-
--- Creating foreign key on [GADQuestionaire_ID] in table 'VisitRecordSet'
-ALTER TABLE [dbo].[VisitRecordSet]
+-- Creating foreign key on [VisitRecord_Id] in table 'GADQuestionaireSet'
+ALTER TABLE [dbo].[GADQuestionaireSet]
 ADD CONSTRAINT [FK_VisitRecordGADQuestionaire]
-    FOREIGN KEY ([GADQuestionaire_ID])
-    REFERENCES [dbo].[GADQuestionaire集]
-        ([ID])
+    FOREIGN KEY ([VisitRecord_Id])
+    REFERENCES [dbo].[VisitRecordSet]
+        ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_VisitRecordGADQuestionaire'
 CREATE INDEX [IX_FK_VisitRecordGADQuestionaire]
-ON [dbo].[VisitRecordSet]
-    ([GADQuestionaire_ID]);
+ON [dbo].[GADQuestionaireSet]
+    ([VisitRecord_Id]);
 GO
 
--- Creating foreign key on [PHQuestionaire_ID] in table 'VisitRecordSet'
-ALTER TABLE [dbo].[VisitRecordSet]
+-- Creating foreign key on [VisitRecord_Id] in table 'PHQuestionaireSet'
+ALTER TABLE [dbo].[PHQuestionaireSet]
 ADD CONSTRAINT [FK_VisitRecordPHQuestionaire]
-    FOREIGN KEY ([PHQuestionaire_ID])
-    REFERENCES [dbo].[PHQuestionaire集]
-        ([ID])
+    FOREIGN KEY ([VisitRecord_Id])
+    REFERENCES [dbo].[VisitRecordSet]
+        ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_VisitRecordPHQuestionaire'
 CREATE INDEX [IX_FK_VisitRecordPHQuestionaire]
-ON [dbo].[VisitRecordSet]
-    ([PHQuestionaire_ID]);
+ON [dbo].[PHQuestionaireSet]
+    ([VisitRecord_Id]);
 GO
 
--- Creating foreign key on [SleepStatus_ID] in table 'VisitRecordSet'
-ALTER TABLE [dbo].[VisitRecordSet]
+-- Creating foreign key on [VisitRecord_Id] in table 'SleepStatusSet'
+ALTER TABLE [dbo].[SleepStatusSet]
 ADD CONSTRAINT [FK_VisitRecordSleepStatus]
-    FOREIGN KEY ([SleepStatus_ID])
-    REFERENCES [dbo].[SleepStatus集]
-        ([ID])
+    FOREIGN KEY ([VisitRecord_Id])
+    REFERENCES [dbo].[VisitRecordSet]
+        ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_VisitRecordSleepStatus'
 CREATE INDEX [IX_FK_VisitRecordSleepStatus]
-ON [dbo].[VisitRecordSet]
-    ([SleepStatus_ID]);
+ON [dbo].[SleepStatusSet]
+    ([VisitRecord_Id]);
+GO
+
+-- Creating foreign key on [VisitRecord_Id] in table 'DisabilityEvaluationSet'
+ALTER TABLE [dbo].[DisabilityEvaluationSet]
+ADD CONSTRAINT [FK_VisitRecordDisabilityEvaluation]
+    FOREIGN KEY ([VisitRecord_Id])
+    REFERENCES [dbo].[VisitRecordSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_VisitRecordDisabilityEvaluation'
+CREATE INDEX [IX_FK_VisitRecordDisabilityEvaluation]
+ON [dbo].[DisabilityEvaluationSet]
+    ([VisitRecord_Id]);
+GO
+
+-- Creating foreign key on [PatBasicInforId1] in table 'PreviousDrugSet'
+ALTER TABLE [dbo].[PreviousDrugSet]
+ADD CONSTRAINT [FK_PatBasicInforPreviousDrug]
+    FOREIGN KEY ([PatBasicInforId1])
+    REFERENCES [dbo].[PatBasicInforSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_PatBasicInforPreviousDrug'
+CREATE INDEX [IX_FK_PatBasicInforPreviousDrug]
+ON [dbo].[PreviousDrugSet]
+    ([PatBasicInforId1]);
 GO
 
 -- --------------------------------------------------
