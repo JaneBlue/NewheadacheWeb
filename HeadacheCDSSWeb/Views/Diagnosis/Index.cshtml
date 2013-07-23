@@ -724,28 +724,28 @@ $("#submenu").hide();
                 strChiefComplaint += "做过" + strExamName3 + "，检查结果" + strExamResult3 + "；";
             }
                     
-            var strExamName4 = OCX.GetObjectInfo("ComboBox_50", "text");
-            var strExamResult4 = "";
-            if("true" == OCX.GetObjectInfo("RadioBox_29", "checked"))
-                strExamResult4 = "正常";
-            else if("true" == OCX.GetObjectInfo("RadioBox_33", "checked"))
-                strExamResult4 = "异常";
-            var strExamDate4 = OCX.GetObjectInfo("DateTime_3", "text");
-            strExamDate4 = strExamDate4.substring(0, strExamDate4.length-3);
-            if ("///" != strExamDate4 && "" == strExamResult4) 
-            {
-                strChiefComplaint += "曾于" + strExamDate4 + "做过" + strExamName4 + "，检查结果" + strExamResult4 + "；";
-            }
-            else if ("///" == strExamDate4 && "" == strExamResult4) 
-            {
-                strChiefComplaint += "做过" + strExamName4 + "，检查结果" + strExamResult4 + "；";
-            }
+//            var strExamName4 = OCX.GetObjectInfo("ComboBox_50", "text");
+//            var strExamResult4 = "";
+//            if("true" == OCX.GetObjectInfo("RadioBox_29", "checked"))
+//                strExamResult4 = "正常";
+//            else if("true" == OCX.GetObjectInfo("RadioBox_33", "checked"))
+//                strExamResult4 = "异常";
+//            var strExamDate4 = OCX.GetObjectInfo("DateTime_3", "text");
+//            strExamDate4 = strExamDate4.substring(0, strExamDate4.length-3);
+//            if ("///" != strExamDate4 && "" == strExamResult4) 
+//            {
+//                strChiefComplaint += "曾于" + strExamDate4 + "做过" + strExamName4 + "，检查结果" + strExamResult4 + "；";
+//            }
+//            else if ("///" == strExamDate4 && "" == strExamResult4) 
+//            {
+//                strChiefComplaint += "做过" + strExamName4 + "，检查结果" + strExamResult4 + "；";
+//            }
                     
             //get PreviousDrug
             var strDrugCategory1 = OCX.GetObjectInfo("ComboBox_46", "text");
-            var strDrugName1 = OCX.GetObjectInfo("TextBox_52", "text");
-            if("" == strDrugName1)
-                strDrugName1 = " ";
+//            var strDrugName1 = OCX.GetObjectInfo("TextBox_52", "text");
+//            if("" == strDrugName1)
+//                strDrugName1 = " ";
             var strDayAmoutnPerM1 = OCX.GetObjectInfo("TextBox_51", "text");
             if("" == strDayAmoutnPerM1)
                 strDayAmoutnPerM1 = " ";
@@ -758,9 +758,9 @@ $("#submenu").hide();
             }
                     
             var strDrugCategory2 = OCX.GetObjectInfo("ComboBox_45", "text");
-            var strDrugName2 = OCX.GetObjectInfo("TextBox_41", "text");
-            if("" == strDrugName2)
-                strDrugName2 = " ";
+//            var strDrugName2 = OCX.GetObjectInfo("TextBox_41", "text");
+//            if("" == strDrugName2)
+//                strDrugName2 = " ";
             var strDayAmoutnPerM2 = OCX.GetObjectInfo("TextBox_44", "text");
             if("" == strDayAmoutnPerM2)
                 strDayAmoutnPerM2 = " ";
@@ -773,9 +773,9 @@ $("#submenu").hide();
             }
                     
             var strDrugCategory3 = OCX.GetObjectInfo("ComboBox_44", "text");
-            var strDrugName3 = OCX.GetObjectInfo("TextBox_42", "text");
-            if("" == strDrugName3)
-                strDrugName3 = " ";
+//            var strDrugName3 = OCX.GetObjectInfo("TextBox_42", "text");
+//            if("" == strDrugName3)
+//                strDrugName3 = " ";
             var strDayAmoutnPerM3 = OCX.GetObjectInfo("TextBox_45", "text");
             if("" == strDayAmoutnPerM3)
                 strDayAmoutnPerM3 = " ";
@@ -1131,17 +1131,17 @@ $("#submenu").hide();
 
                 //get PreviousDrug
                 var strDrugCategory1 = OCX.GetObjectInfo("ComboBox_46", "text");
-                var strDrugName1 = OCX.GetObjectInfo("TextBox_52", "text");
+                //var strDrugName1 = OCX.GetObjectInfo("TextBox_52", "text");
                 var strDayAmoutnPerM1 = OCX.GetObjectInfo("TextBox_51", "text");
                 var strMonthTotalAmount1 = OCX.GetObjectInfo("TextBox_50", "text");
 
                 var strDrugCategory2 = OCX.GetObjectInfo("ComboBox_45", "text");
-                var strDrugName2 = OCX.GetObjectInfo("TextBox_41", "text");
+                //var strDrugName2 = OCX.GetObjectInfo("TextBox_41", "text");
                 var strDayAmoutnPerM2 = OCX.GetObjectInfo("TextBox_44", "text");
                 var strMonthTotalAmount2 = OCX.GetObjectInfo("TextBox_49", "text");
 
                 var strDrugCategory3 = OCX.GetObjectInfo("ComboBox_44", "text");
-                var strDrugName3 = OCX.GetObjectInfo("TextBox_42", "text");
+                //var strDrugName3 = OCX.GetObjectInfo("TextBox_42", "text");
                 var strDayAmoutnPerM3 = OCX.GetObjectInfo("TextBox_45", "text");
                 var strMonthTotalAmount3 = OCX.GetObjectInfo("TextBox_48", "text");
 
@@ -1181,16 +1181,16 @@ $("#submenu").hide();
                 }
                 var strExamDate3 = strExamDate3.slice(0, 10).replace("/", "-").replace("/", "-") + " 00:00:00";
 
-                var strExamName4 = OCX.GetObjectInfo("ComboBox_50", "text");
-                var strExamResult4 = "异常";
-                if("true" == OCX.GetObjectInfo("RadioBox_29", "checked"))
-                    strExamResult4 = "正常";
-                var strExamDate4 = OCX.GetObjectInfo("DateTime_3", "text");
-                if ("/////" == strExamDate4) 
-                {
-                    strExamDate4 = "1753/01/01///";
-                }
-                var strExamDate4 = strExamDate4.slice(0, 10).replace("/", "-").replace("/", "-") + " 00:00:00";
+//                var strExamName4 = OCX.GetObjectInfo("ComboBox_50", "text");
+//                var strExamResult4 = "异常";
+//                if("true" == OCX.GetObjectInfo("RadioBox_29", "checked"))
+//                    strExamResult4 = "正常";
+//                var strExamDate4 = OCX.GetObjectInfo("DateTime_3", "text");
+//                if ("/////" == strExamDate4) 
+//                {
+//                    strExamDate4 = "1753/01/01///";
+//                }
+//                var strExamDate4 = strExamDate4.slice(0, 10).replace("/", "-").replace("/", "-") + " 00:00:00";
 
                 //get headache accompany
                 var strHeadacheAccompanySymptom1 = "";
@@ -1398,13 +1398,12 @@ $("#submenu").hide();
                                             , {DiseaseName: strZuZhong}, {DiseaseName: strGuanJieYan}, {DiseaseName: strZhongLiu}
                                             , {DiseaseName: strJiaoLv}, {DiseaseName: strOFamilyDiseaseQiTa} ],
                               lifestyle: {TeaPerDay:strTeaPerDay, CoffePerDay: strCoffePerDay, SmokeState: bIfAlwaysSmoke, SmokeYear: strSmokeYears, DrinkState: bIfAlwaysDrink, DrinkYear: strDrinkYears, ExerciseOften: bIfAlwaysExercise},
-                              PDrug: [{DrugCategory: strDrugCategory1, DrugName: strDrugName1, DayAmoutnPerM: strDayAmoutnPerM1, MonthTotalAmount: strMonthTotalAmount1}
-                                        ,{DrugCategory: strDrugCategory2, DrugName: strDrugName2, DayAmoutnPerM: strDayAmoutnPerM2, MonthTotalAmount: strMonthTotalAmount2}
-                                        ,{DrugCategory: strDrugCategory3, DrugName: strDrugName3, DayAmoutnPerM: strDayAmoutnPerM3, MonthTotalAmount: strMonthTotalAmount3}],
+                              PDrug: [{DrugCategory: strDrugCategory1, DayAmoutnPerM: strDayAmoutnPerM1, MonthTotalAmount: strMonthTotalAmount1}
+                                        ,{DrugCategory: strDrugCategory2, DayAmoutnPerM: strDayAmoutnPerM2, MonthTotalAmount: strMonthTotalAmount2}
+                                        ,{DrugCategory: strDrugCategory3, DayAmoutnPerM: strDayAmoutnPerM3, MonthTotalAmount: strMonthTotalAmount3}],
                               PExam: [{ExamName: strExamName1, Result:strExamResult1, Date:strExamDate1}
                                         ,{ExamName: strExamName2, Result:strExamResult2, Date:strExamDate2}
-                                        ,{ExamName: strExamName3, Result:strExamResult3, Date:strExamDate3}
-                                        ,{ExamName: strExamName4, Result:strExamResult4, Date:strExamDate4}],
+                                        ,{ExamName: strExamName3, Result:strExamResult3, Date:strExamDate3}],
                               PHeadacheOverview: {HeadacheType: strHeadacheType, HeadacheDegree: strHeadacheDegree, HeadcheTime: strHeadcheTime
                                                     , HeacheTimeUnit: strHeacheTimeUnit, FrequencyPerDay: strFrequencyPerDay, FrequencyPerMonth: strFrequencyPerMonth
                                                     , OnsetFixedPeriod: strIfFixed, OnsetDate: strOnsetDate
