@@ -1199,21 +1199,221 @@ $(function () {
 
                 //get PreviousDrug
                 var strDrugCategory1 = OCX.GetObjectInfo("ComboBox_46", "text");
-                //var strDrugName1 = OCX.GetObjectInfo("TextBox_52", "text");
+                var strDrugApplication1 = "止痛";
                 var strDayAmoutnPerM1 = OCX.GetObjectInfo("TextBox_51", "text");
                 var strMonthTotalAmount1 = OCX.GetObjectInfo("TextBox_50", "text");
 
                 var strDrugCategory2 = OCX.GetObjectInfo("ComboBox_45", "text");
-                //var strDrugName2 = OCX.GetObjectInfo("TextBox_41", "text");
+                var strDrugApplication2 = "止痛";
                 var strDayAmoutnPerM2 = OCX.GetObjectInfo("TextBox_44", "text");
                 var strMonthTotalAmount2 = OCX.GetObjectInfo("TextBox_49", "text");
 
                 var strDrugCategory3 = OCX.GetObjectInfo("ComboBox_44", "text");
-                //var strDrugName3 = OCX.GetObjectInfo("TextBox_42", "text");
+                var strDrugApplication3 = "止痛";
                 var strDayAmoutnPerM3 = OCX.GetObjectInfo("TextBox_45", "text");
                 var strMonthTotalAmount3 = OCX.GetObjectInfo("TextBox_48", "text");
 
                 var strPreviousDiagnosis = OCX.GetObjectInfo("ComboBox_2", "text");
+
+                var strDrugCategoryPNLE1 = "";
+                var strDrugNamePNLE1 = "";
+                var strDrugApplicationPNLE1 = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_36", "checked"))
+                {
+                    strDrugCategoryPNLE1 = "β阻滞剂";
+                    strDrugNamePNLE1 = "普萘罗尔";
+                    strDrugApplicationPNLE1 = "预防";
+                }
+
+                var strDrugCategoryPNLE2 = "";
+                var strDrugNamePNLE2 = "";
+                var strDrugApplicationPNLE2 = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_37", "checked"))
+                {
+                    strDrugCategoryPNLE2 = "β阻滞剂";
+                    strDrugNamePNLE2 = "美托洛尔";
+                    strDrugApplicationPNLE2 = "预防";
+                }
+
+                var strDrugCategoryPNLE3 = "";
+                var strDrugNamePNLE3 = "";
+                var strDrugApplicationPNLE3 = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_38", "checked"))
+                {
+                    strDrugCategoryPNLE3 = "钙离子拮抗剂";
+                    strDrugNamePNLE3 = "氟桂利嗪";
+                    strDrugApplicationPNLE3 = "预防";
+                }
+
+                var strDrugCategoryPNLE4 = "";
+                var strDrugNamePNLE4 = "";
+                var strDrugApplicationPNLE4 = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_40", "checked"))
+                {
+                    strDrugCategoryPNLE4 = "抗癫痫药";
+                    strDrugNamePNLE4 = "丙戊酸";
+                    strDrugApplicationPNLE4 = "预防";
+                }
+
+                var strDrugCategoryPNLE5 = "";
+                var strDrugNamePNLE5 = "";
+                var strDrugApplicationPNLE5 = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_39", "checked"))
+                {
+                    strDrugCategoryPNLE5 = "抗癫痫药";
+                    strDrugNamePNLE5 = "托吡酯";
+                    strDrugApplicationPNLE5 = "预防";
+                }
+
+                var strDrugCategoryPNLE6 = "";
+                var strDrugNamePNLE6 = "";
+                var strDrugApplicationPNLE6 = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_53", "checked"))
+                {
+                    strDrugCategoryPNLE6 = "其他";
+                    strDrugNamePNLE6 = "阿替洛";
+                    strDrugApplicationPNLE6 = "预防";
+                }
+
+                var strDrugCategoryPNLE7 = "";
+                var strDrugNamePNLE7 = "";
+                var strDrugApplicationPNLE7 = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_54", "checked"))
+                {
+                    strDrugCategoryPNLE7 = "其他";
+                    strDrugNamePNLE7 = "地尔硫卓";
+                    strDrugApplicationPNLE7 = "预防";
+                }
+
+                var strDrugCategoryPNLE8 = "";
+                var strDrugNamePNLE8 = "";
+                var strDrugApplicationPNLE8 = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_58", "checked"))
+                {
+                    strDrugCategoryPNLE8 = "其他";
+                    strDrugNamePNLE8 = "尼莫地平";
+                    strDrugApplicationPNLE8 = "预防";
+                }
+
+                var strDrugCategoryPNLE9 = "";
+                var strDrugNamePNLE9 = "";
+                var strDrugApplicationPNLE9 = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_57", "checked"))
+                {
+                    strDrugCategoryPNLE9 = "其他";
+                    strDrugNamePNLE9 = "脑益嗪";
+                    strDrugApplicationPNLE9 = "预防";
+                }
+
+                var strDrugCategoryPNLE10 = "";
+                var strDrugNamePNLE10 = "";
+                var strDrugApplicationPNLE10 = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_56", "checked"))
+                {
+                    strDrugCategoryPNLE10 = "其他";
+                    strDrugNamePNLE10 = "锂";
+                    strDrugApplicationPNLE10 = "预防";
+                }
+
+                var strDrugCategoryPNLE11 = "";
+                var strDrugNamePNLE11 = "";
+                var strDrugApplicationPNLE11 = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_55", "checked"))
+                {
+                    strDrugCategoryPNLE11 = "其他";
+                    strDrugNamePNLE11 = "利培酮";
+                    strDrugApplicationPNLE11 = "预防";
+                }
+
+                var strDrugCategoryPNLE12 = "";
+                var strDrugNamePNLE12 = "";
+                var strDrugApplicationPNLE12 = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_59", "checked"))
+                {
+                    strDrugCategoryPNLE12 = "其他";
+                    strDrugNamePNLE12 = "奥氮平";
+                    strDrugApplicationPNLE12 = "预防";
+                }
+
+                var strDrugCategoryPNLE13 = "";
+                var strDrugNamePNLE13 = "";
+                var strDrugApplicationPNLE13 = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_60", "checked"))
+                {
+                    strDrugCategoryPNLE13 = "其他";
+                    strDrugNamePNLE13 = "喹硫平";
+                    strDrugApplicationPNLE13 = "预防";
+                }
+
+                var strDrugCategoryPNLE14 = "";
+                var strDrugNamePNLE14 = "";
+                var strDrugApplicationPNLE14 = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_63", "checked"))
+                {
+                    strDrugCategoryPNLE14 = "其他";
+                    strDrugNamePNLE14 = "文拉法辛";
+                    strDrugApplicationPNLE14 = "预防";
+                }
+
+                var strDrugCategoryPNLE15 = "";
+                var strDrugNamePNLE15 = "";
+                var strDrugApplicationPNLE15 = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_83", "checked"))
+                {
+                    strDrugCategoryPNLE15 = "其他";
+                    strDrugNamePNLE15 = "米氮平";
+                    strDrugApplicationPNLE15 = "预防";
+                }
+
+                var strDrugCategoryPNLE16 = "";
+                var strDrugNamePNLE16 = "";
+                var strDrugApplicationPNLE16 = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_82", "checked"))
+                {
+                    strDrugCategoryPNLE16 = "其他";
+                    strDrugNamePNLE16 = "萘发唑酮";
+                    strDrugApplicationPNLE16 = "预防";
+                }
+
+                var strDrugCategoryPNLE17 = "";
+                var strDrugNamePNLE17 = "";
+                var strDrugApplicationPNLE17 = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_81", "checked"))
+                {
+                    strDrugCategoryPNLE17 = "其他";
+                    strDrugNamePNLE17 = "安非他酮";
+                    strDrugApplicationPNLE17 = "预防";
+                }
+
+                var strDrugCategoryPNLE18 = "";
+                var strDrugNamePNLE18 = "";
+                var strDrugApplicationPNLE18 = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_86", "checked"))
+                {
+                    strDrugCategoryPNLE18 = "其他";
+                    strDrugNamePNLE18 = "丁螺环酮";
+                    strDrugApplicationPNLE18 = "预防";
+                }
+
+                var strDrugCategoryPNLE19 = "";
+                var strDrugNamePNLE19 = "";
+                var strDrugApplicationPNLE19 = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_85", "checked"))
+                {
+                    strDrugCategoryPNLE19 = "其他";
+                    strDrugNamePNLE19 = "中药";
+                    strDrugApplicationPNLE19 = "预防";
+                }
+
+                var strDrugCategoryPNLE20 = "";
+                var strDrugNamePNLE20 = "";
+                var strDrugApplicationPNLE20 = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_84", "checked"))
+                {
+                    strDrugCategoryPNLE20 = "其他";
+                    strDrugNamePNLE20 = "其他";
+                    strDrugApplicationPNLE20 = "预防";
+                }
 
                 //get PreviousExam
                 var strExamName1 = OCX.GetObjectInfo("ComboBox_47", "text");
@@ -1719,9 +1919,29 @@ $(function () {
                               Disabilityevaluation: {HeadacheDays:strHeadacheDays, OutOfWorkDays:strOutOfWorkDays, AffectWorkDays:strAffectWorkDays, OutOfHouseWorkDays:strOutOfHouseWorkDays, AffectHouseWorkDays:strAffectHouseWorkDays, MissActivityDays:strMissActivityDays},
                               PHquestionaire: {Q1: strPHQ1, Q2: strPHQ2, Q3: strPHQ3, Q4: strPHQ4, Q5: strPHQ5, Q6: strPHQ6, Q7: strPHQ7, Q8: strPHQ8, Q9: strPHQ9, TotalScore: strPHQTotalScore},
                               GADquestionaire: {Q1: strGAD1, Q2: strGAD2, Q3: strGAD3, Q4: strGAD4, Q5: strGAD5, Q6: strGAD6, Q7: strGAD7, TotalScore: strGADTotalScore},
-                              PDrug: [{DrugCategory: strDrugCategory1, DayAmoutnPerM: strDayAmoutnPerM1, MonthTotalAmount: strMonthTotalAmount1}
-                                        ,{DrugCategory: strDrugCategory2, DayAmoutnPerM: strDayAmoutnPerM2, MonthTotalAmount: strMonthTotalAmount2}
-                                        ,{DrugCategory: strDrugCategory3, DayAmoutnPerM: strDayAmoutnPerM3, MonthTotalAmount: strMonthTotalAmount3}],
+                              PDrug: [{DrugCategory: strDrugCategory1, DrugApplication: strDrugApplication1, DayAmoutnPerM: strDayAmoutnPerM1, MonthTotalAmount: strMonthTotalAmount1}
+                                        ,{DrugCategory: strDrugCategory2, DrugApplication: strDrugApplication2, DayAmoutnPerM: strDayAmoutnPerM2, MonthTotalAmount: strMonthTotalAmount2}
+                                        ,{DrugCategory: strDrugCategory3, DrugApplication: strDrugApplication3, DayAmoutnPerM: strDayAmoutnPerM3, MonthTotalAmount: strMonthTotalAmount3}
+                                        ,{DrugCategory: strDrugCategoryPNLE1, DrugApplication: strDrugApplicationPNLE1, DrugName: strDrugNamePNLE1}
+                                        ,{DrugCategory: strDrugCategoryPNLE2, DrugApplication: strDrugApplicationPNLE2, DrugName: strDrugNamePNLE2}
+                                        ,{DrugCategory: strDrugCategoryPNLE3, DrugApplication: strDrugApplicationPNLE3, DrugName: strDrugNamePNLE3}
+                                        ,{DrugCategory: strDrugCategoryPNLE4, DrugApplication: strDrugApplicationPNLE4, DrugName: strDrugNamePNLE4}
+                                        ,{DrugCategory: strDrugCategoryPNLE5, DrugApplication: strDrugApplicationPNLE5, DrugName: strDrugNamePNLE5}
+                                        ,{DrugCategory: strDrugCategoryPNLE6, DrugApplication: strDrugApplicationPNLE6, DrugName: strDrugNamePNLE6}
+                                        ,{DrugCategory: strDrugCategoryPNLE7, DrugApplication: strDrugApplicationPNLE7, DrugName: strDrugNamePNLE7}
+                                        ,{DrugCategory: strDrugCategoryPNLE8, DrugApplication: strDrugApplicationPNLE8, DrugName: strDrugNamePNLE8}
+                                        ,{DrugCategory: strDrugCategoryPNLE9, DrugApplication: strDrugApplicationPNLE9, DrugName: strDrugNamePNLE9}
+                                        ,{DrugCategory: strDrugCategoryPNLE10, DrugApplication: strDrugApplicationPNLE10, DrugName: strDrugNamePNLE10}
+                                        ,{DrugCategory: strDrugCategoryPNLE11, DrugApplication: strDrugApplicationPNLE11, DrugName: strDrugNamePNLE11}
+                                        ,{DrugCategory: strDrugCategoryPNLE12, DrugApplication: strDrugApplicationPNLE12, DrugName: strDrugNamePNLE12}
+                                        ,{DrugCategory: strDrugCategoryPNLE13, DrugApplication: strDrugApplicationPNLE13, DrugName: strDrugNamePNLE13}
+                                        ,{DrugCategory: strDrugCategoryPNLE14, DrugApplication: strDrugApplicationPNLE14, DrugName: strDrugNamePNLE14}
+                                        ,{DrugCategory: strDrugCategoryPNLE15, DrugApplication: strDrugApplicationPNLE15, DrugName: strDrugNamePNLE15}
+                                        ,{DrugCategory: strDrugCategoryPNLE16, DrugApplication: strDrugApplicationPNLE16, DrugName: strDrugNamePNLE16}
+                                        ,{DrugCategory: strDrugCategoryPNLE17, DrugApplication: strDrugApplicationPNLE17, DrugName: strDrugNamePNLE17}
+                                        ,{DrugCategory: strDrugCategoryPNLE18, DrugApplication: strDrugApplicationPNLE18, DrugName: strDrugNamePNLE18}
+                                        ,{DrugCategory: strDrugCategoryPNLE19, DrugApplication: strDrugApplicationPNLE19, DrugName: strDrugNamePNLE19}
+                                        ,{DrugCategory: strDrugCategoryPNLE20, DrugApplication: strDrugApplicationPNLE20, DrugName: strDrugNamePNLE20}],
                               PExam: [{ExamName: strExamName1, Result:strExamResult1, Date:strExamDate1}
                                         ,{ExamName: strExamName2, Result:strExamResult2, Date:strExamDate2}
                                         ,{ExamName: strExamName3, Result:strExamResult3, Date:strExamDate3}],
