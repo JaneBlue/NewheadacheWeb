@@ -1489,34 +1489,81 @@ $("#submenu").hide();
                 var strPHQ7 = OCX.GetObjectInfo("ComboBox_14", "text");
                 var strPHQ8 = OCX.GetObjectInfo("ComboBox_15", "text");
                 var strPHQ9 = OCX.GetObjectInfo("ComboBox_16", "text");
+                var nPHQ1 = 0;
+                var nPHQ2 = 0;
+                var nPHQ3 = 0;
+                var nPHQ4 = 0;
+                var nPHQ5 = 0;
+                var nPHQ6 = 0;
+                var nPHQ7 = 0;
+                var nPHQ8 = 0;
+                var nPHQ9 = 0;
                 var nPHQTotalScore = 0;
-                var nPHQ1 = parseInt(strPHQ1);
-                if (!isNaN(nPHQ1))
-                    nPHQTotalScore += nPHQ1;
-                var nPHQ2 = parseInt(strPHQ2);
-                if (!isNaN(nPHQ2))
-                    nPHQTotalScore += nPHQ2;
-                var nPHQ3 = parseInt(strPHQ3);
-                if (!isNaN(nPHQ3))
-                    nPHQTotalScore += nPHQ3;
-                var nPHQ4 = parseInt(strPHQ4);
-                if (!isNaN(nPHQ4))
-                    nPHQTotalScore += nPHQ4;
-                var nPHQ5 = parseInt(strPHQ5);
-                if (!isNaN(nPHQ5))
-                    nPHQTotalScore += nPHQ5;
-                var nPHQ6 = parseInt(strPHQ6);
-                if (!isNaN(nPHQ6))
-                    nPHQTotalScore += nPHQ6;
-                var nPHQ7 = parseInt(strPHQ7);
-                if (!isNaN(nPHQ7))
-                    nPHQTotalScore += nPHQ7;
-                var nPHQ8 = parseInt(strPHQ8);
-                if (!isNaN(nPHQ8))
-                    nPHQTotalScore += nPHQ8;
-                var nPHQ9 = parseInt(strPHQ9);
-                if (!isNaN(nPHQ9))
-                    nPHQTotalScore += nPHQ9;
+
+                if("好几天" == strPHQ1)
+                    nPHQ1 = 1;
+                else if("一半以上的天数" == strPHQ1)
+                    nPHQ1 = 2;
+                else if("几乎每天" == strPHQ1)
+                    nPHQ1 = 3;
+
+                if("好几天" == strPHQ2)
+                    nPHQ2 = 1;
+                else if("一半以上的天数" == strPHQ2)
+                    nPHQ2 = 2;
+                else if("几乎每天" == strPHQ2)
+                    nPHQ2 = 3;
+
+                if("好几天" == strPHQ3)
+                    nPHQ3 = 1;
+                else if("一半以上的天数" == strPHQ3)
+                    nPHQ3 = 2;
+                else if("几乎每天" == strPHQ3)
+                    nPHQ3 = 3;
+
+                if("好几天" == strPHQ4)
+                    nPHQ4 = 1;
+                else if("一半以上的天数" == strPHQ4)
+                    nPHQ4 = 2;
+                else if("几乎每天" == strPHQ4)
+                    nPHQ4 = 3;
+
+                if("好几天" == strPHQ5)
+                    nPHQ5 = 1;
+                else if("一半以上的天数" == strPHQ5)
+                    nPHQ5 = 2;
+                else if("几乎每天" == strPHQ5)
+                    nPHQ5 = 3;
+
+                if("好几天" == strPHQ6)
+                    nPHQ6 = 1;
+                else if("一半以上的天数" == strPHQ6)
+                    nPHQ6 = 2;
+                else if("几乎每天" == strPHQ6)
+                    nPHQ6 = 3;
+
+                if("好几天" == strPHQ7)
+                    nPHQ7 = 1;
+                else if("一半以上的天数" == strPHQ7)
+                    nPHQ7 = 2;
+                else if("几乎每天" == strPHQ7)
+                    nPHQ7 = 3;
+
+                if("好几天" == strPHQ8)
+                    nPHQ8 = 1;
+                else if("一半以上的天数" == strPHQ8)
+                    nPHQ8 = 2;
+                else if("几乎每天" == strPHQ8)
+                    nPHQ8 = 3;
+
+                if("好几天" == strPHQ9)
+                    nPHQ9 = 1;
+                else if("一半以上的天数" == strPHQ9)
+                    nPHQ9 = 2;
+                else if("几乎每天" == strPHQ9)
+                    nPHQ9 = 3;
+
+                nPHQTotalScore = nPHQ1 + nPHQ2 + nPHQ3 + nPHQ4 + nPHQ5 + nPHQ6 + nPHQ7 + nPHQ8 + nPHQ9;
                 var strPHQTotalScore = nPHQTotalScore.toString();
 
                 //GADQuestionaire
@@ -1527,28 +1574,66 @@ $("#submenu").hide();
                 var strGAD5 = OCX.GetObjectInfo("ComboBox_22", "text");
                 var strGAD6 = OCX.GetObjectInfo("ComboBox_23", "text");
                 var strGAD7 = OCX.GetObjectInfo("ComboBox_24", "text");
+
+                var nGAD1 = 0;
+                var nGAD2 = 0;
+                var nGAD3 = 0;
+                var nGAD4 = 0;
+                var nGAD5 = 0;
+                var nGAD6 = 0;
+                var nGAD7 = 0;
                 var nGADTotalScore = 0;
-                var nGAD1 = parseInt(strGAD1);
-                if (!isNaN(nGAD1))
-                    nGADTotalScore += nGAD1;
-                var nGAD2 = parseInt(strGAD2);
-                if (!isNaN(nGAD2))
-                    nGADTotalScore += nGAD2;
-                var nGAD3 = parseInt(strGAD3);
-                if (!isNaN(nGAD3))
-                    nGADTotalScore += nGAD3;
-                var nGAD4 = parseInt(strGAD4);
-                if (!isNaN(nGAD4))
-                    nGADTotalScore += nGAD4;
-                var nGAD5 = parseInt(strGAD5);
-                if (!isNaN(nGAD5))
-                    nGADTotalScore += nGAD5;
-                var nGAD6 = parseInt(strGAD6);
-                if (!isNaN(nGAD6))
-                    nGADTotalScore += nGAD6;
-                var nGAD7 = parseInt(strGAD7);
-                if (!isNaN(nGAD7))
-                    nGADTotalScore += nGAD7;
+
+                if("几天" == strGAD1)
+                    nGAD1 = 1;
+                else if("一半以上的日子" == strGAD1)
+                    nGAD1 = 2;
+                else if("几乎每天" == strGAD1)
+                    nGAD1 = 3;
+
+                if("几天" == strGAD2)
+                    nGAD2 = 1;
+                else if("一半以上的日子" == strGAD2)
+                    nGAD2 = 2;
+                else if("几乎每天" == strGAD2)
+                    nGAD2 = 3;
+
+                if("几天" == strGAD3)
+                    nGAD3 = 1;
+                else if("一半以上的日子" == strGAD3)
+                    nGAD3 = 2;
+                else if("几乎每天" == strGAD3)
+                    nGAD3 = 3;
+
+                if("几天" == strGAD4)
+                    nGAD4 = 1;
+                else if("一半以上的日子" == strGAD4)
+                    nGAD4 = 2;
+                else if("几乎每天" == strGAD4)
+                    nGAD4 = 3;
+
+                if("几天" == strGAD5)
+                    nGAD5 = 1;
+                else if("一半以上的日子" == strGAD5)
+                    nGAD5 = 2;
+                else if("几乎每天" == strGAD5)
+                    nGAD5 = 3;
+
+                if("几天" == strGAD6)
+                    nGAD6 = 1;
+                else if("一半以上的日子" == strGAD6)
+                    nGAD6 = 2;
+                else if("几乎每天" == strGAD6)
+                    nGAD6 = 3;
+                
+                if("几天" == strGAD7)
+                    nGAD7 = 1;
+                else if("一半以上的日子" == strGAD7)
+                    nGAD7 = 2;
+                else if("几乎每天" == strGAD7)
+                    nGAD7 = 3;
+
+                nGADTotalScore = nGAD1 + nGAD2 + nGAD3 + nGAD4 + nGAD5 + nGAD6 + nGAD7;
                 var strGADTotalScore = nGADTotalScore.toString();
 
                 var thing = { HFamilyMember: [ { Person: strFuQin}, { Person: strMuQin}, { Person: strXiongDi}
