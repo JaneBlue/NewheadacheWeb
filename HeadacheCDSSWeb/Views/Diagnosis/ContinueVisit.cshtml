@@ -736,33 +736,83 @@ $(function () {
         var strDrugName = "";
         var strDayAmoutnPerM = "";
         var strMonthTotalAmount = "";
+        var strDrugApplication = "";
         var lPreviousDrugCount = obj.previousdrug.length;
+        var nRelievePain = 0;
         for(var lPreviousDrugIndex = 0; lPreviousDrugIndex < lPreviousDrugCount; ++lPreviousDrugIndex)
         {
             strDrugCategory = obj.previousdrug[lPreviousDrugIndex].DrugCategory;
             strDrugName = obj.previousdrug[lPreviousDrugIndex].DrugName;
             strDayAmoutnPerM = obj.previousdrug[lPreviousDrugIndex].DayAmoutnPerM;
             strMonthTotalAmount = obj.previousdrug[lPreviousDrugIndex].MonthTotalAmount;
-            if(0 == lPreviousDrugIndex)
+            strDrugApplication = obj.previousdrug[lPreviousDrugIndex].DrugApplication;
+            if("止痛" == strDrugApplication)
             {
-                OCX.SetObjectInfo("ComboBox_46", "text", strDrugCategory);
-                //OCX.SetObjectInfo("TextBox_52", "text", strDrugName);
-                OCX.SetObjectInfo("TextBox_51", "text", strDayAmoutnPerM);
-                OCX.SetObjectInfo("TextBox_50", "text", strMonthTotalAmount);
+                ++nRelievePain;
+                if(1 == nRelievePain)
+                {
+                    OCX.SetObjectInfo("ComboBox_46", "text", strDrugCategory);
+                    //OCX.SetObjectInfo("TextBox_52", "text", strDrugName);
+                    OCX.SetObjectInfo("TextBox_51", "text", strDayAmoutnPerM);
+                    OCX.SetObjectInfo("TextBox_50", "text", strMonthTotalAmount);
+                }
+                else if(2 == nRelievePain)
+                {
+                    OCX.SetObjectInfo("ComboBox_45", "text", strDrugCategory);
+                    //OCX.SetObjectInfo("TextBox_41", "text", strDrugName);
+                    OCX.SetObjectInfo("TextBox_44", "text", strDayAmoutnPerM);
+                    OCX.SetObjectInfo("TextBox_49", "text", strMonthTotalAmount);
+                }
+                else if(3 == nRelievePain)
+                {
+                    OCX.SetObjectInfo("ComboBox_44", "text", strDrugCategory);
+                    //OCX.SetObjectInfo("TextBox_42", "text", strDrugName);
+                    OCX.SetObjectInfo("TextBox_45", "text", strDayAmoutnPerM);
+                    OCX.SetObjectInfo("TextBox_48", "text", strMonthTotalAmount);
+                }
             }
-            else if(1 == lPreviousDrugIndex)
+            else if("预防" == strDrugApplication)
             {
-                OCX.SetObjectInfo("ComboBox_45", "text", strDrugCategory);
-                //OCX.SetObjectInfo("TextBox_41", "text", strDrugName);
-                OCX.SetObjectInfo("TextBox_44", "text", strDayAmoutnPerM);
-                OCX.SetObjectInfo("TextBox_49", "text", strMonthTotalAmount);
-            }
-            else if(2 == lPreviousDrugIndex)
-            {
-                OCX.SetObjectInfo("ComboBox_44", "text", strDrugCategory);
-                //OCX.SetObjectInfo("TextBox_42", "text", strDrugName);
-                OCX.SetObjectInfo("TextBox_45", "text", strDayAmoutnPerM);
-                OCX.SetObjectInfo("TextBox_48", "text", strMonthTotalAmount);
+                if("普萘罗尔" == strDrugName)
+                    OCX.SetObjectInfo("CheckBox_36", "checked", "true");
+                else if("美托洛尔" == strDrugName)
+                    OCX.SetObjectInfo("CheckBox_37", "checked", "true");
+                else if("氟桂利嗪" == strDrugName)
+                    OCX.SetObjectInfo("CheckBox_38", "checked", "true");
+                else if("丙戊酸" == strDrugName)
+                    OCX.SetObjectInfo("CheckBox_40", "checked", "true");
+                else if("托吡酯" == strDrugName)
+                    OCX.SetObjectInfo("CheckBox_39", "checked", "true");
+                else if("阿替洛" == strDrugName)
+                    OCX.SetObjectInfo("CheckBox_53", "checked", "true");
+                else if("地尔硫卓" == strDrugName)
+                    OCX.SetObjectInfo("CheckBox_54", "checked", "true");
+                else if("尼莫地平" == strDrugName)
+                    OCX.SetObjectInfo("CheckBox_58", "checked", "true");
+                else if("脑益嗪" == strDrugName)
+                    OCX.SetObjectInfo("CheckBox_57", "checked", "true");
+                else if("锂" == strDrugName)
+                    OCX.SetObjectInfo("CheckBox_56", "checked", "true");
+                else if("利培酮" == strDrugName)
+                    OCX.SetObjectInfo("CheckBox_55", "checked", "true");
+                else if("奥氮平" == strDrugName)
+                    OCX.SetObjectInfo("CheckBox_59", "checked", "true");
+                else if("喹硫平" == strDrugName)
+                    OCX.SetObjectInfo("CheckBox_60", "checked", "true");
+                else if("文拉法辛" == strDrugName)
+                    OCX.SetObjectInfo("CheckBox_63", "checked", "true");
+                else if("米氮平" == strDrugName)
+                    OCX.SetObjectInfo("CheckBox_83", "checked", "true");
+                else if("萘发唑酮" == strDrugName)
+                    OCX.SetObjectInfo("CheckBox_82", "checked", "true");
+                else if("安非他酮" == strDrugName)
+                    OCX.SetObjectInfo("CheckBox_81", "checked", "true");
+                else if("丁螺环酮" == strDrugName)
+                    OCX.SetObjectInfo("CheckBox_86", "checked", "true");
+                else if("中药" == strDrugName)
+                    OCX.SetObjectInfo("CheckBox_85", "checked", "true");
+                else if("其他" == strDrugName)
+                    OCX.SetObjectInfo("CheckBox_84", "checked", "true");
             }
         }
 
