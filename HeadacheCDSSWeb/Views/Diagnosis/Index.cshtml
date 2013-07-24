@@ -1387,6 +1387,170 @@ $("#submenu").hide();
 
                 var strPrescriptionNote = OCX.GetObjectInfo("TextBox_47", "text");
 
+                //PremonitorySymptom
+                var strPremonitorySymptomGDHY = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_11", "checked"))
+                    strPremonitorySymptomGDHY = "过度活跃";
+                var strPremonitorySymptomTBDH = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_12", "checked"))
+                    strPremonitorySymptomTBDH = "特别多话";
+                var strPremonitorySymptomQS = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_13", "checked"))
+                    strPremonitorySymptomQS = "沮丧";
+                var strPremonitorySymptomYJR = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_14", "checked"))
+                    strPremonitorySymptomYJR = "易激惹";
+                var strPremonitorySymptomGJCD = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_15", "checked"))
+                    strPremonitorySymptomGJCD = "感觉迟钝";
+                var strPremonitorySymptomSS = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_19", "checked"))
+                    strPremonitorySymptomSS = "思睡";
+                var strPremonitorySymptomZLBA = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_20", "checked"))
+                    strPremonitorySymptomZLBA = "坐立不安";
+                var strPremonitorySymptomZYLZA = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_18", "checked"))
+                    strPremonitorySymptomZYLZA = "注意力障碍";
+                var strPremonitorySymptomWG = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_17", "checked"))
+                    strPremonitorySymptomWG = "畏光";
+                var strPremonitorySymptomWS = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_16", "checked"))
+                    strPremonitorySymptomWS = "畏声";
+                var strPremonitorySymptomWX = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_24", "checked"))
+                    strPremonitorySymptomWX = "畏嗅";
+                var strPremonitorySymptomYYKN = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_25", "checked"))
+                    strPremonitorySymptomYYKN = "言语困难";
+                var strPremonitorySymptomDHQ = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_23", "checked"))
+                    strPremonitorySymptomDHQ = "打哈欠";
+                var strPremonitorySymptomJBJYG = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_22", "checked"))
+                    strPremonitorySymptomJBJYG = "颈部僵硬感";
+                var strPremonitorySymptomYZXCDX = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_21", "checked"))
+                    strPremonitorySymptomYZXCDX = "一直想吃东西";
+                var strPremonitorySymptomWKBC = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_29", "checked"))
+                    strPremonitorySymptomWKBC = "胃口变差";
+                var strPremonitorySymptomGJL = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_30", "checked"))
+                    strPremonitorySymptomGJL = "感觉冷";
+                var strPremonitorySymptomFX = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_28", "checked"))
+                    strPremonitorySymptomFX = "腹泻";
+                var strPremonitorySymptomBM = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_27", "checked"))
+                    strPremonitorySymptomBM = "便秘";
+                var strPremonitorySymptomTBKK = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_26", "checked"))
+                    strPremonitorySymptomTBKK = "特别口渴";
+                var strPremonitorySymptomDN = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_34", "checked"))
+                    strPremonitorySymptomDN = "多尿";
+                var strPremonitorySymptomGJXR = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_35", "checked"))
+                    strPremonitorySymptomGJXR = "感觉虚弱";
+                var strPremonitorySymptomTY = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_33", "checked"))
+                    strPremonitorySymptomTY = "头晕";
+                var strPremonitorySymptomSZLSZ = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_32", "checked"))
+                    strPremonitorySymptomSZLSZ = "水潴留、水肿";
+                var strPremonitorySymptomQT = "";
+                if("true" == OCX.GetObjectInfo("CheckBox_31", "checked"))
+                    strPremonitorySymptomQT = "其他";
+                
+                //SleepStatus
+                var strTimePerDay = OCX.GetObjectInfo("TextBox_4", "text");
+                var strDifficultFallingAsleep = OCX.GetObjectInfo("ComboBox_3", "text");
+                var strDreaminess = OCX.GetObjectInfo("ComboBox_5", "text");
+                var strFestlessSleep = OCX.GetObjectInfo("ComboBox_4", "text");
+                var strSleepyDayTime = OCX.GetObjectInfo("ComboBox_6", "text");
+
+                //Disabilityevaluation
+                var strHeadacheDays = OCX.GetObjectInfo("TextBox_57", "text");
+                var strOutOfWorkDays = OCX.GetObjectInfo("TextBox_41", "text");
+                var strAffectWorkDays = OCX.GetObjectInfo("TextBox_42", "text");
+                var strOutOfHouseWorkDays = OCX.GetObjectInfo("TextBox_52", "text");
+                var strAffectHouseWorkDays = OCX.GetObjectInfo("TextBox_53", "text");
+                var strMissActivityDays = OCX.GetObjectInfo("TextBox_56", "text");
+
+                //PHQ
+                var strPHQ1 = OCX.GetObjectInfo("ComboBox_8", "text");
+                var strPHQ2 = OCX.GetObjectInfo("ComboBox_9", "text");
+                var strPHQ3 = OCX.GetObjectInfo("ComboBox_10", "text");
+                var strPHQ4 = OCX.GetObjectInfo("ComboBox_11", "text");
+                var strPHQ5 = OCX.GetObjectInfo("ComboBox_12", "text");
+                var strPHQ6 = OCX.GetObjectInfo("ComboBox_13", "text");
+                var strPHQ7 = OCX.GetObjectInfo("ComboBox_14", "text");
+                var strPHQ8 = OCX.GetObjectInfo("ComboBox_15", "text");
+                var strPHQ9 = OCX.GetObjectInfo("ComboBox_16", "text");
+                var nPHQTotalScore = 0;
+                var nPHQ1 = parseInt(strPHQ1);
+                if (!isNaN(nPHQ1))
+                    nPHQTotalScore += nPHQ1;
+                var nPHQ2 = parseInt(strPHQ2);
+                if (!isNaN(nPHQ2))
+                    nPHQTotalScore += nPHQ2;
+                var nPHQ3 = parseInt(strPHQ3);
+                if (!isNaN(nPHQ3))
+                    nPHQTotalScore += nPHQ3;
+                var nPHQ4 = parseInt(strPHQ4);
+                if (!isNaN(nPHQ4))
+                    nPHQTotalScore += nPHQ4;
+                var nPHQ5 = parseInt(strPHQ5);
+                if (!isNaN(nPHQ5))
+                    nPHQTotalScore += nPHQ5;
+                var nPHQ6 = parseInt(strPHQ6);
+                if (!isNaN(nPHQ6))
+                    nPHQTotalScore += nPHQ6;
+                var nPHQ7 = parseInt(strPHQ7);
+                if (!isNaN(nPHQ7))
+                    nPHQTotalScore += nPHQ7;
+                var nPHQ8 = parseInt(strPHQ8);
+                if (!isNaN(nPHQ8))
+                    nPHQTotalScore += nPHQ8;
+                var nPHQ9 = parseInt(strPHQ9);
+                if (!isNaN(nPHQ9))
+                    nPHQTotalScore += nPHQ9;
+                var strPHQTotalScore = nPHQTotalScore.toString();
+
+                //GADQuestionaire
+                var strGAD1 = OCX.GetObjectInfo("ComboBox_17", "text");
+                var strGAD2 = OCX.GetObjectInfo("ComboBox_19", "text");
+                var strGAD3 = OCX.GetObjectInfo("ComboBox_20", "text");
+                var strGAD4 = OCX.GetObjectInfo("ComboBox_21", "text");
+                var strGAD5 = OCX.GetObjectInfo("ComboBox_22", "text");
+                var strGAD6 = OCX.GetObjectInfo("ComboBox_23", "text");
+                var strGAD7 = OCX.GetObjectInfo("ComboBox_24", "text");
+                var nGADTotalScore = 0;
+                var nGAD1 = parseInt(strGAD1);
+                if (!isNaN(nGAD1))
+                    nGADTotalScore += nGAD1;
+                var nGAD2 = parseInt(strGAD2);
+                if (!isNaN(nGAD2))
+                    nGADTotalScore += nGAD2;
+                var nGAD3 = parseInt(strGAD3);
+                if (!isNaN(nGAD3))
+                    nGADTotalScore += nGAD3;
+                var nGAD4 = parseInt(strGAD4);
+                if (!isNaN(nGAD4))
+                    nGADTotalScore += nGAD4;
+                var nGAD5 = parseInt(strGAD5);
+                if (!isNaN(nGAD5))
+                    nGADTotalScore += nGAD5;
+                var nGAD6 = parseInt(strGAD6);
+                if (!isNaN(nGAD6))
+                    nGADTotalScore += nGAD6;
+                var nGAD7 = parseInt(strGAD7);
+                if (!isNaN(nGAD7))
+                    nGADTotalScore += nGAD7;
+                var strGADTotalScore = nGADTotalScore.toString();
+
                 var thing = { HFamilyMember: [ { Person: strFuQin}, { Person: strMuQin}, { Person: strXiongDi}
                                             , { Person: strJieMei}, { Person: strErZi}, { Person: strNvEr}
                                             , { Person: strZuFu}, { Person: strZiMu}, { Person: strWaiZuFu}
@@ -1398,6 +1562,10 @@ $("#submenu").hide();
                                             , {DiseaseName: strZuZhong}, {DiseaseName: strGuanJieYan}, {DiseaseName: strZhongLiu}
                                             , {DiseaseName: strJiaoLv}, {DiseaseName: strOFamilyDiseaseQiTa} ],
                               lifestyle: {TeaPerDay:strTeaPerDay, CoffePerDay: strCoffePerDay, SmokeState: bIfAlwaysSmoke, SmokeYear: strSmokeYears, DrinkState: bIfAlwaysDrink, DrinkYear: strDrinkYears, ExerciseOften: bIfAlwaysExercise},
+                              Sleepstatus: {TimePerDay:strTimePerDay, DifficultFallingAsleep:strDifficultFallingAsleep, Dreaminess:strDreaminess, FestlessSleep:strFestlessSleep, SleepyDayTime:strSleepyDayTime},
+                              Disabilityevaluation: {HeadacheDays:strHeadacheDays, OutOfWorkDays:strOutOfWorkDays, AffectWorkDays:strAffectWorkDays, OutOfHouseWorkDays:strOutOfHouseWorkDays, AffectHouseWorkDays:strAffectHouseWorkDays, MissActivityDays:strMissActivityDays},
+                              PHquestionaire: {Q1: strPHQ1, Q2: strPHQ2, Q3: strPHQ3, Q4: strPHQ4, Q5: strPHQ5, Q6: strPHQ6, Q7: strPHQ7, Q8: strPHQ8, Q9: strPHQ9, TotalScore: strPHQTotalScore},
+                              GADquestionaire: {Q1: strGAD1, Q2: strGAD2, Q3: strGAD3, Q4: strGAD4, Q5: strGAD5, Q6: strGAD6, Q7: strGAD7, TotalScore: strGADTotalScore},
                               PDrug: [{DrugCategory: strDrugCategory1, DayAmoutnPerM: strDayAmoutnPerM1, MonthTotalAmount: strMonthTotalAmount1}
                                         ,{DrugCategory: strDrugCategory2, DayAmoutnPerM: strDayAmoutnPerM2, MonthTotalAmount: strMonthTotalAmount2}
                                         ,{DrugCategory: strDrugCategory3, DayAmoutnPerM: strDayAmoutnPerM3, MonthTotalAmount: strMonthTotalAmount3}],
@@ -1430,7 +1598,12 @@ $("#submenu").hide();
                                                                             , {FactorName: strPrecipitatingFactor4, FactorDetail: strPrecipitatingFactorDetail4}, {FactorName: strPrecipitatingFactor5, FactorDetail: strPrecipitatingFactorDetail5}, {FactorName: strPrecipitatingFactor6, FactorDetail: strPrecipitatingFactorDetail6}
                                                                             , {FactorName: strPrecipitatingFactor7, FactorDetail: strPrecipitatingFactorDetail7}, {FactorName: strPrecipitatingFactor8, FactorDetail: strPrecipitatingFactorDetail8}, {FactorName: strPrecipitatingFactor9, FactorDetail: strPrecipitatingFactorDetail9}
                                                                             , {FactorName: strPrecipitatingFactor10, FactorDetail: strPrecipitatingFactorDetail10} ]
-                                                    , HeadacheProdrome: [ {Prodrome: strHeadacheProdrome1}, {Prodrome: strHeadacheProdrome2}, {Prodrome: strHeadacheProdrome3}, {Prodrome: strHeadacheProdrome4}, {Prodrome: strHeadacheProdrome5} ]},
+                                                    , HeadacheProdrome: [ {Prodrome: strHeadacheProdrome1}, {Prodrome: strHeadacheProdrome2}, {Prodrome: strHeadacheProdrome3}, {Prodrome: strHeadacheProdrome4}, {Prodrome: strHeadacheProdrome5} ]
+                                                    , PremonitorySymptom: [ {Symptom: strPremonitorySymptomGDHY}, {Symptom: strPremonitorySymptomTBDH}, {Symptom: strPremonitorySymptomQS}, {Symptom: strPremonitorySymptomYJR}, {Symptom: strPremonitorySymptomGJCD} 
+                                                                            , {Symptom: strPremonitorySymptomSS}, {Symptom: strPremonitorySymptomZLBA}, {Symptom: strPremonitorySymptomZYLZA}, {Symptom: strPremonitorySymptomWG}, {Symptom: strPremonitorySymptomWS}
+                                                                            , {Symptom: strPremonitorySymptomWX}, {Symptom: strPremonitorySymptomYYKN}, {Symptom: strPremonitorySymptomDHQ}, {Symptom: strPremonitorySymptomJBJYG}, {Symptom: strPremonitorySymptomYZXCDX}
+                                                                            , {Symptom: strPremonitorySymptomWKBC}, {Symptom: strPremonitorySymptomGJL}, {Symptom: strPremonitorySymptomFX}, {Symptom: strPremonitorySymptomBM}, {Symptom: strPremonitorySymptomTBKK}
+                                                                            , {Symptom: strPremonitorySymptomDN}, {Symptom: strPremonitorySymptomGJXR}, {Symptom: strPremonitorySymptomTY}, {Symptom: strPremonitorySymptomSZLSZ}, {Symptom: strPremonitorySymptomQT} ]},
                               visitrecord: {ChiefComplaint: strChiefComplaint, CDSSDiagnosis1: strCDSSDiagnosis1
                                                     ,DiagnosisResult1: strDiagnosisResult1, DiagnosisResult2: strDiagnosisResult2, DiagnosisResult3: strDiagnosisResult3
                                                     ,Prescription: strPrescription, PreviousDiagnosis: strPreviousDiagnosis
