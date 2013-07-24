@@ -28,6 +28,8 @@
     <EntitySet Name="HDPrecipitatingFactorSet" EntityType="HeadacheModel.Store.HDPrecipitatingFactorSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="HDMitigatingFactorsSet" EntityType="HeadacheModel.Store.HDMitigatingFactorsSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="HDHeadacheProdromeSet" EntityType="HeadacheModel.Store.HDHeadacheProdromeSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RegionalCenterAccountSet" EntityType="HeadacheModel.Store.RegionalCenterAccountSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NationalCenterAccountSet" EntityType="HeadacheModel.Store.NationalCenterAccountSet" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="DoctorAccountPatBasicInfor" Association="HeadacheModel.Store.DoctorAccountPatBasicInfor">
       <End Role="DoctorAccount" EntitySet="DoctorAccountSet" />
       <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
@@ -132,6 +134,14 @@
       <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
       <End Role="HeadacheDiary" EntitySet="HeadacheDiarySet" />
     </AssociationSet>
+    <AssociationSet Name="NationalCenterAccountRegionalCenterAccount" Association="HeadacheModel.Store.NationalCenterAccountRegionalCenterAccount">
+      <End Role="NationalCenterAccount" EntitySet="NationalCenterAccountSet" />
+      <End Role="RegionalCenterAccount" EntitySet="RegionalCenterAccountSet" />
+    </AssociationSet>
+    <AssociationSet Name="RegionalCenterAccountDoctorAccount" Association="HeadacheModel.Store.RegionalCenterAccountDoctorAccount">
+      <End Role="RegionalCenterAccount" EntitySet="RegionalCenterAccountSet" />
+      <End Role="DoctorAccount" EntitySet="DoctorAccountSet" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="DoctorAccountSet">
     <Key>
@@ -142,6 +152,7 @@
     <Property Name="PassWord" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Hospital" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ChiefDoctor" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RegionalCenterAccountID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="PatBasicInforSet">
     <Key>
@@ -158,8 +169,8 @@
     <Property Name="Identity" Type="nvarchar(max)" Nullable="true" />
     <Property Name="DoctorAccountId" Type="int" Nullable="false" />
     <Property Name="SimilarFamily" Type="bit" Nullable="true" />
-    <Property Name="Weight" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Height" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Weight" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Height" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Lifestyle_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="VisitRecordSet">
@@ -429,6 +440,24 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="symptom" Type="nvarchar(max)" Nullable="false" />
     <Property Name="HeadacheDiaryID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RegionalCenterAccountSet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PassWord" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Region" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NationalCenterAccountID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NationalCenterAccountSet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PassWord" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <Association Name="DoctorAccountPatBasicInfor">
     <End Role="DoctorAccount" Type="HeadacheModel.Store.DoctorAccountSet" Multiplicity="1" />
@@ -739,6 +768,30 @@
       </Principal>
       <Dependent Role="HeadacheDiary">
         <PropertyRef Name="PatBasicInforId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NationalCenterAccountRegionalCenterAccount">
+    <End Role="NationalCenterAccount" Type="HeadacheModel.Store.NationalCenterAccountSet" Multiplicity="1" />
+    <End Role="RegionalCenterAccount" Type="HeadacheModel.Store.RegionalCenterAccountSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NationalCenterAccount">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RegionalCenterAccount">
+        <PropertyRef Name="NationalCenterAccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RegionalCenterAccountDoctorAccount">
+    <End Role="RegionalCenterAccount" Type="HeadacheModel.Store.RegionalCenterAccountSet" Multiplicity="1" />
+    <End Role="DoctorAccount" Type="HeadacheModel.Store.DoctorAccountSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RegionalCenterAccount">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DoctorAccount">
+        <PropertyRef Name="RegionalCenterAccountID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

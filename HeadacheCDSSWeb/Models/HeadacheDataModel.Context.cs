@@ -52,5 +52,7 @@ namespace HeadacheCDSSWeb.Models
         public DbSet<HDPrecipitatingFactor> HDPrecipitatingFactorSet { get; set; }
         public DbSet<HDMitigatingFactors> HDMitigatingFactorsSet { get; set; }
         public DbSet<HDHeadacheProdrome> HDHeadacheProdromeSet { get; set; }
+        public DbSet<RegionalCenterAccount> RegionalCenterAccountSet { get; set; }
+        public DbSet<NationalCenterAccount> NationalCenterAccountSet { get; set; }
     }
 }

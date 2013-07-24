@@ -9,6 +9,7 @@
           <ScalarProperty Name="PassWord" ColumnName="PassWord" />
           <ScalarProperty Name="Hospital" ColumnName="Hospital" />
           <ScalarProperty Name="ChiefDoctor" ColumnName="ChiefDoctor" />
+          <ScalarProperty Name="RegionalCenterAccountID" ColumnName="RegionalCenterAccountID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -316,6 +317,26 @@
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="symptom" ColumnName="symptom" />
           <ScalarProperty Name="HeadacheDiaryID" ColumnName="HeadacheDiaryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RegionalCenterAccountSet">
+      <EntityTypeMapping TypeName="IsTypeOf(HeadacheModel.RegionalCenterAccount)">
+        <MappingFragment StoreEntitySet="RegionalCenterAccountSet">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+          <ScalarProperty Name="Region" ColumnName="Region" />
+          <ScalarProperty Name="NationalCenterAccountID" ColumnName="NationalCenterAccountID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NationalCenterAccountSet">
+      <EntityTypeMapping TypeName="IsTypeOf(HeadacheModel.NationalCenterAccount)">
+        <MappingFragment StoreEntitySet="NationalCenterAccountSet">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="PassWord" ColumnName="PassWord" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

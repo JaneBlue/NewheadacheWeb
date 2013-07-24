@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 07/23/2013 16:04:30
+-- Date Created: 07/24/2013 11:02:02
 -- Generated from EDMX file: D:\FGj\projectcode\NewheadacheWeb\HeadacheCDSSWeb\Models\HeadacheModel.edmx
 -- --------------------------------------------------
 
@@ -77,6 +77,30 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_PatBasicInforPreviousDrug]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[PreviousDrugSet] DROP CONSTRAINT [FK_PatBasicInforPreviousDrug];
 GO
+IF OBJECT_ID(N'[dbo].[FK_HeadacheDiaryHDAcompanion]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[HDAcompanionSet] DROP CONSTRAINT [FK_HeadacheDiaryHDAcompanion];
+GO
+IF OBJECT_ID(N'[dbo].[FK_HeadacheDiaryHDheadacheplace]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[HDheadacheplaceSet] DROP CONSTRAINT [FK_HeadacheDiaryHDheadacheplace];
+GO
+IF OBJECT_ID(N'[dbo].[FK_HeadacheDiaryHDHeadacheProdrome]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[HDHeadacheProdromeSet] DROP CONSTRAINT [FK_HeadacheDiaryHDHeadacheProdrome];
+GO
+IF OBJECT_ID(N'[dbo].[FK_HeadacheDiaryHDMitigatingFactors]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[HDMitigatingFactorsSet] DROP CONSTRAINT [FK_HeadacheDiaryHDMitigatingFactors];
+GO
+IF OBJECT_ID(N'[dbo].[FK_HeadacheDiaryHDPrecipitatingFactor]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[HDPrecipitatingFactorSet] DROP CONSTRAINT [FK_HeadacheDiaryHDPrecipitatingFactor];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PatBasicInforHeadacheDiary]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[HeadacheDiarySet] DROP CONSTRAINT [FK_PatBasicInforHeadacheDiary];
+GO
+IF OBJECT_ID(N'[dbo].[FK_NationalCenterAccountRegionalCenterAccount]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[RegionalCenterAccountSet] DROP CONSTRAINT [FK_NationalCenterAccountRegionalCenterAccount];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RegionalCenterAccountDoctorAccount]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DoctorAccountSet] DROP CONSTRAINT [FK_RegionalCenterAccountDoctorAccount];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -145,6 +169,30 @@ GO
 IF OBJECT_ID(N'[dbo].[SleepStatusSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SleepStatusSet];
 GO
+IF OBJECT_ID(N'[dbo].[HeadacheDiarySet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[HeadacheDiarySet];
+GO
+IF OBJECT_ID(N'[dbo].[HDheadacheplaceSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[HDheadacheplaceSet];
+GO
+IF OBJECT_ID(N'[dbo].[HDAcompanionSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[HDAcompanionSet];
+GO
+IF OBJECT_ID(N'[dbo].[HDPrecipitatingFactorSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[HDPrecipitatingFactorSet];
+GO
+IF OBJECT_ID(N'[dbo].[HDMitigatingFactorsSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[HDMitigatingFactorsSet];
+GO
+IF OBJECT_ID(N'[dbo].[HDHeadacheProdromeSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[HDHeadacheProdromeSet];
+GO
+IF OBJECT_ID(N'[dbo].[RegionalCenterAccountSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[RegionalCenterAccountSet];
+GO
+IF OBJECT_ID(N'[dbo].[NationalCenterAccountSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[NationalCenterAccountSet];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -156,7 +204,8 @@ CREATE TABLE [dbo].[DoctorAccountSet] (
     [UserName] nvarchar(max)  NOT NULL,
     [PassWord] nvarchar(max)  NOT NULL,
     [Hospital] nvarchar(max)  NOT NULL,
-    [ChiefDoctor] nvarchar(max)  NOT NULL
+    [ChiefDoctor] nvarchar(max)  NOT NULL,
+    [RegionalCenterAccountID] int  NOT NULL
 );
 GO
 
@@ -173,8 +222,8 @@ CREATE TABLE [dbo].[PatBasicInforSet] (
     [Identity] nvarchar(max)  NULL,
     [DoctorAccountId] int  NOT NULL,
     [SimilarFamily] bit  NULL,
-    [Weight] nvarchar(max)  NOT NULL,
-    [Height] nvarchar(max)  NOT NULL,
+    [Weight] nvarchar(max)  NULL,
+    [Height] nvarchar(max)  NULL,
     [Lifestyle_Id] int  NOT NULL
 );
 GO
@@ -447,6 +496,24 @@ CREATE TABLE [dbo].[HDHeadacheProdromeSet] (
 );
 GO
 
+-- Creating table 'RegionalCenterAccountSet'
+CREATE TABLE [dbo].[RegionalCenterAccountSet] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [UserName] nvarchar(max)  NOT NULL,
+    [PassWord] nvarchar(max)  NOT NULL,
+    [Region] nvarchar(max)  NOT NULL,
+    [NationalCenterAccountID] int  NOT NULL
+);
+GO
+
+-- Creating table 'NationalCenterAccountSet'
+CREATE TABLE [dbo].[NationalCenterAccountSet] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [UserName] nvarchar(max)  NOT NULL,
+    [PassWord] nvarchar(max)  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -610,6 +677,18 @@ GO
 -- Creating primary key on [ID] in table 'HDHeadacheProdromeSet'
 ALTER TABLE [dbo].[HDHeadacheProdromeSet]
 ADD CONSTRAINT [PK_HDHeadacheProdromeSet]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'RegionalCenterAccountSet'
+ALTER TABLE [dbo].[RegionalCenterAccountSet]
+ADD CONSTRAINT [PK_RegionalCenterAccountSet]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'NationalCenterAccountSet'
+ALTER TABLE [dbo].[NationalCenterAccountSet]
+ADD CONSTRAINT [PK_NationalCenterAccountSet]
     PRIMARY KEY CLUSTERED ([ID] ASC);
 GO
 
@@ -979,6 +1058,34 @@ ADD CONSTRAINT [FK_PatBasicInforHeadacheDiary]
 CREATE INDEX [IX_FK_PatBasicInforHeadacheDiary]
 ON [dbo].[HeadacheDiarySet]
     ([PatBasicInforId]);
+GO
+
+-- Creating foreign key on [NationalCenterAccountID] in table 'RegionalCenterAccountSet'
+ALTER TABLE [dbo].[RegionalCenterAccountSet]
+ADD CONSTRAINT [FK_NationalCenterAccountRegionalCenterAccount]
+    FOREIGN KEY ([NationalCenterAccountID])
+    REFERENCES [dbo].[NationalCenterAccountSet]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_NationalCenterAccountRegionalCenterAccount'
+CREATE INDEX [IX_FK_NationalCenterAccountRegionalCenterAccount]
+ON [dbo].[RegionalCenterAccountSet]
+    ([NationalCenterAccountID]);
+GO
+
+-- Creating foreign key on [RegionalCenterAccountID] in table 'DoctorAccountSet'
+ALTER TABLE [dbo].[DoctorAccountSet]
+ADD CONSTRAINT [FK_RegionalCenterAccountDoctorAccount]
+    FOREIGN KEY ([RegionalCenterAccountID])
+    REFERENCES [dbo].[RegionalCenterAccountSet]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_RegionalCenterAccountDoctorAccount'
+CREATE INDEX [IX_FK_RegionalCenterAccountDoctorAccount]
+ON [dbo].[DoctorAccountSet]
+    ([RegionalCenterAccountID]);
 GO
 
 -- --------------------------------------------------

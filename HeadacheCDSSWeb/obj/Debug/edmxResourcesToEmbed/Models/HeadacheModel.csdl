@@ -132,6 +132,16 @@
       <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
       <End Role="HeadacheDiary" EntitySet="HeadacheDiarySet" />
     </AssociationSet>
+    <EntitySet Name="RegionalCenterAccountSet" EntityType="HeadacheModel.RegionalCenterAccount" />
+    <EntitySet Name="NationalCenterAccountSet" EntityType="HeadacheModel.NationalCenterAccount" />
+    <AssociationSet Name="NationalCenterAccountRegionalCenterAccount" Association="HeadacheModel.NationalCenterAccountRegionalCenterAccount">
+      <End Role="NationalCenterAccount" EntitySet="NationalCenterAccountSet" />
+      <End Role="RegionalCenterAccount" EntitySet="RegionalCenterAccountSet" />
+    </AssociationSet>
+    <AssociationSet Name="RegionalCenterAccountDoctorAccount" Association="HeadacheModel.RegionalCenterAccountDoctorAccount">
+      <End Role="RegionalCenterAccount" EntitySet="RegionalCenterAccountSet" />
+      <End Role="DoctorAccount" EntitySet="DoctorAccountSet" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="DoctorAccount">
     <Key>
@@ -143,6 +153,8 @@
     <Property Type="String" Name="Hospital" Nullable="false" />
     <NavigationProperty Name="PatBasicInfor" Relationship="HeadacheModel.DoctorAccountPatBasicInfor" FromRole="DoctorAccount" ToRole="PatBasicInfor" />
     <Property Type="String" Name="ChiefDoctor" Nullable="false" />
+    <NavigationProperty Name="RegionalCenterAccount" Relationship="HeadacheModel.RegionalCenterAccountDoctorAccount" FromRole="DoctorAccount" ToRole="RegionalCenterAccount" />
+    <Property Type="Int32" Name="RegionalCenterAccountID" Nullable="false" />
   </EntityType>
   <EntityType Name="PatBasicInfor">
     <Key>
@@ -165,8 +177,8 @@
     <NavigationProperty Name="OtherFamilyDisease" Relationship="HeadacheModel.PatBasicInforOtherFamilyDisease" FromRole="PatBasicInfor" ToRole="OtherFamilyDisease" />
     <NavigationProperty Name="Lifestyle" Relationship="HeadacheModel.PatBasicInforLifestyle" FromRole="PatBasicInfor" ToRole="Lifestyle" />
     <NavigationProperty Name="VisitRecord" Relationship="HeadacheModel.PatBasicInforVisitRecord" FromRole="PatBasicInfor" ToRole="VisitRecord" />
-    <Property Type="String" Name="Weight" Nullable="false" />
-    <Property Type="String" Name="Height" Nullable="false" />
+    <Property Type="String" Name="Weight" Nullable="true" />
+    <Property Type="String" Name="Height" Nullable="true" />
     <NavigationProperty Name="PreviousDrug" Relationship="HeadacheModel.PatBasicInforPreviousDrug" FromRole="PatBasicInfor" ToRole="PreviousDrug" />
     <NavigationProperty Name="HeadacheDiary" Relationship="HeadacheModel.PatBasicInforHeadacheDiary" FromRole="PatBasicInfor" ToRole="HeadacheDiary" />
   </EntityType>
@@ -741,6 +753,51 @@
       </Principal>
       <Dependent Role="HeadacheDiary">
         <PropertyRef Name="PatBasicInforId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="RegionalCenterAccount">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="UserName" Nullable="false" />
+    <Property Type="String" Name="PassWord" Nullable="false" />
+    <Property Type="String" Name="Region" Nullable="false" />
+    <NavigationProperty Name="NationalCenterAccount" Relationship="HeadacheModel.NationalCenterAccountRegionalCenterAccount" FromRole="RegionalCenterAccount" ToRole="NationalCenterAccount" />
+    <Property Type="Int32" Name="NationalCenterAccountID" Nullable="false" />
+    <NavigationProperty Name="DoctorAccount" Relationship="HeadacheModel.RegionalCenterAccountDoctorAccount" FromRole="RegionalCenterAccount" ToRole="DoctorAccount" />
+  </EntityType>
+  <EntityType Name="NationalCenterAccount">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="UserName" Nullable="false" />
+    <Property Type="String" Name="PassWord" Nullable="false" />
+    <NavigationProperty Name="RegionalCenterAccount" Relationship="HeadacheModel.NationalCenterAccountRegionalCenterAccount" FromRole="NationalCenterAccount" ToRole="RegionalCenterAccount" />
+  </EntityType>
+  <Association Name="NationalCenterAccountRegionalCenterAccount">
+    <End Type="HeadacheModel.NationalCenterAccount" Role="NationalCenterAccount" Multiplicity="1" />
+    <End Type="HeadacheModel.RegionalCenterAccount" Role="RegionalCenterAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NationalCenterAccount">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RegionalCenterAccount">
+        <PropertyRef Name="NationalCenterAccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RegionalCenterAccountDoctorAccount">
+    <End Type="HeadacheModel.RegionalCenterAccount" Role="RegionalCenterAccount" Multiplicity="1" />
+    <End Type="HeadacheModel.DoctorAccount" Role="DoctorAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RegionalCenterAccount">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DoctorAccount">
+        <PropertyRef Name="RegionalCenterAccountID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

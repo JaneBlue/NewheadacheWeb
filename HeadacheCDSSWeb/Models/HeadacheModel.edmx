@@ -33,6 +33,8 @@
     <EntitySet Name="HDPrecipitatingFactorSet" EntityType="HeadacheModel.Store.HDPrecipitatingFactorSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="HDMitigatingFactorsSet" EntityType="HeadacheModel.Store.HDMitigatingFactorsSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="HDHeadacheProdromeSet" EntityType="HeadacheModel.Store.HDHeadacheProdromeSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RegionalCenterAccountSet" EntityType="HeadacheModel.Store.RegionalCenterAccountSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NationalCenterAccountSet" EntityType="HeadacheModel.Store.NationalCenterAccountSet" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="DoctorAccountPatBasicInfor" Association="HeadacheModel.Store.DoctorAccountPatBasicInfor">
       <End Role="DoctorAccount" EntitySet="DoctorAccountSet" />
       <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
@@ -137,6 +139,14 @@
       <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
       <End Role="HeadacheDiary" EntitySet="HeadacheDiarySet" />
     </AssociationSet>
+    <AssociationSet Name="NationalCenterAccountRegionalCenterAccount" Association="HeadacheModel.Store.NationalCenterAccountRegionalCenterAccount">
+      <End Role="NationalCenterAccount" EntitySet="NationalCenterAccountSet" />
+      <End Role="RegionalCenterAccount" EntitySet="RegionalCenterAccountSet" />
+    </AssociationSet>
+    <AssociationSet Name="RegionalCenterAccountDoctorAccount" Association="HeadacheModel.Store.RegionalCenterAccountDoctorAccount">
+      <End Role="RegionalCenterAccount" EntitySet="RegionalCenterAccountSet" />
+      <End Role="DoctorAccount" EntitySet="DoctorAccountSet" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="DoctorAccountSet">
     <Key>
@@ -147,6 +157,7 @@
     <Property Name="PassWord" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Hospital" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ChiefDoctor" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RegionalCenterAccountID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="PatBasicInforSet">
     <Key>
@@ -163,8 +174,8 @@
     <Property Name="Identity" Type="nvarchar(max)" Nullable="true" />
     <Property Name="DoctorAccountId" Type="int" Nullable="false" />
     <Property Name="SimilarFamily" Type="bit" Nullable="true" />
-    <Property Name="Weight" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Height" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Weight" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Height" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Lifestyle_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="VisitRecordSet">
@@ -434,6 +445,24 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="symptom" Type="nvarchar(max)" Nullable="false" />
     <Property Name="HeadacheDiaryID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RegionalCenterAccountSet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PassWord" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Region" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NationalCenterAccountID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NationalCenterAccountSet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PassWord" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <Association Name="DoctorAccountPatBasicInfor">
     <End Role="DoctorAccount" Type="HeadacheModel.Store.DoctorAccountSet" Multiplicity="1" />
@@ -747,6 +776,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="NationalCenterAccountRegionalCenterAccount">
+    <End Role="NationalCenterAccount" Type="HeadacheModel.Store.NationalCenterAccountSet" Multiplicity="1" />
+    <End Role="RegionalCenterAccount" Type="HeadacheModel.Store.RegionalCenterAccountSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NationalCenterAccount">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RegionalCenterAccount">
+        <PropertyRef Name="NationalCenterAccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RegionalCenterAccountDoctorAccount">
+    <End Role="RegionalCenterAccount" Type="HeadacheModel.Store.RegionalCenterAccountSet" Multiplicity="1" />
+    <End Role="DoctorAccount" Type="HeadacheModel.Store.DoctorAccountSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RegionalCenterAccount">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DoctorAccount">
+        <PropertyRef Name="RegionalCenterAccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -883,6 +936,16 @@
             <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
             <End Role="HeadacheDiary" EntitySet="HeadacheDiarySet" />
           </AssociationSet>
+          <EntitySet Name="RegionalCenterAccountSet" EntityType="HeadacheModel.RegionalCenterAccount" />
+          <EntitySet Name="NationalCenterAccountSet" EntityType="HeadacheModel.NationalCenterAccount" />
+          <AssociationSet Name="NationalCenterAccountRegionalCenterAccount" Association="HeadacheModel.NationalCenterAccountRegionalCenterAccount">
+            <End Role="NationalCenterAccount" EntitySet="NationalCenterAccountSet" />
+            <End Role="RegionalCenterAccount" EntitySet="RegionalCenterAccountSet" />
+          </AssociationSet>
+          <AssociationSet Name="RegionalCenterAccountDoctorAccount" Association="HeadacheModel.RegionalCenterAccountDoctorAccount">
+            <End Role="RegionalCenterAccount" EntitySet="RegionalCenterAccountSet" />
+            <End Role="DoctorAccount" EntitySet="DoctorAccountSet" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="DoctorAccount">
           <Key>
@@ -894,6 +957,8 @@
           <Property Type="String" Name="Hospital" Nullable="false" />
           <NavigationProperty Name="PatBasicInfor" Relationship="HeadacheModel.DoctorAccountPatBasicInfor" FromRole="DoctorAccount" ToRole="PatBasicInfor" />
           <Property Type="String" Name="ChiefDoctor" Nullable="false" />
+          <NavigationProperty Name="RegionalCenterAccount" Relationship="HeadacheModel.RegionalCenterAccountDoctorAccount" FromRole="DoctorAccount" ToRole="RegionalCenterAccount" />
+          <Property Type="Int32" Name="RegionalCenterAccountID" Nullable="false" />
         </EntityType>
         <EntityType Name="PatBasicInfor">
           <Key>
@@ -916,8 +981,8 @@
           <NavigationProperty Name="OtherFamilyDisease" Relationship="HeadacheModel.PatBasicInforOtherFamilyDisease" FromRole="PatBasicInfor" ToRole="OtherFamilyDisease" />
           <NavigationProperty Name="Lifestyle" Relationship="HeadacheModel.PatBasicInforLifestyle" FromRole="PatBasicInfor" ToRole="Lifestyle" />
           <NavigationProperty Name="VisitRecord" Relationship="HeadacheModel.PatBasicInforVisitRecord" FromRole="PatBasicInfor" ToRole="VisitRecord" />
-          <Property Type="String" Name="Weight" Nullable="false" />
-          <Property Type="String" Name="Height" Nullable="false" />
+          <Property Type="String" Name="Weight" Nullable="true" />
+          <Property Type="String" Name="Height" Nullable="true" />
           <NavigationProperty Name="PreviousDrug" Relationship="HeadacheModel.PatBasicInforPreviousDrug" FromRole="PatBasicInfor" ToRole="PreviousDrug" />
           <NavigationProperty Name="HeadacheDiary" Relationship="HeadacheModel.PatBasicInforHeadacheDiary" FromRole="PatBasicInfor" ToRole="HeadacheDiary" />
         </EntityType>
@@ -1495,6 +1560,51 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="RegionalCenterAccount">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserName" Nullable="false" />
+          <Property Type="String" Name="PassWord" Nullable="false" />
+          <Property Type="String" Name="Region" Nullable="false" />
+          <NavigationProperty Name="NationalCenterAccount" Relationship="HeadacheModel.NationalCenterAccountRegionalCenterAccount" FromRole="RegionalCenterAccount" ToRole="NationalCenterAccount" />
+          <Property Type="Int32" Name="NationalCenterAccountID" Nullable="false" />
+          <NavigationProperty Name="DoctorAccount" Relationship="HeadacheModel.RegionalCenterAccountDoctorAccount" FromRole="RegionalCenterAccount" ToRole="DoctorAccount" />
+        </EntityType>
+        <EntityType Name="NationalCenterAccount">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserName" Nullable="false" />
+          <Property Type="String" Name="PassWord" Nullable="false" />
+          <NavigationProperty Name="RegionalCenterAccount" Relationship="HeadacheModel.NationalCenterAccountRegionalCenterAccount" FromRole="NationalCenterAccount" ToRole="RegionalCenterAccount" />
+        </EntityType>
+        <Association Name="NationalCenterAccountRegionalCenterAccount">
+          <End Type="HeadacheModel.NationalCenterAccount" Role="NationalCenterAccount" Multiplicity="1" />
+          <End Type="HeadacheModel.RegionalCenterAccount" Role="RegionalCenterAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NationalCenterAccount">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RegionalCenterAccount">
+              <PropertyRef Name="NationalCenterAccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RegionalCenterAccountDoctorAccount">
+          <End Type="HeadacheModel.RegionalCenterAccount" Role="RegionalCenterAccount" Multiplicity="1" />
+          <End Type="HeadacheModel.DoctorAccount" Role="DoctorAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegionalCenterAccount">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DoctorAccount">
+              <PropertyRef Name="RegionalCenterAccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1509,6 +1619,7 @@
           <ScalarProperty Name="PassWord" ColumnName="PassWord" />
           <ScalarProperty Name="Hospital" ColumnName="Hospital" />
           <ScalarProperty Name="ChiefDoctor" ColumnName="ChiefDoctor" />
+          <ScalarProperty Name="RegionalCenterAccountID" ColumnName="RegionalCenterAccountID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1819,6 +1930,26 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="RegionalCenterAccountSet">
+      <EntityTypeMapping TypeName="IsTypeOf(HeadacheModel.RegionalCenterAccount)">
+        <MappingFragment StoreEntitySet="RegionalCenterAccountSet">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+          <ScalarProperty Name="Region" ColumnName="Region" />
+          <ScalarProperty Name="NationalCenterAccountID" ColumnName="NationalCenterAccountID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NationalCenterAccountSet">
+      <EntityTypeMapping TypeName="IsTypeOf(HeadacheModel.NationalCenterAccount)">
+        <MappingFragment StoreEntitySet="NationalCenterAccountSet">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="VisitRecordPrimaryHeadachaOverView" TypeName="HeadacheModel.VisitRecordPrimaryHeadachaOverView" StoreEntitySet="PrimaryHeadacheOverViewSet">
       <EndProperty Name="VisitRecord">
         <ScalarProperty Name="Id" ColumnName="VisitRecord_Id" />
@@ -1887,15 +2018,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="HeadacheModel" ZoomLevel="88" >
-        <EntityTypeShape EntityType="HeadacheModel.DoctorAccount" Width="1.5" PointX="0.625" PointY="0.625" Height="2.16105224609375" />
-        <EntityTypeShape EntityType="HeadacheModel.PatBasicInfor" Width="1.5" PointX="2.875" PointY="0.625" Height="4.8353279622395817" />
+        <EntityTypeShape EntityType="HeadacheModel.DoctorAccount" Width="1.5" PointX="0.625" PointY="5.375" Height="2.5430916341145826" />
+        <EntityTypeShape EntityType="HeadacheModel.PatBasicInfor" Width="1.5" PointX="3.125" PointY="0.75" Height="5.02634765625" />
         <EntityTypeShape EntityType="HeadacheModel.VisitRecord" Width="1.875" PointX="5" PointY="0.75" Height="4.45328857421875" />
         <AssociationConnector Association="HeadacheModel.DoctorAccountPatBasicInfor">
-          <ConnectorPoint PointX="2.125" PointY="1.705526123046875" />
-          <ConnectorPoint PointX="2.875" PointY="1.705526123046875" />
+          <ConnectorPoint PointX="2.125" PointY="5.575673828125" />
+          <ConnectorPoint PointX="3.125" PointY="5.575673828125" />
         </AssociationConnector>
         <EntityTypeShape EntityType="HeadacheModel.PrimaryHeadacheOverView" Width="1.75" PointX="7.875" PointY="1.25" Height="4.45328857421875" />
-        <EntityTypeShape EntityType="HeadacheModel.Lifestyle" Width="1.875" PointX="0.5" PointY="7.375" Height="2.7341113281250014" />
+        <EntityTypeShape EntityType="HeadacheModel.Lifestyle" Width="1.875" PointX="3.125" PointY="8.625" Height="2.7341113281250014" />
         <EntityTypeShape EntityType="HeadacheModel.HeadachePlace" Width="1.5" PointX="10.25" PointY="1.125" Height="1.9700325520833339" />
         <EntityTypeShape EntityType="HeadacheModel.HeadacheAccompany" Width="1.5" PointX="10.25" PointY="3.375" Height="1.7790128580729165" />
         <EntityTypeShape EntityType="HeadacheModel.HeadacheProdrome" Width="1.5" PointX="10.625" PointY="7.375" Height="1.7790128580729165" />
@@ -1914,10 +2045,10 @@
           <ConnectorPoint PointX="10.395833333333334" PointY="8.8912662760416659" />
           <ConnectorPoint PointX="10.625" PointY="8.8912662760416659" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="HeadacheModel.PreviousDrug" Width="1.5" PointX="3.375" PointY="6.25" Height="2.5430916341145817" />
-        <EntityTypeShape EntityType="HeadacheModel.PreviousExam" Width="1.5" PointX="0.75" PointY="10.375" Height="2.1610522460937496" />
-        <EntityTypeShape EntityType="HeadacheModel.HeadacheFamilyMember" Width="2" PointX="0.5" PointY="3.125" Height="1.7790128580729165" />
-        <EntityTypeShape EntityType="HeadacheModel.OtherFamilyDisease" Width="1.5" PointX="0.5" PointY="5.25" Height="1.7790128580729165" />
+        <EntityTypeShape EntityType="HeadacheModel.PreviousDrug" Width="1.5" PointX="3.25" PointY="11.75" Height="2.7341113281249996" />
+        <EntityTypeShape EntityType="HeadacheModel.PreviousExam" Width="1.5" PointX="0.875" PointY="12.375" Height="2.1610522460937496" />
+        <EntityTypeShape EntityType="HeadacheModel.HeadacheFamilyMember" Width="2" PointX="0.5" PointY="8.625" Height="1.7790128580729165" />
+        <EntityTypeShape EntityType="HeadacheModel.OtherFamilyDisease" Width="1.5" PointX="0.75" PointY="10.5" Height="1.7790128580729165" />
         <EntityTypeShape EntityType="HeadacheModel.MedicationAdvice" Width="2" PointX="5.875" PointY="6.75" Height="2.5430916341145817" />
         <EntityTypeShape EntityType="HeadacheModel.PrecipitatingFactor" Width="1.5" PointX="8.5" PointY="6.625" Height="1.9700325520833317" />
         <EntityTypeShape EntityType="HeadacheModel.MitigatingFactors" Width="1.5" PointX="10.375" PointY="5.25" Height="1.7790128580729157" />
@@ -1930,22 +2061,35 @@
           <ConnectorPoint PointX="9.0625" PointY="6.625" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.PatBasicInforPreviousExam" ManuallyRouted="false">
-          <ConnectorPoint PointX="3.058593125" PointY="5.65134765625" />
-          <ConnectorPoint PointX="3.058593125" PointY="11.15625" />
-          <ConnectorPoint PointX="2.8958333333333335" PointY="11.15625" />
-          <ConnectorPoint PointX="2.7291666666666665" PointY="11.15625" />
-          <ConnectorPoint PointX="2.25" PointY="11.15625" />
+          <ConnectorPoint PointX="4.1537313450253208" PointY="5.77634765625" />
+          <ConnectorPoint PointX="4.1537313450253208" PointY="8.375" />
+          <ConnectorPoint PointX="3.6278780258030077" PointY="8.375" />
+          <ConnectorPoint PointX="3.4612113591363407" PointY="8.375" />
+          <ConnectorPoint PointX="3.0833333333333335" PointY="8.375" />
+          <ConnectorPoint PointX="2.9166666666666665" PointY="8.375" />
+          <ConnectorPoint PointX="2.875" PointY="8.375" />
+          <ConnectorPoint PointX="2.875" PointY="13.455526123046875" />
+          <ConnectorPoint PointX="2.375" PointY="13.455526123046875" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.PatBasicInforHeadacheFamilyMember">
-          <ConnectorPoint PointX="2.875" PointY="4.0145064290364587" />
-          <ConnectorPoint PointX="2.5" PointY="4.0145064290364587" />
+          <ConnectorPoint PointX="3.2140893849393484" PointY="5.77634765625" />
+          <ConnectorPoint PointX="3.2140893849393484" PointY="8.125" />
+          <ConnectorPoint PointX="3" PointY="8.125" />
+          <ConnectorPoint PointX="3" PointY="9.5145064290364587" />
+          <ConnectorPoint PointX="2.9583333333333335" PointY="9.5145064290364587" />
+          <ConnectorPoint PointX="2.7291666666666665" PointY="9.5145064290364587" />
+          <ConnectorPoint PointX="2.5" PointY="9.5145064290364587" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.PatBasicInforOtherFamilyDisease">
-          <ConnectorPoint PointX="2.9531225" PointY="5.4603279622395826" />
-          <ConnectorPoint PointX="2.9531225" PointY="5.8551664811197917" />
-          <ConnectorPoint PointX="2.6258015067608169" PointY="5.8551664811197908" />
-          <ConnectorPoint PointX="2.45913484009415" PointY="5.8551664811197917" />
-          <ConnectorPoint PointX="2" PointY="5.8551664811197917" />
+          <ConnectorPoint PointX="3.7882193534919333" PointY="5.77634765625" />
+          <ConnectorPoint PointX="3.7882193534919333" PointY="8.359375" />
+          <ConnectorPoint PointX="3.6278780258030077" PointY="8.359375" />
+          <ConnectorPoint PointX="3.4612113591363407" PointY="8.359375" />
+          <ConnectorPoint PointX="2.9375" PointY="8.359375" />
+          <ConnectorPoint PointX="2.9375" PointY="11.389506429036459" />
+          <ConnectorPoint PointX="2.8958333333333335" PointY="11.389506429036459" />
+          <ConnectorPoint PointX="2.7291666666666665" PointY="11.389506429036459" />
+          <ConnectorPoint PointX="2.25" PointY="11.389506429036459" />
         </AssociationConnector>
         <EntityTypeShape EntityType="HeadacheModel.SecondaryHeadacheSymptom" Width="1.5" PointX="12.125" PointY="0.625" Height="1.3969734700520831" />
         <AssociationConnector Association="HeadacheModel.VisitRecordSecondaryHeadacheSymptom">
@@ -1959,41 +2103,40 @@
           <ConnectorPoint PointX="7.875" PointY="3.5721541341145828" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.VisitRecordMedicationAdvice">
-          <ConnectorPoint PointX="6.375" PointY="6.1583870442708326" />
-          <ConnectorPoint PointX="6.375" PointY="6.75" />
+          <ConnectorPoint PointX="6.523438125" PointY="6.1583870442708326" />
+          <ConnectorPoint PointX="6.523438125" PointY="6.75" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.PatBasicInforLifestyle">
-          <ConnectorPoint PointX="3.1953162500000003" PointY="5.65134765625" />
-          <ConnectorPoint PointX="3.1953162500000003" PointY="9.577861328125" />
-          <ConnectorPoint PointX="3.1419264583333333" PointY="9.577861328125" />
-          <ConnectorPoint PointX="2.9752597916666663" PointY="9.577861328125" />
-          <ConnectorPoint PointX="2.8958333333333335" PointY="9.577861328125" />
-          <ConnectorPoint PointX="2.7291666666666665" PointY="9.577861328125" />
-          <ConnectorPoint PointX="2.375" PointY="9.577861328125" />
+          <ConnectorPoint PointX="3.5445446924696742" PointY="5.77634765625" />
+          <ConnectorPoint PointX="3.5445446924696742" PointY="8.625" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.PatBasicInforVisitRecord">
-          <ConnectorPoint PointX="4.375" PointY="3.0721541341145828" />
-          <ConnectorPoint PointX="5" PointY="3.0721541341145828" />
+          <ConnectorPoint PointX="4.625" PointY="3.263173828125" />
+          <ConnectorPoint PointX="5" PointY="3.263173828125" />
         </AssociationConnector>
         <EntityTypeShape EntityType="HeadacheModel.PremonitorySymptom" Width="1.5" PointX="10.375" PointY="9.375" Height="1.7790128580729157" />
         <AssociationConnector Association="HeadacheModel.PrimaryHeadacheOverViewPremonitorySymptom">
-          <ConnectorPoint PointX="8.0312475" PointY="5.8943082682291656" />
-          <ConnectorPoint PointX="8.0312475" PointY="9.78125" />
-          <ConnectorPoint PointX="8.0568105422162919" PointY="9.78125" />
-          <ConnectorPoint PointX="8.22347720888296" PointY="9.78125" />
-          <ConnectorPoint PointX="10.163666666666666" PointY="9.78125" />
-          <ConnectorPoint PointX="10.330333333333334" PointY="9.78125" />
+          <ConnectorPoint PointX="8.0388219377748129" PointY="5.8943082682291656" />
+          <ConnectorPoint PointX="8.0388219377748129" PointY="9.78125" />
+          <ConnectorPoint PointX="8.0416666666666661" PointY="9.78125" />
+          <ConnectorPoint PointX="8.2083333333333339" PointY="9.78125" />
+          <ConnectorPoint PointX="10.041666666666666" PointY="9.78125" />
+          <ConnectorPoint PointX="10.208333333333334" PointY="9.78125" />
           <ConnectorPoint PointX="10.375" PointY="9.78125" />
         </AssociationConnector>
         <EntityTypeShape EntityType="HeadacheModel.PHQuestionaire" Width="1.5" PointX="11.125" PointY="13.5" Height="3.3071704101562496" />
         <EntityTypeShape EntityType="HeadacheModel.GADQuestionaire" Width="1.5" PointX="8.375" PointY="10.25" Height="2.9251310221354156" />
         <EntityTypeShape EntityType="HeadacheModel.DisabilityEvaluation" Width="1.5" PointX="9.25" PointY="13.25" Height="2.5430916341145817" />
         <AssociationConnector Association="HeadacheModel.VisitRecordGADQuestionaire">
-          <ConnectorPoint PointX="5.48437375" PointY="6.1583870442708326" />
-          <ConnectorPoint PointX="5.48437375" PointY="11.09375" />
-          <ConnectorPoint PointX="8.0568105422162919" PointY="11.09375" />
-          <ConnectorPoint PointX="8.22347720888296" PointY="11.09375" />
-          <ConnectorPoint PointX="8.375" PointY="11.09375" />
+          <ConnectorPoint PointX="5.7304670625000007" PointY="6.1583870442708326" />
+          <ConnectorPoint PointX="5.7304670625000007" PointY="6.5" />
+          <ConnectorPoint PointX="6.4401047916666672" PointY="6.4999999999999991" />
+          <ConnectorPoint PointX="6.6067714583333332" PointY="6.5" />
+          <ConnectorPoint PointX="7.95548860444148" PointY="6.4999999999999991" />
+          <ConnectorPoint PointX="8.1221552711081468" PointY="6.5" />
+          <ConnectorPoint PointX="8.125" PointY="6.5" />
+          <ConnectorPoint PointX="8.125" PointY="11.625000499999999" />
+          <ConnectorPoint PointX="8.375" PointY="11.625000499999999" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.VisitRecordPHQuestionaire" ManuallyRouted="false">
           <ConnectorPoint PointX="6.875" PointY="2.239202067057291" />
@@ -2008,13 +2151,15 @@
         </AssociationConnector>
         <EntityTypeShape EntityType="HeadacheModel.SleepStatus" Width="1.5" PointX="7.5" PointY="13.375" Height="2.3520719401041656" />
         <AssociationConnector Association="HeadacheModel.VisitRecordSleepStatus" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.875" PointY="4.896522589192708" />
-          <ConnectorPoint PointX="7.375" PointY="4.896522589192708" />
+          <ConnectorPoint PointX="6.875" PointY="4.8943766861979165" />
+          <ConnectorPoint PointX="7.375" PointY="4.8943766861979165" />
           <ConnectorPoint PointX="7.375" PointY="6.1443082682291656" />
-          <ConnectorPoint PointX="7.9479141666666662" PointY="6.1443082682291648" />
-          <ConnectorPoint PointX="8.1145808333333331" PointY="6.1443082682291656" />
-          <ConnectorPoint PointX="8.1401438755496258" PointY="6.1443082682291656" />
-          <ConnectorPoint PointX="8.1401438755496258" PointY="13.375" />
+          <ConnectorPoint PointX="7.95548860444148" PointY="6.1443082682291648" />
+          <ConnectorPoint PointX="8.1221552711081468" PointY="6.1443082682291656" />
+          <ConnectorPoint PointX="8.125" PointY="6.1443082682291656" />
+          <ConnectorPoint PointX="8.125" PointY="13" />
+          <ConnectorPoint PointX="7.9374995000000013" PointY="13" />
+          <ConnectorPoint PointX="7.9374995000000013" PointY="13.375" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.VisitRecordDisabilityEvaluation">
           <ConnectorPoint PointX="6.04687625" PointY="6.1583870442708326" />
@@ -2032,47 +2177,60 @@
           <ConnectorPoint PointX="10.75" PointY="14.4964752874652" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.PatBasicInforPreviousDrug">
-          <ConnectorPoint PointX="3.875" PointY="5.4603279622395826" />
-          <ConnectorPoint PointX="3.875" PointY="6.25" />
+          <ConnectorPoint PointX="3.9709753492586271" PointY="5.77634765625" />
+          <ConnectorPoint PointX="3.9709753492586271" PointY="8.34375" />
+          <ConnectorPoint PointX="3.6278780258030077" PointY="8.34375" />
+          <ConnectorPoint PointX="3.4612113591363407" PointY="8.34375" />
+          <ConnectorPoint PointX="3.0833333333333335" PointY="8.34375" />
+          <ConnectorPoint PointX="2.9166666666666665" PointY="8.34375" />
+          <ConnectorPoint PointX="2.8125" PointY="8.34375" />
+          <ConnectorPoint PointX="2.8125" PointY="12.602763561523437" />
+          <ConnectorPoint PointX="3.25" PointY="12.602763561523437" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="HeadacheModel.HeadacheDiary" Width="1.5" PointX="3.75" PointY="12" Height="3.3071704101562496" />
-        <EntityTypeShape EntityType="HeadacheModel.HDheadacheplace" Width="1.5" PointX="0.875" PointY="12.875" Height="1.7790128580729157" />
-        <EntityTypeShape EntityType="HeadacheModel.HDAcompanion" Width="1.5" PointX="5.75" PointY="15.375" Height="1.7790128580729157" />
+        <EntityTypeShape EntityType="HeadacheModel.HeadacheDiary" Width="1.5" PointX="5.625" PointY="12" Height="3.3071704101562496" />
+        <EntityTypeShape EntityType="HeadacheModel.HDheadacheplace" Width="1.5" PointX="7.5" PointY="15.875" Height="1.7790128580729157" />
+        <EntityTypeShape EntityType="HeadacheModel.HDAcompanion" Width="1.5" PointX="5.75" PointY="15.625" Height="1.7790128580729157" />
         <EntityTypeShape EntityType="HeadacheModel.HDPrecipitatingFactor" Width="1.5" PointX="2.25" PointY="15.5" Height="1.7790128580729157" />
         <EntityTypeShape EntityType="HeadacheModel.HDMitigatingFactors" Width="1.5" PointX="4" PointY="15.625" Height="1.7790128580729157" />
-        <EntityTypeShape EntityType="HeadacheModel.HDHeadacheProdrome" Width="1.5" PointX="0.5" PointY="15.25" Height="1.7790128580729174" />
+        <EntityTypeShape EntityType="HeadacheModel.HDHeadacheProdrome" Width="1.5" PointX="0.5" PointY="15.5" Height="1.7790128580729174" />
         <AssociationConnector Association="HeadacheModel.HeadacheDiaryHDAcompanion">
-          <ConnectorPoint PointX="5.25" PointY="15.30717041015625" />
-          <ConnectorPoint PointX="5.75" PointY="15.375" />
+          <ConnectorPoint PointX="6.4375" PointY="15.30717041015625" />
+          <ConnectorPoint PointX="6.4375" PointY="15.625" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.HeadacheDiaryHDheadacheplace">
-          <ConnectorPoint PointX="3.75" PointY="13.764506429036459" />
-          <ConnectorPoint PointX="3.1458333333333335" PointY="13.764506429036459" />
-          <ConnectorPoint PointX="2.9791666666666665" PointY="13.764506429036459" />
-          <ConnectorPoint PointX="2.375" PointY="13.764506429036459" />
+          <ConnectorPoint PointX="7.125" PointY="15.30717041015625" />
+          <ConnectorPoint PointX="7.5" PointY="15.875" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.HeadacheDiaryHDHeadacheProdrome">
-          <ConnectorPoint PointX="3.75" PointY="14.98325592903646" />
-          <ConnectorPoint PointX="3.1458333333333335" PointY="14.98325592903646" />
-          <ConnectorPoint PointX="2.9791666666666665" PointY="14.98325592903646" />
-          <ConnectorPoint PointX="0.59375" PointY="14.98325592903646" />
-          <ConnectorPoint PointX="0.59375" PointY="15.25" />
+          <ConnectorPoint PointX="5.625" PointY="14.921608828125006" />
+          <ConnectorPoint PointX="0.65625" PointY="14.921608828125006" />
+          <ConnectorPoint PointX="0.65625" PointY="15.5" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.HeadacheDiaryHDMitigatingFactors">
-          <ConnectorPoint PointX="4.5937475" PointY="15.30717041015625" />
-          <ConnectorPoint PointX="4.5937475" PointY="15.625" />
+          <ConnectorPoint PointX="5.625" PointY="15.30717041015625" />
+          <ConnectorPoint PointX="5.5" PointY="15.625" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.HeadacheDiaryHDPrecipitatingFactor">
-          <ConnectorPoint PointX="3.75" PointY="12.851001214518229" />
-          <ConnectorPoint PointX="3.0625" PointY="12.851001214518229" />
-          <ConnectorPoint PointX="3.0625" PointY="15.5" />
+          <ConnectorPoint PointX="5.625" PointY="15.114389619140628" />
+          <ConnectorPoint PointX="2.625" PointY="15.114389619140628" />
+          <ConnectorPoint PointX="2.625" PointY="15.5" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.PatBasicInforHeadacheDiary">
-          <ConnectorPoint PointX="2.875" PointY="2.8600162760416667" />
-          <ConnectorPoint PointX="2.8125" PointY="2.8600162760416667" />
-          <ConnectorPoint PointX="2.8125" PointY="11.90625" />
-          <ConnectorPoint PointX="3.7635081202007017" PointY="11.90625" />
-          <ConnectorPoint PointX="3.7635081202007017" PointY="12" />
+          <ConnectorPoint PointX="4.5192433365587092" PointY="5.77634765625" />
+          <ConnectorPoint PointX="4.5192433365587092" PointY="8.125" />
+          <ConnectorPoint PointX="5.25" PointY="8.125" />
+          <ConnectorPoint PointX="5.25" PointY="13.416567184570322" />
+          <ConnectorPoint PointX="5.625" PointY="13.416567184570322" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="HeadacheModel.RegionalCenterAccount" Width="1.5" PointX="0.875" PointY="2.625" Height="2.1610522460937496" />
+        <EntityTypeShape EntityType="HeadacheModel.NationalCenterAccount" Width="1.5" PointX="0.875" PointY="0.625" Height="1.779012858072917" />
+        <AssociationConnector Association="HeadacheModel.NationalCenterAccountRegionalCenterAccount">
+          <ConnectorPoint PointX="1.625" PointY="2.404012858072917" />
+          <ConnectorPoint PointX="1.625" PointY="2.625" />
+        </AssociationConnector>
+        <AssociationConnector Association="HeadacheModel.RegionalCenterAccountDoctorAccount">
+          <ConnectorPoint PointX="1.5" PointY="4.9770719401041656" />
+          <ConnectorPoint PointX="1.5" PointY="5.375" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

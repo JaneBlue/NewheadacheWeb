@@ -12,22 +12,21 @@ using System.Collections.Generic;
 
 namespace HeadacheCDSSWeb.Models
 {
-    public partial class DoctorAccount
+    public partial class RegionalCenterAccount
     {
-        public DoctorAccount()
+        public RegionalCenterAccount()
         {
-            this.PatBasicInfor = new HashSet<PatBasicInfor>();
+            this.DoctorAccount = new HashSet<DoctorAccount>();
         }
     
-        public int Id { get; set; }
+        public int ID { get; set; }
         public string UserName { get; set; }
         public string PassWord { get; set; }
-        public string Hospital { get; set; }
-        public string ChiefDoctor { get; set; }
-        public int RegionalCenterAccountID { get; set; }
+        public string Region { get; set; }
+        public int NationalCenterAccountID { get; set; }
     
-        public virtual ICollection<PatBasicInfor> PatBasicInfor { get; set; }
-        public virtual RegionalCenterAccount RegionalCenterAccount { get; set; }
+        public virtual NationalCenterAccount NationalCenterAccount { get; set; }
+        public virtual ICollection<DoctorAccount> DoctorAccount { get; set; }
     }
     
 }
