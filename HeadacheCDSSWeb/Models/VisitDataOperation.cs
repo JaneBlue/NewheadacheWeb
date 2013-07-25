@@ -430,6 +430,10 @@ namespace HeadacheCDSSWeb.Models
                             f.FDetail = pfactor.FactorDetail;
                             rdata.precipitatingfactor.Add(f);
                         }
+                        foreach (PremonitorySymptom psymptom in vr.PrimaryHeadachaOverView.PremonitorySymptom)
+                        {   
+                            rdata.premonitorsymptom.Add(psymptom.Symptom);
+                        }
                     }
 
                     //add 2013/7/23
@@ -562,7 +566,15 @@ namespace HeadacheCDSSWeb.Models
                     }
                 }
 
-
+                int count7 = VData.PHeadacheOverview.PremonitorySymptom.Count - 1;
+                for (int n = count7; n >= 0; n--)
+                {
+                    PremonitorySymptom ha = VData.PHeadacheOverview.PremonitorySymptom.ElementAt(n);
+                    if (ha.Symptom == "")
+                    {
+                        VData.PHeadacheOverview.PremonitorySymptom.Remove(ha);
+                    }
+                }
 
                 return VData;
             }

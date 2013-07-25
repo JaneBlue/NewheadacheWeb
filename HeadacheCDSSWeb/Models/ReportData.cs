@@ -21,7 +21,10 @@ namespace HeadacheCDSSWeb.Models
             this.medicationadvice = new List<HMedicine>();
             this.headacheoverview = new HeadacheOverview();
             this.patlifestyle = new lifestyle();
-            
+            this.sleepconditon = new sleepstatus();
+            this.disablityevaluation = new Disabilityevaluation();
+            this.phquestionaire = new PHQ();
+            this.gdaquestionaire = new GADQ();
             this.secondaryheadachesymptom = new List<string>();
         }
         public string Id { get; set; }
@@ -60,6 +63,7 @@ namespace HeadacheCDSSWeb.Models
         public List<string> mitigatingfactors{get;set;}
         public List<string> headacheaccompany{get;set;}
         public List<string> headacheprodrome{get;set;}
+        public List<string> premonitorsymptom{get;set;}
         public List<HMedicine> medicationadvice{get;set;}
         public HeadacheOverview headacheoverview{get;set;}
         public lifestyle  patlifestyle{get;set;}
