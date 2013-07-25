@@ -182,15 +182,16 @@ input[type="submit"]:active
 #ui-accordion-accordion-panel-0
 {
     height:385px;
-   
+    border:2px solid #b7d9ef;
 }
-.ui-accordion-content
+#ui-accordion-accordion-panel-1
 {
    border:2px solid #b7d9ef;
 }
 #List
 {
     height:345px;
+   
 }
 #List ul {
 	margin: 0;

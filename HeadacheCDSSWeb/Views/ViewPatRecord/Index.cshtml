@@ -29,8 +29,15 @@
     <div id="sidebar">
     <div id="navigate">
           <div id="accordion">
+          <h3 >头痛日志</h3>
+          <div id="ui-accordion-accordion-panel-1">
+              <ul class="diary">
+              <li ><img src="@Href("../../Content/images/chart.png")"  alt="text"/><a href="#"  id="statics">头痛情况统计分析</a></li>
+              <li ><div class="report"><div style="float:left"><img src="@Href("../../Content/images/report.png")"  alt="text"/></div><div style="padding-top:10px"><a href="#" id="report" >近三个月分析报告</a><div></div></li>
+              </ul>
+          </div>
           <h3>诊疗记录</h3>
-          <div>
+          <div id="ui-accordion-accordion-panel-0">
             <div id="List">
             <ul class="paging">
             @foreach (var item in Model)
@@ -47,13 +54,8 @@
                 data-action="last">&raquo;</a>
             </div>
           </div>
-          <h3 >头痛日志</h3>
-          <div>
-              <ul class="diary">
-              <li ><img src="@Href("../../Content/images/chart.png")"  alt="text"/><a href="#"  id="statics">头痛情况统计分析</a></li>
-              <li ><div class="report"><div style="float:left"><img src="@Href("../../Content/images/report.png")"  alt="text"/></div><div style="padding-top:10px"><a href="#" id="report" >近三个月分析报告</a><div></div></li>
-              </ul>
-          </div>
+          
+          
     </div>
   </div>
   <div id="return" class="button">
