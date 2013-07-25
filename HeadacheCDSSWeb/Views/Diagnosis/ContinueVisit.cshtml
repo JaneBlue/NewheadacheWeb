@@ -1016,105 +1016,147 @@ $(function () {
         OCX.SetObjectInfo("TextBox_47", "text", strPrescriptionNote);
 
         //PremonitorySymptom
-//        var strPremonitorySymptomGDHY = obj;
-//        if("过度活跃" == strPremonitorySymptomGDHY)
-//            OCX.SetObjectInfo("CheckBox_11", "checked", "true");
+        var listPremonitorSymptoms = obj.premonitorsymptom;
+        for(var nIndexPremonitorSymptom = 0; nIndexPremonitorSymptom < listPremonitorSymptoms.length; ++nIndexPremonitorSymptom)
+        {
+            var strPremonitorSymptom = listPremonitorSymptoms[nIndexPremonitorSymptom];
+            if("过度活跃" == strPremonitorSymptom)
+                OCX.SetObjectInfo("CheckBox_11", "checked", "true");
+            else if("特别多话" == strPremonitorSymptom)
+                OCX.SetObjectInfo("CheckBox_12", "checked", "true");
+            else if("沮丧" == strPremonitorSymptom)
+                OCX.SetObjectInfo("CheckBox_13", "checked", "true");
+            else if("易激惹" == strPremonitorSymptom)
+                OCX.SetObjectInfo("CheckBox_14", "checked", "true");
+            else if("感觉迟钝" == strPremonitorSymptom)
+                OCX.SetObjectInfo("CheckBox_15", "checked", "true");
+            else if("思睡" == strPremonitorSymptom)
+                OCX.SetObjectInfo("CheckBox_19", "checked", "true");
+            else if("坐立不安" == strPremonitorSymptom)
+                OCX.SetObjectInfo("CheckBox_20", "checked", "true");
+            else if("注意力障碍" == strPremonitorSymptom)
+                OCX.SetObjectInfo("CheckBox_18", "checked", "true");
+            else if("畏光" == strPremonitorSymptom)
+                OCX.SetObjectInfo("CheckBox_17", "checked", "true");
+            else if("畏声" == strPremonitorSymptom)
+                OCX.SetObjectInfo("CheckBox_16", "checked", "true");
+            else if("畏嗅" == strPremonitorSymptom)
+                OCX.SetObjectInfo("CheckBox_24", "checked", "true");
+            else if("言语困难" == strPremonitorSymptom)
+                OCX.SetObjectInfo("CheckBox_25", "checked", "true");
+            else if("打哈欠" == strPremonitorSymptom)
+                OCX.SetObjectInfo("CheckBox_23", "checked", "true");
+            else if("颈部僵硬感" == strPremonitorSymptom)
+                OCX.SetObjectInfo("CheckBox_22", "checked", "true");
+            else if("一直想吃东西" == strPremonitorSymptom)
+                OCX.SetObjectInfo("CheckBox_21", "checked", "true");
+            else if("胃口变差" == strPremonitorSymptom)
+                OCX.SetObjectInfo("CheckBox_29", "checked", "true");
+            else if("感觉冷" == strPremonitorSymptom)
+                OCX.SetObjectInfo("CheckBox_30", "checked", "true");
+            else if("腹泻" == strPremonitorSymptom)
+                OCX.SetObjectInfo("CheckBox_28", "checked", "true");
+            else if("便秘" == strPremonitorSymptom)
+                OCX.SetObjectInfo("CheckBox_27", "checked", "true");
+            else if("特别口渴" == strPremonitorSymptom)
+                OCX.SetObjectInfo("CheckBox_26", "checked", "true");
+            else if("多尿" == strPremonitorSymptom)
+                OCX.SetObjectInfo("CheckBox_34", "checked", "true");
+            else if("感觉虚弱" == strPremonitorSymptom)
+                OCX.SetObjectInfo("CheckBox_35", "checked", "true");
+            else if("头晕" == strPremonitorSymptom)
+                OCX.SetObjectInfo("CheckBox_33", "checked", "true");
+            else if("水潴留、水肿" == strPremonitorSymptom)
+                OCX.SetObjectInfo("CheckBox_32", "checked", "true");
+            else if("其他" == strPremonitorSymptom)
+                OCX.SetObjectInfo("CheckBox_31", "checked", "true");
+        }
+        
 
-//        var strPremonitorySymptomTBDH = obj;
-//        if("特别多话" == strPremonitorySymptomGDHY)
-//            OCX.SetObjectInfo("CheckBox_12", "checked", "true");
+        //disablityevaluation
+        var strHeadacheDays = obj.disablityevaluation.HeadacheDays;
+        OCX.SetObjectInfo("TextBox_57", "text", strHeadacheDays);
 
-//        var strPremonitorySymptomQS = obj;
-//        if("沮丧" == strPremonitorySymptomQS)
-//            OCX.SetObjectInfo("CheckBox_13", "checked", "true");
+        var strOutOfWorkDays = obj.disablityevaluation.OutOfWorkDays;
+        OCX.SetObjectInfo("TextBox_41", "text", strOutOfWorkDays);
 
-//        var strPremonitorySymptomYJR = obj;
-//        if("易激惹" == strPremonitorySymptomYJR)
-//            OCX.SetObjectInfo("CheckBox_14", "checked", "true");
+        var strAffectWorkDays = obj.disablityevaluation.AffectWorkDays;
+        OCX.SetObjectInfo("TextBox_42", "text", strAffectWorkDays);
 
-//        var strPremonitorySymptomGJCD = obj;
-//        if("感觉迟钝" == strPremonitorySymptomGJCD)
-//            OCX.SetObjectInfo("CheckBox_15", "checked", "true");
+        var strOutOfHouseWorkDays = obj.disablityevaluation.OutOfHouseWorkDays;
+        OCX.SetObjectInfo("TextBox_52", "text", strOutOfHouseWorkDays);
 
-//        var strPremonitorySymptomSS = obj;
-//        if("思睡" == strPremonitorySymptomSS)
-//            OCX.SetObjectInfo("CheckBox_19", "checked", "true");
+        var strAffectHouseWorkDays = obj.disablityevaluation.AffectHouseWorkDays;
+        OCX.SetObjectInfo("TextBox_53", "text", strAffectHouseWorkDays);
 
-//        var strPremonitorySymptomZLBA = obj;
-//        if("坐立不安" == strPremonitorySymptomZLBA)
-//            OCX.SetObjectInfo("CheckBox_20", "checked", "true");
+        var strMissActivityDays = obj.disablityevaluation.MissActivityDays;
+        OCX.SetObjectInfo("TextBox_56", "text", strMissActivityDays);
 
-//        var strPremonitorySymptomZYLZA = obj;
-//        if("注意力障碍" == strPremonitorySymptomZYLZA)
-//            OCX.SetObjectInfo("CheckBox_18", "checked", "true");
+        //SleepStatus
+        var strSleepStatusTimePerDay = obj.sleepconditon.TimePerDay;
+        OCX.SetObjectInfo("TextBox_59", "text", strSleepStatusTimePerDay);
 
-//        var strPremonitorySymptomWG = obj;
-//        if("畏光" == strPremonitorySymptomWG)
-//            OCX.SetObjectInfo("CheckBox_17", "checked", "true");
+        var strSleepStatusDifficultFallingAsleep = obj.sleepconditon.DifficultFallingAsleep;
+        OCX.SetObjectInfo("ComboBox_25", "text", strSleepStatusDifficultFallingAsleep);
 
-//        var strPremonitorySymptomWS = obj;
-//        if("畏声" == strPremonitorySymptomWS)
-//            OCX.SetObjectInfo("CheckBox_16", "checked", "true");
+        var strSleepStatusDreaminess = obj.sleepconditon.Dreaminess;
+        OCX.SetObjectInfo("ComboBox_27", "text", strSleepStatusDreaminess);
 
-//        var strPremonitorySymptomWX = obj;
-//        if("畏嗅" == strPremonitorySymptomWX)
-//            OCX.SetObjectInfo("CheckBox_24", "checked", "true");
+        var strSleepStatusFestlessSleep = obj.sleepconditon.FestlessSleep;
+        OCX.SetObjectInfo("ComboBox_26", "text", strSleepStatusFestlessSleep);
 
-//        var strPremonitorySymptomYYKN = obj;
-//        if("言语困难" == strPremonitorySymptomYYKN)
-//            OCX.SetObjectInfo("CheckBox_25", "checked", "true");
+        var strSleepStatusSleepyDayTime = obj.sleepconditon.SleepyDayTime;
+        OCX.SetObjectInfo("ComboBox_28", "text", strSleepStatusSleepyDayTime);
 
-//        var strPremonitorySymptomDHQ = obj;
-//        if("打哈欠" == strPremonitorySymptomDHQ)
-//            OCX.SetObjectInfo("CheckBox_23", "checked", "true");
+        //PHQ
+        var strPHQ1 = obj.phquestionaire.Q1;
+        OCX.SetObjectInfo("ComboBox_8", "text", strPHQ1);
 
-//        var strPremonitorySymptomJBJYG = obj;
-//        if("颈部僵硬感" == strPremonitorySymptomJBJYG)
-//            OCX.SetObjectInfo("CheckBox_22", "checked", "true");
+        var strPHQ2 = obj.phquestionaire.Q2;
+        OCX.SetObjectInfo("ComboBox_9", "text", strPHQ2);
 
-//        var strPremonitorySymptomYZXCDX = obj;
-//        if("一直想吃东西" == strPremonitorySymptomYZXCDX)
-//            OCX.SetObjectInfo("CheckBox_21", "checked", "true");
+        var strPHQ3 = obj.phquestionaire.Q3;
+        OCX.SetObjectInfo("ComboBox_10", "text", strPHQ3);
 
-//        var strPremonitorySymptomWKBC = obj;
-//        if("胃口变差" == strPremonitorySymptomWKBC)
-//            OCX.SetObjectInfo("CheckBox_29", "checked", "true");
+        var strPHQ4 = obj.phquestionaire.Q4;
+        OCX.SetObjectInfo("ComboBox_11", "text", strPHQ4);
 
-//        var strPremonitorySymptomGJL = obj;
-//        if("感觉冷" == strPremonitorySymptomGJL)
-//            OCX.SetObjectInfo("CheckBox_30", "checked", "true");
+        var strPHQ5 = obj.phquestionaire.Q5;
+        OCX.SetObjectInfo("ComboBox_12", "text", strPHQ5);
 
-//        var strPremonitorySymptomFX = obj;
-//        if("腹泻" == strPremonitorySymptomFX)
-//            OCX.SetObjectInfo("CheckBox_28", "checked", "true");
+        var strPHQ6 = obj.phquestionaire.Q6;
+        OCX.SetObjectInfo("ComboBox_13", "text", strPHQ6);
 
-//        var strPremonitorySymptomBM = obj;
-//        if("便秘" == strPremonitorySymptomBM)
-//            OCX.SetObjectInfo("CheckBox_27", "checked", "true");
+        var strPHQ7 = obj.phquestionaire.Q7;
+        OCX.SetObjectInfo("ComboBox_14", "text", strPHQ7);
 
-//        var strPremonitorySymptomTBKK = obj;
-//        if("特别口渴" == strPremonitorySymptomTBKK)
-//            OCX.SetObjectInfo("CheckBox_26", "checked", "true");
+        var strPHQ8 = obj.phquestionaire.Q8;
+        OCX.SetObjectInfo("ComboBox_15", "text", strPHQ8);
 
-//        var strPremonitorySymptomDN = obj;
-//        if("多尿" == strPremonitorySymptomDN)
-//            OCX.SetObjectInfo("CheckBox_34", "checked", "true");
+        var strPHQ9 = obj.phquestionaire.Q9;
+        OCX.SetObjectInfo("ComboBox_16", "text", strPHQ9);
 
-//        var strPremonitorySymptomGJXR = obj;
-//        if("感觉虚弱" == strPremonitorySymptomGJXR)
-//            OCX.SetObjectInfo("CheckBox_35", "checked", "true");
+        //GADQ
+        var strGADQ1 = obj.gdaquestionaire.Q1;
+        OCX.SetObjectInfo("ComboBox_17", "text", strGADQ1);
 
-//        var strPremonitorySymptomTY = obj;
-//        if("头晕" == strPremonitorySymptomTY)
-//            OCX.SetObjectInfo("CheckBox_33", "checked", "true");
+        var strGADQ2 = obj.gdaquestionaire.Q2;
+        OCX.SetObjectInfo("ComboBox_19", "text", strGADQ2);
 
-//        var strPremonitorySymptomSZLSZ = obj;
-//        if("水潴留、水肿" == strPremonitorySymptomSZLSZ)
-//            OCX.SetObjectInfo("CheckBox_32", "checked", "true");
+        var strGADQ3 = obj.gdaquestionaire.Q3;
+        OCX.SetObjectInfo("ComboBox_20", "text", strGADQ3);
 
-//        var strPremonitorySymptomQT = obj;
-//        if("其他" == strPremonitorySymptomQT)
-//            OCX.SetObjectInfo("CheckBox_31", "checked", "true");
+        var strGADQ4 = obj.gdaquestionaire.Q4;
+        OCX.SetObjectInfo("ComboBox_21", "text", strGADQ4);
+
+        var strGADQ5 = obj.gdaquestionaire.Q5;
+        OCX.SetObjectInfo("ComboBox_22", "text", strGADQ5);
+
+        var strGADQ6 = obj.gdaquestionaire.Q6;
+        OCX.SetObjectInfo("ComboBox_23", "text", strGADQ6);
+
+        var strGADQ7 = obj.gdaquestionaire.Q7;
+        OCX.SetObjectInfo("ComboBox_24", "text", strGADQ7);
     }
      function SetHeadachePlace(obj)
     { 
