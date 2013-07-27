@@ -63,6 +63,9 @@ namespace HeadacheCDSSWeb.Controllers
         }
         public ActionResult ViewDiary()
         {
+            string jsonStr = Request.Params["postjson"];
+            //VisitData obj = JsonConvert.DeserializeObject<VisitData>(jsonStr);
+            //string a = member.Id;
             return PartialView("HeadacheDiaryView");
         }
         public ActionResult ViewDiaryReport()
@@ -75,5 +78,6 @@ namespace HeadacheCDSSWeb.Controllers
             identity = identity + this.TempData["recordID"].ToString();
             return RedirectToAction("ContinueVisit", "Diagnosis", new { identity = identity });
         }
+
     }
 }

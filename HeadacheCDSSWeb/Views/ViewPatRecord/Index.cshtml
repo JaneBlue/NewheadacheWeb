@@ -22,7 +22,74 @@
                 </div>
 
         </div>
-        <div id="DiaryView"></div>
+        <div id="DiaryView">
+          <div class="statics">
+           <div id="time">
+                        <table border="0">
+                <tr>
+                <td></td>
+                <td></td>
+                </tr>
+                <tr>
+                <td><input type="text" name="date" id="d1" /></td>
+                <td><a>----------</a></td>
+                <td><input type="text" name="date" id="d2" /></td>
+                <td><div  class="button"><a id="diarygraph" hef="#">确定</a></div></td>
+                </tr>
+                </table>
+        
+        
+           </div>
+           <div id="line">
+            <div id="variable1">
+            <ul>
+                <li>
+                <span>头痛时间长度</span>
+                <input type="checkbox" id="htime" value ="time" />
+                </li>
+                <li>
+                <span>头痛程度评分</span>
+                 <input type="checkbox" name="hdegree" value ="orange"/>
+                 </li>
+             </ul>
+            </div>
+            <div id="linegraph"></div>
+            <div style="float:left;padding-left:240px"><p>平均值: 6.5</p></div>
+          </div>
+          <div id="pie">
+          <div id="variable2">
+               <ul>
+                <li>
+                <span>头痛性质</span>
+                <input type="radio" name="htype" value ="apple" />
+                </li>
+                <li>
+                <span>头痛部位</span>
+                 <input type="radio" name="fruit" value ="orange"/>
+                 </li>
+                 <li>
+                <span>伴随症状</span>
+                 <input type="radio" name="fruit" value ="orange"/>
+                 </li>
+                 <li>
+                <span>头痛先兆</span>
+                 <input type="radio" name="fruit" value ="orange"/>
+                 </li>
+                 <li>
+                <span>缓解因素</span>
+                 <input type="radio" name="fruit" value ="orange"/>
+                 </li>
+                 <li>
+                <span>诱发因素</span>
+                 <input type="radio" name="fruit" value ="orange"/>
+                 </li>
+             </ul>
+
+         </div>
+         <div id="piegraph"></div>
+         </div>
+     </div>
+</div>
         <div id="@ViewBag.patId" class="PID" style="display:none;"></div>
         <div id="RecordID" class="@ViewBag.recordId" style="display:none;"></div>
     </div>
@@ -183,44 +250,14 @@
                 });
             }
         });
+
         $(".diary li a").click(function () {
             if ($(this).attr("id") == "statics") {
-                $.ajax({
-                    type: "POST",
-                    url: '@Url.Action("ViewDiary", "ViewPatRecord")',
-                    success: function (data) {
-                        $("#ViewContent").hide();
-                        $("#DiaryView").html(data);
-                        $("#DiaryView").show();
-                        $("#d1").Zebra_DatePicker();
-                        $("#d2").Zebra_DatePicker();
-                        var plot1 = $.jqplot('linegraph', [[3, 7, 9, 1, 4, 6, 8, 2, 5]], { axes: { xaxis: { label: "" }, yaxis: { label: "头痛程度评分"}} });
-                        var data = [
-                                                    ['恶心', 12], ['呕吐', 18], ['畏光', 14],
-                                                    ['怕吵', 16], ['感觉不安或躁动', 7]
-                                                  ];
-                        var plot2 = jQuery.jqplot('piegraph', [data],
-                                                    {
-                                                        seriesDefaults: {
-                                                            renderer: jQuery.jqplot.PieRenderer,
-                                                            rendererOptions: {
-                                                                // Turn off filling of slices.
-                                                                fill: false,
-                                                                showDataLabels: true,
-                                                                // Add a margin to seperate the slices.
-                                                                sliceMargin: 2,
-                                                                // stroke the slices with a little thicker line.
-                                                                lineWidth: 3
-                                                            }
-                                                        },
-                                                        legend: { show: true, location: 'e' }
-                                                    }
-                                                  );
-                    },
-                    error: function () {
-                        alert("处理失败!");
-                    }
-                });
+                $("#ViewContent").hide();
+                $("#DiaryView").show();
+                $("#DiaryView").show();
+                $("#d1").Zebra_DatePicker();
+                $("#d2").Zebra_DatePicker();
             }
             else {
                 $.ajax({
@@ -244,7 +281,68 @@
             $("#ViewContent").hide();
 
         })
+        $("#diarygraph").live("click", function () {
 
+            var StartDate = $("#d1").val();
+            var EndDate = $("#d2").val();
+            var Pid = $(".PID").attr("id");
+            var selected = $("input:radio[name=htype]:checked").val(); //若未被选中 则val() = null
+            var encoded = $.toJSON({ Id: 1, Name: "Wade", Leader: "123" });
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("ViewDiary", "ViewPatRecord")',
+                data: {postjson:encoded},
+
+
+                success: function (data) {
+                    //                    $("#ViewContent").hide();
+                    //              
+                    //                    $("#DiaryView").show();
+
+                    var plot1 = $.jqplot('linegraph', [[3, 7, 9, 1, 4, 6, 8, 2, 5]], { axes: { xaxis: { label: "" }, yaxis: { label: "头痛程度评分"}} });
+                    var axisDates = ["Jan 19", "Jan 20", "Jan 21"];
+                    var chartData = [2.61, 5.00, 6.00];
+
+                    $.jqplot.config.enablePlugins = true;
+                    var plot2 = $.jqplot('piegraph', [chartData], {
+                        title: 'Some Plot',
+                        seriesDefaults: {
+                            renderer: $.jqplot.BarRenderer,
+                            rendererOptions: {
+                                barPadding: 1,
+                                barMargin: 15,
+                                barDirection: 'vertical',
+                                barWidth: 45
+                            },
+                            pointLabels: { show: true }
+                        },
+                        axes: {
+                            xaxis: {
+                                renderer: $.jqplot.CategoryAxisRenderer,
+                                ticks: axisDates
+                            },
+                            yaxis: {
+                                tickOptions: {
+                                    formatString: '$%.2f'
+                                }
+                            }
+                        },
+                        highlighter: {
+                            sizeAdjust: 7.5
+                        },
+                        cursor: {
+                            show: true
+                        }
+                    });
+
+                },
+                error: function () {
+                    alert("处理失败!");
+                }
+            });
+
+        })
         $("#DeleteYes").click(function () {
             var pid = '@ViewBag.patId';
             $.ajax({
