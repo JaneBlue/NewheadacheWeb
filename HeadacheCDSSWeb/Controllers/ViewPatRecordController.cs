@@ -67,8 +67,7 @@ namespace HeadacheCDSSWeb.Controllers
         {
             string jsonStr = Request.Params["postjson"];
             QueryCondition obj = JsonConvert.DeserializeObject<QueryCondition>(jsonStr);
-            List<int> nData = new List<int>();
-           
+            List<int> nData = new List<int>();    
             nData= visitop.GetDiaryNumericData(obj.PID, obj.StartDate, obj.EndDate, obj.query1);
             System.Web.Script.Serialization.JavaScriptSerializer oSerializer = new System.Web.Script.Serialization.JavaScriptSerializer();
             string sJSON = JsonHelper.JsonSerializer(nData);

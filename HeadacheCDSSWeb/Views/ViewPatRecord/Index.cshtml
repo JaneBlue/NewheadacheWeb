@@ -194,15 +194,15 @@
     $(document).ready(function () {
         
         $(".paging").find("li").hide();
-        $(".paging li:lt(9)").addClass("current").show();
-        var num = Math.ceil($(".paging li").length / 9);
+        $(".paging li:lt(7)").addClass("current").show();
+        var num = Math.ceil($(".paging li").length / 7);
         $('.pagination').jqPagination({
             max_page: num,
             paged: function (page) {
                 $(".current").hide();
-                var start = (page - 1) * 9;
-                for (var i = 0; i < 9; i++) {
-
+                var start = (page - 1) * 7;
+                for (var i = 0; i < 7; i++) 
+                {
                     $(".paging li:eq(" + start + ")").addClass("current").show();
                     start = start + 1;
                 }
@@ -258,6 +258,7 @@
                 $("#DiaryView").show();
                 $("#d1").Zebra_DatePicker();
                 $("#d2").Zebra_DatePicker();
+                var plot1 = $.jqplot('linegraph', [[0,0,0,0,0,0,0,0]], { axes: { xaxis: { label: "" }, yaxis: { label: ""}} });
             }
             else {
                 $.ajax({
@@ -287,10 +288,10 @@
             var EndDate = $("#d2").val();
             var Pid = $(".PID").attr("id");
             var strSDate = StartDate.slice(0, 10).replace("/", "-").replace("/", "-") + " 00:00:00";
-            var strEDate = StartDate.slice(0, 10).replace("/", "-").replace("/", "-") + " 00:00:00";
+            var strEDate = EndDate.slice(0, 10).replace("/", "-").replace("/", "-") + " 00:00:00";
             var selected1 = $("input:radio[name=query1]:checked").val(); //若未被选中 则val() = null
             var selected2 = $("input:radio[name=query2]:checked").val(); 
-            var encoded = $.toJSON({ PID: 1, StartDate: strSDate, EndDate: strEDate, query1: selected1, query2: selected2 });
+            var encoded = $.toJSON({ PID: Pid, StartDate: strSDate, EndDate: strEDate, query1: selected1, query2: selected2 });
 
             $.ajax({
                 type: "POST",
