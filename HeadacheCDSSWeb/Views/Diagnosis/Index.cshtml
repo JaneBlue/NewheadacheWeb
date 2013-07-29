@@ -165,12 +165,16 @@ $("#submenu").hide();
             OCX.ShowThisPage(name);
             if(name=="头痛概述")
             $("#btn2").show();
+            else
+             $("#btn2").hide();
+
           }
            });
     $("#btn1").click(function () {
             $("#btn2").show();
             var OCX = document.getElementById('Reporter2');
-            if($(".selected").last().attr("id") == "基本筛查"){
+             if($(".selected").last().attr("id") == "基本筛查")
+            {
             //var Secondheadache=new Array()
                 var myBoolean=new Boolean(false);
                 for(var i =0;i<10;i++){
@@ -187,8 +191,7 @@ $("#submenu").hide();
                 $(".active").first().removeClass("active");
                }
               else{
-               addmenu();
-                  
+               addmenu();    
               }
             }
             if ($(".selected").last().attr("id") == "辅助诊断")
@@ -196,44 +199,20 @@ $("#submenu").hide();
                 //set chief complaint
                 var strChiefComplaint = OCX.GetObjectInfo("TextBox_12", "text");
                 OCX.SetObjectInfo("TextBox_9", "text", strChiefComplaint);
+                SetDiagnosisIntoComplaint(OCX);
 
-                //set diagnose
-                var strDiagnose = "";
-                if("" != OCX.GetObjectInfo("ComboBox_31", "text"))
-                {
-                     if("" != OCX.GetObjectInfo("ComboBox_32", "text"))   
-                        strDiagnose = OCX.GetObjectInfo("ComboBox_31", "text") + ":" + OCX.GetObjectInfo("ComboBox_32", "text") + "。  ";
-                     else
-                        strDiagnose = OCX.GetObjectInfo("ComboBox_31", "text") + "。  ";
-                     strDiagnose += "\n";
-                }                
-                if("" != OCX.GetObjectInfo("ComboBox_33", "text"))
-                {
-                    if("" != OCX.GetObjectInfo("ComboBox_34", "text"))
-                        strDiagnose += OCX.GetObjectInfo("ComboBox_33", "text") + ":" + OCX.GetObjectInfo("ComboBox_34", "text") + "。  ";
-                    else
-                        strDiagnose += OCX.GetObjectInfo("ComboBox_33", "text") + "。  ";
-                    strDiagnose += "\n";
-                }
-                if("" != OCX.GetObjectInfo("ComboBox_36", "text"))
-                {
-                    if("" != OCX.GetObjectInfo("ComboBox_35", "text"))
-                        strDiagnose += OCX.GetObjectInfo("ComboBox_36", "text") + ":" + OCX.GetObjectInfo("ComboBox_35", "text") + "。";
-                    else
-                        strDiagnose += OCX.GetObjectInfo("ComboBox_36", "text") + "。";
-                }
-                if("" != strDiagnose)    
-                    OCX.SetObjectInfo("TextBox_10", "text", strDiagnose);
             }
+
+
             if ($(".selected").last().attr("id") == "基本筛查" || $(".selected").last().attr("id") == "头痛问诊")
-            {
+               {
                 OCX.SetObjectInfo("TextBox_12", "text", GetChiefComplaint(OCX));
-            }
-            if ($(".selected").last().attr("id") == "报告预览"||$(".selected").last().attr("id") == "头痛问诊") {
+               }
+            if ($(".selected").last().attr("id") == "报告预览"||$(".selected").last().attr("id") == "头痛问诊") 
+               {
                 var encoded = $.toJSON(ChangeDataFromOCXIntoJSObject(OCX));
-               
                 }
-                if($(".selected").last().attr("id") == "报告预览")
+            if($(".selected").last().attr("id") == "报告预览")
                 {
                     deletemenu();
                     $("#ocx").hide();
@@ -258,7 +237,7 @@ $("#submenu").hide();
                             alert("Error '" + jqXhr.status + "' (textStatus: '" + textStatus + "', errorThrown: '" + errorThrown + "')");
                         }
                     });
-            }
+                 }
              else {
                         
                        if($(".selected").last().attr("id")!="头痛问诊")
@@ -272,7 +251,10 @@ $("#submenu").hide();
                             if(name=="头痛问诊"){
                             name="头痛概述"
                             }
-                            
+                            else if(name=="医嘱处置")
+                            {
+                              name=SetDrugPage(OCX);
+                            }
                             OCX.ShowThisPage(name);
                             if(name=="报告预览"){
                              $("#btn1").html("保存并退出");
@@ -320,6 +302,43 @@ $("#submenu").hide();
         
      });
     });
+    function SetDrugPage(OCX)
+    {
+       var diagnosis=OCX.GetObjectInfo("ComboBox_31", "text");
+       switch (diagnosis)
+        {
+        case "紧张型头痛":
+            x="紧张型头痛";
+            return x;
+            break;
+        case "偏头痛":
+            x="偏头痛";
+            return x;
+            break;
+        case "丛集性头痛和其他原发性三叉神经痛":
+            x="丛集性头痛";
+            return x;
+            break;
+        case "颅神经痛和中枢源性面痛":
+            x="神经痛";
+            return x;
+            break;
+        case "慢性每日头痛":
+            var SecondDiagnosis=OCX.GetObjectInfo("ComboBox_31", "text");
+            if(SecondDiagnosis=="药物滥用引起的头痛")
+            x="药物过量头痛";
+            else
+            x="其他类型头痛";
+            return x;
+            break;
+       default:
+            x="其他类型头痛";
+            return x;
+            break;
+        }
+
+
+    }
     function SetDiagnoses(OCX, strDiagnose)
     {
         OCX.SetObjectInfo("TextBox_14", "text", strDiagnose);
@@ -434,6 +453,39 @@ $("#submenu").hide();
         OCX.EnableMacroPrint(true);
         OCX.PrintPages("报告预览", false);
     }
+function SetDiagnosisIntoComplaint(OCX){
+
+                //set diagnose
+                var strDiagnose = "";
+                if("" != OCX.GetObjectInfo("ComboBox_31", "text"))
+                {
+                     if("" != OCX.GetObjectInfo("ComboBox_32", "text"))   
+                        strDiagnose = OCX.GetObjectInfo("ComboBox_31", "text") + ":" + OCX.GetObjectInfo("ComboBox_32", "text") + "。  ";
+                     else
+                        strDiagnose = OCX.GetObjectInfo("ComboBox_31", "text") + "。  ";
+                     strDiagnose += "\n";
+                }                
+                if("" != OCX.GetObjectInfo("ComboBox_33", "text"))
+                {
+                    if("" != OCX.GetObjectInfo("ComboBox_34", "text"))
+                        strDiagnose += OCX.GetObjectInfo("ComboBox_33", "text") + ":" + OCX.GetObjectInfo("ComboBox_34", "text") + "。  ";
+                    else
+                        strDiagnose += OCX.GetObjectInfo("ComboBox_33", "text") + "。  ";
+                    strDiagnose += "\n";
+                }
+                if("" != OCX.GetObjectInfo("ComboBox_36", "text"))
+                {
+                    if("" != OCX.GetObjectInfo("ComboBox_35", "text"))
+                        strDiagnose += OCX.GetObjectInfo("ComboBox_36", "text") + ":" + OCX.GetObjectInfo("ComboBox_35", "text") + "。";
+                    else
+                        strDiagnose += OCX.GetObjectInfo("ComboBox_36", "text") + "。";
+                }
+                if("" != strDiagnose)    
+                    OCX.SetObjectInfo("TextBox_10", "text", strDiagnose);
+}
+
+
+
 
     function GetChiefComplaint(OCX)
     {

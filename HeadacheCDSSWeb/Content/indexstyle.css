@@ -221,7 +221,7 @@ background:url(images/foot.png) no-repeat bottom;
 #submenu
 {
     height:38px;
-    width :900px;
+    width :920px;
     float:left;
     margin-top:2px;
   
@@ -291,11 +291,11 @@ background-color: #9ECCE9;
 }
 #hpNote
 {
-    font-size:24px;
+     font-size:24px;
      width:200px;
      height:200px;
      padding:100px 0 0 0;
-      float:left;
+     float:left;
 }
 #return
 {
