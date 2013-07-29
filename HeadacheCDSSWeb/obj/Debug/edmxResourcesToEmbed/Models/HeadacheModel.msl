@@ -61,7 +61,6 @@
           <ScalarProperty Name="HeadacheDegree" ColumnName="HeadacheDegree" />
           <ScalarProperty Name="HeadcheTime" ColumnName="HeadcheTime" />
           <ScalarProperty Name="HeacheTimeUnit" ColumnName="HeacheTimeUnit" />
-          <ScalarProperty Name="FrequencyPerDay" ColumnName="FrequencyPerDay" />
           <ScalarProperty Name="FrequencyPerMonth" ColumnName="FrequencyPerMonth" />
           <ScalarProperty Name="OnsetFixedPeriod" ColumnName="OnsetFixedPeriod" />
           <ScalarProperty Name="OnsetDate" ColumnName="OnsetDate" />
@@ -281,6 +280,7 @@
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="postion" ColumnName="postion" />
           <ScalarProperty Name="HeadacheDiaryID" ColumnName="HeadacheDiaryID" />
+          <ScalarProperty Name="detailposition" ColumnName="detailposition" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

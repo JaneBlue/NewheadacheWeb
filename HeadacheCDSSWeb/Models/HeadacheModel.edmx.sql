@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 07/29/2013 15:40:55
+-- Date Created: 07/29/2013 20:10:10
 -- Generated from EDMX file: D:\FGj\projectcode\NewheadacheWeb\HeadacheCDSSWeb\Models\HeadacheModel.edmx
 -- --------------------------------------------------
 
@@ -255,7 +255,6 @@ CREATE TABLE [dbo].[PrimaryHeadacheOverViewSet] (
     [HeadacheDegree] nvarchar(max)  NOT NULL,
     [HeadcheTime] nvarchar(max)  NOT NULL,
     [HeacheTimeUnit] nvarchar(max)  NOT NULL,
-    [FrequencyPerDay] nvarchar(max)  NOT NULL,
     [FrequencyPerMonth] nvarchar(max)  NOT NULL,
     [OnsetFixedPeriod] nvarchar(max)  NOT NULL,
     [OnsetDate] datetime  NOT NULL,
@@ -460,7 +459,8 @@ GO
 CREATE TABLE [dbo].[HDheadacheplaceSet] (
     [ID] int IDENTITY(1,1) NOT NULL,
     [postion] nvarchar(max)  NOT NULL,
-    [HeadacheDiaryID] int  NOT NULL
+    [HeadacheDiaryID] int  NOT NULL,
+    [detailposition] nvarchar(max)  NOT NULL
 );
 GO
 

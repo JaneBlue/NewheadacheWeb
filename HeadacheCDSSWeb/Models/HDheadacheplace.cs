@@ -17,6 +17,7 @@ namespace HeadacheCDSSWeb.Models
         public int ID { get; set; }
         public string postion { get; set; }
         public int HeadacheDiaryID { get; set; }
+        public string detailposition { get; set; }
     
         public virtual HeadacheDiary HeadacheDiary { get; set; }
     }

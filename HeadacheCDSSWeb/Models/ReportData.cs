@@ -97,7 +97,7 @@ namespace HeadacheCDSSWeb.Models
         public string HeadacheDegree { get; set; }
         public string HeadcheTime { get; set; }
         public string HeacheTimeUnit { get; set; }
-        public string FrequencyPerDay { get; set; }
+       
         public string FrequencyPerMonth { get; set; }
         public string OnsetFixedPeriod { get; set; }
        

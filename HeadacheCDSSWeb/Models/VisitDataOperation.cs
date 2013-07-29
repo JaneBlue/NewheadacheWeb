@@ -397,7 +397,7 @@ namespace HeadacheCDSSWeb.Models
                         rdata.headacheoverview.HeadacheDegree = vr.PrimaryHeadachaOverView.HeadacheDegree;
                         rdata.headacheoverview.HeadcheTime = vr.PrimaryHeadachaOverView.HeadcheTime;
                         rdata.headacheoverview.HeacheTimeUnit = vr.PrimaryHeadachaOverView.HeacheTimeUnit;
-                        rdata.headacheoverview.FrequencyPerDay = vr.PrimaryHeadachaOverView.FrequencyPerDay;
+                       
                         rdata.headacheoverview.FrequencyPerMonth = vr.PrimaryHeadachaOverView.FrequencyPerMonth;
                         rdata.headacheoverview.OnsetFixedPeriod = vr.PrimaryHeadachaOverView.OnsetFixedPeriod;
 
@@ -583,11 +583,7 @@ namespace HeadacheCDSSWeb.Models
                 return null;
             }
         }
-        public class DiaryDataPoint{
-            string date;
-            string data;
-         }
-        public List<int> GetDiaryNumericData(string PatID ,DateTime StartDate,DateTime EndDate,string Query)
+       public List<int> GetDiaryNumericData(string PatID ,DateTime StartDate,DateTime EndDate,string Query)
         {
             PatBasicInfor pt = context.PatBasicInforSet.Find(PatID);
             List<HeadacheDiary> HDiary = new List<HeadacheDiary>();
@@ -616,6 +612,125 @@ namespace HeadacheCDSSWeb.Models
                 }
             }
             return NumericData;
+        }
+
+        public List<DiaryDataPoint> GetDiaryQualitativeData(string PatID, DateTime StartDate, DateTime EndDate, string Query)
+        {
+            List<DiaryDataPoint> Result = new List<DiaryDataPoint>();
+            PatBasicInfor pt = context.PatBasicInforSet.Find(PatID);
+            List<HeadacheDiary> HDiary = new List<HeadacheDiary>();
+            List<string> Hdata = new List<string>();
+            foreach (HeadacheDiary vr in pt.HeadacheDiary)
+            {
+                TimeSpan ts1 = vr.RecordDate - StartDate;
+                TimeSpan ts2 = EndDate - vr.RecordDate;
+                if (ts1.Days >= 0 && ts2.Days >= 0)
+                {
+                    HDiary.Add(vr);
+                }
+
+            }
+            if (Query == "头痛性质")
+            {
+                foreach (HeadacheDiary hd in HDiary)
+                {
+                    Hdata.Add(hd.HeadacheType);
+                }
+            }
+            if (Query == "头痛部位")
+            {
+                foreach (HeadacheDiary hd in HDiary)
+                {
+                    foreach (HDheadacheplace ha in hd.HDheadacheplace)
+                    {
+                        Hdata.Add(ha.postion+ha.detailposition);
+                    }
+                }
+            }
+            if (Query == "伴随症状")
+            {
+                foreach (HeadacheDiary hd in HDiary)
+                {
+                   foreach(HDAcompanion ha in hd.HDAcompanion){
+                       Hdata.Add(ha.symptom);
+                   }
+                }
+            }
+            if (Query == "头痛先兆")
+            {
+                foreach (HeadacheDiary hd in HDiary)
+                {
+                    foreach (HDHeadacheProdrome ha in hd.HDHeadacheProdrome)
+                    {
+                        Hdata.Add(ha.symptom);
+                    }
+                }
+            }
+            if (Query == "诱发因素")
+            {
+                foreach (HeadacheDiary hd in HDiary)
+                {
+                    foreach (HDPrecipitatingFactor ha in hd.HDPrecipitatingFactor)
+                    {
+                        Hdata.Add(ha.factor);
+                    }
+                }
+            }
+            if (Query == "缓解因素")
+            {
+                foreach (HeadacheDiary hd in HDiary)
+                {
+                    foreach (HDMitigatingFactors ha in hd.HDMitigatingFactors)
+                    {
+                        Hdata.Add(ha.factor);
+                    }
+                }
+            }
+            Result = Count(Hdata);
+            return Result;
+        }
+
+        public List<DiaryDataPoint> Count(List<string> HData)
+        {
+            List<DiaryDataPoint> Result = new List<DiaryDataPoint>();
+            List<string> kinds =new List<string>();
+            List<int> kindscount = new List<int>();
+            for (int i = 0; i < HData.Count;i++ )
+            {
+                if (i == 0)
+                {
+                    kinds.Add(HData[0]);
+                    kindscount.Add(1);
+                }
+                else
+                {
+                    bool flag=false;
+                    for (int j = 0; j < kinds.Count; j++)
+                    {
+                        if (HData[i]==kinds[j])
+                        {
+                            kindscount[j]++;
+                            flag=true;
+                            break;
+                            
+                        }
+                        
+                    }
+                    if(!flag)
+                    {
+                        kinds.Add(HData[i]);
+                        kindscount.Add(1);
+                    }
+                }
+
+            }
+            for (int n = 0; n < kinds.Count; n++)
+            {
+                DiaryDataPoint dp = new DiaryDataPoint();
+                dp.data = kindscount[n].ToString();
+                dp.kind = kinds[n];
+            }
+                return Result;
         }
     }
 }

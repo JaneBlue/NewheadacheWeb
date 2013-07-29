@@ -235,7 +235,6 @@
     <Property Type="String" Name="HeadacheDegree" Nullable="false" />
     <Property Type="String" Name="HeadcheTime" Nullable="false" />
     <Property Type="String" Name="HeacheTimeUnit" Nullable="false" />
-    <Property Type="String" Name="FrequencyPerDay" Nullable="false" />
     <Property Type="String" Name="FrequencyPerMonth" Nullable="false" />
     <Property Type="String" Name="OnsetFixedPeriod" Nullable="false" />
     <Property Type="DateTime" Name="OnsetDate" Nullable="false" />
@@ -647,6 +646,7 @@
     <Property Type="String" Name="postion" Nullable="false" />
     <NavigationProperty Name="HeadacheDiary" Relationship="HeadacheModel.HeadacheDiaryHDheadacheplace" FromRole="HDheadacheplace" ToRole="HeadacheDiary" />
     <Property Type="Int32" Name="HeadacheDiaryID" Nullable="false" />
+    <Property Type="String" Name="detailposition" Nullable="false" />
   </EntityType>
   <EntityType Name="HDAcompanion">
     <Key>

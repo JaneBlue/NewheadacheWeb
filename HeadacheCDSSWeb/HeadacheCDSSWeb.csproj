@@ -78,6 +78,7 @@
     <Compile Include="Models\Diagnosis.cs">
       <DependentUpon>HeadacheDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DiaryDataPoint.cs" />
     <Compile Include="Models\DisabilityEvaluation.cs">
       <DependentUpon>HeadacheDataModel.tt</DependentUpon>
     </Compile>
