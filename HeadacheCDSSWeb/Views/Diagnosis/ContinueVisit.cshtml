@@ -497,8 +497,8 @@ $(function () {
         strChiefComplaint += " " + "头痛发作次数：" + strOnsetAmount;
         var strFrequencyPerMonth = obj.headacheoverview.FrequencyPerMonth;
         strChiefComplaint += " " + "最近三个月平均头痛频率：" + strFrequencyPerMonth + "天/每月";
-        var strFrequencyPerDay = obj.headacheoverview.FrequencyPerDay;
-        strChiefComplaint += " " + strFrequencyPerDay + "次/每天";
+        //var strFrequencyPerDay = obj.headacheoverview.FrequencyPerDay;
+        //strChiefComplaint += " " + strFrequencyPerDay + "次/每天";
 
         OCX.SetObjectInfo("DateTime_2", "text", strOnsetDate);
         OCX.SetObjectInfo("ComboBox_37", "text", strFirstOnsetContinue);
@@ -518,8 +518,14 @@ $(function () {
             OCX.SetObjectInfo("RadioBox_12", "checked", "true");
         if(strOnsetAmount == "持续头痛")
             OCX.SetObjectInfo("RadioBox_13", "checked", "true");
-        OCX.SetObjectInfo("ComboBox_7", "text", strFrequencyPerMonth);
-        OCX.SetObjectInfo("ComboBox_18", "text", strFrequencyPerDay);
+
+        if("<1" == strFrequencyPerMonth)
+            OCX.SetObjectInfo("RadioBox_7", "checked", "true");
+        else if("1-15" == strFrequencyPerMonth)
+            OCX.SetObjectInfo("RadioBox_8", "checked", "true");
+        else if(">15" == strFrequencyPerMonth)
+            OCX.SetObjectInfo("RadioBox_9", "checked", "true");
+        //OCX.SetObjectInfo("ComboBox_18", "text", strFrequencyPerDay);
 
         //set headache place
         var strHeadachePlace = "";
@@ -1264,8 +1270,15 @@ $(function () {
                     strOnsetAmount = "类似发作超过10次";
                 else if("true" == OCX.GetObjectInfo("RadioBox_13", "checked"))
                     strOnsetAmount = "持续头痛";
-                var strFrequencyPerMonth = OCX.GetObjectInfo("ComboBox_7", "text");
-                var strFrequencyPerDay = OCX.GetObjectInfo("ComboBox_18", "text");
+                //var strFrequencyPerMonth = OCX.GetObjectInfo("ComboBox_7", "text");
+                var strFrequencyPerMonth = "";
+                if("true" == OCX.GetObjectInfo("RadioBox_7", "checked"))
+                    strFrequencyPerMonth = "<1";
+                else if("true" == OCX.GetObjectInfo("RadioBox_8", "checked"))
+                    strFrequencyPerMonth = "1-15";
+                else if("true" == OCX.GetObjectInfo("RadioBox_9", "checked"))
+                    strFrequencyPerMonth = ">15";
+                //var strFrequencyPerDay = OCX.GetObjectInfo("ComboBox_18", "text");
 
                 //get headache place
                 var strHeadachePlace = "";
@@ -2139,7 +2152,7 @@ $(function () {
                                         ,{ExamName: strExamName2, Result:strExamResult2, Date:strExamDate2}
                                         ,{ExamName: strExamName3, Result:strExamResult3, Date:strExamDate3}],
                               PHeadacheOverview: {HeadacheType: strHeadacheType, HeadacheDegree: strHeadacheDegree, HeadcheTime: strHeadcheTime
-                                                    , HeacheTimeUnit: strHeacheTimeUnit, FrequencyPerDay: strFrequencyPerDay, FrequencyPerMonth: strFrequencyPerMonth
+                                                    , HeacheTimeUnit: strHeacheTimeUnit, FrequencyPerMonth: strFrequencyPerMonth
                                                     , OnsetFixedPeriod: strIfFixed, OnsetDate: strOnsetDate
                                                     , OnsetAmount: strOnsetAmount, DailyAggravation: strDailyAggravation, FirstOnsetContinue: strFirstOnsetContinue
                                                     , HeadachePlace:[{Position: strHeadachePlace, SpecificPlace: strSpecificPlace1}, {Position: strHeadachePlace, SpecificPlace: strSpecificPlace2}
@@ -2416,7 +2429,14 @@ $(function () {
             var strHeacheTimeUnit = OCX.GetObjectInfo("ComboBox_39", "text");
             strChiefComplaint += "每次头痛时间" + strHeadcheTime + strHeacheTimeUnit + ",";
                     
-            var strFrequencyPerMonth = OCX.GetObjectInfo("ComboBox_7", "text");
+            //var strFrequencyPerMonth = OCX.GetObjectInfo("ComboBox_7", "text");
+            var strFrequencyPerMonth = "";
+                if("true" == OCX.GetObjectInfo("RadioBox_7", "checked"))
+                    strFrequencyPerMonth = "<1";
+                else if("true" == OCX.GetObjectInfo("RadioBox_8", "checked"))
+                    strFrequencyPerMonth = "1-15";
+                else if("true" == OCX.GetObjectInfo("RadioBox_9", "checked"))
+                    strFrequencyPerMonth = ">15";
             strChiefComplaint += "每月发作" + strFrequencyPerMonth + "天。";
                     
             //get PreviousExam
