@@ -45,11 +45,11 @@
             <ul>
                 <li>
                 <span>头痛时间长度</span>
-                <input type="checkbox" id="htime" value ="time" />
+                <input type="radio" name="query1" value ="头痛时长" />
                 </li>
                 <li>
                 <span>头痛程度评分</span>
-                 <input type="checkbox" name="hdegree" value ="orange"/>
+                 <input type="radio" name="query1" value ="头痛程度"/>
                  </li>
              </ul>
             </div>
@@ -61,27 +61,27 @@
                <ul>
                 <li>
                 <span>头痛性质</span>
-                <input type="radio" name="htype" value ="apple" />
+                <input type="radio" name="query2" value ="头痛性质" />
                 </li>
                 <li>
                 <span>头痛部位</span>
-                 <input type="radio" name="fruit" value ="orange"/>
+                 <input type="radio" name="query2" value ="头痛部位"/>
                  </li>
                  <li>
                 <span>伴随症状</span>
-                 <input type="radio" name="fruit" value ="orange"/>
+                 <input type="radio" name="query2" value ="伴随症状"/>
                  </li>
                  <li>
                 <span>头痛先兆</span>
-                 <input type="radio" name="fruit" value ="orange"/>
-                 </li>
-                 <li>
-                <span>缓解因素</span>
-                 <input type="radio" name="fruit" value ="orange"/>
+                 <input type="radio" name="query2" value ="头痛先兆"/>
                  </li>
                  <li>
                 <span>诱发因素</span>
-                 <input type="radio" name="fruit" value ="orange"/>
+                 <input type="radio" name="query2" value ="诱发因素"/>
+                 </li>
+                 <li>
+                <span>缓解因素</span>
+                 <input type="radio" name="query2" value ="缓解因素"/>
                  </li>
              </ul>
 
@@ -286,8 +286,11 @@
             var StartDate = $("#d1").val();
             var EndDate = $("#d2").val();
             var Pid = $(".PID").attr("id");
-            var selected = $("input:radio[name=htype]:checked").val(); //若未被选中 则val() = null
-            var encoded = $.toJSON({ Id: 1, Name: "Wade", Leader: "123" });
+            var strSDate = StartDate.slice(0, 10).replace("/", "-").replace("/", "-") + " 00:00:00";
+            var strEDate = StartDate.slice(0, 10).replace("/", "-").replace("/", "-") + " 00:00:00";
+            var selected1 = $("input:radio[name=query1]:checked").val(); //若未被选中 则val() = null
+            var selected2 = $("input:radio[name=query2]:checked").val(); 
+            var encoded = $.toJSON({ PID: 1, StartDate: strSDate, EndDate: strEDate, query1: selected1, query2: selected2 });
 
             $.ajax({
                 type: "POST",

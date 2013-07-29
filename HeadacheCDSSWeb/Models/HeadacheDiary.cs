@@ -24,11 +24,11 @@ namespace HeadacheCDSSWeb.Models
         }
     
         public int ID { get; set; }
-        public string RecordDate { get; set; }
-        public string HeadacheTime { get; set; }
+        public System.DateTime RecordDate { get; set; }
+        public int HeadacheTime { get; set; }
         public string HeadacheType { get; set; }
         public string PatBasicInforId { get; set; }
-        public string HeadacheDegree { get; set; }
+        public int HeadacheDegree { get; set; }
     
         public virtual ICollection<HDAcompanion> HDAcompanion { get; set; }
         public virtual ICollection<HDheadacheplace> HDheadacheplace { get; set; }

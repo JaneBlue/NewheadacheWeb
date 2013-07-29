@@ -395,11 +395,11 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="RecordDate" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="HeadacheTime" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="HeadacheType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RecordDate" Type="datetime" Nullable="false" />
+    <Property Name="HeadacheTime" Type="int" Nullable="false" />
+    <Property Name="HeadacheType" Type="nvarchar(max)" Nullable="true" />
     <Property Name="PatBasicInforId" Type="nvarchar" Nullable="false" MaxLength="255" />
-    <Property Name="HeadacheDegree" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="HeadacheDegree" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="HDheadacheplaceSet">
     <Key>

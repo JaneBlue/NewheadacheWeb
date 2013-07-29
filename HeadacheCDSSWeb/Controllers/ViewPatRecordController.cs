@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using HeadacheCDSSWeb.Models;
 using System.Web.Script.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 namespace HeadacheCDSSWeb.Controllers
 {
     public class ViewPatRecordController : Controller
@@ -64,9 +66,13 @@ namespace HeadacheCDSSWeb.Controllers
         public ActionResult ViewDiary()
         {
             string jsonStr = Request.Params["postjson"];
-            //VisitData obj = JsonConvert.DeserializeObject<VisitData>(jsonStr);
-            //string a = member.Id;
-            return PartialView("HeadacheDiaryView");
+            QueryCondition obj = JsonConvert.DeserializeObject<QueryCondition>(jsonStr);
+            List<int> nData = new List<int>();
+           
+            nData= visitop.GetDiaryNumericData(obj.PID, obj.StartDate, obj.EndDate, obj.query1);
+            System.Web.Script.Serialization.JavaScriptSerializer oSerializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+            string sJSON = JsonHelper.JsonSerializer(nData);
+            return this.Json(sJSON);
         }
         public ActionResult ViewDiaryReport()
         {
@@ -78,6 +84,12 @@ namespace HeadacheCDSSWeb.Controllers
             identity = identity + this.TempData["recordID"].ToString();
             return RedirectToAction("ContinueVisit", "Diagnosis", new { identity = identity });
         }
-
+        public class QueryCondition{
+           public string PID;
+           public DateTime StartDate;
+           public DateTime EndDate;
+           public string query1;
+           public string query2;
+        }
     }
 }

@@ -583,5 +583,39 @@ namespace HeadacheCDSSWeb.Models
                 return null;
             }
         }
+        public class DiaryDataPoint{
+            string date;
+            string data;
+         }
+        public List<int> GetDiaryNumericData(string PatID ,DateTime StartDate,DateTime EndDate,string Query)
+        {
+            PatBasicInfor pt = context.PatBasicInforSet.Find(PatID);
+            List<HeadacheDiary> HDiary = new List<HeadacheDiary>();
+            List<int> NumericData =new List<int>();
+            foreach (HeadacheDiary vr in pt.HeadacheDiary)
+            {
+                TimeSpan ts1=vr.RecordDate-StartDate;
+                TimeSpan ts2=EndDate-vr.RecordDate;
+                if (ts1.Days>=0&&ts2.Days>=0)
+                {
+                     HDiary.Add(vr);
+                }
+               
+            }
+            if (Query=="头痛程度")
+            {
+                foreach (HeadacheDiary d in HDiary)
+                {
+                    NumericData.Add(d.HeadacheDegree);
+                }
+            }
+            else if(Query=="头痛时长"){
+                foreach (HeadacheDiary d in HDiary)
+                {
+                    NumericData.Add(d.HeadacheTime);
+                }
+            }
+            return NumericData;
+        }
     }
 }

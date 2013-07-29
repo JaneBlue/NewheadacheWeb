@@ -627,9 +627,9 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="RecordDate" Nullable="false" />
-    <Property Type="String" Name="HeadacheTime" Nullable="false" />
-    <Property Type="String" Name="HeadacheType" Nullable="false" />
+    <Property Type="DateTime" Name="RecordDate" Nullable="false" />
+    <Property Type="Int32" Name="HeadacheTime" Nullable="false" />
+    <Property Type="String" Name="HeadacheType" Nullable="true" />
     <NavigationProperty Name="HDAcompanion" Relationship="HeadacheModel.HeadacheDiaryHDAcompanion" FromRole="HeadacheDiary" ToRole="HDAcompanion" />
     <NavigationProperty Name="HDheadacheplace" Relationship="HeadacheModel.HeadacheDiaryHDheadacheplace" FromRole="HeadacheDiary" ToRole="HDheadacheplace" />
     <NavigationProperty Name="HDHeadacheProdrome" Relationship="HeadacheModel.HeadacheDiaryHDHeadacheProdrome" FromRole="HeadacheDiary" ToRole="HDHeadacheProdrome" />
@@ -637,7 +637,7 @@
     <NavigationProperty Name="HDPrecipitatingFactor" Relationship="HeadacheModel.HeadacheDiaryHDPrecipitatingFactor" FromRole="HeadacheDiary" ToRole="HDPrecipitatingFactor" />
     <NavigationProperty Name="PatBasicInfor" Relationship="HeadacheModel.PatBasicInforHeadacheDiary" FromRole="HeadacheDiary" ToRole="PatBasicInfor" />
     <Property Type="String" Name="PatBasicInforId" Nullable="false" MaxLength="255" />
-    <Property Type="String" Name="HeadacheDegree" Nullable="false" />
+    <Property Type="Int32" Name="HeadacheDegree" Nullable="false" />
   </EntityType>
   <EntityType Name="HDheadacheplace">
     <Key>

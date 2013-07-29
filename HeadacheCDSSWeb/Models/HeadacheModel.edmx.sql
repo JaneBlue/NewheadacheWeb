@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 07/24/2013 11:02:02
+-- Date Created: 07/29/2013 15:40:55
 -- Generated from EDMX file: D:\FGj\projectcode\NewheadacheWeb\HeadacheCDSSWeb\Models\HeadacheModel.edmx
 -- --------------------------------------------------
 
@@ -448,11 +448,11 @@ GO
 -- Creating table 'HeadacheDiarySet'
 CREATE TABLE [dbo].[HeadacheDiarySet] (
     [ID] int IDENTITY(1,1) NOT NULL,
-    [RecordDate] nvarchar(max)  NOT NULL,
-    [HeadacheTime] nvarchar(max)  NOT NULL,
-    [HeadacheType] nvarchar(max)  NOT NULL,
+    [RecordDate] datetime  NOT NULL,
+    [HeadacheTime] int  NOT NULL,
+    [HeadacheType] nvarchar(max)  NULL,
     [PatBasicInforId] nvarchar(255)  NOT NULL,
-    [HeadacheDegree] nvarchar(max)  NOT NULL
+    [HeadacheDegree] int  NOT NULL
 );
 GO
 
