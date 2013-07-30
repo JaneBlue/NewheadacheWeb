@@ -210,8 +210,7 @@ $("#submenu").hide();
                }
             if ($(".selected").last().attr("id") == "报告预览"||$(".selected").last().attr("id") == "头痛问诊") 
                {
-               //set doctor advice in report
-                OCX.SetObjectInfo("TextBox_11", "text", GetDoctorAdvice(OCX));
+               
                 var encoded = $.toJSON(ChangeDataFromOCXIntoJSObject(OCX));
                 }
             if($(".selected").last().attr("id") == "报告预览")
@@ -256,9 +255,12 @@ $("#submenu").hide();
                             else if(name=="医嘱处置")
                             {
                               name=SetDrugPage(OCX);
+                             
                             }
                             OCX.ShowThisPage(name);
                             if(name=="报告预览"){
+                             //set doctor advice in report
+                             OCX.SetObjectInfo("TextBox_11", "text", GetDoctorAdvice(OCX));
                              $("#btn1").html("保存并退出");
                              addprint();
 

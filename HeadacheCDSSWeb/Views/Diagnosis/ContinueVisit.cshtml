@@ -168,8 +168,7 @@ $(function () {
                 var strChiefComplaint = OCX.GetObjectInfo("TextBox_12", "text");
                 OCX.SetObjectInfo("TextBox_9", "text", strChiefComplaint);
 
-                //set doctor advice in report
-                OCX.SetObjectInfo("TextBox_11", "text", GetDoctorAdvice(OCX));
+              
 
                 //set diagnose
                 var strDiagnose = "";
@@ -249,6 +248,8 @@ $(function () {
                             }
                             OCX.ShowThisPage(name);
                             if(name=="报告预览"){
+                              //set doctor advice in report
+                OCX.SetObjectInfo("TextBox_11", "text", GetDoctorAdvice(OCX));
                             $("#btn1").html("保存并退出");
                              addprint();
                              }
