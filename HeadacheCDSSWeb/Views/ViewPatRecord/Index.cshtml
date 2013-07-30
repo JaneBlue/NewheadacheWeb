@@ -26,11 +26,7 @@
           <div class="statics">
            <div id="time">
                         <table border="0">
-                <tr>
-                <td></td>
-                <td></td>
-                </tr>
-                <tr>
+                 <tr>
                 <td><input type="text" name="date" id="d1" /></td>
                 <td><a>----------</a></td>
                 <td><input type="text" name="date" id="d2" /></td>
@@ -258,8 +254,8 @@
                 $("#DiaryView").show();
                 $("#d1").Zebra_DatePicker();
                 $("#d2").Zebra_DatePicker();
-                var plot1 = $.jqplot('linegraph', [[0, 0, 0, 0, 0, 0, 0, 0]], { axes: { xaxis: { label: "" }, yaxis: { label: ""}} });
-                var plot2 = $.jqplot('piegraph', [[5, 7, 9]], {
+                var plot1 = $.jqplot('linegraph', [[4, 6, 7, 9, 3, 5, 8, 8]], { axes: { xaxis: { label: "" }, yaxis: { label: ""}} });
+                var plot2 = $.jqplot('piegraph', [[5, 7, 9, 7, 10, 11, 28, 32, 10, 11, 28, 32]], {
                     title: '',
                     seriesDefaults: {
                         renderer: $.jqplot.BarRenderer,
@@ -267,18 +263,19 @@
                             barPadding: 1,
                             barMargin: 15,
                             barDirection: 'vertical',
-                            barWidth: 45
+                            barWidth: 45,
+                            varyBarColor: true
                         },
                         pointLabels: { show: true }
                     },
                     axes: {
                         xaxis: {
                             renderer: $.jqplot.CategoryAxisRenderer,
-                            ticks: ["a", "b", "c"]
+                            ticks: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"]
                         },
                         yaxis: {
                             tickOptions: {
-                                formatString: '$%.2f'
+                               formatString: '%d'
                             }
                         }
                     },
@@ -330,25 +327,29 @@
 
 
                 success: function (data) {
-                    //                    $("#ViewContent").hide();
-                    //              
-                    //                    $("#DiaryView").show();
 
+                    var myobj = eval(data);
+                    for (var i = 0; i < myobj.length; i++) {
+                        var a = myobj.kind;
+                    }
+                    
                     $("#linegraph").children().remove();
-                    var plot1 = $.jqplot('linegraph', [[3, 7, 9, 1, 4, 6, 8, 2, 5]], { axes: { xaxis: { label: "" }, yaxis: { label: "头痛程度评分"}} });
+                    $("#piegraph").children().remove();
+                    var plot1 = $.jqplot('linegraph', [[3, 7, 9, 1, 4, 6, 8, 2, 5]], { axes: { xaxis: { label: "" }, yaxis: { label: selected1}} });
                     var axisDates = ["Jan 19", "Jan 20", "Jan 21"];
                     var chartData = [2.61, 5.00, 6.00];
 
                     $.jqplot.config.enablePlugins = true;
                     var plot2 = $.jqplot('piegraph', [chartData], {
-                        title: 'Some Plot',
+                        title: selected2,
                         seriesDefaults: {
                             renderer: $.jqplot.BarRenderer,
                             rendererOptions: {
                                 barPadding: 1,
                                 barMargin: 15,
                                 barDirection: 'vertical',
-                                barWidth: 45
+                                barWidth: 45,
+                                varyBarColor: true
                             },
                             pointLabels: { show: true }
                         },
@@ -359,7 +360,7 @@
                             },
                             yaxis: {
                                 tickOptions: {
-                                    formatString: '$%.2f'
+                                    formatString: '%d'
                                 }
                             }
                         },
