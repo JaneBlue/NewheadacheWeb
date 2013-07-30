@@ -1211,9 +1211,6 @@ $(function () {
 
         var strGADQ7 = obj.gdaquestionaire.Q7;
         OCX.SetObjectInfo("ComboBox_24", "text", strGADQ7);
-
-        //set medicine in doctor advice
-
     }
      function SetHeadachePlace(obj)
     { 
@@ -2267,9 +2264,9 @@ $(function () {
                                             , { Person: strJieMei}, { Person: strErZi}, { Person: strNvEr}
                                             , { Person: strZuFu}, { Person: strZiMu}, { Person: strWaiZuFu}
                                             , { Person: strWaiZuMu}, { Person: strHFamilyMemberQiTa} ],
-                              MAdvice:[{DrugApplication: strDrug1Application, DrugCategory: strDrug1Category, DrugName: strDrug1Name, DrugDose: strDrug1Dose}
-                                                    ,{DrugApplication: strDrug2Application, DrugCategory: strDrug2Category, DrugName: strDrug2Name, DrugDose: strDrug2Dose}
-                                                    ,{DrugApplication: strDrug3Application, DrugCategory: strDrug3Category, DrugName: strDrug3Name, DrugDose: strDrug3Dose}],
+                              MAdvice:[{DrugApplication: strMedicineAdviceInstruction1, DrugName: strMedicineAdviceName1, DrugDose: strMedicineAdviceDosage1, DrugDoseUnit:strMedicineAdviceDosageUnit1}
+                                                    ,{DrugApplication: strMedicineAdviceInstruction2, DrugName: strMedicineAdviceName2, DrugDose: strMedicineAdviceDosage2, DrugDoseUnit:strMedicineAdviceDosageUnit2}
+                                                    ,{DrugApplication: strMedicineAdviceInstruction3, DrugName: strMedicineAdviceName3, DrugDose: strMedicineAdviceDosage3, DrugDoseUnit:strMedicineAdviceDosageUnit3}],
                               OFamilyDisease: [ {DiseaseName: strXinZangJiBin}, {DiseaseName: strDianXian}, {DiseaseName: strGaoXueYa}
                                             , {DiseaseName: strZuZhong}, {DiseaseName: strGuanJieYan}, {DiseaseName: strZhongLiu}
                                             , {DiseaseName: strJiaoLv}, {DiseaseName: strOFamilyDiseaseQiTa} ],
@@ -2278,9 +2275,6 @@ $(function () {
                               Disabilityevaluation: {HeadacheDays:strHeadacheDays, OutOfWorkDays:strOutOfWorkDays, AffectWorkDays:strAffectWorkDays, OutOfHouseWorkDays:strOutOfHouseWorkDays, AffectHouseWorkDays:strAffectHouseWorkDays, MissActivityDays:strMissActivityDays},
                               PHquestionaire: {Q1: strPHQ1, Q2: strPHQ2, Q3: strPHQ3, Q4: strPHQ4, Q5: strPHQ5, Q6: strPHQ6, Q7: strPHQ7, Q8: strPHQ8, Q9: strPHQ9, TotalScore: strPHQTotalScore},
                               GADquestionaire: {Q1: strGAD1, Q2: strGAD2, Q3: strGAD3, Q4: strGAD4, Q5: strGAD5, Q6: strGAD6, Q7: strGAD7, TotalScore: strGADTotalScore},
-                              MAdvice:[{DrugName: strMedicineAdviceName1, DrugDose: strMedicineAdviceDosage1, DrugDoseUnit: strMedicineAdviceDosageUnit1, DrugApplication:strMedicineAdviceInstruction1}
-                                                                       ,{DrugName: strMedicineAdviceName2, DrugDose: strMedicineAdviceDosage2, DrugDoseUnit: strMedicineAdviceDosageUnit2, DrugApplication:strMedicineAdviceInstruction2}
-                                                                       ,{DrugName: strMedicineAdviceName3, DrugDose: strMedicineAdviceDosage3, DrugDoseUnit: strMedicineAdviceDosageUnit3, DrugApplication:strMedicineAdviceInstruction3} ]，
                               PDrug: [{DrugCategory: strDrugCategory1, DrugApplication: strDrugApplication1, DayAmoutnPerM: strDayAmoutnPerM1, MonthTotalAmount: strMonthTotalAmount1}
                                         ,{DrugCategory: strDrugCategory2, DrugApplication: strDrugApplication2, DayAmoutnPerM: strDayAmoutnPerM2, MonthTotalAmount: strMonthTotalAmount2}
                                         ,{DrugCategory: strDrugCategory3, DrugApplication: strDrugApplication3, DayAmoutnPerM: strDayAmoutnPerM3, MonthTotalAmount: strMonthTotalAmount3}
