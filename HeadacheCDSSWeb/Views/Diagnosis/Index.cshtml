@@ -199,8 +199,7 @@ $("#submenu").hide();
                 //set chief complaint
                 var strChiefComplaint = OCX.GetObjectInfo("TextBox_12", "text");
                 OCX.SetObjectInfo("TextBox_9", "text", strChiefComplaint);
-                //set doctor advice in report
-                OCX.SetObjectInfo("TextBox_11", "text", GetDoctorAdvice(OCX));
+                
                 SetDiagnosisIntoComplaint(OCX);
             }
 
@@ -211,6 +210,8 @@ $("#submenu").hide();
                }
             if ($(".selected").last().attr("id") == "报告预览"||$(".selected").last().attr("id") == "头痛问诊") 
                {
+               //set doctor advice in report
+                OCX.SetObjectInfo("TextBox_11", "text", GetDoctorAdvice(OCX));
                 var encoded = $.toJSON(ChangeDataFromOCXIntoJSObject(OCX));
                 }
             if($(".selected").last().attr("id") == "报告预览")
