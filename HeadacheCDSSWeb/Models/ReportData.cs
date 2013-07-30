@@ -79,6 +79,7 @@ namespace HeadacheCDSSWeb.Models
         public string DrugCategory { get; set; }
         public string DrugName { get; set; }
         public string DrugDose { get; set; }
+        public string DrugDoseUnit { get; set; }
     }
    public class PDrug{
         public string DrugCategory { get; set; }

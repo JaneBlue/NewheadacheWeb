@@ -162,6 +162,7 @@
           <ScalarProperty Name="DrugCategory" ColumnName="DrugCategory" />
           <ScalarProperty Name="DrugName" ColumnName="DrugName" />
           <ScalarProperty Name="DrugDose" ColumnName="DrugDose" />
+          <ScalarProperty Name="DrugDoseUnit" ColumnName="DrugDoseUnit" />
           <ScalarProperty Name="VisitRecordId" ColumnName="VisitRecordId" />
         </MappingFragment>
       </EntityTypeMapping>

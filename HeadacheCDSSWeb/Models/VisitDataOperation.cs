@@ -392,6 +392,7 @@ namespace HeadacheCDSSWeb.Models
                         hmedicine.DrugCategory = madvice.DrugCategory;
                         hmedicine.DrugName = madvice.DrugName;
                         hmedicine.DrugDose = madvice.DrugDose;
+                        hmedicine.DrugDoseUnit = madvice.DrugDoseUnit;
                         rdata.medicationadvice.Add(hmedicine);
                     }
 

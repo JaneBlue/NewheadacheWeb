@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 07/30/2013 11:44:52
+-- Date Created: 07/30/2013 14:47:48
 -- Generated from EDMX file: D:\FGj\projectcode\NewheadacheWeb\HeadacheCDSSWeb\Models\HeadacheModel.edmx
 -- --------------------------------------------------
 
@@ -92,14 +92,14 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_RegionalCenterAccountDoctorAccount]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[DoctorAccountSet] DROP CONSTRAINT [FK_RegionalCenterAccountDoctorAccount];
 GO
-IF OBJECT_ID(N'[dbo].[FK_VisitRecordMedicationAdvice]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[MedicationAdviceSet] DROP CONSTRAINT [FK_VisitRecordMedicationAdvice];
-GO
 IF OBJECT_ID(N'[dbo].[FK_PatBasicInforVisitRecord]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[VisitRecordSet] DROP CONSTRAINT [FK_PatBasicInforVisitRecord];
 GO
 IF OBJECT_ID(N'[dbo].[FK_PatBasicInforPreviousDrug]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[PreviousDrugSet] DROP CONSTRAINT [FK_PatBasicInforPreviousDrug];
+GO
+IF OBJECT_ID(N'[dbo].[FK_VisitRecordMedicationAdvice]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MedicationAdviceSet] DROP CONSTRAINT [FK_VisitRecordMedicationAdvice];
 GO
 
 -- --------------------------------------------------
@@ -348,6 +348,7 @@ CREATE TABLE [dbo].[MedicationAdviceSet] (
     [DrugCategory] nvarchar(max)  NULL,
     [DrugName] nvarchar(max)  NULL,
     [DrugDose] nvarchar(max)  NULL,
+    [DrugDoseUnit] nvarchar(max)  NULL,
     [VisitRecordId] int  NOT NULL
 );
 GO
@@ -1044,20 +1045,6 @@ ON [dbo].[DoctorAccountSet]
     ([RegionalCenterAccountID]);
 GO
 
--- Creating foreign key on [VisitRecordId] in table 'MedicationAdviceSet'
-ALTER TABLE [dbo].[MedicationAdviceSet]
-ADD CONSTRAINT [FK_VisitRecordMedicationAdvice]
-    FOREIGN KEY ([VisitRecordId])
-    REFERENCES [dbo].[VisitRecordSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_VisitRecordMedicationAdvice'
-CREATE INDEX [IX_FK_VisitRecordMedicationAdvice]
-ON [dbo].[MedicationAdviceSet]
-    ([VisitRecordId]);
-GO
-
 -- Creating foreign key on [PatBasicInforId] in table 'VisitRecordSet'
 ALTER TABLE [dbo].[VisitRecordSet]
 ADD CONSTRAINT [FK_PatBasicInforVisitRecord]
@@ -1084,6 +1071,20 @@ ADD CONSTRAINT [FK_PatBasicInforPreviousDrug]
 CREATE INDEX [IX_FK_PatBasicInforPreviousDrug]
 ON [dbo].[PreviousDrugSet]
     ([PatBasicInforId1]);
+GO
+
+-- Creating foreign key on [VisitRecordId] in table 'MedicationAdviceSet'
+ALTER TABLE [dbo].[MedicationAdviceSet]
+ADD CONSTRAINT [FK_VisitRecordMedicationAdvice]
+    FOREIGN KEY ([VisitRecordId])
+    REFERENCES [dbo].[VisitRecordSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_VisitRecordMedicationAdvice'
+CREATE INDEX [IX_FK_VisitRecordMedicationAdvice]
+ON [dbo].[MedicationAdviceSet]
+    ([VisitRecordId]);
 GO
 
 -- --------------------------------------------------
