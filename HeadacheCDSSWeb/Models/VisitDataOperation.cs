@@ -508,7 +508,7 @@ namespace HeadacheCDSSWeb.Models
                 int num5 = VData.MAdvice.Count - 1;
                 for (int n = num5; n >= 0; n--)
                 {
-                    if (VData.MAdvice[n].DrugCategory == "")
+                    if (VData.MAdvice[n].DrugName == "")
                     {
                         VData.MAdvice.RemoveAt(n);
                     }

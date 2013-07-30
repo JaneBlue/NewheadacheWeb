@@ -254,6 +254,8 @@
                 $("#DiaryView").show();
                 $("#d1").Zebra_DatePicker();
                 $("#d2").Zebra_DatePicker();
+                $("#linegraph").children().remove();
+                $("#piegraph").children().remove();
                 var plot1 = $.jqplot('linegraph', [[4, 6, 7, 9, 3, 5, 8, 8]], { axes: { xaxis: { label: "" }, yaxis: { label: ""}} });
                 var plot2 = $.jqplot('piegraph', [[5, 7, 9, 7, 10, 11, 28, 32, 10, 11, 28, 32]], {
                     title: '',
@@ -275,7 +277,7 @@
                         },
                         yaxis: {
                             tickOptions: {
-                               formatString: '%d'
+                                formatString: '%d'
                             }
                         }
                     },
@@ -327,20 +329,44 @@
 
 
                 success: function (data) {
-
+                    var chartdata = new Array();
+                    var linedata = [];
+                    var axisDates = new Array();
                     var myobj = eval(data);
+                    var flag = myobj.length;
                     for (var i = 0; i < myobj.length; i++) {
-                        var a = myobj.kind;
+                        if (myobj[i].kind == "0") {
+                            flag = parseInt(i);
+                            break;
+                        }
+                        else {
+                            chartdata[i] = parseInt(myobj[i].data);
+                            axisDates[i] = myobj[i].kind;
+                        }
                     }
-                    
+                    var lineaxis = [];
+                    var index = 0;
+                    for (var j = flag; j < myobj.length; j++) {
+
+                        linedata[index] = parseInt(myobj[j].data);
+                        lineaxis[index] = index;
+                        index++;
+                    }
+                    lineaxis[index] = index;
                     $("#linegraph").children().remove();
                     $("#piegraph").children().remove();
-                    var plot1 = $.jqplot('linegraph', [[3, 7, 9, 1, 4, 6, 8, 2, 5]], { axes: { xaxis: { label: "" }, yaxis: { label: selected1}} });
-                    var axisDates = ["Jan 19", "Jan 20", "Jan 21"];
-                    var chartData = [2.61, 5.00, 6.00];
+                    if (linedata.length == 0)
+                        linedata = [0, 0, 0, 0, 0, 0, 0, 0];
+                    if (chartdata.length == 0) {
+                        axisDates = ["", "", ""];
+                        chartdata = [0, 0, 0];
+                    }
+
+                    var plot1 = $.jqplot('linegraph', [linedata], { axes: { xaxis: { ticks: lineaxis }, yaxis: { label: selected1}} });
+
 
                     $.jqplot.config.enablePlugins = true;
-                    var plot2 = $.jqplot('piegraph', [chartData], {
+                    var plot2 = $.jqplot('piegraph', [chartdata], {
                         title: selected2,
                         seriesDefaults: {
                             renderer: $.jqplot.BarRenderer,
