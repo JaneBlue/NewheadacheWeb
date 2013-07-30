@@ -436,9 +436,25 @@
         var obj = eval('(' +jsonData + ')');
         var OCX = document.getElementById('Reporter2');
 
+        //set doctor advice
+        var strDoctorAdvice = "";
+        var listMedicationAdvice = obj.medicationadvice;
+        for (var nIndex = 0; nIndex < listMedicationAdvice.length; ++nIndex) 
+        {
+            var strDrugName = listMedicationAdvice[nIndex].DrugName;
+            var strDrugDose = listMedicationAdvice[nIndex].DrugDose;
+            var strDrugDoseUnit = listMedicationAdvice[nIndex].DrugDoseUnit;
+            var strDrugApplication = listMedicationAdvice[nIndex].DrugApplication;
+            if (nIndex < 2)
+                strDoctorAdvice += strDrugName + " " + strDrugDose + strDrugDoseUnit + " " + strDrugApplication + "\n";
+            else
+                strDoctorAdvice += strDrugName + " " + strDrugDose + strDrugDoseUnit + " " + strDrugApplication;
+        }
+        OCX.SetObjectInfo("TextBox_24", "text", strDoctorAdvice);
+
         //set patient basic information
         //get data
-        var strName = "";
+            var strName = "";
         if (null != obj.Name)
             strName = obj.Name;
 
