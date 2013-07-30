@@ -199,8 +199,9 @@ $("#submenu").hide();
                 //set chief complaint
                 var strChiefComplaint = OCX.GetObjectInfo("TextBox_12", "text");
                 OCX.SetObjectInfo("TextBox_9", "text", strChiefComplaint);
+                //set doctor advice in report
+                OCX.SetObjectInfo("TextBox_11", "text", GetDoctorAdvice(OCX));
                 SetDiagnosisIntoComplaint(OCX);
-
             }
 
 
@@ -1986,5 +1987,245 @@ function SetDiagnosisIntoComplaint(OCX){
 
                                              };
             return thing;
+    }
+
+    function GetDoctorAdvice(OCX)
+    {
+        var strDoctorAdvice = "";
+        if("" != OCX.GetObjectInfo("TextBox_70", "text"))
+        {
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_70", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_101", "text");
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_77", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_74", "text");
+            strDoctorAdvice += "\n";
+        }
+
+        if("" != OCX.GetObjectInfo("TextBox_69", "text"))
+        {
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_69", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_100", "text");
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_76", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_55", "text");
+            strDoctorAdvice += "\n";
+        }
+
+        if("" != OCX.GetObjectInfo("TextBox_68", "text"))
+        {
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_68", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_99", "text");
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_75", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_54", "text");
+            strDoctorAdvice += "\n";
+        }
+
+        if("" != OCX.GetObjectInfo("TextBox_60", "text"))
+        {
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_60", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_95", "text");
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_3", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_4", "text");
+            strDoctorAdvice += "\n";
+        }
+
+        if("" != OCX.GetObjectInfo("TextBox_4", "text"))
+        {
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_4", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_94", "text");
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_6", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_5", "text");
+            strDoctorAdvice += "\n";
+        }
+
+        if("" != OCX.GetObjectInfo("TextBox_61", "text"))
+        {
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_61", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_93", "text");
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_30", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_29", "text");
+            strDoctorAdvice += "\n";
+        }
+
+        if("" != OCX.GetObjectInfo("TextBox_73", "text"))
+        {
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_73", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_86", "text");
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_78", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_83", "text");
+            strDoctorAdvice += "\n";
+        }
+
+        if("" != OCX.GetObjectInfo("TextBox_72", "text"))
+        {
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_72", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_85", "text");
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_79", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_82", "text");
+            strDoctorAdvice += "\n";
+        }
+
+        if("" != OCX.GetObjectInfo("TextBox_71", "text"))
+        {
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_71", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_84", "text");
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_80", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_81", "text");
+            strDoctorAdvice += "\n";
+        }
+
+        if("" != OCX.GetObjectInfo("TextBox_76", "text"))
+        {
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_76", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_81", "text");
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_84", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_89", "text");
+            strDoctorAdvice += "\n";
+        }
+
+        if("" != OCX.GetObjectInfo("TextBox_75", "text"))
+        {
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_75", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_82", "text");
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_85", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_88", "text");
+            strDoctorAdvice += "\n";
+        }
+
+        if("" != OCX.GetObjectInfo("TextBox_74", "text"))
+        {
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_74", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_83", "text");
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_86", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_87", "text");
+            strDoctorAdvice += "\n";
+        }
+
+        if("" != OCX.GetObjectInfo("TextBox_67", "text"))
+        {
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_67", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_104", "text");
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_51", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_50", "text");
+            strDoctorAdvice += "\n";
+        }
+
+        if("" != OCX.GetObjectInfo("TextBox_66", "text"))
+        {
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_66", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_103", "text");
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_52", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_43", "text");
+            strDoctorAdvice += "\n";
+        }
+
+        if("" != OCX.GetObjectInfo("TextBox_63", "text"))
+        {
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_63", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_102", "text");
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_53", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_42", "text");
+            strDoctorAdvice += "\n";
+        }
+
+        if("" != OCX.GetObjectInfo("TextBox_79", "text"))
+        {
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_79", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_107", "text");
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_90", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_95", "text");
+            strDoctorAdvice += "\n";
+        }
+
+        if("" != OCX.GetObjectInfo("TextBox_78", "text"))
+        {
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_78", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_106", "text");
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_91", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_94", "text");
+            strDoctorAdvice += "\n";
+        }
+
+        if("" != OCX.GetObjectInfo("TextBox_77", "text"))
+        {
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_77", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("TextBox_105", "text");
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_92", "text");
+            strDoctorAdvice += " ";
+
+            strDoctorAdvice += OCX.GetObjectInfo("ComboBox_93", "text");
+            strDoctorAdvice += "\n";
+        }
+
+        return strDoctorAdvice;
     }
 </script>
