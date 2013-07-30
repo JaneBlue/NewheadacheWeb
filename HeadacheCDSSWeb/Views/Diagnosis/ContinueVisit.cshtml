@@ -1209,6 +1209,205 @@ $(function () {
 
         var strGADQ7 = obj.gdaquestionaire.Q7;
         OCX.SetObjectInfo("ComboBox_24", "text", strGADQ7);
+
+        //set doctor advice
+        var listMedicationAdvice = obj.medicationadvice;
+        var diagnosis=OCX.GetObjectInfo("ComboBox_31", "text");
+        switch (diagnosis)
+        {
+            case "紧张型头痛":
+            {
+                 for(var nIndex = 0; nIndex < listMedicationAdvice.length; ++nIndex)   
+                 {
+                    var strDrugName = listMedicationAdvice[nIndex].DrugName;
+                    var strDrugDose = listMedicationAdvice[nIndex].DrugDose;
+                    var strDrugDoseUnit = listMedicationAdvice[nIndex].DrugDoseUnit;
+                    var strDrugApplication = listMedicationAdvice[nIndex].DrugApplication;
+                    if(0 == nIndex)
+                    {
+                        OCX.SetObjectInfo("TextBox_60", "text", strDrugName);
+                        OCX.SetObjectInfo("TextBox_95", "text", strDrugDose);
+                        OCX.SetObjectInfo("ComboBox_3", "text", strDrugDoseUnit);
+                        OCX.SetObjectInfo("ComboBox_4", "text", strDrugApplication);
+                    }
+                    else if(1 == nIndex)
+                    {
+                        OCX.SetObjectInfo("TextBox_4", "text", strDrugName);
+                        OCX.SetObjectInfo("TextBox_94", "text", strDrugDose);
+                        OCX.SetObjectInfo("ComboBox_6", "text", strDrugDoseUnit);
+                        OCX.SetObjectInfo("ComboBox_5", "text", strDrugApplication);
+                    }
+                    else if(2 == nIndex)
+                    {
+                        OCX.SetObjectInfo("TextBox_61", "text", strDrugName);
+                        OCX.SetObjectInfo("TextBox_93", "text", strDrugDose);
+                        OCX.SetObjectInfo("ComboBox_30", "text", strDrugDoseUnit);
+                        OCX.SetObjectInfo("ComboBox_29", "text", strDrugApplication);
+                    }
+                 }    
+            }
+            break;
+            case "偏头痛":
+            {
+                for(var nIndex = 0; nIndex < listMedicationAdvice.length; ++nIndex)   
+                 {
+                    var strDrugName = listMedicationAdvice[nIndex].DrugName;
+                    var strDrugDose = listMedicationAdvice[nIndex].DrugDose;
+                    var strDrugDoseUnit = listMedicationAdvice[nIndex].DrugDoseUnit;
+                    var strDrugApplication = listMedicationAdvice[nIndex].DrugApplication;
+                    if(0 == nIndex)
+                    {
+                        OCX.SetObjectInfo("TextBox_70", "text", strDrugName);
+                        OCX.SetObjectInfo("TextBox_101", "text", strDrugDose);
+                        OCX.SetObjectInfo("ComboBox_77", "text", strDrugDoseUnit);
+                        OCX.SetObjectInfo("ComboBox_74", "text", strDrugApplication);
+                    }
+                    else if(1 == nIndex)
+                    {
+                        OCX.SetObjectInfo("TextBox_69", "text", strDrugName);
+                        OCX.SetObjectInfo("TextBox_100", "text", strDrugDose);
+                        OCX.SetObjectInfo("ComboBox_76", "text", strDrugDoseUnit);
+                        OCX.SetObjectInfo("ComboBox_55", "text", strDrugApplication);
+                    }
+                    else if(2 == nIndex)
+                    {
+                        OCX.SetObjectInfo("TextBox_68", "text", strDrugName);
+                        OCX.SetObjectInfo("TextBox_99", "text", strDrugDose);
+                        OCX.SetObjectInfo("ComboBox_75", "text", strDrugDoseUnit);
+                        OCX.SetObjectInfo("ComboBox_54", "text", strDrugApplication);
+                    }
+                 }    
+            }
+            break;
+            case "丛集性头痛和其他原发性三叉神经痛":
+            {
+                for(var nIndex = 0; nIndex < listMedicationAdvice.length; ++nIndex)   
+                 {
+                    var strDrugName = listMedicationAdvice[nIndex].DrugName;
+                    var strDrugDose = listMedicationAdvice[nIndex].DrugDose;
+                    var strDrugDoseUnit = listMedicationAdvice[nIndex].DrugDoseUnit;
+                    var strDrugApplication = listMedicationAdvice[nIndex].DrugApplication;
+                    if(0 == nIndex)
+                    {
+                        OCX.SetObjectInfo("TextBox_73", "text", strDrugName);
+                        OCX.SetObjectInfo("TextBox_86", "text", strDrugDose);
+                        OCX.SetObjectInfo("ComboBox_78", "text", strDrugDoseUnit);
+                        OCX.SetObjectInfo("ComboBox_83", "text", strDrugApplication);
+                    }
+                    else if(1 == nIndex)
+                    {
+                        OCX.SetObjectInfo("TextBox_72", "text", strDrugName);
+                        OCX.SetObjectInfo("TextBox_85", "text", strDrugDose);
+                        OCX.SetObjectInfo("ComboBox_79", "text", strDrugDoseUnit);
+                        OCX.SetObjectInfo("ComboBox_82", "text", strDrugApplication);
+                    }
+                    else if(2 == nIndex)
+                    {
+                        OCX.SetObjectInfo("TextBox_71", "text", strDrugName);
+                        OCX.SetObjectInfo("TextBox_84", "text", strDrugDose);
+                        OCX.SetObjectInfo("ComboBox_80", "text", strDrugDoseUnit);
+                        OCX.SetObjectInfo("ComboBox_81", "text", strDrugApplication);
+                    }
+                 }
+            }
+            break;
+            case "颅神经痛和中枢源性面痛":
+            {
+                for(var nIndex = 0; nIndex < listMedicationAdvice.length; ++nIndex)   
+                 {
+                    var strDrugName = listMedicationAdvice[nIndex].DrugName;
+                    var strDrugDose = listMedicationAdvice[nIndex].DrugDose;
+                    var strDrugDoseUnit = listMedicationAdvice[nIndex].DrugDoseUnit;
+                    var strDrugApplication = listMedicationAdvice[nIndex].DrugApplication;
+                    if(0 == nIndex)
+                    {
+                        OCX.SetObjectInfo("TextBox_67", "text", strDrugName);
+                        OCX.SetObjectInfo("TextBox_104", "text", strDrugDose);
+                        OCX.SetObjectInfo("ComboBox_51", "text", strDrugDoseUnit);
+                        OCX.SetObjectInfo("ComboBox_50", "text", strDrugApplication);
+                    }
+                    else if(1 == nIndex)
+                    {
+                        OCX.SetObjectInfo("TextBox_66", "text", strDrugName);
+                        OCX.SetObjectInfo("TextBox_103", "text", strDrugDose);
+                        OCX.SetObjectInfo("ComboBox_52", "text", strDrugDoseUnit);
+                        OCX.SetObjectInfo("ComboBox_43", "text", strDrugApplication);
+                    }
+                    else if(2 == nIndex)
+                    {
+                        OCX.SetObjectInfo("TextBox_63", "text", strDrugName);
+                        OCX.SetObjectInfo("TextBox_102", "text", strDrugDose);
+                        OCX.SetObjectInfo("ComboBox_53", "text", strDrugDoseUnit);
+                        OCX.SetObjectInfo("ComboBox_42", "text", strDrugApplication);
+                    }
+                 }
+            }
+            break;
+            case "慢性每日头痛":
+            {
+                for(var nIndex = 0; nIndex < listMedicationAdvice.length; ++nIndex)   
+                 {
+                    var strDrugName = listMedicationAdvice[nIndex].DrugName;
+                    var strDrugDose = listMedicationAdvice[nIndex].DrugDose;
+                    var strDrugDoseUnit = listMedicationAdvice[nIndex].DrugDoseUnit;
+                    var strDrugApplication = listMedicationAdvice[nIndex].DrugApplication;
+                    if(0 == nIndex)
+                    {
+                        OCX.SetObjectInfo("TextBox_76", "text", strDrugName);
+                        OCX.SetObjectInfo("TextBox_81", "text", strDrugDose);
+                        OCX.SetObjectInfo("ComboBox_84", "text", strDrugDoseUnit);
+                        OCX.SetObjectInfo("ComboBox_89", "text", strDrugApplication);
+                    }
+                    else if(1 == nIndex)
+                    {
+                        OCX.SetObjectInfo("TextBox_75", "text", strDrugName);
+                        OCX.SetObjectInfo("TextBox_82", "text", strDrugDose);
+                        OCX.SetObjectInfo("ComboBox_85", "text", strDrugDoseUnit);
+                        OCX.SetObjectInfo("ComboBox_88", "text", strDrugApplication);
+                    }
+                    else if(2 == nIndex)
+                    {
+                        OCX.SetObjectInfo("TextBox_74", "text", strDrugName);
+                        OCX.SetObjectInfo("TextBox_83", "text", strDrugDose);
+                        OCX.SetObjectInfo("ComboBox_86", "text", strDrugDoseUnit);
+                        OCX.SetObjectInfo("ComboBox_87", "text", strDrugApplication);
+                    }
+                 }
+            }
+            break;
+            default:
+            {
+                for(var nIndex = 0; nIndex < listMedicationAdvice.length; ++nIndex)   
+                 {
+                    var strDrugName = listMedicationAdvice[nIndex].DrugName;
+                    var strDrugDose = listMedicationAdvice[nIndex].DrugDose;
+                    var strDrugDoseUnit = listMedicationAdvice[nIndex].DrugDoseUnit;
+                    var strDrugApplication = listMedicationAdvice[nIndex].DrugApplication;
+                    if(0 == nIndex)
+                    {
+                        OCX.SetObjectInfo("TextBox_79", "text", strDrugName);
+                        OCX.SetObjectInfo("TextBox_107", "text", strDrugDose);
+                        OCX.SetObjectInfo("ComboBox_90", "text", strDrugDoseUnit);
+                        OCX.SetObjectInfo("ComboBox_95", "text", strDrugApplication);
+                    }
+                    else if(1 == nIndex)
+                    {
+                        OCX.SetObjectInfo("TextBox_78", "text", strDrugName);
+                        OCX.SetObjectInfo("TextBox_106", "text", strDrugDose);
+                        OCX.SetObjectInfo("ComboBox_91", "text", strDrugDoseUnit);
+                        OCX.SetObjectInfo("ComboBox_94", "text", strDrugApplication);
+                    }
+                    else if(2 == nIndex)
+                    {
+                        OCX.SetObjectInfo("TextBox_77", "text", strDrugName);
+                        OCX.SetObjectInfo("TextBox_105", "text", strDrugDose);
+                        OCX.SetObjectInfo("ComboBox_92", "text", strDrugDoseUnit);
+                        OCX.SetObjectInfo("ComboBox_93", "text", strDrugApplication);
+                    }
+                 }
+            }
+            break;
+        }
     }
      function SetHeadachePlace(obj)
     { 
