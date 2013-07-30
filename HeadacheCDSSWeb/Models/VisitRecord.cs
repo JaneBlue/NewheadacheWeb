@@ -38,12 +38,12 @@ namespace HeadacheCDSSWeb.Models
     
         public virtual ICollection<SecondaryHeadacheSymptom> SecondaryHeadacheSymptom { get; set; }
         public virtual PrimaryHeadacheOverView PrimaryHeadachaOverView { get; set; }
-        public virtual ICollection<MedicationAdvice> MedicationAdvice { get; set; }
         public virtual PatBasicInfor PatBasicInfor { get; set; }
         public virtual GADQuestionaire GADQuestionaire { get; set; }
         public virtual PHQuestionaire PHQuestionaire { get; set; }
         public virtual SleepStatus SleepStatus { get; set; }
         public virtual DisabilityEvaluation DisabilityEvaluation { get; set; }
+        public virtual ICollection<MedicationAdvice> MedicationAdvice { get; set; }
     }
     
 }

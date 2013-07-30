@@ -258,7 +258,7 @@
                 $("#DiaryView").show();
                 $("#d1").Zebra_DatePicker();
                 $("#d2").Zebra_DatePicker();
-                var plot1 = $.jqplot('linegraph', [[0,0,0,0,0,0,0,0]], { axes: { xaxis: { label: "" }, yaxis: { label: ""}} });
+                var plot1 = $.jqplot('linegraph', [[0, 0, 0, 0, 0, 0, 0, 0]], { axes: { xaxis: { label: "" }, yaxis: { label: ""}} });
             }
             else {
                 $.ajax({
@@ -290,13 +290,13 @@
             var strSDate = StartDate.slice(0, 10).replace("/", "-").replace("/", "-") + " 00:00:00";
             var strEDate = EndDate.slice(0, 10).replace("/", "-").replace("/", "-") + " 00:00:00";
             var selected1 = $("input:radio[name=query1]:checked").val(); //若未被选中 则val() = null
-            var selected2 = $("input:radio[name=query2]:checked").val(); 
+            var selected2 = $("input:radio[name=query2]:checked").val();
             var encoded = $.toJSON({ PID: Pid, StartDate: strSDate, EndDate: strEDate, query1: selected1, query2: selected2 });
 
             $.ajax({
                 type: "POST",
                 url: '@Url.Action("ViewDiary", "ViewPatRecord")',
-                data: {postjson:encoded},
+                data: { postjson: encoded },
 
 
                 success: function (data) {
@@ -304,6 +304,7 @@
                     //              
                     //                    $("#DiaryView").show();
 
+                    $("#linegraph").children().remove();
                     var plot1 = $.jqplot('linegraph', [[3, 7, 9, 1, 4, 6, 8, 2, 5]], { axes: { xaxis: { label: "" }, yaxis: { label: "头痛程度评分"}} });
                     var axisDates = ["Jan 19", "Jan 20", "Jan 21"];
                     var chartData = [2.61, 5.00, 6.00];

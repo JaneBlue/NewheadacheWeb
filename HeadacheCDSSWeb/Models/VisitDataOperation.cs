@@ -729,6 +729,7 @@ namespace HeadacheCDSSWeb.Models
                 DiaryDataPoint dp = new DiaryDataPoint();
                 dp.data = kindscount[n].ToString();
                 dp.kind = kinds[n];
+                Result.Add(dp);
             }
                 return Result;
         }

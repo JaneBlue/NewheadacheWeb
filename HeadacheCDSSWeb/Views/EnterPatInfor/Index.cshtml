@@ -78,8 +78,8 @@
                     <li><span>性别</span>@Html.DropDownListFor(model => model.Sex, @items) <p>*</p></li>
                     <li><span>年龄</span> @Html.EditorFor(model => model.Age)<p>*</p></li>
                     <li><span>手机</span>@Html.EditorFor(model => model.Phone)<p>*</p></li>
-                    <li><span>身高</span>@Html.EditorFor(model => model.Height)</li>
-                    <li><span>体重</span>@Html.EditorFor(model => model.Weight) </li>
+                    <li><span>身高</span>@Html.EditorFor(model => model.Height)<a>cm</a></li>
+                    <li><span>体重</span>@Html.EditorFor(model => model.Weight)<a>kg</a> </li>
                     <li><span>教育</span>@Html.DropDownListFor(model => model.Education, @education)</li>
                     <li><span>职业</span>@Html.EditorFor(model => model.Job) </li>
                     <li><span>住址</span> @Html.EditorFor(model => model.Address)</li>

@@ -164,7 +164,6 @@
           <ScalarProperty Name="DrugName" ColumnName="DrugName" />
           <ScalarProperty Name="DrugDose" ColumnName="DrugDose" />
           <ScalarProperty Name="VisitRecordId" ColumnName="VisitRecordId" />
-          <ScalarProperty Name="VisitRecordId1" ColumnName="VisitRecordId1" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -70,7 +70,14 @@ namespace HeadacheCDSSWeb.Controllers
             List<int> nData = new List<int>();    
             nData= visitop.GetDiaryNumericData(obj.PID, obj.StartDate, obj.EndDate, obj.query1);
             List<DiaryDataPoint> qData = visitop.GetDiaryQualitativeData(obj.PID, obj.StartDate, obj.EndDate, obj.query2);
-            string sJSON = JsonHelper.JsonSerializer(nData);
+            for (int i = 0; i < nData.Count;i++ )
+            {
+                DiaryDataPoint nqdata = new DiaryDataPoint();
+                nqdata.data = nData[i].ToString();
+                nqdata.kind = i.ToString();
+                qData.Add(nqdata);
+            }
+            string sJSON = JsonHelper.JsonSerializer(qData);
             return this.Json(sJSON);
         }
         public ActionResult ViewDiaryReport()

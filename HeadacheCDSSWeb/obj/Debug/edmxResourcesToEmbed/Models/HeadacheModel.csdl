@@ -61,10 +61,6 @@
       <End Role="VisitRecord" EntitySet="VisitRecordSet" />
       <End Role="PrimaryHeadachaOverView" EntitySet="PrimaryHeadacheOverViewSet" />
     </AssociationSet>
-    <AssociationSet Name="VisitRecordMedicationAdvice" Association="HeadacheModel.VisitRecordMedicationAdvice">
-      <End Role="VisitRecord" EntitySet="VisitRecordSet" />
-      <End Role="MedicationAdvice" EntitySet="MedicationAdviceSet" />
-    </AssociationSet>
     <AssociationSet Name="PatBasicInforLifestyle" Association="HeadacheModel.PatBasicInforLifestyle">
       <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
       <End Role="Lifestyle" EntitySet="LifestyleSet" />
@@ -142,6 +138,10 @@
       <End Role="RegionalCenterAccount" EntitySet="RegionalCenterAccountSet" />
       <End Role="DoctorAccount" EntitySet="DoctorAccountSet" />
     </AssociationSet>
+    <AssociationSet Name="VisitRecordMedicationAdvice" Association="HeadacheModel.VisitRecordMedicationAdvice">
+      <End Role="VisitRecord" EntitySet="VisitRecordSet" />
+      <End Role="MedicationAdvice" EntitySet="MedicationAdviceSet" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="DoctorAccount">
     <Key>
@@ -202,13 +202,13 @@
     <NavigationProperty Name="PrimaryHeadachaOverView" Relationship="HeadacheModel.VisitRecordPrimaryHeadachaOverView" FromRole="VisitRecord" ToRole="PrimaryHeadachaOverView" />
     <Property Type="String" Name="PreviousDiagnosis" Nullable="true" />
     <Property Type="String" Name="PrescriptionNote" Nullable="true" />
-    <NavigationProperty Name="MedicationAdvice" Relationship="HeadacheModel.VisitRecordMedicationAdvice" FromRole="VisitRecord" ToRole="MedicationAdvice" />
     <NavigationProperty Name="PatBasicInfor" Relationship="HeadacheModel.PatBasicInforVisitRecord" FromRole="VisitRecord" ToRole="PatBasicInfor" />
     <Property Type="String" Name="PatBasicInforId1" Nullable="false" MaxLength="255" />
     <NavigationProperty Name="GADQuestionaire" Relationship="HeadacheModel.VisitRecordGADQuestionaire" FromRole="VisitRecord" ToRole="GADQuestionaire" />
     <NavigationProperty Name="PHQuestionaire" Relationship="HeadacheModel.VisitRecordPHQuestionaire" FromRole="VisitRecord" ToRole="PHQuestionaire" />
     <NavigationProperty Name="SleepStatus" Relationship="HeadacheModel.VisitRecordSleepStatus" FromRole="VisitRecord" ToRole="SleepStatus" />
     <NavigationProperty Name="DisabilityEvaluation" Relationship="HeadacheModel.VisitRecordDisabilityEvaluation" FromRole="VisitRecord" ToRole="DisabilityEvaluation" />
+    <NavigationProperty Name="MedicationAdvice" Relationship="HeadacheModel.VisitRecordMedicationAdvice" FromRole="VisitRecord" ToRole="MedicationAdvice" />
   </EntityType>
   <Association Name="DoctorAccountPatBasicInfor">
     <End Type="HeadacheModel.DoctorAccount" Role="DoctorAccount" Multiplicity="1" />
@@ -379,9 +379,8 @@
     <Property Type="String" Name="DrugCategory" Nullable="true" />
     <Property Type="String" Name="DrugName" Nullable="true" />
     <Property Type="String" Name="DrugDose" Nullable="true" />
-    <Property Type="Int32" Name="VisitRecordId" Nullable="false" />
     <NavigationProperty Name="VisitRecord" Relationship="HeadacheModel.VisitRecordMedicationAdvice" FromRole="MedicationAdvice" ToRole="VisitRecord" />
-    <Property Type="Int32" Name="VisitRecordId1" Nullable="false" />
+    <Property Type="Int32" Name="VisitRecordId" Nullable="false" />
   </EntityType>
   <EntityType Name="PrecipitatingFactor">
     <Key>
@@ -486,18 +485,6 @@
   <Association Name="VisitRecordPrimaryHeadachaOverView">
     <End Type="HeadacheModel.VisitRecord" Role="VisitRecord" Multiplicity="1" />
     <End Type="HeadacheModel.PrimaryHeadacheOverView" Role="PrimaryHeadachaOverView" Multiplicity="0..1" />
-  </Association>
-  <Association Name="VisitRecordMedicationAdvice">
-    <End Type="HeadacheModel.VisitRecord" Role="VisitRecord" Multiplicity="1" />
-    <End Type="HeadacheModel.MedicationAdvice" Role="MedicationAdvice" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="VisitRecord">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="MedicationAdvice">
-        <PropertyRef Name="VisitRecordId1" />
-      </Dependent>
-    </ReferentialConstraint>
   </Association>
   <Association Name="PatBasicInforLifestyle">
     <End Type="HeadacheModel.PatBasicInfor" Role="PatBasicInfor" Multiplicity="1" />
@@ -798,6 +785,18 @@
       </Principal>
       <Dependent Role="DoctorAccount">
         <PropertyRef Name="RegionalCenterAccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VisitRecordMedicationAdvice">
+    <End Type="HeadacheModel.VisitRecord" Role="VisitRecord" Multiplicity="1" />
+    <End Type="HeadacheModel.MedicationAdvice" Role="MedicationAdvice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VisitRecord">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MedicationAdvice">
+        <PropertyRef Name="VisitRecordId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

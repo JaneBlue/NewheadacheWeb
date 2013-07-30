@@ -20,7 +20,6 @@ namespace HeadacheCDSSWeb.Models
         public string DrugName { get; set; }
         public string DrugDose { get; set; }
         public int VisitRecordId { get; set; }
-        public int VisitRecordId1 { get; set; }
     
         public virtual VisitRecord VisitRecord { get; set; }
     }

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 07/29/2013 20:10:10
+-- Date Created: 07/30/2013 09:40:25
 -- Generated from EDMX file: D:\FGj\projectcode\NewheadacheWeb\HeadacheCDSSWeb\Models\HeadacheModel.edmx
 -- --------------------------------------------------
 
@@ -349,8 +349,7 @@ CREATE TABLE [dbo].[MedicationAdviceSet] (
     [DrugCategory] nvarchar(max)  NULL,
     [DrugName] nvarchar(max)  NULL,
     [DrugDose] nvarchar(max)  NULL,
-    [VisitRecordId] int  NOT NULL,
-    [VisitRecordId1] int  NOT NULL
+    [VisitRecordId] int  NOT NULL
 );
 GO
 
@@ -850,20 +849,6 @@ ON [dbo].[PrimaryHeadacheOverViewSet]
     ([VisitRecord_Id]);
 GO
 
--- Creating foreign key on [VisitRecordId1] in table 'MedicationAdviceSet'
-ALTER TABLE [dbo].[MedicationAdviceSet]
-ADD CONSTRAINT [FK_VisitRecordMedicationAdvice]
-    FOREIGN KEY ([VisitRecordId1])
-    REFERENCES [dbo].[VisitRecordSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_VisitRecordMedicationAdvice'
-CREATE INDEX [IX_FK_VisitRecordMedicationAdvice]
-ON [dbo].[MedicationAdviceSet]
-    ([VisitRecordId1]);
-GO
-
 -- Creating foreign key on [Lifestyle_Id] in table 'PatBasicInforSet'
 ALTER TABLE [dbo].[PatBasicInforSet]
 ADD CONSTRAINT [FK_PatBasicInforLifestyle]
@@ -1086,6 +1071,20 @@ ADD CONSTRAINT [FK_RegionalCenterAccountDoctorAccount]
 CREATE INDEX [IX_FK_RegionalCenterAccountDoctorAccount]
 ON [dbo].[DoctorAccountSet]
     ([RegionalCenterAccountID]);
+GO
+
+-- Creating foreign key on [VisitRecordId] in table 'MedicationAdviceSet'
+ALTER TABLE [dbo].[MedicationAdviceSet]
+ADD CONSTRAINT [FK_VisitRecordMedicationAdvice]
+    FOREIGN KEY ([VisitRecordId])
+    REFERENCES [dbo].[VisitRecordSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_VisitRecordMedicationAdvice'
+CREATE INDEX [IX_FK_VisitRecordMedicationAdvice]
+ON [dbo].[MedicationAdviceSet]
+    ([VisitRecordId]);
 GO
 
 -- --------------------------------------------------
