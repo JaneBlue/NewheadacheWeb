@@ -1903,6 +1903,110 @@ function SetDiagnosisIntoComplaint(OCX){
                 nGADTotalScore = nGAD1 + nGAD2 + nGAD3 + nGAD4 + nGAD5 + nGAD6 + nGAD7;
                 var strGADTotalScore = nGADTotalScore.toString();
 
+                //get medicine advice
+                var strMedicineAdviceName1 = "";
+                var strMedicineAdviceDosage1 = "";
+                var strMedicineAdviceDosageUnit1 = "";
+                var strMedicineAdviceInstruction1 = "";
+                var strMedicineAdviceName2 = "";
+                var strMedicineAdviceDosage2 = "";
+                var strMedicineAdviceDosageUnit2 = "";
+                var strMedicineAdviceInstruction2 = "";
+                var strMedicineAdviceName3 = "";
+                var strMedicineAdviceDosage3 = "";
+                var strMedicineAdviceDosageUnit3 = "";
+                var strMedicineAdviceInstruction3 = "";
+                if("" != OCX.GetObjectInfo("TextBox_70", "text"))
+                {
+                    strMedicineAdviceName1 = OCX.GetObjectInfo("TextBox_70", "text");
+                    strMedicineAdviceDosage1 = OCX.GetObjectInfo("TextBox_101", "text");
+                    strMedicineAdviceDosageUnit1 = OCX.GetObjectInfo("ComboBox_77", "text");
+                    strMedicineAdviceInstruction1 = OCX.GetObjectInfo("ComboBox_74", "text");
+                    strMedicineAdviceName2 = OCX.GetObjectInfo("TextBox_69", "text");
+                    strMedicineAdviceDosage2 = OCX.GetObjectInfo("TextBox_100", "text");
+                    strMedicineAdviceDosageUnit2 = OCX.GetObjectInfo("ComboBox_76", "text");
+                    strMedicineAdviceInstruction2 = OCX.GetObjectInfo("ComboBox_55", "text");
+                    strMedicineAdviceName3 = OCX.GetObjectInfo("TextBox_68", "text");
+                    strMedicineAdviceDosage3 = OCX.GetObjectInfo("TextBox_99", "text");
+                    strMedicineAdviceDosageUnit3 = OCX.GetObjectInfo("ComboBox_75", "text");
+                    strMedicineAdviceInstruction3 = OCX.GetObjectInfo("ComboBox_54", "text");                  
+                }
+                else if("" != OCX.GetObjectInfo("TextBox_60", "text"))
+                {
+                    strMedicineAdviceName1 = OCX.GetObjectInfo("TextBox_60", "text");
+                    strMedicineAdviceDosage1 = OCX.GetObjectInfo("TextBox_95", "text");
+                    strMedicineAdviceDosageUnit1 = OCX.GetObjectInfo("ComboBox_3", "text");
+                    strMedicineAdviceInstruction1 = OCX.GetObjectInfo("ComboBox_4", "text");
+                    strMedicineAdviceName2 = OCX.GetObjectInfo("TextBox_4", "text");
+                    strMedicineAdviceDosage2 = OCX.GetObjectInfo("TextBox_94", "text");
+                    strMedicineAdviceDosageUnit2 = OCX.GetObjectInfo("ComboBox_6", "text");
+                    strMedicineAdviceInstruction2 = OCX.GetObjectInfo("ComboBox_5", "text");
+                    strMedicineAdviceName3 = OCX.GetObjectInfo("TextBox_61", "text");
+                    strMedicineAdviceDosage3 = OCX.GetObjectInfo("TextBox_93", "text");
+                    strMedicineAdviceDosageUnit3 = OCX.GetObjectInfo("ComboBox_30", "text");
+                    strMedicineAdviceInstruction3 = OCX.GetObjectInfo("ComboBox_29", "text");
+                }
+                else if("" != OCX.GetObjectInfo("TextBox_73", "text"))
+                {
+                    strMedicineAdviceName1 = OCX.GetObjectInfo("TextBox_73", "text");
+                    strMedicineAdviceDosage1 = OCX.GetObjectInfo("TextBox_86", "text");
+                    strMedicineAdviceDosageUnit1 = OCX.GetObjectInfo("ComboBox_78", "text");
+                    strMedicineAdviceInstruction1 = OCX.GetObjectInfo("ComboBox_83", "text");
+                    strMedicineAdviceName2 = OCX.GetObjectInfo("TextBox_72", "text");
+                    strMedicineAdviceDosage2 = OCX.GetObjectInfo("TextBox_85", "text");
+                    strMedicineAdviceDosageUnit2 = OCX.GetObjectInfo("ComboBox_79", "text");
+                    strMedicineAdviceInstruction2 = OCX.GetObjectInfo("ComboBox_82", "text");
+                    strMedicineAdviceName3 = OCX.GetObjectInfo("TextBox_71", "text");
+                    strMedicineAdviceDosage3 = OCX.GetObjectInfo("TextBox_84", "text");
+                    strMedicineAdviceDosageUnit3 = OCX.GetObjectInfo("ComboBox_80", "text");
+                    strMedicineAdviceInstruction3 = OCX.GetObjectInfo("ComboBox_81", "text");
+                }
+                else if("" != OCX.GetObjectInfo("TextBox_76", "text"))
+                {
+                    strMedicineAdviceName1 = OCX.GetObjectInfo("TextBox_76", "text");
+                    strMedicineAdviceDosage1 = OCX.GetObjectInfo("TextBox_81", "text");
+                    strMedicineAdviceDosageUnit1 = OCX.GetObjectInfo("ComboBox_84", "text");
+                    strMedicineAdviceInstruction1 = OCX.GetObjectInfo("ComboBox_89", "text");
+                    strMedicineAdviceName2 = OCX.GetObjectInfo("TextBox_75", "text");
+                    strMedicineAdviceDosage2 = OCX.GetObjectInfo("TextBox_82", "text");
+                    strMedicineAdviceDosageUnit2 = OCX.GetObjectInfo("ComboBox_85", "text");
+                    strMedicineAdviceInstruction2 = OCX.GetObjectInfo("ComboBox_88", "text");
+                    strMedicineAdviceName3 = OCX.GetObjectInfo("TextBox_74", "text");
+                    strMedicineAdviceDosage3 = OCX.GetObjectInfo("TextBox_83", "text");
+                    strMedicineAdviceDosageUnit3 = OCX.GetObjectInfo("ComboBox_86", "text");
+                    strMedicineAdviceInstruction3 = OCX.GetObjectInfo("ComboBox_87", "text");
+                }
+                else if("" != OCX.GetObjectInfo("TextBox_67", "text"))
+                {
+                    strMedicineAdviceName1 = OCX.GetObjectInfo("TextBox_67", "text");
+                    strMedicineAdviceDosage1 = OCX.GetObjectInfo("TextBox_104", "text");
+                    strMedicineAdviceDosageUnit1 = OCX.GetObjectInfo("ComboBox_51", "text");
+                    strMedicineAdviceInstruction1 = OCX.GetObjectInfo("ComboBox_50", "text");
+                    strMedicineAdviceName2 = OCX.GetObjectInfo("TextBox_66", "text");
+                    strMedicineAdviceDosage2 = OCX.GetObjectInfo("TextBox_103", "text");
+                    strMedicineAdviceDosageUnit2 = OCX.GetObjectInfo("ComboBox_52", "text");
+                    strMedicineAdviceInstruction2 = OCX.GetObjectInfo("ComboBox_43", "text");
+                    strMedicineAdviceName3 = OCX.GetObjectInfo("TextBox_63", "text");
+                    strMedicineAdviceDosage3 = OCX.GetObjectInfo("TextBox_102", "text");
+                    strMedicineAdviceDosageUnit3 = OCX.GetObjectInfo("ComboBox_53", "text");
+                    strMedicineAdviceInstruction3 = OCX.GetObjectInfo("ComboBox_42", "text");
+                }
+                else if("" != OCX.GetObjectInfo("TextBox_79", "text"))
+                {
+                    strMedicineAdviceName1 = OCX.GetObjectInfo("TextBox_79", "text");
+                    strMedicineAdviceDosage1 = OCX.GetObjectInfo("TextBox_107", "text");
+                    strMedicineAdviceDosageUnit1 = OCX.GetObjectInfo("ComboBox_90", "text");
+                    strMedicineAdviceInstruction1 = OCX.GetObjectInfo("ComboBox_95", "text");
+                    strMedicineAdviceName2 = OCX.GetObjectInfo("TextBox_78", "text");
+                    strMedicineAdviceDosage2 = OCX.GetObjectInfo("TextBox_106", "text");
+                    strMedicineAdviceDosageUnit2 = OCX.GetObjectInfo("ComboBox_91", "text");
+                    strMedicineAdviceInstruction2 = OCX.GetObjectInfo("ComboBox_94", "text");
+                    strMedicineAdviceName3 = OCX.GetObjectInfo("TextBox_77", "text");
+                    strMedicineAdviceDosage3 = OCX.GetObjectInfo("TextBox_105", "text");
+                    strMedicineAdviceDosageUnit3 = OCX.GetObjectInfo("ComboBox_92", "text");
+                    strMedicineAdviceInstruction3 = OCX.GetObjectInfo("ComboBox_93", "text");
+                }
+
                 var thing = { HFamilyMember: [ { Person: strFuQin}, { Person: strMuQin}, { Person: strXiongDi}
                                             , { Person: strJieMei}, { Person: strErZi}, { Person: strNvEr}
                                             , { Person: strZuFu}, { Person: strZiMu}, { Person: strWaiZuFu}
@@ -1983,6 +2087,9 @@ function SetDiagnosisIntoComplaint(OCX){
                                                                                 , {Symptom: strSecondaryHeadacheSymptom4}, {Symptom: strSecondaryHeadacheSymptom5}, {Symptom: strSecondaryHeadacheSymptom6}
                                                                                 , {Symptom: strSecondaryHeadacheSymptom7}, {Symptom: strSecondaryHeadacheSymptom8}, {Symptom: strSecondaryHeadacheSymptom9}
                                                                                 , {Symptom: strSecondaryHeadacheSymptom10}]
+                                                    ,MedicationAdvice:[{DrugName: strMedicineAdviceName1, DrugDose: strMedicineAdviceDosage1, DrugDoseUnit: strMedicineAdviceDosageUnit1, DrugApplication:strMedicineAdviceInstruction1}
+                                                                       ,{DrugName: strMedicineAdviceName2, DrugDose: strMedicineAdviceDosage2, DrugDoseUnit: strMedicineAdviceDosageUnit2, DrugApplication:strMedicineAdviceInstruction2}
+                                                                       ,{DrugName: strMedicineAdviceName3, DrugDose: strMedicineAdviceDosage3, DrugDoseUnit: strMedicineAdviceDosageUnit3, DrugApplication:strMedicineAdviceInstruction3} ]
                                                     ,PrescriptionNote: strPrescriptionNote}
 
                                              };
