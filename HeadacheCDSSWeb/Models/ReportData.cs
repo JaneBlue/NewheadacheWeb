@@ -26,6 +26,7 @@ namespace HeadacheCDSSWeb.Models
             this.phquestionaire = new PHQ();
             this.gdaquestionaire = new GADQ();
             this.secondaryheadachesymptom = new List<string>();
+            this.premonitorsymptom = new List<string>();
         }
         public string Id { get; set; }
         public string Name { get; set; }

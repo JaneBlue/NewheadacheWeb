@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 07/30/2013 09:40:25
+-- Date Created: 07/30/2013 11:44:52
 -- Generated from EDMX file: D:\FGj\projectcode\NewheadacheWeb\HeadacheCDSSWeb\Models\HeadacheModel.edmx
 -- --------------------------------------------------
 
@@ -50,14 +50,8 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_VisitRecordPrimaryHeadachaOverView]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[PrimaryHeadacheOverViewSet] DROP CONSTRAINT [FK_VisitRecordPrimaryHeadachaOverView];
 GO
-IF OBJECT_ID(N'[dbo].[FK_VisitRecordMedicationAdvice]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[MedicationAdviceSet] DROP CONSTRAINT [FK_VisitRecordMedicationAdvice];
-GO
 IF OBJECT_ID(N'[dbo].[FK_PatBasicInforLifestyle]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[PatBasicInforSet] DROP CONSTRAINT [FK_PatBasicInforLifestyle];
-GO
-IF OBJECT_ID(N'[dbo].[FK_PatBasicInforVisitRecord]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[VisitRecordSet] DROP CONSTRAINT [FK_PatBasicInforVisitRecord];
 GO
 IF OBJECT_ID(N'[dbo].[FK_PrimaryHeadacheOverViewPremonitorySymptom]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[PremonitorySymptom集] DROP CONSTRAINT [FK_PrimaryHeadacheOverViewPremonitorySymptom];
@@ -73,9 +67,6 @@ IF OBJECT_ID(N'[dbo].[FK_VisitRecordSleepStatus]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_VisitRecordDisabilityEvaluation]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[DisabilityEvaluationSet] DROP CONSTRAINT [FK_VisitRecordDisabilityEvaluation];
-GO
-IF OBJECT_ID(N'[dbo].[FK_PatBasicInforPreviousDrug]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[PreviousDrugSet] DROP CONSTRAINT [FK_PatBasicInforPreviousDrug];
 GO
 IF OBJECT_ID(N'[dbo].[FK_HeadacheDiaryHDAcompanion]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[HDAcompanionSet] DROP CONSTRAINT [FK_HeadacheDiaryHDAcompanion];
@@ -100,6 +91,15 @@ IF OBJECT_ID(N'[dbo].[FK_NationalCenterAccountRegionalCenterAccount]', 'F') IS N
 GO
 IF OBJECT_ID(N'[dbo].[FK_RegionalCenterAccountDoctorAccount]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[DoctorAccountSet] DROP CONSTRAINT [FK_RegionalCenterAccountDoctorAccount];
+GO
+IF OBJECT_ID(N'[dbo].[FK_VisitRecordMedicationAdvice]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MedicationAdviceSet] DROP CONSTRAINT [FK_VisitRecordMedicationAdvice];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PatBasicInforVisitRecord]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[VisitRecordSet] DROP CONSTRAINT [FK_PatBasicInforVisitRecord];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PatBasicInforPreviousDrug]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PreviousDrugSet] DROP CONSTRAINT [FK_PatBasicInforPreviousDrug];
 GO
 
 -- --------------------------------------------------
@@ -234,7 +234,6 @@ CREATE TABLE [dbo].[VisitRecordSet] (
     [OutpatientID] nvarchar(max)  NULL,
     [ChiefComplaint] nvarchar(max)  NOT NULL,
     [VisitDate] datetime  NOT NULL,
-    [PatBasicInforId] nvarchar(255)  NOT NULL,
     [CDSSDiagnosis1] nvarchar(max)  NOT NULL,
     [CDSSDiagnosis2] nvarchar(max)  NULL,
     [CDSSDiagnosis3] nvarchar(max)  NULL,
@@ -244,7 +243,7 @@ CREATE TABLE [dbo].[VisitRecordSet] (
     [Prescription] nvarchar(max)  NULL,
     [PreviousDiagnosis] nvarchar(max)  NULL,
     [PrescriptionNote] nvarchar(max)  NULL,
-    [PatBasicInforId1] nvarchar(255)  NOT NULL
+    [PatBasicInforId] nvarchar(255)  NOT NULL
 );
 GO
 
@@ -863,20 +862,6 @@ ON [dbo].[PatBasicInforSet]
     ([Lifestyle_Id]);
 GO
 
--- Creating foreign key on [PatBasicInforId1] in table 'VisitRecordSet'
-ALTER TABLE [dbo].[VisitRecordSet]
-ADD CONSTRAINT [FK_PatBasicInforVisitRecord]
-    FOREIGN KEY ([PatBasicInforId1])
-    REFERENCES [dbo].[PatBasicInforSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_PatBasicInforVisitRecord'
-CREATE INDEX [IX_FK_PatBasicInforVisitRecord]
-ON [dbo].[VisitRecordSet]
-    ([PatBasicInforId1]);
-GO
-
 -- Creating foreign key on [PrimaryHeadacheOverViewId] in table 'PremonitorySymptom集'
 ALTER TABLE [dbo].[PremonitorySymptom集]
 ADD CONSTRAINT [FK_PrimaryHeadacheOverViewPremonitorySymptom]
@@ -945,20 +930,6 @@ ADD CONSTRAINT [FK_VisitRecordDisabilityEvaluation]
 CREATE INDEX [IX_FK_VisitRecordDisabilityEvaluation]
 ON [dbo].[DisabilityEvaluationSet]
     ([VisitRecord_Id]);
-GO
-
--- Creating foreign key on [PatBasicInforId1] in table 'PreviousDrugSet'
-ALTER TABLE [dbo].[PreviousDrugSet]
-ADD CONSTRAINT [FK_PatBasicInforPreviousDrug]
-    FOREIGN KEY ([PatBasicInforId1])
-    REFERENCES [dbo].[PatBasicInforSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_PatBasicInforPreviousDrug'
-CREATE INDEX [IX_FK_PatBasicInforPreviousDrug]
-ON [dbo].[PreviousDrugSet]
-    ([PatBasicInforId1]);
 GO
 
 -- Creating foreign key on [HeadacheDiaryID] in table 'HDAcompanionSet'
@@ -1085,6 +1056,34 @@ ADD CONSTRAINT [FK_VisitRecordMedicationAdvice]
 CREATE INDEX [IX_FK_VisitRecordMedicationAdvice]
 ON [dbo].[MedicationAdviceSet]
     ([VisitRecordId]);
+GO
+
+-- Creating foreign key on [PatBasicInforId] in table 'VisitRecordSet'
+ALTER TABLE [dbo].[VisitRecordSet]
+ADD CONSTRAINT [FK_PatBasicInforVisitRecord]
+    FOREIGN KEY ([PatBasicInforId])
+    REFERENCES [dbo].[PatBasicInforSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_PatBasicInforVisitRecord'
+CREATE INDEX [IX_FK_PatBasicInforVisitRecord]
+ON [dbo].[VisitRecordSet]
+    ([PatBasicInforId]);
+GO
+
+-- Creating foreign key on [PatBasicInforId1] in table 'PreviousDrugSet'
+ALTER TABLE [dbo].[PreviousDrugSet]
+ADD CONSTRAINT [FK_PatBasicInforPreviousDrug]
+    FOREIGN KEY ([PatBasicInforId1])
+    REFERENCES [dbo].[PatBasicInforSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_PatBasicInforPreviousDrug'
+CREATE INDEX [IX_FK_PatBasicInforPreviousDrug]
+ON [dbo].[PreviousDrugSet]
+    ([PatBasicInforId1]);
 GO
 
 -- --------------------------------------------------

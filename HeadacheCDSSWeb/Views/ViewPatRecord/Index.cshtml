@@ -259,6 +259,36 @@
                 $("#d1").Zebra_DatePicker();
                 $("#d2").Zebra_DatePicker();
                 var plot1 = $.jqplot('linegraph', [[0, 0, 0, 0, 0, 0, 0, 0]], { axes: { xaxis: { label: "" }, yaxis: { label: ""}} });
+                var plot2 = $.jqplot('piegraph', [[5, 7, 9]], {
+                    title: '',
+                    seriesDefaults: {
+                        renderer: $.jqplot.BarRenderer,
+                        rendererOptions: {
+                            barPadding: 1,
+                            barMargin: 15,
+                            barDirection: 'vertical',
+                            barWidth: 45
+                        },
+                        pointLabels: { show: true }
+                    },
+                    axes: {
+                        xaxis: {
+                            renderer: $.jqplot.CategoryAxisRenderer,
+                            ticks: ["a", "b", "c"]
+                        },
+                        yaxis: {
+                            tickOptions: {
+                                formatString: '$%.2f'
+                            }
+                        }
+                    },
+                    highlighter: {
+                        sizeAdjust: 7.5
+                    },
+                    cursor: {
+                        show: true
+                    }
+                });
             }
             else {
                 $.ajax({

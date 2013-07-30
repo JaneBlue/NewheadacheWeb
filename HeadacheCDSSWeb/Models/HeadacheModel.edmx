@@ -83,10 +83,6 @@
       <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
       <End Role="Lifestyle" EntitySet="LifestyleSet" />
     </AssociationSet>
-    <AssociationSet Name="PatBasicInforVisitRecord" Association="HeadacheModel.Store.PatBasicInforVisitRecord">
-      <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
-      <End Role="VisitRecord" EntitySet="VisitRecordSet" />
-    </AssociationSet>
     <AssociationSet Name="PrimaryHeadacheOverViewPremonitorySymptom" Association="HeadacheModel.Store.PrimaryHeadacheOverViewPremonitorySymptom">
       <End Role="PrimaryHeadacheOverView" EntitySet="PrimaryHeadacheOverViewSet" />
       <End Role="PremonitorySymptom" EntitySet="PremonitorySymptom集" />
@@ -106,10 +102,6 @@
     <AssociationSet Name="VisitRecordDisabilityEvaluation" Association="HeadacheModel.Store.VisitRecordDisabilityEvaluation">
       <End Role="VisitRecord" EntitySet="VisitRecordSet" />
       <End Role="DisabilityEvaluation" EntitySet="DisabilityEvaluationSet" />
-    </AssociationSet>
-    <AssociationSet Name="PatBasicInforPreviousDrug" Association="HeadacheModel.Store.PatBasicInforPreviousDrug">
-      <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
-      <End Role="PreviousDrug" EntitySet="PreviousDrugSet" />
     </AssociationSet>
     <AssociationSet Name="HeadacheDiaryHDAcompanion" Association="HeadacheModel.Store.HeadacheDiaryHDAcompanion">
       <End Role="HeadacheDiary" EntitySet="HeadacheDiarySet" />
@@ -146,6 +138,14 @@
     <AssociationSet Name="VisitRecordMedicationAdvice" Association="HeadacheModel.Store.VisitRecordMedicationAdvice">
       <End Role="VisitRecord" EntitySet="VisitRecordSet" />
       <End Role="MedicationAdvice" EntitySet="MedicationAdviceSet" />
+    </AssociationSet>
+    <AssociationSet Name="PatBasicInforVisitRecord" Association="HeadacheModel.Store.PatBasicInforVisitRecord">
+      <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
+      <End Role="VisitRecord" EntitySet="VisitRecordSet" />
+    </AssociationSet>
+    <AssociationSet Name="PatBasicInforPreviousDrug" Association="HeadacheModel.Store.PatBasicInforPreviousDrug">
+      <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
+      <End Role="PreviousDrug" EntitySet="PreviousDrugSet" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="DoctorAccountSet">
@@ -186,7 +186,6 @@
     <Property Name="OutpatientID" Type="nvarchar(max)" Nullable="true" />
     <Property Name="ChiefComplaint" Type="nvarchar(max)" Nullable="false" />
     <Property Name="VisitDate" Type="datetime" Nullable="false" />
-    <Property Name="PatBasicInforId" Type="nvarchar" Nullable="false" MaxLength="255" />
     <Property Name="CDSSDiagnosis1" Type="nvarchar(max)" Nullable="false" />
     <Property Name="CDSSDiagnosis2" Type="nvarchar(max)" Nullable="true" />
     <Property Name="CDSSDiagnosis3" Type="nvarchar(max)" Nullable="true" />
@@ -196,7 +195,7 @@
     <Property Name="Prescription" Type="nvarchar(max)" Nullable="true" />
     <Property Name="PreviousDiagnosis" Type="nvarchar(max)" Nullable="true" />
     <Property Name="PrescriptionNote" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="PatBasicInforId1" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="PatBasicInforId" Type="nvarchar" Nullable="false" MaxLength="255" />
   </EntityType>
   <EntityType Name="PrimaryHeadacheOverViewSet">
     <Key>
@@ -607,18 +606,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="PatBasicInforVisitRecord">
-    <End Role="PatBasicInfor" Type="HeadacheModel.Store.PatBasicInforSet" Multiplicity="1" />
-    <End Role="VisitRecord" Type="HeadacheModel.Store.VisitRecordSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PatBasicInfor">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="VisitRecord">
-        <PropertyRef Name="PatBasicInforId1" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="PrimaryHeadacheOverViewPremonitorySymptom">
     <End Role="PrimaryHeadacheOverView" Type="HeadacheModel.Store.PrimaryHeadacheOverViewSet" Multiplicity="1" />
     <End Role="PremonitorySymptom" Type="HeadacheModel.Store.PremonitorySymptom集" Multiplicity="*" />
@@ -676,18 +663,6 @@
       </Principal>
       <Dependent Role="DisabilityEvaluation">
         <PropertyRef Name="VisitRecord_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="PatBasicInforPreviousDrug">
-    <End Role="PatBasicInfor" Type="HeadacheModel.Store.PatBasicInforSet" Multiplicity="1" />
-    <End Role="PreviousDrug" Type="HeadacheModel.Store.PreviousDrugSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PatBasicInfor">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PreviousDrug">
-        <PropertyRef Name="PatBasicInforId1" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -799,6 +774,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="PatBasicInforVisitRecord">
+    <End Role="PatBasicInfor" Type="HeadacheModel.Store.PatBasicInforSet" Multiplicity="1" />
+    <End Role="VisitRecord" Type="HeadacheModel.Store.VisitRecordSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PatBasicInfor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VisitRecord">
+        <PropertyRef Name="PatBasicInforId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PatBasicInforPreviousDrug">
+    <End Role="PatBasicInfor" Type="HeadacheModel.Store.PatBasicInforSet" Multiplicity="1" />
+    <End Role="PreviousDrug" Type="HeadacheModel.Store.PreviousDrugSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PatBasicInfor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PreviousDrug">
+        <PropertyRef Name="PatBasicInforId1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -868,10 +867,6 @@
             <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
             <End Role="Lifestyle" EntitySet="LifestyleSet" />
           </AssociationSet>
-          <AssociationSet Name="PatBasicInforVisitRecord" Association="HeadacheModel.PatBasicInforVisitRecord">
-            <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
-            <End Role="VisitRecord" EntitySet="VisitRecordSet" />
-          </AssociationSet>
           <EntitySet Name="PremonitorySymptom集" EntityType="HeadacheModel.PremonitorySymptom" />
           <AssociationSet Name="PrimaryHeadacheOverViewPremonitorySymptom" Association="HeadacheModel.PrimaryHeadacheOverViewPremonitorySymptom">
             <End Role="PrimaryHeadacheOverView" EntitySet="PrimaryHeadacheOverViewSet" />
@@ -896,10 +891,6 @@
           <AssociationSet Name="VisitRecordDisabilityEvaluation" Association="HeadacheModel.VisitRecordDisabilityEvaluation">
             <End Role="VisitRecord" EntitySet="VisitRecordSet" />
             <End Role="DisabilityEvaluation" EntitySet="DisabilityEvaluationSet" />
-          </AssociationSet>
-          <AssociationSet Name="PatBasicInforPreviousDrug" Association="HeadacheModel.PatBasicInforPreviousDrug">
-            <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
-            <End Role="PreviousDrug" EntitySet="PreviousDrugSet" />
           </AssociationSet>
           <EntitySet Name="HeadacheDiarySet" EntityType="HeadacheModel.HeadacheDiary" />
           <EntitySet Name="HDheadacheplaceSet" EntityType="HeadacheModel.HDheadacheplace" />
@@ -945,6 +936,14 @@
             <End Role="VisitRecord" EntitySet="VisitRecordSet" />
             <End Role="MedicationAdvice" EntitySet="MedicationAdviceSet" />
           </AssociationSet>
+          <AssociationSet Name="PatBasicInforVisitRecord" Association="HeadacheModel.PatBasicInforVisitRecord">
+            <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
+            <End Role="VisitRecord" EntitySet="VisitRecordSet" />
+          </AssociationSet>
+          <AssociationSet Name="PatBasicInforPreviousDrug" Association="HeadacheModel.PatBasicInforPreviousDrug">
+            <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
+            <End Role="PreviousDrug" EntitySet="PreviousDrugSet" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="DoctorAccount">
           <Key>
@@ -979,11 +978,11 @@
           <NavigationProperty Name="HeadacheFamilyMember" Relationship="HeadacheModel.PatBasicInforHeadacheFamilyMember" FromRole="PatBasicInfor" ToRole="HeadacheFamilyMember" />
           <NavigationProperty Name="OtherFamilyDisease" Relationship="HeadacheModel.PatBasicInforOtherFamilyDisease" FromRole="PatBasicInfor" ToRole="OtherFamilyDisease" />
           <NavigationProperty Name="Lifestyle" Relationship="HeadacheModel.PatBasicInforLifestyle" FromRole="PatBasicInfor" ToRole="Lifestyle" />
-          <NavigationProperty Name="VisitRecord" Relationship="HeadacheModel.PatBasicInforVisitRecord" FromRole="PatBasicInfor" ToRole="VisitRecord" />
           <Property Type="String" Name="Weight" Nullable="true" />
           <Property Type="String" Name="Height" Nullable="true" />
-          <NavigationProperty Name="PreviousDrug" Relationship="HeadacheModel.PatBasicInforPreviousDrug" FromRole="PatBasicInfor" ToRole="PreviousDrug" />
           <NavigationProperty Name="HeadacheDiary" Relationship="HeadacheModel.PatBasicInforHeadacheDiary" FromRole="PatBasicInfor" ToRole="HeadacheDiary" />
+          <NavigationProperty Name="VisitRecord" Relationship="HeadacheModel.PatBasicInforVisitRecord" FromRole="PatBasicInfor" ToRole="VisitRecord" />
+          <NavigationProperty Name="PreviousDrug" Relationship="HeadacheModel.PatBasicInforPreviousDrug" FromRole="PatBasicInfor" ToRole="PreviousDrug" />
         </EntityType>
         <EntityType Name="VisitRecord">
           <Key>
@@ -993,7 +992,6 @@
           <Property Type="String" Name="OutpatientID" Nullable="true" />
           <Property Type="String" Name="ChiefComplaint" Nullable="false" />
           <Property Type="DateTime" Name="VisitDate" Nullable="false" />
-          <Property Type="String" Name="PatBasicInforId" Nullable="false" MaxLength="255" />
           <Property Type="String" Name="CDSSDiagnosis1" Nullable="false" />
           <Property Type="String" Name="CDSSDiagnosis2" Nullable="true" />
           <Property Type="String" Name="CDSSDiagnosis3" Nullable="true" />
@@ -1005,13 +1003,13 @@
           <NavigationProperty Name="PrimaryHeadachaOverView" Relationship="HeadacheModel.VisitRecordPrimaryHeadachaOverView" FromRole="VisitRecord" ToRole="PrimaryHeadachaOverView" />
           <Property Type="String" Name="PreviousDiagnosis" Nullable="true" />
           <Property Type="String" Name="PrescriptionNote" Nullable="true" />
-          <NavigationProperty Name="PatBasicInfor" Relationship="HeadacheModel.PatBasicInforVisitRecord" FromRole="VisitRecord" ToRole="PatBasicInfor" />
-          <Property Type="String" Name="PatBasicInforId1" Nullable="false" MaxLength="255" />
           <NavigationProperty Name="GADQuestionaire" Relationship="HeadacheModel.VisitRecordGADQuestionaire" FromRole="VisitRecord" ToRole="GADQuestionaire" />
           <NavigationProperty Name="PHQuestionaire" Relationship="HeadacheModel.VisitRecordPHQuestionaire" FromRole="VisitRecord" ToRole="PHQuestionaire" />
           <NavigationProperty Name="SleepStatus" Relationship="HeadacheModel.VisitRecordSleepStatus" FromRole="VisitRecord" ToRole="SleepStatus" />
           <NavigationProperty Name="DisabilityEvaluation" Relationship="HeadacheModel.VisitRecordDisabilityEvaluation" FromRole="VisitRecord" ToRole="DisabilityEvaluation" />
           <NavigationProperty Name="MedicationAdvice" Relationship="HeadacheModel.VisitRecordMedicationAdvice" FromRole="VisitRecord" ToRole="MedicationAdvice" />
+          <NavigationProperty Name="PatBasicInfor" Relationship="HeadacheModel.PatBasicInforVisitRecord" FromRole="VisitRecord" ToRole="PatBasicInfor" />
+          <Property Type="String" Name="PatBasicInforId" Nullable="false" MaxLength="255" />
         </EntityType>
         <Association Name="DoctorAccountPatBasicInfor">
           <End Type="HeadacheModel.DoctorAccount" Role="DoctorAccount" Multiplicity="1" />
@@ -1293,18 +1291,6 @@
           <End Type="HeadacheModel.PatBasicInfor" Role="PatBasicInfor" Multiplicity="1" />
           <End Type="HeadacheModel.Lifestyle" Role="Lifestyle" Multiplicity="1" />
         </Association>
-        <Association Name="PatBasicInforVisitRecord">
-          <End Type="HeadacheModel.PatBasicInfor" Role="PatBasicInfor" Multiplicity="1" />
-          <End Type="HeadacheModel.VisitRecord" Role="VisitRecord" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PatBasicInfor">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="VisitRecord">
-              <PropertyRef Name="PatBasicInforId1" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="PremonitorySymptom">
           <Key>
             <PropertyRef Name="ID" />
@@ -1398,18 +1384,6 @@
         <Association Name="VisitRecordDisabilityEvaluation">
           <End Type="HeadacheModel.VisitRecord" Role="VisitRecord" Multiplicity="1" />
           <End Type="HeadacheModel.DisabilityEvaluation" Role="DisabilityEvaluation" Multiplicity="0..1" />
-        </Association>
-        <Association Name="PatBasicInforPreviousDrug">
-          <End Type="HeadacheModel.PatBasicInfor" Role="PatBasicInfor" Multiplicity="1" />
-          <End Type="HeadacheModel.PreviousDrug" Role="PreviousDrug" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PatBasicInfor">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PreviousDrug">
-              <PropertyRef Name="PatBasicInforId1" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
         <EntityType Name="HeadacheDiary">
           <Key>
@@ -1603,6 +1577,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="PatBasicInforVisitRecord">
+          <End Type="HeadacheModel.PatBasicInfor" Role="PatBasicInfor" Multiplicity="1" />
+          <End Type="HeadacheModel.VisitRecord" Role="VisitRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PatBasicInfor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VisitRecord">
+              <PropertyRef Name="PatBasicInforId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PatBasicInforPreviousDrug">
+          <End Type="HeadacheModel.PatBasicInfor" Role="PatBasicInfor" Multiplicity="1" />
+          <End Type="HeadacheModel.PreviousDrug" Role="PreviousDrug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PatBasicInfor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PreviousDrug">
+              <PropertyRef Name="PatBasicInforId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1647,7 +1645,6 @@
           <ScalarProperty Name="OutpatientID" ColumnName="OutpatientID" />
           <ScalarProperty Name="ChiefComplaint" ColumnName="ChiefComplaint" />
           <ScalarProperty Name="VisitDate" ColumnName="VisitDate" />
-          <ScalarProperty Name="PatBasicInforId" ColumnName="PatBasicInforId" />
           <ScalarProperty Name="CDSSDiagnosis1" ColumnName="CDSSDiagnosis1" />
           <ScalarProperty Name="CDSSDiagnosis2" ColumnName="CDSSDiagnosis2" />
           <ScalarProperty Name="CDSSDiagnosis3" ColumnName="CDSSDiagnosis3" />
@@ -1657,7 +1654,7 @@
           <ScalarProperty Name="Prescription" ColumnName="Prescription" />
           <ScalarProperty Name="PreviousDiagnosis" ColumnName="PreviousDiagnosis" />
           <ScalarProperty Name="PrescriptionNote" ColumnName="PrescriptionNote" />
-          <ScalarProperty Name="PatBasicInforId1" ColumnName="PatBasicInforId1" />
+          <ScalarProperty Name="PatBasicInforId" ColumnName="PatBasicInforId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -2017,10 +2014,19 @@
       <Diagram Name="HeadacheModel" ZoomLevel="88" >
         <EntityTypeShape EntityType="HeadacheModel.DoctorAccount" Width="1.5" PointX="0.625" PointY="5.375" Height="2.5430916341145826" />
         <EntityTypeShape EntityType="HeadacheModel.PatBasicInfor" Width="1.5" PointX="3.125" PointY="0.75" Height="5.02634765625" />
-        <EntityTypeShape EntityType="HeadacheModel.VisitRecord" Width="1.875" PointX="5" PointY="0.75" Height="4.45328857421875" />
+        <EntityTypeShape EntityType="HeadacheModel.VisitRecord" Width="1.875" PointX="5" PointY="0.75" Height="4.8353279622395835" />
         <AssociationConnector Association="HeadacheModel.DoctorAccountPatBasicInfor">
-          <ConnectorPoint PointX="2.125" PointY="5.575673828125" />
-          <ConnectorPoint PointX="3.125" PointY="5.575673828125" />
+          <ConnectorPoint PointX="2.125" PointY="6.830717221679687" />
+          <ConnectorPoint PointX="2.3854166666666665" PointY="6.8307172216796861" />
+          <ConnectorPoint PointX="2.5520833333333335" PointY="6.830717221679687" />
+          <ConnectorPoint PointX="3.1837583891840655" PointY="6.8307172216796861" />
+          <ConnectorPoint PointX="3.3504250558507325" PointY="6.830717221679687" />
+          <ConnectorPoint PointX="3.3883541117014646" PointY="6.8307172216796861" />
+          <ConnectorPoint PointX="3.5550207783681316" PointY="6.830717221679687" />
+          <ConnectorPoint PointX="3.6700545869155978" PointY="6.8307172216796861" />
+          <ConnectorPoint PointX="3.8367212535822648" PointY="6.830717221679687" />
+          <ConnectorPoint PointX="4.0350883954630641" PointY="6.830717221679687" />
+          <ConnectorPoint PointX="4.0350883954630641" PointY="5.5853279622395826" />
         </AssociationConnector>
         <EntityTypeShape EntityType="HeadacheModel.PrimaryHeadacheOverView" Width="1.75" PointX="7.875" PointY="1.25" Height="4.4532885742187487" />
         <EntityTypeShape EntityType="HeadacheModel.Lifestyle" Width="1.875" PointX="3.125" PointY="8.625" Height="2.7341113281250014" />
@@ -2040,15 +2046,15 @@
           <ConnectorPoint PointX="10.25" PointY="4.2645064290364587" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.HeadachaOverViewHeadacheProdrome" ManuallyRouted="false">
-          <ConnectorPoint PointX="8.1875" PointY="5.7032885742187487" />
-          <ConnectorPoint PointX="8.1875" PointY="8.9057727050781246" />
+          <ConnectorPoint PointX="8.28125" PointY="5.7032885742187487" />
+          <ConnectorPoint PointX="8.28125" PointY="8.9057727050781246" />
           <ConnectorPoint PointX="10.041666666666666" PointY="8.9057727050781246" />
           <ConnectorPoint PointX="10.208333333333334" PointY="8.9057727050781246" />
           <ConnectorPoint PointX="10.229166666666666" PointY="8.9057727050781246" />
           <ConnectorPoint PointX="10.395833333333334" PointY="8.9057727050781246" />
           <ConnectorPoint PointX="10.625" PointY="8.9057727050781246" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="HeadacheModel.PreviousDrug" Width="1.5" PointX="3.25" PointY="11.75" Height="2.7341113281249996" />
+        <EntityTypeShape EntityType="HeadacheModel.PreviousDrug" Width="1.5" PointX="3.25" PointY="11.75" Height="2.3520719401041656" />
         <EntityTypeShape EntityType="HeadacheModel.PreviousExam" Width="1.5" PointX="0.875" PointY="12.375" Height="2.1610522460937496" />
         <EntityTypeShape EntityType="HeadacheModel.HeadacheFamilyMember" Width="2" PointX="0.5" PointY="8.625" Height="1.7790128580729165" />
         <EntityTypeShape EntityType="HeadacheModel.OtherFamilyDisease" Width="1.5" PointX="0.75" PointY="10.5" Height="1.7790128580729165" />
@@ -2066,57 +2072,49 @@
           <ConnectorPoint PointX="9.0625" PointY="6.625" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.PatBasicInforPreviousExam" ManuallyRouted="false">
-          <ConnectorPoint PointX="3.468748" PointY="5.77634765625" />
-          <ConnectorPoint PointX="3.468748" PointY="8.375" />
-          <ConnectorPoint PointX="3.041666666666667" PointY="8.375" />
-          <ConnectorPoint PointX="2.875" PointY="8.375" />
-          <ConnectorPoint PointX="2.875" PointY="8.375" />
+          <ConnectorPoint PointX="4.3612961977315319" PointY="5.5853279622395826" />
+          <ConnectorPoint PointX="4.3612961977315319" PointY="8.3750000000000018" />
+          <ConnectorPoint PointX="3.5550207783681316" PointY="8.3750000000000018" />
+          <ConnectorPoint PointX="3.3883541117014646" PointY="8.3750000000000018" />
+          <ConnectorPoint PointX="2.875" PointY="8.3750000000000018" />
           <ConnectorPoint PointX="2.875" PointY="13.455526123046875" />
           <ConnectorPoint PointX="2.375" PointY="13.455526123046875" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.PatBasicInforHeadacheFamilyMember">
-          <ConnectorPoint PointX="3.2656220000000005" PointY="5.77634765625" />
-          <ConnectorPoint PointX="3.2656220000000005" PointY="7.625" />
-          <ConnectorPoint PointX="2.9583333333333335" PointY="7.625" />
-          <ConnectorPoint PointX="2.9583333333333335" PointY="9.5145064290364587" />
-          <ConnectorPoint PointX="2.9583333333333335" PointY="9.5145064290364587" />
-          <ConnectorPoint PointX="2.7291666666666665" PointY="9.5145064290364587" />
-          <ConnectorPoint PointX="2.5" PointY="9.5145064290364587" />
+          <ConnectorPoint PointX="3.125" PointY="5.1760359700520828" />
+          <ConnectorPoint PointX="2.46875" PointY="5.1760359700520828" />
+          <ConnectorPoint PointX="2.46875" PointY="8.625" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.PatBasicInforOtherFamilyDisease">
-          <ConnectorPoint PointX="4.281252" PointY="5.77634765625" />
-          <ConnectorPoint PointX="4.281252" PointY="8.3593750000000018" />
-          <ConnectorPoint PointX="3.6278780258030077" PointY="8.3593750000000018" />
-          <ConnectorPoint PointX="3.4612113591363407" PointY="8.3593750000000018" />
-          <ConnectorPoint PointX="3.041666666666667" PointY="8.3593750000000018" />
-          <ConnectorPoint PointX="2.875" PointY="8.3593750000000018" />
-          <ConnectorPoint PointX="2.75" PointY="8.3593750000000018" />
-          <ConnectorPoint PointX="2.75" PointY="11.389506429036459" />
+          <ConnectorPoint PointX="3.7533879202489313" PointY="5.5853279622395826" />
+          <ConnectorPoint PointX="3.7533879202489313" PointY="8.3593750000000018" />
+          <ConnectorPoint PointX="3.5550207783681316" PointY="8.3593750000000018" />
+          <ConnectorPoint PointX="3.3883541117014646" PointY="8.3593750000000018" />
+          <ConnectorPoint PointX="3" PointY="8.3593750000000018" />
+          <ConnectorPoint PointX="3" PointY="11.389506429036459" />
+          <ConnectorPoint PointX="2.9583333333333335" PointY="11.389506429036459" />
+          <ConnectorPoint PointX="2.7916666666666665" PointY="11.389506429036459" />
           <ConnectorPoint PointX="2.25" PointY="11.389506429036459" />
         </AssociationConnector>
         <EntityTypeShape EntityType="HeadacheModel.SecondaryHeadacheSymptom" Width="1.5" PointX="12.125" PointY="0.625" Height="1.3969734700520831" />
         <AssociationConnector Association="HeadacheModel.VisitRecordSecondaryHeadacheSymptom">
-          <ConnectorPoint PointX="6.875" PointY="0.90624999999999978" />
-          <ConnectorPoint PointX="12.125" PointY="0.90624999999999978" />
+          <ConnectorPoint PointX="6.875" PointY="0.79169630737304719" />
+          <ConnectorPoint PointX="12.125" PointY="0.79169630737304719" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.VisitRecordPrimaryHeadachaOverView">
-          <ConnectorPoint PointX="6.875" PointY="3.5071669396158853" />
-          <ConnectorPoint PointX="7.541666666666667" PointY="3.5071669396158849" />
-          <ConnectorPoint PointX="7.708333333333333" PointY="3.5071669396158853" />
-          <ConnectorPoint PointX="7.875" PointY="3.5071669396158853" />
+          <ConnectorPoint PointX="6.875" PointY="3.4736664625945082" />
+          <ConnectorPoint PointX="7.541666666666667" PointY="3.4736664625945077" />
+          <ConnectorPoint PointX="7.708333333333333" PointY="3.4736664625945082" />
+          <ConnectorPoint PointX="7.875" PointY="3.4736664625945082" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.PatBasicInforLifestyle">
-          <ConnectorPoint PointX="3.5445446924696742" PointY="5.77634765625" />
-          <ConnectorPoint PointX="3.5445446924696742" PointY="8.625" />
-        </AssociationConnector>
-        <AssociationConnector Association="HeadacheModel.PatBasicInforVisitRecord">
-          <ConnectorPoint PointX="4.625" PointY="3.263173828125" />
-          <ConnectorPoint PointX="5" PointY="3.263173828125" />
+          <ConnectorPoint PointX="3.417469935408024" PointY="5.77634765625" />
+          <ConnectorPoint PointX="3.417469935408024" PointY="8.625" />
         </AssociationConnector>
         <EntityTypeShape EntityType="HeadacheModel.PremonitorySymptom" Width="1.5" PointX="10.375" PointY="9.375" Height="1.7790128580729157" />
         <AssociationConnector Association="HeadacheModel.PrimaryHeadacheOverViewPremonitorySymptom">
-          <ConnectorPoint PointX="8.0312475" PointY="5.7032885742187487" />
-          <ConnectorPoint PointX="8.0312475" PointY="9.78125" />
+          <ConnectorPoint PointX="8.03125" PointY="5.7032885742187487" />
+          <ConnectorPoint PointX="8.03125" PointY="9.78125" />
           <ConnectorPoint PointX="8.0416666666666661" PointY="9.78125" />
           <ConnectorPoint PointX="8.2083333333333339" PointY="9.78125" />
           <ConnectorPoint PointX="10.041666666666666" PointY="9.78125" />
@@ -2134,10 +2132,10 @@
           <ConnectorPoint PointX="8.375" PointY="11.09375" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.VisitRecordPHQuestionaire" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.875" PointY="4.7614802569173182" />
-          <ConnectorPoint PointX="7.541666666666667" PointY="4.7614802569173174" />
-          <ConnectorPoint PointX="7.708333333333333" PointY="4.7614802569173182" />
-          <ConnectorPoint PointX="7.8125" PointY="4.7614802569173182" />
+          <ConnectorPoint PointX="6.875" PointY="4.560749212417047" />
+          <ConnectorPoint PointX="7.541666666666667" PointY="4.5607492124170461" />
+          <ConnectorPoint PointX="7.708333333333333" PointY="4.560749212417047" />
+          <ConnectorPoint PointX="7.8125" PointY="4.560749212417047" />
           <ConnectorPoint PointX="7.8125" PointY="5.76578857421875" />
           <ConnectorPoint PointX="10.041666666666666" PointY="5.7657885742187487" />
           <ConnectorPoint PointX="10.208333333333334" PointY="5.76578857421875" />
@@ -2150,31 +2148,20 @@
         </AssociationConnector>
         <EntityTypeShape EntityType="HeadacheModel.SleepStatus" Width="1.5" PointX="7.5" PointY="13.375" Height="2.3520719401041656" />
         <AssociationConnector Association="HeadacheModel.VisitRecordSleepStatus" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.875" PointY="2.234542141682943" />
-          <ConnectorPoint PointX="7.625" PointY="2.234542141682943" />
+          <ConnectorPoint PointX="6.875" PointY="2.2454614487662794" />
+          <ConnectorPoint PointX="7.625" PointY="2.2454614487662794" />
           <ConnectorPoint PointX="7.625" PointY="5.95328857421875" />
-          <ConnectorPoint PointX="7.9479141666666662" PointY="5.9532885742187487" />
-          <ConnectorPoint PointX="8.1145808333333331" PointY="5.95328857421875" />
+          <ConnectorPoint PointX="7.947916666666667" PointY="5.9532885742187487" />
+          <ConnectorPoint PointX="8.1145833333333339" PointY="5.95328857421875" />
           <ConnectorPoint PointX="8.125" PointY="5.95328857421875" />
           <ConnectorPoint PointX="8.125" PointY="13" />
           <ConnectorPoint PointX="7.9374995000000013" PointY="13" />
           <ConnectorPoint PointX="7.9374995000000013" PointY="13.375" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.VisitRecordDisabilityEvaluation">
-          <ConnectorPoint PointX="6.875" PointY="0.96191734375000071" />
-          <ConnectorPoint PointX="10.125" PointY="0.96191734375000071" />
+          <ConnectorPoint PointX="6.875" PointY="0.95835065368652417" />
+          <ConnectorPoint PointX="10.125" PointY="0.95835065368652417" />
           <ConnectorPoint PointX="10.125" PointY="13.25" />
-        </AssociationConnector>
-        <AssociationConnector Association="HeadacheModel.PatBasicInforPreviousDrug">
-          <ConnectorPoint PointX="3.875" PointY="5.77634765625" />
-          <ConnectorPoint PointX="3.875" PointY="8.09375" />
-          <ConnectorPoint PointX="3.6278780258030077" PointY="8.09375" />
-          <ConnectorPoint PointX="3.3854146666666667" PointY="8.09375" />
-          <ConnectorPoint PointX="3.041666666666667" PointY="8.09375" />
-          <ConnectorPoint PointX="2.875" PointY="8.09375" />
-          <ConnectorPoint PointX="2.8125" PointY="8.09375" />
-          <ConnectorPoint PointX="2.8125" PointY="12.602763561523437" />
-          <ConnectorPoint PointX="3.25" PointY="12.602763561523437" />
         </AssociationConnector>
         <EntityTypeShape EntityType="HeadacheModel.HeadacheDiary" Width="1.5" PointX="5.625" PointY="12" Height="3.3071704101562496" />
         <EntityTypeShape EntityType="HeadacheModel.HDheadacheplace" Width="1.5" PointX="7.5" PointY="15.875" Height="1.9700325520833353" />
@@ -2191,27 +2178,27 @@
           <ConnectorPoint PointX="7.5" PointY="15.875" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.HeadacheDiaryHDHeadacheProdrome">
-          <ConnectorPoint PointX="5.625" PointY="14.952860828125" />
-          <ConnectorPoint PointX="2.7083333333333335" PointY="14.952860828125" />
-          <ConnectorPoint PointX="2.5416666666666665" PointY="14.952860828125" />
-          <ConnectorPoint PointX="0.65625" PointY="14.952860828125" />
-          <ConnectorPoint PointX="0.65625" PointY="15.5" />
+          <ConnectorPoint PointX="5.625" PointY="14.825218432617195" />
+          <ConnectorPoint PointX="0.59375" PointY="14.825218432617195" />
+          <ConnectorPoint PointX="0.59375" PointY="15.5" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.HeadacheDiaryHDMitigatingFactors">
           <ConnectorPoint PointX="5.625" PointY="15.30717041015625" />
           <ConnectorPoint PointX="5.5" PointY="15.625" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.HeadacheDiaryHDPrecipitatingFactor">
-          <ConnectorPoint PointX="5.625" PointY="14.718483578125007" />
-          <ConnectorPoint PointX="2.625" PointY="14.718483578125007" />
-          <ConnectorPoint PointX="2.625" PointY="15.5" />
+          <ConnectorPoint PointX="5.625" PointY="15.114389619140628" />
+          <ConnectorPoint PointX="2.65625" PointY="15.114389619140628" />
+          <ConnectorPoint PointX="2.65625" PointY="15.5" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.PatBasicInforHeadacheDiary">
-          <ConnectorPoint PointX="4.4843779999999995" PointY="5.77634765625" />
-          <ConnectorPoint PointX="4.4843779999999995" PointY="8.5000000000000018" />
-          <ConnectorPoint PointX="5.125" PointY="8.5000000000000018" />
-          <ConnectorPoint PointX="5.125" PointY="13.32798978906251" />
-          <ConnectorPoint PointX="5.625" PointY="13.32798978906251" />
+          <ConnectorPoint PointX="3.267091722517399" PointY="5.5853279622395826" />
+          <ConnectorPoint PointX="3.267091722517399" PointY="8.3437500000000018" />
+          <ConnectorPoint PointX="3.3883541117014646" PointY="8.3437500000000018" />
+          <ConnectorPoint PointX="3.5550207783681316" PointY="8.3437500000000018" />
+          <ConnectorPoint PointX="5.125" PointY="8.3437500000000018" />
+          <ConnectorPoint PointX="5.125" PointY="13.381357216308604" />
+          <ConnectorPoint PointX="5.625" PointY="13.381357216308604" />
         </AssociationConnector>
         <EntityTypeShape EntityType="HeadacheModel.RegionalCenterAccount" Width="1.5" PointX="0.875" PointY="2.625" Height="2.1610522460937496" />
         <EntityTypeShape EntityType="HeadacheModel.NationalCenterAccount" Width="1.5" PointX="0.875" PointY="0.625" Height="1.779012858072917" />
@@ -2224,8 +2211,21 @@
           <ConnectorPoint PointX="1.5" PointY="5.375" />
         </AssociationConnector>
         <AssociationConnector Association="HeadacheModel.VisitRecordMedicationAdvice">
-          <ConnectorPoint PointX="6.375" PointY="6.1583870442708326" />
+          <ConnectorPoint PointX="6.375" PointY="5.5853279622395835" />
           <ConnectorPoint PointX="6.375" PointY="6.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="HeadacheModel.PatBasicInforVisitRecord">
+          <ConnectorPoint PointX="4.625" PointY="3.263173828125" />
+          <ConnectorPoint PointX="5" PointY="3.263173828125" />
+        </AssociationConnector>
+        <AssociationConnector Association="HeadacheModel.PatBasicInforPreviousDrug">
+          <ConnectorPoint PointX="3.6262049031120362" PointY="5.77634765625" />
+          <ConnectorPoint PointX="3.6262049031120362" PointY="8.3437500000000018" />
+          <ConnectorPoint PointX="3.5008032687413575" PointY="8.3437500000000018" />
+          <ConnectorPoint PointX="3.3341366020746905" PointY="8.3437500000000018" />
+          <ConnectorPoint PointX="2.9375" PointY="8.3437500000000018" />
+          <ConnectorPoint PointX="2.9375" PointY="12.602763561523437" />
+          <ConnectorPoint PointX="3.25" PointY="12.602763561523437" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

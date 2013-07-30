@@ -186,10 +186,14 @@ namespace HeadacheCDSSWeb.Models
                     ObjectMapper.CopyProperties(vdata.visitrecord, vr);
                     ObjectMapper.CopyProperties(vdata.PHeadacheOverview, vr.PrimaryHeadachaOverView);
                     vr.PrimaryHeadachaOverView.VisitRecord = vr;
-                    ObjectMapper.CopyProperties(vdata.GADquestionaire, vr.GADQuestionaire);
-                    ObjectMapper.CopyProperties(vdata.PHquestionaire, vr.PHQuestionaire);
-                    ObjectMapper.CopyProperties(vdata.Disabilityevaluation, vr.DisabilityEvaluation);
-                    ObjectMapper.CopyProperties(vdata.Sleepstatus, vr.SleepStatus);
+                  ObjectMapper.CopyProperties(vdata.GADquestionaire, vr.GADQuestionaire);
+                    //ObjectMapper.CopyProperties(vdata.PHquestionaire, vr.PHQuestionaire);
+                    //ObjectMapper.CopyProperties(vdata.Disabilityevaluation, vr.DisabilityEvaluation);
+                    //ObjectMapper.CopyProperties(vdata.Sleepstatus, vr.SleepStatus);
+                    vr.GADQuestionaire.VisitRecord=vr;
+                    //vr.PHQuestionaire.VisitRecord=vr;
+                    //vr.DisabilityEvaluation.VisitRecord=vr;
+                    //vr.SleepStatus.VisitRecord=vr;
                     //  vr = vdata.visitrecord;
                     //vr.PrimaryHeadachaOverView = vdata.PHeadacheOverview;
                     vr.PatBasicInforId = PatID;

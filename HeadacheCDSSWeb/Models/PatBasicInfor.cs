@@ -19,9 +19,9 @@ namespace HeadacheCDSSWeb.Models
             this.PreviousExam = new HashSet<PreviousExam>();
             this.HeadacheFamilyMember = new HashSet<HeadacheFamilyMember>();
             this.OtherFamilyDisease = new HashSet<OtherFamilyDisease>();
+            this.HeadacheDiary = new HashSet<HeadacheDiary>();
             this.VisitRecord = new HashSet<VisitRecord>();
             this.PreviousDrug = new HashSet<PreviousDrug>();
-            this.HeadacheDiary = new HashSet<HeadacheDiary>();
         }
     
         public string Id { get; set; }
@@ -43,9 +43,9 @@ namespace HeadacheCDSSWeb.Models
         public virtual ICollection<HeadacheFamilyMember> HeadacheFamilyMember { get; set; }
         public virtual ICollection<OtherFamilyDisease> OtherFamilyDisease { get; set; }
         public virtual Lifestyle Lifestyle { get; set; }
+        public virtual ICollection<HeadacheDiary> HeadacheDiary { get; set; }
         public virtual ICollection<VisitRecord> VisitRecord { get; set; }
         public virtual ICollection<PreviousDrug> PreviousDrug { get; set; }
-        public virtual ICollection<HeadacheDiary> HeadacheDiary { get; set; }
     }
     
 }

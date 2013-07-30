@@ -78,10 +78,6 @@
       <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
       <End Role="Lifestyle" EntitySet="LifestyleSet" />
     </AssociationSet>
-    <AssociationSet Name="PatBasicInforVisitRecord" Association="HeadacheModel.Store.PatBasicInforVisitRecord">
-      <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
-      <End Role="VisitRecord" EntitySet="VisitRecordSet" />
-    </AssociationSet>
     <AssociationSet Name="PrimaryHeadacheOverViewPremonitorySymptom" Association="HeadacheModel.Store.PrimaryHeadacheOverViewPremonitorySymptom">
       <End Role="PrimaryHeadacheOverView" EntitySet="PrimaryHeadacheOverViewSet" />
       <End Role="PremonitorySymptom" EntitySet="PremonitorySymptom集" />
@@ -101,10 +97,6 @@
     <AssociationSet Name="VisitRecordDisabilityEvaluation" Association="HeadacheModel.Store.VisitRecordDisabilityEvaluation">
       <End Role="VisitRecord" EntitySet="VisitRecordSet" />
       <End Role="DisabilityEvaluation" EntitySet="DisabilityEvaluationSet" />
-    </AssociationSet>
-    <AssociationSet Name="PatBasicInforPreviousDrug" Association="HeadacheModel.Store.PatBasicInforPreviousDrug">
-      <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
-      <End Role="PreviousDrug" EntitySet="PreviousDrugSet" />
     </AssociationSet>
     <AssociationSet Name="HeadacheDiaryHDAcompanion" Association="HeadacheModel.Store.HeadacheDiaryHDAcompanion">
       <End Role="HeadacheDiary" EntitySet="HeadacheDiarySet" />
@@ -141,6 +133,14 @@
     <AssociationSet Name="VisitRecordMedicationAdvice" Association="HeadacheModel.Store.VisitRecordMedicationAdvice">
       <End Role="VisitRecord" EntitySet="VisitRecordSet" />
       <End Role="MedicationAdvice" EntitySet="MedicationAdviceSet" />
+    </AssociationSet>
+    <AssociationSet Name="PatBasicInforVisitRecord" Association="HeadacheModel.Store.PatBasicInforVisitRecord">
+      <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
+      <End Role="VisitRecord" EntitySet="VisitRecordSet" />
+    </AssociationSet>
+    <AssociationSet Name="PatBasicInforPreviousDrug" Association="HeadacheModel.Store.PatBasicInforPreviousDrug">
+      <End Role="PatBasicInfor" EntitySet="PatBasicInforSet" />
+      <End Role="PreviousDrug" EntitySet="PreviousDrugSet" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="DoctorAccountSet">
@@ -181,7 +181,6 @@
     <Property Name="OutpatientID" Type="nvarchar(max)" Nullable="true" />
     <Property Name="ChiefComplaint" Type="nvarchar(max)" Nullable="false" />
     <Property Name="VisitDate" Type="datetime" Nullable="false" />
-    <Property Name="PatBasicInforId" Type="nvarchar" Nullable="false" MaxLength="255" />
     <Property Name="CDSSDiagnosis1" Type="nvarchar(max)" Nullable="false" />
     <Property Name="CDSSDiagnosis2" Type="nvarchar(max)" Nullable="true" />
     <Property Name="CDSSDiagnosis3" Type="nvarchar(max)" Nullable="true" />
@@ -191,7 +190,7 @@
     <Property Name="Prescription" Type="nvarchar(max)" Nullable="true" />
     <Property Name="PreviousDiagnosis" Type="nvarchar(max)" Nullable="true" />
     <Property Name="PrescriptionNote" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="PatBasicInforId1" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="PatBasicInforId" Type="nvarchar" Nullable="false" MaxLength="255" />
   </EntityType>
   <EntityType Name="PrimaryHeadacheOverViewSet">
     <Key>
@@ -602,18 +601,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="PatBasicInforVisitRecord">
-    <End Role="PatBasicInfor" Type="HeadacheModel.Store.PatBasicInforSet" Multiplicity="1" />
-    <End Role="VisitRecord" Type="HeadacheModel.Store.VisitRecordSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PatBasicInfor">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="VisitRecord">
-        <PropertyRef Name="PatBasicInforId1" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="PrimaryHeadacheOverViewPremonitorySymptom">
     <End Role="PrimaryHeadacheOverView" Type="HeadacheModel.Store.PrimaryHeadacheOverViewSet" Multiplicity="1" />
     <End Role="PremonitorySymptom" Type="HeadacheModel.Store.PremonitorySymptom集" Multiplicity="*" />
@@ -671,18 +658,6 @@
       </Principal>
       <Dependent Role="DisabilityEvaluation">
         <PropertyRef Name="VisitRecord_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="PatBasicInforPreviousDrug">
-    <End Role="PatBasicInfor" Type="HeadacheModel.Store.PatBasicInforSet" Multiplicity="1" />
-    <End Role="PreviousDrug" Type="HeadacheModel.Store.PreviousDrugSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PatBasicInfor">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PreviousDrug">
-        <PropertyRef Name="PatBasicInforId1" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -791,6 +766,30 @@
       </Principal>
       <Dependent Role="MedicationAdvice">
         <PropertyRef Name="VisitRecordId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PatBasicInforVisitRecord">
+    <End Role="PatBasicInfor" Type="HeadacheModel.Store.PatBasicInforSet" Multiplicity="1" />
+    <End Role="VisitRecord" Type="HeadacheModel.Store.VisitRecordSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PatBasicInfor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VisitRecord">
+        <PropertyRef Name="PatBasicInforId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PatBasicInforPreviousDrug">
+    <End Role="PatBasicInfor" Type="HeadacheModel.Store.PatBasicInforSet" Multiplicity="1" />
+    <End Role="PreviousDrug" Type="HeadacheModel.Store.PreviousDrugSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PatBasicInfor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PreviousDrug">
+        <PropertyRef Name="PatBasicInforId1" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

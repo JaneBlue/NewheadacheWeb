@@ -24,7 +24,6 @@ namespace HeadacheCDSSWeb.Models
         public string OutpatientID { get; set; }
         public string ChiefComplaint { get; set; }
         public System.DateTime VisitDate { get; set; }
-        public string PatBasicInforId { get; set; }
         public string CDSSDiagnosis1 { get; set; }
         public string CDSSDiagnosis2 { get; set; }
         public string CDSSDiagnosis3 { get; set; }
@@ -34,16 +33,16 @@ namespace HeadacheCDSSWeb.Models
         public string Prescription { get; set; }
         public string PreviousDiagnosis { get; set; }
         public string PrescriptionNote { get; set; }
-        public string PatBasicInforId1 { get; set; }
+        public string PatBasicInforId { get; set; }
     
         public virtual ICollection<SecondaryHeadacheSymptom> SecondaryHeadacheSymptom { get; set; }
         public virtual PrimaryHeadacheOverView PrimaryHeadachaOverView { get; set; }
-        public virtual PatBasicInfor PatBasicInfor { get; set; }
         public virtual GADQuestionaire GADQuestionaire { get; set; }
         public virtual PHQuestionaire PHQuestionaire { get; set; }
         public virtual SleepStatus SleepStatus { get; set; }
         public virtual DisabilityEvaluation DisabilityEvaluation { get; set; }
         public virtual ICollection<MedicationAdvice> MedicationAdvice { get; set; }
+        public virtual PatBasicInfor PatBasicInfor { get; set; }
     }
     
 }

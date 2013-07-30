@@ -158,6 +158,10 @@ $(function () {
               }
            
             }
+             if ($(".selected").last().attr("id") == "基本筛查" || $(".selected").last().attr("id") == "头痛问诊")
+               {
+                OCX.SetObjectInfo("TextBox_12", "text", GetChiefComplaint(OCX));
+               }
             if ($(".selected").last().attr("id") == "辅助诊断"||$(".selected").last().attr("id") == "报告预览")
             {
                 //set chief complaint
@@ -236,6 +240,10 @@ $(function () {
                             if(name=="头痛问诊"){
                             name="头痛概述"
                             }
+                            else if(name=="医嘱处置")
+                            {
+                              name=SetDrugPage(OCX);
+                            }
                             OCX.ShowThisPage(name);
                             if(name=="报告预览"){
                             $("#btn1").html("保存并退出");
@@ -281,6 +289,40 @@ $(function () {
         
      });
     });
+    function SetDrugPage(OCX)
+    {
+       var diagnosis=OCX.GetObjectInfo("ComboBox_31", "text");
+       switch (diagnosis)
+        {
+        case "紧张型头痛":
+            x="紧张型头痛";
+            return x;
+            break;
+        case "偏头痛":
+            x="偏头痛";
+            return x;
+            break;
+        case "丛集性头痛和其他原发性三叉神经痛":
+            x="丛集性头痛";
+            return x;
+            break;
+        case "颅神经痛和中枢源性面痛":
+            x="神经痛";
+            return x;
+            break;
+        case "慢性每日头痛":
+            var SecondDiagnosis=OCX.GetObjectInfo("ComboBox_31", "text");
+            if(SecondDiagnosis=="药物滥用引起的头痛")
+            x="药物过量头痛";
+            else
+            x="其他类型头痛";
+            return x;
+            break;
+       default:
+            x="其他类型头痛";
+            return x;
+            break;
+        }
     function SetDiagnoses(OCX, strDiagnose)
     {
         OCX.SetObjectInfo("TextBox_14", "text", strDiagnose);

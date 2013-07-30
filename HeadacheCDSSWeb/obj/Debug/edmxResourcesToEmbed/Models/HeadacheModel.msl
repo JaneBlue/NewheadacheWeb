@@ -39,7 +39,6 @@
           <ScalarProperty Name="OutpatientID" ColumnName="OutpatientID" />
           <ScalarProperty Name="ChiefComplaint" ColumnName="ChiefComplaint" />
           <ScalarProperty Name="VisitDate" ColumnName="VisitDate" />
-          <ScalarProperty Name="PatBasicInforId" ColumnName="PatBasicInforId" />
           <ScalarProperty Name="CDSSDiagnosis1" ColumnName="CDSSDiagnosis1" />
           <ScalarProperty Name="CDSSDiagnosis2" ColumnName="CDSSDiagnosis2" />
           <ScalarProperty Name="CDSSDiagnosis3" ColumnName="CDSSDiagnosis3" />
@@ -49,7 +48,7 @@
           <ScalarProperty Name="Prescription" ColumnName="Prescription" />
           <ScalarProperty Name="PreviousDiagnosis" ColumnName="PreviousDiagnosis" />
           <ScalarProperty Name="PrescriptionNote" ColumnName="PrescriptionNote" />
-          <ScalarProperty Name="PatBasicInforId1" ColumnName="PatBasicInforId1" />
+          <ScalarProperty Name="PatBasicInforId" ColumnName="PatBasicInforId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
