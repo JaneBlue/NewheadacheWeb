@@ -515,12 +515,12 @@
         if ("" != strDiagnoses)
             OCX.SetObjectInfo("TextBox_23", "text", strDiagnoses);
 
-        //set doctor advice
-        if (obj.Prescription != null) 
-        {
-            var strDoctorAdvice = obj.Prescription;
-            OCX.SetObjectInfo("TextBox_24", "text", strDoctorAdvice);
-        }
+//        //set doctor advice
+//        if (obj.Prescription != null) 
+//        {
+//            var strDoctorAdvice = obj.Prescription;
+//            OCX.SetObjectInfo("TextBox_24", "text", strDoctorAdvice);
+//        }
         OCX.ShowReport();
         OCX.ShowThisPage("就诊记录");
     }
