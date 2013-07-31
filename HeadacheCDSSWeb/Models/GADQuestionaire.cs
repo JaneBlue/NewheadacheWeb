@@ -22,7 +22,7 @@ namespace HeadacheCDSSWeb.Models
         public string Q6 { get; set; }
         public string Q7 { get; set; }
         public string TotalScore { get; set; }
-        public int ID { get; set; }
+        public int Id { get; set; }
     
         public virtual VisitRecord VisitRecord { get; set; }
     }

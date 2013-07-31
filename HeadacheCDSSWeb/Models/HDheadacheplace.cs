@@ -14,7 +14,7 @@ namespace HeadacheCDSSWeb.Models
 {
     public partial class HDheadacheplace
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string postion { get; set; }
         public int HeadacheDiaryID { get; set; }
         public string detailposition { get; set; }

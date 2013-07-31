@@ -325,17 +325,17 @@
   </EntityType>
   <EntityType Name="PremonitorySymptom集">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Symptom" Type="nvarchar(max)" Nullable="true" />
     <Property Name="PrimaryHeadacheOverViewId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="PHQuestionaireSet">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Q1" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Q2" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Q3" Type="nvarchar(max)" Nullable="true" />
@@ -350,7 +350,7 @@
   </EntityType>
   <EntityType Name="GADQuestionaireSet">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="Id" />
     </Key>
     <Property Name="Q1" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Q2" Type="nvarchar(max)" Nullable="true" />
@@ -360,14 +360,14 @@
     <Property Name="Q6" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Q7" Type="nvarchar(max)" Nullable="true" />
     <Property Name="TotalScore" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="VisitRecord_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="DisabilityEvaluationSet">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="HeadacheDays" Type="nvarchar(max)" Nullable="true" />
     <Property Name="OutOfWorkDays" Type="nvarchar(max)" Nullable="true" />
     <Property Name="AffectWorkDays" Type="nvarchar(max)" Nullable="true" />
@@ -378,9 +378,9 @@
   </EntityType>
   <EntityType Name="SleepStatusSet">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TimePerDay" Type="nvarchar(max)" Nullable="true" />
     <Property Name="DifficultFallingAsleep" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Dreaminess" Type="nvarchar(max)" Nullable="true" />
@@ -390,9 +390,9 @@
   </EntityType>
   <EntityType Name="HeadacheDiarySet">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="RecordDate" Type="datetime" Nullable="false" />
     <Property Name="HeadacheTime" Type="int" Nullable="false" />
     <Property Name="HeadacheType" Type="nvarchar(max)" Nullable="true" />
@@ -401,42 +401,42 @@
   </EntityType>
   <EntityType Name="HDheadacheplaceSet">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="postion" Type="nvarchar(max)" Nullable="false" />
     <Property Name="HeadacheDiaryID" Type="int" Nullable="false" />
     <Property Name="detailposition" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="HDAcompanionSet">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="symptom" Type="nvarchar(max)" Nullable="false" />
     <Property Name="HeadacheDiaryID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="HDPrecipitatingFactorSet">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="factor" Type="nvarchar(max)" Nullable="false" />
     <Property Name="HeadacheDiaryID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="HDMitigatingFactorsSet">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="factor" Type="nvarchar(max)" Nullable="false" />
     <Property Name="HeadacheDiaryID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="HDHeadacheProdromeSet">
     <Key>
-      <PropertyRef Name="ID" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="symptom" Type="nvarchar(max)" Nullable="false" />
     <Property Name="HeadacheDiaryID" Type="int" Nullable="false" />
   </EntityType>
@@ -667,7 +667,7 @@
     <End Role="HDAcompanion" Type="HeadacheModel.Store.HDAcompanionSet" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="HeadacheDiary">
-        <PropertyRef Name="ID" />
+        <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="HDAcompanion">
         <PropertyRef Name="HeadacheDiaryID" />
@@ -679,7 +679,7 @@
     <End Role="HDheadacheplace" Type="HeadacheModel.Store.HDheadacheplaceSet" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="HeadacheDiary">
-        <PropertyRef Name="ID" />
+        <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="HDheadacheplace">
         <PropertyRef Name="HeadacheDiaryID" />
@@ -691,7 +691,7 @@
     <End Role="HDHeadacheProdrome" Type="HeadacheModel.Store.HDHeadacheProdromeSet" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="HeadacheDiary">
-        <PropertyRef Name="ID" />
+        <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="HDHeadacheProdrome">
         <PropertyRef Name="HeadacheDiaryID" />
@@ -703,7 +703,7 @@
     <End Role="HDMitigatingFactors" Type="HeadacheModel.Store.HDMitigatingFactorsSet" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="HeadacheDiary">
-        <PropertyRef Name="ID" />
+        <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="HDMitigatingFactors">
         <PropertyRef Name="HeadacheDiaryID" />
@@ -715,7 +715,7 @@
     <End Role="HDPrecipitatingFactor" Type="HeadacheModel.Store.HDPrecipitatingFactorSet" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="HeadacheDiary">
-        <PropertyRef Name="ID" />
+        <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="HDPrecipitatingFactor">
         <PropertyRef Name="HeadacheDiaryID" />

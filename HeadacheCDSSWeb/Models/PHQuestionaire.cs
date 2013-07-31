@@ -14,7 +14,7 @@ namespace HeadacheCDSSWeb.Models
 {
     public partial class PHQuestionaire
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string Q1 { get; set; }
         public string Q2 { get; set; }
         public string Q3 { get; set; }

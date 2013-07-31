@@ -14,7 +14,7 @@ namespace HeadacheCDSSWeb.Models
 {
     public partial class PremonitorySymptom
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string Symptom { get; set; }
         public int PrimaryHeadacheOverViewId { get; set; }
     

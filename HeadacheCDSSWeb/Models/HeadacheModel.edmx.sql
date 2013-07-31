@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 07/30/2013 14:47:48
+-- Date Created: 07/31/2013 09:02:04
 -- Generated from EDMX file: D:\FGj\projectcode\NewheadacheWeb\HeadacheCDSSWeb\Models\HeadacheModel.edmx
 -- --------------------------------------------------
 
@@ -380,7 +380,7 @@ GO
 
 -- Creating table 'PremonitorySymptom集'
 CREATE TABLE [dbo].[PremonitorySymptom集] (
-    [ID] int IDENTITY(1,1) NOT NULL,
+    [Id] int IDENTITY(1,1) NOT NULL,
     [Symptom] nvarchar(max)  NULL,
     [PrimaryHeadacheOverViewId] int  NOT NULL
 );
@@ -388,7 +388,7 @@ GO
 
 -- Creating table 'PHQuestionaireSet'
 CREATE TABLE [dbo].[PHQuestionaireSet] (
-    [ID] int IDENTITY(1,1) NOT NULL,
+    [Id] int IDENTITY(1,1) NOT NULL,
     [Q1] nvarchar(max)  NULL,
     [Q2] nvarchar(max)  NULL,
     [Q3] nvarchar(max)  NULL,
@@ -413,14 +413,14 @@ CREATE TABLE [dbo].[GADQuestionaireSet] (
     [Q6] nvarchar(max)  NULL,
     [Q7] nvarchar(max)  NULL,
     [TotalScore] nvarchar(max)  NULL,
-    [ID] int IDENTITY(1,1) NOT NULL,
+    [Id] int IDENTITY(1,1) NOT NULL,
     [VisitRecord_Id] int  NOT NULL
 );
 GO
 
 -- Creating table 'DisabilityEvaluationSet'
 CREATE TABLE [dbo].[DisabilityEvaluationSet] (
-    [ID] int IDENTITY(1,1) NOT NULL,
+    [Id] int IDENTITY(1,1) NOT NULL,
     [HeadacheDays] nvarchar(max)  NULL,
     [OutOfWorkDays] nvarchar(max)  NULL,
     [AffectWorkDays] nvarchar(max)  NULL,
@@ -433,7 +433,7 @@ GO
 
 -- Creating table 'SleepStatusSet'
 CREATE TABLE [dbo].[SleepStatusSet] (
-    [ID] int IDENTITY(1,1) NOT NULL,
+    [Id] int IDENTITY(1,1) NOT NULL,
     [TimePerDay] nvarchar(max)  NULL,
     [DifficultFallingAsleep] nvarchar(max)  NULL,
     [Dreaminess] nvarchar(max)  NULL,
@@ -445,7 +445,7 @@ GO
 
 -- Creating table 'HeadacheDiarySet'
 CREATE TABLE [dbo].[HeadacheDiarySet] (
-    [ID] int IDENTITY(1,1) NOT NULL,
+    [Id] int IDENTITY(1,1) NOT NULL,
     [RecordDate] datetime  NOT NULL,
     [HeadacheTime] int  NOT NULL,
     [HeadacheType] nvarchar(max)  NULL,
@@ -456,7 +456,7 @@ GO
 
 -- Creating table 'HDheadacheplaceSet'
 CREATE TABLE [dbo].[HDheadacheplaceSet] (
-    [ID] int IDENTITY(1,1) NOT NULL,
+    [Id] int IDENTITY(1,1) NOT NULL,
     [postion] nvarchar(max)  NOT NULL,
     [HeadacheDiaryID] int  NOT NULL,
     [detailposition] nvarchar(max)  NOT NULL
@@ -465,7 +465,7 @@ GO
 
 -- Creating table 'HDAcompanionSet'
 CREATE TABLE [dbo].[HDAcompanionSet] (
-    [ID] int IDENTITY(1,1) NOT NULL,
+    [Id] int IDENTITY(1,1) NOT NULL,
     [symptom] nvarchar(max)  NOT NULL,
     [HeadacheDiaryID] int  NOT NULL
 );
@@ -473,7 +473,7 @@ GO
 
 -- Creating table 'HDPrecipitatingFactorSet'
 CREATE TABLE [dbo].[HDPrecipitatingFactorSet] (
-    [ID] int IDENTITY(1,1) NOT NULL,
+    [Id] int IDENTITY(1,1) NOT NULL,
     [factor] nvarchar(max)  NOT NULL,
     [HeadacheDiaryID] int  NOT NULL
 );
@@ -481,7 +481,7 @@ GO
 
 -- Creating table 'HDMitigatingFactorsSet'
 CREATE TABLE [dbo].[HDMitigatingFactorsSet] (
-    [ID] int IDENTITY(1,1) NOT NULL,
+    [Id] int IDENTITY(1,1) NOT NULL,
     [factor] nvarchar(max)  NOT NULL,
     [HeadacheDiaryID] int  NOT NULL
 );
@@ -489,7 +489,7 @@ GO
 
 -- Creating table 'HDHeadacheProdromeSet'
 CREATE TABLE [dbo].[HDHeadacheProdromeSet] (
-    [ID] int IDENTITY(1,1) NOT NULL,
+    [Id] int IDENTITY(1,1) NOT NULL,
     [symptom] nvarchar(max)  NOT NULL,
     [HeadacheDiaryID] int  NOT NULL
 );
@@ -613,70 +613,70 @@ ADD CONSTRAINT [PK_SecondaryHeadacheSymptomSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [ID] in table 'PremonitorySymptom集'
+-- Creating primary key on [Id] in table 'PremonitorySymptom集'
 ALTER TABLE [dbo].[PremonitorySymptom集]
 ADD CONSTRAINT [PK_PremonitorySymptom集]
-    PRIMARY KEY CLUSTERED ([ID] ASC);
+    PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [ID] in table 'PHQuestionaireSet'
+-- Creating primary key on [Id] in table 'PHQuestionaireSet'
 ALTER TABLE [dbo].[PHQuestionaireSet]
 ADD CONSTRAINT [PK_PHQuestionaireSet]
-    PRIMARY KEY CLUSTERED ([ID] ASC);
+    PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [ID] in table 'GADQuestionaireSet'
+-- Creating primary key on [Id] in table 'GADQuestionaireSet'
 ALTER TABLE [dbo].[GADQuestionaireSet]
 ADD CONSTRAINT [PK_GADQuestionaireSet]
-    PRIMARY KEY CLUSTERED ([ID] ASC);
+    PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [ID] in table 'DisabilityEvaluationSet'
+-- Creating primary key on [Id] in table 'DisabilityEvaluationSet'
 ALTER TABLE [dbo].[DisabilityEvaluationSet]
 ADD CONSTRAINT [PK_DisabilityEvaluationSet]
-    PRIMARY KEY CLUSTERED ([ID] ASC);
+    PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [ID] in table 'SleepStatusSet'
+-- Creating primary key on [Id] in table 'SleepStatusSet'
 ALTER TABLE [dbo].[SleepStatusSet]
 ADD CONSTRAINT [PK_SleepStatusSet]
-    PRIMARY KEY CLUSTERED ([ID] ASC);
+    PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [ID] in table 'HeadacheDiarySet'
+-- Creating primary key on [Id] in table 'HeadacheDiarySet'
 ALTER TABLE [dbo].[HeadacheDiarySet]
 ADD CONSTRAINT [PK_HeadacheDiarySet]
-    PRIMARY KEY CLUSTERED ([ID] ASC);
+    PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [ID] in table 'HDheadacheplaceSet'
+-- Creating primary key on [Id] in table 'HDheadacheplaceSet'
 ALTER TABLE [dbo].[HDheadacheplaceSet]
 ADD CONSTRAINT [PK_HDheadacheplaceSet]
-    PRIMARY KEY CLUSTERED ([ID] ASC);
+    PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [ID] in table 'HDAcompanionSet'
+-- Creating primary key on [Id] in table 'HDAcompanionSet'
 ALTER TABLE [dbo].[HDAcompanionSet]
 ADD CONSTRAINT [PK_HDAcompanionSet]
-    PRIMARY KEY CLUSTERED ([ID] ASC);
+    PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [ID] in table 'HDPrecipitatingFactorSet'
+-- Creating primary key on [Id] in table 'HDPrecipitatingFactorSet'
 ALTER TABLE [dbo].[HDPrecipitatingFactorSet]
 ADD CONSTRAINT [PK_HDPrecipitatingFactorSet]
-    PRIMARY KEY CLUSTERED ([ID] ASC);
+    PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [ID] in table 'HDMitigatingFactorsSet'
+-- Creating primary key on [Id] in table 'HDMitigatingFactorsSet'
 ALTER TABLE [dbo].[HDMitigatingFactorsSet]
 ADD CONSTRAINT [PK_HDMitigatingFactorsSet]
-    PRIMARY KEY CLUSTERED ([ID] ASC);
+    PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [ID] in table 'HDHeadacheProdromeSet'
+-- Creating primary key on [Id] in table 'HDHeadacheProdromeSet'
 ALTER TABLE [dbo].[HDHeadacheProdromeSet]
 ADD CONSTRAINT [PK_HDHeadacheProdromeSet]
-    PRIMARY KEY CLUSTERED ([ID] ASC);
+    PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
 -- Creating primary key on [ID] in table 'RegionalCenterAccountSet'
@@ -938,7 +938,7 @@ ALTER TABLE [dbo].[HDAcompanionSet]
 ADD CONSTRAINT [FK_HeadacheDiaryHDAcompanion]
     FOREIGN KEY ([HeadacheDiaryID])
     REFERENCES [dbo].[HeadacheDiarySet]
-        ([ID])
+        ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_HeadacheDiaryHDAcompanion'
@@ -952,7 +952,7 @@ ALTER TABLE [dbo].[HDheadacheplaceSet]
 ADD CONSTRAINT [FK_HeadacheDiaryHDheadacheplace]
     FOREIGN KEY ([HeadacheDiaryID])
     REFERENCES [dbo].[HeadacheDiarySet]
-        ([ID])
+        ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_HeadacheDiaryHDheadacheplace'
@@ -966,7 +966,7 @@ ALTER TABLE [dbo].[HDHeadacheProdromeSet]
 ADD CONSTRAINT [FK_HeadacheDiaryHDHeadacheProdrome]
     FOREIGN KEY ([HeadacheDiaryID])
     REFERENCES [dbo].[HeadacheDiarySet]
-        ([ID])
+        ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_HeadacheDiaryHDHeadacheProdrome'
@@ -980,7 +980,7 @@ ALTER TABLE [dbo].[HDMitigatingFactorsSet]
 ADD CONSTRAINT [FK_HeadacheDiaryHDMitigatingFactors]
     FOREIGN KEY ([HeadacheDiaryID])
     REFERENCES [dbo].[HeadacheDiarySet]
-        ([ID])
+        ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_HeadacheDiaryHDMitigatingFactors'
@@ -994,7 +994,7 @@ ALTER TABLE [dbo].[HDPrecipitatingFactorSet]
 ADD CONSTRAINT [FK_HeadacheDiaryHDPrecipitatingFactor]
     FOREIGN KEY ([HeadacheDiaryID])
     REFERENCES [dbo].[HeadacheDiarySet]
-        ([ID])
+        ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_HeadacheDiaryHDPrecipitatingFactor'

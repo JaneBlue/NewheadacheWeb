@@ -14,7 +14,7 @@ namespace HeadacheCDSSWeb.Models
 {
     public partial class HDPrecipitatingFactor
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string factor { get; set; }
         public int HeadacheDiaryID { get; set; }
     

@@ -14,7 +14,7 @@ namespace HeadacheCDSSWeb.Models
 {
     public partial class SleepStatus
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string TimePerDay { get; set; }
         public string DifficultFallingAsleep { get; set; }
         public string Dreaminess { get; set; }

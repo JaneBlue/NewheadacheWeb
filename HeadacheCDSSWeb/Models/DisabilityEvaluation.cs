@@ -14,7 +14,7 @@ namespace HeadacheCDSSWeb.Models
 {
     public partial class DisabilityEvaluation
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string HeadacheDays { get; set; }
         public string OutOfWorkDays { get; set; }
         public string AffectWorkDays { get; set; }

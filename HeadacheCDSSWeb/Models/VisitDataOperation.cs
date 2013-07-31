@@ -185,18 +185,18 @@ namespace HeadacheCDSSWeb.Models
 
                     ObjectMapper.CopyProperties(vdata.visitrecord, vr);
                     ObjectMapper.CopyProperties(vdata.PHeadacheOverview, vr.PrimaryHeadachaOverView);
+                   
+                    ObjectMapper.CopyProperties(vdata.GADquestionaire, vr.GADQuestionaire);
+                    ObjectMapper.CopyProperties(vdata.PHquestionaire, vr.PHQuestionaire);
+                    ObjectMapper.CopyProperties(vdata.Disabilityevaluation, vr.DisabilityEvaluation);
+                    ObjectMapper.CopyProperties(vdata.Sleepstatus, vr.SleepStatus);
                     vr.PrimaryHeadachaOverView.VisitRecord = vr;
-                  ObjectMapper.CopyProperties(vdata.GADquestionaire, vr.GADQuestionaire);
-                    // vr.GADQuestionaire.ID = vdata.GADquestionaire.ID;
-                   // ObjectMapper.CopyProperties(vdata.PHquestionaire, vr.PHQuestionaire);
-                    //ObjectMapper.CopyProperties(vdata.Disabilityevaluation, vr.DisabilityEvaluation);
-                    //ObjectMapper.CopyProperties(vdata.Sleepstatus, vr.SleepStatus);
-                    //vr.GADQuestionaire.VisitRecord=vr;
-                    //vr.PHQuestionaire.VisitRecord=vr;
-                    //vr.DisabilityEvaluation.VisitRecord=vr;
-                    //vr.SleepStatus.VisitRecord=vr;
-                    //  vr = vdata.visitrecord;
-                    //vr.PrimaryHeadachaOverView = vdata.PHeadacheOverview;
+                    vr.GADQuestionaire.VisitRecord=vr;
+                    vr.PHQuestionaire.VisitRecord=vr;
+                    vr.DisabilityEvaluation.VisitRecord=vr;
+                    vr.SleepStatus.VisitRecord=vr;
+                   
+                   
                     vr.PatBasicInforId = PatID;
                     vr.VisitDate = DateTime.Now.Date;
                     context.Entry(vr).State = System.Data.EntityState.Modified;

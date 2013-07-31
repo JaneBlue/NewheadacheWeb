@@ -14,7 +14,7 @@ namespace HeadacheCDSSWeb.Models
 {
     public partial class HDAcompanion
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string symptom { get; set; }
         public int HeadacheDiaryID { get; set; }
     

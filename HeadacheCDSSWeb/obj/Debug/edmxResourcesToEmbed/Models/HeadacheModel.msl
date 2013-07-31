@@ -198,7 +198,7 @@
     <EntitySetMapping Name="PremonitorySymptom集">
       <EntityTypeMapping TypeName="IsTypeOf(HeadacheModel.PremonitorySymptom)">
         <MappingFragment StoreEntitySet="PremonitorySymptom集">
-          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Symptom" ColumnName="Symptom" />
           <ScalarProperty Name="PrimaryHeadacheOverViewId" ColumnName="PrimaryHeadacheOverViewId" />
         </MappingFragment>
@@ -207,7 +207,7 @@
     <EntitySetMapping Name="PHQuestionaireSet">
       <EntityTypeMapping TypeName="IsTypeOf(HeadacheModel.PHQuestionaire)">
         <MappingFragment StoreEntitySet="PHQuestionaireSet">
-          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Q1" ColumnName="Q1" />
           <ScalarProperty Name="Q2" ColumnName="Q2" />
           <ScalarProperty Name="Q3" ColumnName="Q3" />
@@ -224,7 +224,7 @@
     <EntitySetMapping Name="GADQuestionaireSet">
       <EntityTypeMapping TypeName="IsTypeOf(HeadacheModel.GADQuestionaire)">
         <MappingFragment StoreEntitySet="GADQuestionaireSet">
-          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Q1" ColumnName="Q1" />
           <ScalarProperty Name="Q2" ColumnName="Q2" />
           <ScalarProperty Name="Q3" ColumnName="Q3" />
@@ -239,7 +239,7 @@
     <EntitySetMapping Name="DisabilityEvaluationSet">
       <EntityTypeMapping TypeName="IsTypeOf(HeadacheModel.DisabilityEvaluation)">
         <MappingFragment StoreEntitySet="DisabilityEvaluationSet">
-          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="HeadacheDays" ColumnName="HeadacheDays" />
           <ScalarProperty Name="OutOfWorkDays" ColumnName="OutOfWorkDays" />
           <ScalarProperty Name="AffectWorkDays" ColumnName="AffectWorkDays" />
@@ -252,7 +252,7 @@
     <EntitySetMapping Name="SleepStatusSet">
       <EntityTypeMapping TypeName="IsTypeOf(HeadacheModel.SleepStatus)">
         <MappingFragment StoreEntitySet="SleepStatusSet">
-          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="TimePerDay" ColumnName="TimePerDay" />
           <ScalarProperty Name="DifficultFallingAsleep" ColumnName="DifficultFallingAsleep" />
           <ScalarProperty Name="Dreaminess" ColumnName="Dreaminess" />
@@ -264,7 +264,7 @@
     <EntitySetMapping Name="HeadacheDiarySet">
       <EntityTypeMapping TypeName="IsTypeOf(HeadacheModel.HeadacheDiary)">
         <MappingFragment StoreEntitySet="HeadacheDiarySet">
-          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
           <ScalarProperty Name="HeadacheTime" ColumnName="HeadacheTime" />
           <ScalarProperty Name="HeadacheType" ColumnName="HeadacheType" />
@@ -276,7 +276,7 @@
     <EntitySetMapping Name="HDheadacheplaceSet">
       <EntityTypeMapping TypeName="IsTypeOf(HeadacheModel.HDheadacheplace)">
         <MappingFragment StoreEntitySet="HDheadacheplaceSet">
-          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="postion" ColumnName="postion" />
           <ScalarProperty Name="HeadacheDiaryID" ColumnName="HeadacheDiaryID" />
           <ScalarProperty Name="detailposition" ColumnName="detailposition" />
@@ -286,7 +286,7 @@
     <EntitySetMapping Name="HDAcompanionSet">
       <EntityTypeMapping TypeName="IsTypeOf(HeadacheModel.HDAcompanion)">
         <MappingFragment StoreEntitySet="HDAcompanionSet">
-          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="symptom" ColumnName="symptom" />
           <ScalarProperty Name="HeadacheDiaryID" ColumnName="HeadacheDiaryID" />
         </MappingFragment>
@@ -295,7 +295,7 @@
     <EntitySetMapping Name="HDPrecipitatingFactorSet">
       <EntityTypeMapping TypeName="IsTypeOf(HeadacheModel.HDPrecipitatingFactor)">
         <MappingFragment StoreEntitySet="HDPrecipitatingFactorSet">
-          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="factor" ColumnName="factor" />
           <ScalarProperty Name="HeadacheDiaryID" ColumnName="HeadacheDiaryID" />
         </MappingFragment>
@@ -304,7 +304,7 @@
     <EntitySetMapping Name="HDMitigatingFactorsSet">
       <EntityTypeMapping TypeName="IsTypeOf(HeadacheModel.HDMitigatingFactors)">
         <MappingFragment StoreEntitySet="HDMitigatingFactorsSet">
-          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="factor" ColumnName="factor" />
           <ScalarProperty Name="HeadacheDiaryID" ColumnName="HeadacheDiaryID" />
         </MappingFragment>
@@ -313,7 +313,7 @@
     <EntitySetMapping Name="HDHeadacheProdromeSet">
       <EntityTypeMapping TypeName="IsTypeOf(HeadacheModel.HDHeadacheProdrome)">
         <MappingFragment StoreEntitySet="HDHeadacheProdromeSet">
-          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="symptom" ColumnName="symptom" />
           <ScalarProperty Name="HeadacheDiaryID" ColumnName="HeadacheDiaryID" />
         </MappingFragment>
@@ -360,7 +360,7 @@
         <ScalarProperty Name="Id" ColumnName="VisitRecord_Id" />
       </EndProperty>
       <EndProperty Name="GADQuestionaire">
-        <ScalarProperty Name="ID" ColumnName="ID" />
+        <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="VisitRecordPHQuestionaire" TypeName="HeadacheModel.VisitRecordPHQuestionaire" StoreEntitySet="PHQuestionaireSet">
@@ -368,7 +368,7 @@
         <ScalarProperty Name="Id" ColumnName="VisitRecord_Id" />
       </EndProperty>
       <EndProperty Name="PHQuestionaire">
-        <ScalarProperty Name="ID" ColumnName="ID" />
+        <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="VisitRecordSleepStatus" TypeName="HeadacheModel.VisitRecordSleepStatus" StoreEntitySet="SleepStatusSet">
@@ -376,7 +376,7 @@
         <ScalarProperty Name="Id" ColumnName="VisitRecord_Id" />
       </EndProperty>
       <EndProperty Name="SleepStatus">
-        <ScalarProperty Name="ID" ColumnName="ID" />
+        <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="VisitRecordDisabilityEvaluation" TypeName="HeadacheModel.VisitRecordDisabilityEvaluation" StoreEntitySet="DisabilityEvaluationSet">
@@ -384,7 +384,7 @@
         <ScalarProperty Name="Id" ColumnName="VisitRecord_Id" />
       </EndProperty>
       <EndProperty Name="DisabilityEvaluation">
-        <ScalarProperty Name="ID" ColumnName="ID" />
+        <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

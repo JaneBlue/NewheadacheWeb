@@ -23,7 +23,7 @@ namespace HeadacheCDSSWeb.Models
             this.HDPrecipitatingFactor = new HashSet<HDPrecipitatingFactor>();
         }
     
-        public int ID { get; set; }
+        public int Id { get; set; }
         public System.DateTime RecordDate { get; set; }
         public int HeadacheTime { get; set; }
         public string HeadacheType { get; set; }
