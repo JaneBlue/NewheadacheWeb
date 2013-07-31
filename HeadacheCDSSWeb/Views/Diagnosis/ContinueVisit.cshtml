@@ -1210,6 +1210,14 @@ $(function () {
         var strGADQ7 = obj.gdaquestionaire.Q7;
         OCX.SetObjectInfo("ComboBox_24", "text", strGADQ7);
 
+        //set diagnosis
+        var strDiagnosisResult1 = obj.DiagnosisResult1;
+        SetDiagnosisIntoOCX(OCX, ComboBox_31, ComboBox_32, strDiagnosisResult1);
+        var strDiagnosisResult2 = obj.DiagnosisResult2;
+        SetDiagnosisIntoOCX(OCX, ComboBox_33, ComboBox_34, strDiagnosisResult2);
+        var strDiagnosisResult3 = obj.DiagnosisResult3;
+        SetDiagnosisIntoOCX(OCX, ComboBox_36, ComboBox_35, strDiagnosisResult3);
+
         //set doctor advice
         var listMedicationAdvice = obj.medicationadvice;
         var diagnosis=OCX.GetObjectInfo("ComboBox_31", "text");
@@ -3296,5 +3304,91 @@ $(function () {
 
         return strDoctorAdvice;
     }
-
+    function SetDiagnosisIntoOCX(OCX, strItemName1, strItemName2,strDiagnose)
+    {
+        if(strDiagnose.indexOf("偏头痛") >= 0)
+        {
+            OCX.SetObjectInfo(strItemName1, "text", "偏头痛");
+            if(strDiagnose.indexOf("很可能的偏头痛") >= 0)
+            {
+                OCX.SetObjectInfo(strItemName2, "text", "很可能的偏头痛");
+            }
+            else if(strDiagnose.indexOf("无先兆性偏头痛") >= 0)
+            {
+                OCX.SetObjectInfo(strItemName2, "text", "无先兆性偏头痛");
+            }
+            else if(strDiagnose.indexOf("先兆性偏头痛") >= 0)
+            {
+                OCX.SetObjectInfo(strItemName2, "text", "先兆性偏头痛");
+            }
+            else if(strDiagnose.indexOf("视网膜性偏头痛") >= 0)
+            {
+                OCX.SetObjectInfo(strItemName2, "text", "视网膜性偏头痛");
+            }
+            else if(strDiagnose.indexOf("偏头痛的合并症") >= 0)
+            {
+                OCX.SetObjectInfo(strItemName2, "text", "偏头痛的合并症");
+            }
+        }
+        else if(strDiagnose.indexOf("紧张型头痛") >= 0)
+        {
+            OCX.SetObjectInfo(strItemName1, "text", "紧张型头痛");
+            if(strDiagnose.indexOf("偶尔发作性紧张型头痛") >= 0)
+            {
+                OCX.SetObjectInfo(strItemName2, "text", "偶尔发作性紧张型头痛");
+            }
+            else if(strDiagnose.indexOf("频繁发作性紧张型头痛") >= 0)
+            {
+                OCX.SetObjectInfo(strItemName2, "text", "频繁发作性紧张型头痛");
+            }
+            else if(strDiagnose.indexOf("很可能的紧张型头痛") >= 0)
+            {
+                OCX.SetObjectInfo(strItemName2, "text", "很可能的紧张型头痛");
+            }
+        }
+        else if(strDiagnose.indexOf("丛集性头痛") >= 0)
+        {
+            OCX.SetObjectInfo(strItemName1, "text", "丛集性头痛和其他原发性三叉神经痛");
+            OCX.SetObjectInfo(strItemName2, "text", "丛集性头痛");
+        }
+        else if(strDiagnose.indexOf("阵发性偏侧头痛") >= 0)
+        {
+            OCX.SetObjectInfo(strItemName1, "text", "丛集性头痛和其他原发性三叉神经痛");
+            OCX.SetObjectInfo(strItemName2, "text", "阵发性偏侧头痛");
+        }
+        else if(strDiagnose.indexOf("SUNCT") >= 0)
+        {
+            OCX.SetObjectInfo(strItemName1, "text", "丛集性头痛和其他原发性三叉神经痛");
+            OCX.SetObjectInfo(strItemName2, "text", "SUNCT");
+        }
+        else if(strDiagnose.indexOf("很可能的三叉自主神经性头痛") >= 0)
+        {
+            OCX.SetObjectInfo(strItemName1, "text", "丛集性头痛和其他原发性三叉神经痛");
+            OCX.SetObjectInfo(strItemName2, "text", "很可能的三叉自主神经性头痛");
+        }
+        else if(strDiagnose.indexOf("慢性偏头痛") >= 0)
+        {
+            OCX.SetObjectInfo(strItemName1, "text", "慢性每日头痛");
+            OCX.SetObjectInfo(strItemName2, "text", "慢性偏头痛");
+        }
+        else if(strDiagnose.indexOf("慢性紧张型头痛") >= 0)
+        {
+            OCX.SetObjectInfo(strItemName1, "text", "慢性每日头痛");
+            OCX.SetObjectInfo(strItemName2, "text", "慢性紧张型头痛");
+        }
+        else if(strDiagnose.indexOf("新发每日持续性头痛") >= 0)
+        {
+            OCX.SetObjectInfo(strItemName1, "text", "慢性每日头痛");
+            OCX.SetObjectInfo(strItemName2, "text", "新发每日持续性头痛");
+        }
+        else if(strDiagnose.indexOf("药物滥用引起的头痛") >= 0)
+        {
+            OCX.SetObjectInfo(strItemName1, "text", "慢性每日头痛");
+            OCX.SetObjectInfo(strItemName2, "text", "药物滥用引起的头痛");
+        }
+        else if(strDiagnose.indexOf("颅神经痛和中枢源性面痛") >= 0)
+        {
+            OCX.SetObjectInfo(strItemName1, "text", "颅神经痛和中枢源性面痛");
+        }
+    }
 </script>
