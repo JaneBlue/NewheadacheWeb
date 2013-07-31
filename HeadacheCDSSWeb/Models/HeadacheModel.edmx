@@ -259,8 +259,8 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="DrugCategory" Type="nvarchar(max)" Nullable="false" />
     <Property Name="DrugName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="DayAmoutnPerM" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="MonthTotalAmount" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DayAmoutnPerM" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="MonthTotalAmount" Type="nvarchar(max)" Nullable="true" />
     <Property Name="PatBasicInforId" Type="nvarchar" Nullable="false" MaxLength="255" />
     <Property Name="DrugApplication" Type="nvarchar(max)" Nullable="true" />
     <Property Name="PatBasicInforId1" Type="nvarchar" Nullable="false" MaxLength="255" />
@@ -1136,8 +1136,8 @@
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="DrugCategory" Nullable="false" />
           <Property Type="String" Name="DrugName" Nullable="false" />
-          <Property Type="String" Name="DayAmoutnPerM" Nullable="false" />
-          <Property Type="String" Name="MonthTotalAmount" Nullable="false" />
+          <Property Type="String" Name="DayAmoutnPerM" Nullable="true" />
+          <Property Type="String" Name="MonthTotalAmount" Nullable="true" />
           <Property Type="String" Name="PatBasicInforId" Nullable="false" MaxLength="255" />
           <Property Type="String" Name="DrugApplication" Nullable="true" />
           <NavigationProperty Name="PatBasicInfor" Relationship="HeadacheModel.PatBasicInforPreviousDrug" FromRole="PreviousDrug" ToRole="PatBasicInfor" />

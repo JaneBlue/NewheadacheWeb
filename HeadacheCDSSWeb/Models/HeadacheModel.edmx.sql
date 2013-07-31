@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 07/31/2013 09:02:04
+-- Date Created: 07/31/2013 10:55:43
 -- Generated from EDMX file: D:\FGj\projectcode\NewheadacheWeb\HeadacheCDSSWeb\Models\HeadacheModel.edmx
 -- --------------------------------------------------
 
@@ -307,8 +307,8 @@ CREATE TABLE [dbo].[PreviousDrugSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [DrugCategory] nvarchar(max)  NOT NULL,
     [DrugName] nvarchar(max)  NOT NULL,
-    [DayAmoutnPerM] nvarchar(max)  NOT NULL,
-    [MonthTotalAmount] nvarchar(max)  NOT NULL,
+    [DayAmoutnPerM] nvarchar(max)  NULL,
+    [MonthTotalAmount] nvarchar(max)  NULL,
     [PatBasicInforId] nvarchar(255)  NOT NULL,
     [DrugApplication] nvarchar(max)  NULL,
     [PatBasicInforId1] nvarchar(255)  NOT NULL

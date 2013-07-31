@@ -44,22 +44,37 @@ namespace HeadacheCDSSWeb.Controllers
 
             try
             {
+                VisitData obj = JsonConvert.DeserializeObject<VisitData>(jsonStr);             
+                 vr.SaveRecord(PatID, obj);           
+            }
+            catch (Exception e)
+            {
+                return this.Json(new { OK = false, Message = "保存失败" });
+            }
+            
+            return this.Json(new { OK = true, Message = "保存成功" });
+        }
+        [HttpPost]
+        public JsonResult Update()
+        {
+
+            string jsonStr = Request.Params["postjson"];
+            string PatID = this.TempData["PatID"].ToString();
+
+            try
+            {
                 VisitData obj = JsonConvert.DeserializeObject<VisitData>(jsonStr);
-                if (this.TempData["ContinueVisitID"] == null)
+                if (this.TempData["ContinueVisitID"] != null)
                 {
-                    vr.SaveRecord(PatID, obj);
-                }
-                else
-                {
-                    string VisitID= this.TempData["ContinueVisitID"].ToString();
-                    vr.UpdateRecord(PatID,VisitID ,obj);
+                    string VisitID = this.TempData["ContinueVisitID"].ToString();
+                    vr.UpdateRecord(PatID, VisitID, obj);
                 }
             }
             catch (Exception e)
             {
                 return this.Json(new { OK = false, Message = "保存失败" });
             }
-
+           
             return this.Json(new { OK = true, Message = "保存成功" });
         }
         [HttpPost]

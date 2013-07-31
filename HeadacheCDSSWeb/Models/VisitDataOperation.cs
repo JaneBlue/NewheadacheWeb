@@ -204,7 +204,7 @@ namespace HeadacheCDSSWeb.Models
                 context.SaveChanges();
                 return true;
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 return false;
             }

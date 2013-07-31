@@ -209,7 +209,7 @@ $(function () {
                     $("#ocx").hide();
                      $(".active").wBox({title: "提示信息", html: "<div class='demo'><img src='../../Content/images/wait.gif'/></div>", show: true  });
                     $.ajax({
-                        url: '@Url.Action("Save", "Diagnosis")',
+                        url: '@Url.Action("Update", "Diagnosis")',
                         type: "POST",
                         data: { postjson: encoded },
                         success: function (data) {

@@ -318,7 +318,7 @@ namespace HeadacheCDSSWeb.Models
                 InputDataValue.m_HeadacheAuraList = HeadacheAuraList.ToArray();
                 foreach (PreviousDrug pdrug in vd.PDrug)
                 {
-                    if (pdrug.DayAmoutnPerM != "" && pdrug.MonthTotalAmount != "")
+                    if (pdrug.DrugApplication=="止痛"&&pdrug.DayAmoutnPerM != ""&& pdrug.MonthTotalAmount != "")
                     {
                         int day = int.Parse(pdrug.DayAmoutnPerM);
                         int month = int.Parse(pdrug.MonthTotalAmount);
