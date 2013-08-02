@@ -287,9 +287,13 @@ namespace HeadacheCDSSWeb.Models
                     {
                         HeadacheAssociatedSymptonList.Add(localhost.HeadacheAssociatedSymptoms.Ipsilateral_Heyelids_Swelling);
                     }
-                    if (ha.Symptom == "同侧眼睑下垂")
+                    if (!HeadacheAssociatedSymptonList.Contains(localhost.HeadacheAssociatedSymptoms.Miosis_or_Blepharoptosis))
                     {
+
+                      if (ha.Symptom == "同侧眼睑下垂" || ha.Symptom == "同侧瞳孔缩小")
+                      {
                         HeadacheAssociatedSymptonList.Add(localhost.HeadacheAssociatedSymptoms.Miosis_or_Blepharoptosis);
+                      }
                     }
                 }
 
