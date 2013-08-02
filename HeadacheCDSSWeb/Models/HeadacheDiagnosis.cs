@@ -75,9 +75,10 @@ namespace HeadacheCDSSWeb.Models
                 if (vd.PHeadacheOverview.OnsetDate != null)
                 {
                     DateTime Startdate = vd.PHeadacheOverview.OnsetDate;
+                    string sd = Startdate.Date.ToShortDateString();
                     int month = (DateTime.Now.Date.Year - Startdate.Year) * 12 + (DateTime.Now.Date.Month - Startdate.Month);
                     InputDataValue.m_nHeadache_Duration = month;
-                    if (month == 3125)
+                    if (sd == "1753/1/1")
                     {
                         errorinfor.Add("最近起病年月");
                     }
@@ -135,7 +136,8 @@ namespace HeadacheCDSSWeb.Models
                 }
                 if (vd.PHeadacheOverview.DailyAggravation != "")
                 {
-                    if (vd.PHeadacheOverview.DailyAggravation == "从无")
+                    if (vd.PHeadacheOverview.DailyAggravation.Contains("无"))
+
                     {
                         InputDataValue.m_bWorsen_By_Physicial_Activity = false;
                     }
@@ -155,7 +157,7 @@ namespace HeadacheCDSSWeb.Models
                     {
                         InputDataValue.m_nHeadahceProperty = localhost.HeadacheProperty.Pulse_Pain;
                     }
-                    if (vd.PHeadacheOverview.HeadacheType == "压迫性痛" || vd.PHeadacheOverview.HeadacheType == "紧箍性痛")
+                    if (vd.PHeadacheOverview.HeadacheType.Contains("压迫")|| vd.PHeadacheOverview.HeadacheType == "紧箍性痛")
                     {
                         InputDataValue.m_nHeadahceProperty = localhost.HeadacheProperty.Pressure_Pain;
                     }
