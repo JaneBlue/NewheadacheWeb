@@ -14,6 +14,7 @@ namespace HeadacheCDSSWeb.Controllers
         //
         // GET: /ViewPatRecord/
         VisitDataOperation visitop = new VisitDataOperation();
+        [OutputCache(Location=System.Web.UI.OutputCacheLocation.None)]
         public ActionResult Index(string ID)
         {
             this.TempData["PatID"] = ID;
