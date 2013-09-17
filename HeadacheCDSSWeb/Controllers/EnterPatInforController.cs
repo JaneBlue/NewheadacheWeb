@@ -59,15 +59,18 @@ namespace HeadacheCDSSWeb.Controllers
         }
         public ActionResult Query()
         {
+
             string patname = Request["name"];
             string patsex = Request["sex"];
             string date = Request["date"];
             string diagnosisresult = Request["diagnosis"];
+            string user = HttpContext.Request.Cookies["username"].Value.ToString();
             List<string> query = new List<string>();
             query.Add(patname);
             query.Add(patsex);
             query.Add(date);
             query.Add(diagnosisresult);
+            query.Add(user);
             VisitDataOperation visitop = new VisitDataOperation();
             List<PatBasicInfor> pts = visitop.GetPat(query);
             return PartialView("PatList", pts);
