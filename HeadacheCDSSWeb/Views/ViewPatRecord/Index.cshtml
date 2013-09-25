@@ -23,6 +23,8 @@
 
         </div>
         <div id="DiaryView">
+        <div id="ReportView">
+        </div>
           <div class="statics">
            <div id="time">
                         <table border="0">
@@ -141,7 +143,7 @@
 </div>
 <script type="text/javascript">
     $(function () {
-       
+
         var OCX = document.getElementById('Reporter2');
         try {
             OCX.OpenReport("D:\\CDSSOCX");
@@ -177,8 +179,8 @@
         });
 
         //打开第一个问诊记录
-//        $("#accordion").accordion(
-//        { collapsible: true });
+        //        $("#accordion").accordion(
+        //        { collapsible: true });
         $('.paging li a:first').addClass("CurrentView");
         $(".CurrentView").parent().css("background-color", "#D3E7F2");
         if ($(".paging li").length == 0) {
@@ -188,7 +190,7 @@
         }
     });
     $(document).ready(function () {
-        
+
         $(".paging").find("li").hide();
         $(".paging li:lt(7)").addClass("current").show();
         var num = Math.ceil($(".paging li").length / 7);
@@ -197,8 +199,7 @@
             paged: function (page) {
                 $(".current").hide();
                 var start = (page - 1) * 7;
-                for (var i = 0; i < 7; i++) 
-                {
+                for (var i = 0; i < 7; i++) {
                     $(".paging li:eq(" + start + ")").addClass("current").show();
                     start = start + 1;
                 }
@@ -251,11 +252,13 @@
             if ($(this).attr("id") == "statics") {
                 $("#ViewContent").hide();
                 $("#DiaryView").show();
-                $("#DiaryView").show();
+                $("#ReportView").hide();
+                $(".statics").show();
                 $("#d1").Zebra_DatePicker();
                 $("#d2").Zebra_DatePicker();
-                $("#linegraph").children().remove();
-                $("#piegraph").children().remove();
+                // $("#linegraph").children().remove();
+
+                //$("#piegraph").children().remove();
                 var plot1 = $.jqplot('linegraph', [[4, 6, 7, 9, 3, 5, 8, 8]], { axes: { xaxis: { label: "" }, yaxis: { label: ""}} });
                 var plot2 = $.jqplot('piegraph', [[5, 7, 9, 7, 10, 11, 28, 32, 10, 11, 28, 32]], {
                     title: '',
@@ -295,8 +298,10 @@
                     url: '@Url.Action("ViewDiaryReport", "ViewPatRecord")',
                     success: function (data) {
                         $("#ViewContent").hide();
-                        $("#DiaryView").html(data);
+                        $("#ReportView").html(data);
+                        $("#ReportView").show();
                         $("#DiaryView").show();
+                        $(".statics").hide();
                     },
                     error: function () {
                         alert("处理失败!");
@@ -431,16 +436,14 @@
 
 
     });
-    function SetReportData(jsonData) 
-    {
-        var obj = eval('(' +jsonData + ')');
+    function SetReportData(jsonData) {
+        var obj = eval('(' + jsonData + ')');
         var OCX = document.getElementById('Reporter2');
 
         //set doctor advice
         var strDoctorAdvice = "";
         var listMedicationAdvice = obj.medicationadvice;
-        for (var nIndex = 0; nIndex < listMedicationAdvice.length; ++nIndex) 
-        {
+        for (var nIndex = 0; nIndex < listMedicationAdvice.length; ++nIndex) {
             var strDrugName = listMedicationAdvice[nIndex].DrugName;
             var strDrugDose = listMedicationAdvice[nIndex].DrugDose;
             var strDrugDoseUnit = listMedicationAdvice[nIndex].DrugDoseUnit;
@@ -454,7 +457,7 @@
 
         //set patient basic information
         //get data
-            var strName = "";
+        var strName = "";
         if (null != obj.Name)
             strName = obj.Name;
 
@@ -498,8 +501,7 @@
         OCX.SetObjectInfo("TextBox_21", "text", strPatientInfo);
 
         //set chief complaint
-        if(obj.ChiefComplaint!=null)
-        {
+        if (obj.ChiefComplaint != null) {
             var strChiefComplaint = obj.ChiefComplaint;
             OCX.SetObjectInfo("TextBox_22", "text", strChiefComplaint);
         }
@@ -515,21 +517,21 @@
         if ("" != strDiagnoses)
             OCX.SetObjectInfo("TextBox_23", "text", strDiagnoses);
 
-//        //set doctor advice
-//        if (obj.Prescription != null) 
-//        {
-//            var strDoctorAdvice = obj.Prescription;
-//            OCX.SetObjectInfo("TextBox_24", "text", strDoctorAdvice);
-//        }
+        //        //set doctor advice
+        //        if (obj.Prescription != null) 
+        //        {
+        //            var strDoctorAdvice = obj.Prescription;
+        //            OCX.SetObjectInfo("TextBox_24", "text", strDoctorAdvice);
+        //        }
         OCX.ShowReport();
         OCX.ShowThisPage("就诊记录");
     }
-//     $(function(){
-//         var canvas = document.createElement("canvas");
-//document.body.appendChild(canvas);
-////if($.browser.msie){
-////canvas=window.G_vmlCanvasManager.initElement(canvas);
-////}
-////if(canvas.getContext){alert("support");}});   
-//  })   
+    //     $(function(){
+    //         var canvas = document.createElement("canvas");
+    //document.body.appendChild(canvas);
+    ////if($.browser.msie){
+    ////canvas=window.G_vmlCanvasManager.initElement(canvas);
+    ////}
+    ////if(canvas.getContext){alert("support");}});   
+    //  })   
   </script>
