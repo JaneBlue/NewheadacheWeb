@@ -1418,6 +1418,8 @@ $(function () {
                 {
                     strOnsetDateYear=nOnsetDateYear.toString();
                     strOnsetDateMonth=nOnsetDateMonth.toString();
+                    if(strOnsetDateMonth.length == 1)
+                        strOnsetDateMonth = '0'+strOnsetDateMonth;
                     strOnsetDate = strOnsetDateYear+"/"+strOnsetDateMonth+"/01///";
                 }
                 if ("/////" == strOnsetDate) 
@@ -1813,6 +1815,8 @@ $(function () {
                 {
                     strExamDate1Year=nExamDate1Year.toString();
                     strExamDate1Month=nExamDate1Month.toString();
+                    if(strExamDate1Month.length == 1)
+                        strExamDate1Month = '0' + strExamDate1Month;
                     strExamDate1 = strExamDate1Year+"/"+strExamDate1Month+"/01///";
                 }
                 if ("/////" == strExamDate1) 
@@ -1838,6 +1842,8 @@ $(function () {
                 {
                     strExamDate2Year=nExamDate2Year.toString();
                     strExamDate2Month=nExamDate2Month.toString();
+                    if(strExamDate2Month.length == 1)
+                        strExamDate2Month = '0'+strExamDate2Month;
                     strExamDate2 = strExamDate2Year+"/"+strExamDate2Month+"/01///";
                 }
                 if ("/////" == strExamDate2) 
@@ -1863,6 +1869,8 @@ $(function () {
                 {
                     strExamDate3Year=nExamDate3Year.toString();
                     strExamDate3Month=nExamDate3Month.toString();
+                    if(strExamDate3Month.length == 1)
+                        strExamDate3Month='0'+strExamDate3Month;
                     strExamDate3 = strExamDate3Year+"/"+strExamDate3Month+"/01///";
                 }
                 if ("/////" == strExamDate3) 
@@ -2563,6 +2571,8 @@ $(function () {
             {
                 strOnsetDateYear=nOnsetDateYear.toString();
                 strOnsetDateMonth=nOnsetDateMonth.toString();
+                if(strOnsetDateMonth.length == 1)
+                        strOnsetDateMonth = '0'+strOnsetDateMonth;
                 strOnsetDate = strOnsetDateYear+"/"+strOnsetDateMonth+"/01///";
             }
             if ("/////" != strOnsetDate) 

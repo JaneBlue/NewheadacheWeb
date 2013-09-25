@@ -534,6 +534,8 @@ function SetDiagnosisIntoComplaint(OCX){
             {
                 strOnsetDateYear=nOnsetDateYear.toString();
                 strOnsetDateMonth=nOnsetDateMonth.toString();
+                if(strOnsetDateMonth.length == 1)
+                        strOnsetDateMonth = '0'+strOnsetDateMonth;
                 strOnsetDate = strOnsetDateYear+"/"+strOnsetDateMonth+"/01///";
             }
             if ("/////" != strOnsetDate) 
@@ -764,6 +766,8 @@ function SetDiagnosisIntoComplaint(OCX){
             {
                 strExamDate1Year=nExamDate1Year.toString();
                 strExamDate1Month=nExamDate1Month.toString();
+                if(strExamDate1Month.length == 1)
+                    strExamDate1Month = '0'+strExamDate1Month;
                 strExamDate1 = strExamDate1Year+"/"+strExamDate1Month+"/01///";
             }
             strExamDate1 = strExamDate1.substring(0, strExamDate1.length-3);
@@ -795,6 +799,8 @@ function SetDiagnosisIntoComplaint(OCX){
             {
                 strExamDate2Year=nExamDate2Year.toString();
                 strExamDate2Month=nExamDate2Month.toString();
+                if(strExamDate2Month.length == 1)
+                    strExamDate2Month = '0'+strExamDate2Month;
                 strExamDate2 = strExamDate2Year+"/"+strExamDate2Month+"/01///";
             }
             strExamDate2 = strExamDate2.substring(0, strExamDate2.length-3);
@@ -827,6 +833,8 @@ function SetDiagnosisIntoComplaint(OCX){
             {
                 strExamDate3Year=nExamDate3Year.toString();
                 strExamDate3Month=nExamDate3Month.toString();
+                if(strExamDate3Month.length == 1)
+                    strExamDate3Month='0'+strExamDate3Month;
                 strExamDate3 = strExamDate3Year+"/"+strExamDate3Month+"/01///";
             }
             strExamDate3 = strExamDate3.substring(0, strExamDate3.length-3);
@@ -1106,6 +1114,8 @@ function SetDiagnosisIntoComplaint(OCX){
                 {
                     strOnsetDateYear=nOnsetDateYear.toString();
                     strOnsetDateMonth=nOnsetDateMonth.toString();
+                    if(strOnsetDateMonth.length == 1)
+                        strOnsetDateMonth = '0'+strOnsetDateMonth;
                     strOnsetDate = strOnsetDateYear+"/"+strOnsetDateMonth+"/01///";
                 }
                 if ("/////" == strOnsetDate) 
